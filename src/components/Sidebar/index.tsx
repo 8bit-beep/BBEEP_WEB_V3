@@ -1,11 +1,11 @@
 import * as S from "./style";
 
-const Home = () => {
+const Sidebar = () => {
   return (
     <S.Container>
-      <div>outlet 영역</div>
+      <>사이드바 영역</>
     </S.Container>
   );
 };
 
-export default Home;
+export default Sidebar;

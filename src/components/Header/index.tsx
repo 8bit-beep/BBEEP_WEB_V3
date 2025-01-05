@@ -1,11 +1,11 @@
 import * as S from "./style";
 
-const Home = () => {
+const Header = () => {
   return (
     <S.Container>
-      <div>outlet 영역</div>
+      <>헤더영역</>
     </S.Container>
   );
 };
 
-export default Home;
+export default Header;
