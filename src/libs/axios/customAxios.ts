@@ -1,4 +1,5 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, REQUEST_TOKEN_KEY } from "../../constants/token/token";
 
 interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
   _retry?: boolean;
@@ -26,9 +27,9 @@ const addRefreshSubscriber = (callback: (token: string) => void) => {
 
 customAxios.interceptors.request.use(
   async (config) => {
-    const token = localStorage.getItem("ACCESS_TOKEN");
+    const token = localStorage.getItem(ACCESS_TOKEN_KEY);
     if (token) {
-      config.headers.Authorization = `Bearer ${token}`;
+      config.headers[REQUEST_TOKEN_KEY] = `Bearer ${token}`;
     }
 
     if (config.data instanceof FormData) {
@@ -57,33 +58,33 @@ customAxios.interceptors.response.use(
     }
     if (originalRequest && !originalRequest._retry) {
       originalRequest._retry = true;
-      const refreshToken = localStorage.getItem("REFRESH_TOKEN");
+      const refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY);
 
       if (refreshToken) {
         if (!isRefreshing) {
           isRefreshing = true;
 
           try {
-            const response = await axios.post(
+            const { data } = await axios.post(
               `${import.meta.env.VITE_API_URL}/auth/reissue`,
               {
                 refreshToken,
               }
             );
 
-            const newAccessToken = response.data.accessToken;
-            const newRefreshToken = response.data.refreshToken;
+            const newAccessToken = data.accessToken;
+            const newRefreshToken = data.refreshToken;
 
-            localStorage.setItem("ACCESS_TOKEN", newAccessToken);
-            localStorage.setItem("REFRESH_TOKEN", newRefreshToken);
+            localStorage.setItem(ACCESS_TOKEN_KEY, newAccessToken);
+            localStorage.setItem(REFRESH_TOKEN_KEY, newRefreshToken);
 
             onRefreshed(newAccessToken);
 
-            originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+            originalRequest.headers[REQUEST_TOKEN_KEY] = `Bearer ${newAccessToken}`;
             return customAxios(originalRequest);
           } catch (refreshError) {
-            localStorage.removeItem("ACCESS_TOKEN");
-            localStorage.removeItem("REFRESH_TOKEN");
+            localStorage.removeItem(ACCESS_TOKEN_KEY);
+            localStorage.removeItem(REFRESH_TOKEN_KEY);
             return Promise.reject(refreshError);
           } finally {
             isRefreshing = false;
@@ -92,7 +93,7 @@ customAxios.interceptors.response.use(
 
         return new Promise((resolve) => {
           addRefreshSubscriber((newToken: string) => {
-            originalRequest.headers.Authorization = `Bearer ${newToken}`;
+            originalRequest.headers[REQUEST_TOKEN_KEY] = `Bearer ${newToken}`;
             resolve(customAxios(originalRequest));
           });
         });

@@ -2,6 +2,7 @@ import { useLoadingStore } from "../../store/global/useLoadingStore";
 import { LoginForm } from "../../types/auth/loginForm";
 import axios from "axios";
 import { useErrorStore } from "../../store/global/useErrorStore";
+import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY } from "../../constants/token/token";
 
 const useLogin = () => {
   const { loading, setLoading } = useLoadingStore();
@@ -16,8 +17,8 @@ const useLogin = () => {
         loginForm
       );
       if (data) {
-        localStorage.setItem("ACCESS_TOKEN", data.accessToken);
-        localStorage.setItem("REFRESH_TOKEN", data.refreshToken);
+        localStorage.setItem(ACCESS_TOKEN_KEY, data.accessToken);
+        localStorage.setItem(REFRESH_TOKEN_KEY, data.refreshToken);
       }
       return data;
     } catch (err: any) {
