@@ -1,5 +1,11 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
-import { ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY, REQUEST_TOKEN_KEY } from "../../constants/token/token";
+import {
+  ACCESS_TOKEN_KEY,
+  REFRESH_TOKEN_KEY,
+  REQUEST_TOKEN_KEY,
+} from "../../constants/token/token";
+import { BaseResponse } from "../../types/response/baseResponse";
+import { TokenResponse } from "../../types/response/tokenResponse";
 
 interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
   _retry?: boolean;
@@ -65,22 +71,21 @@ customAxios.interceptors.response.use(
           isRefreshing = true;
 
           try {
-            const { data } = await axios.post(
-              `${import.meta.env.VITE_API_URL}/auth/reissue`,
-              {
-                refreshToken,
-              }
+            const { data } = await axios.get<BaseResponse<TokenResponse>>(
+              `${
+                import.meta.env.VITE_API_URL
+              }/auth/refresh?refreshToken=${refreshToken}`
             );
 
-            const newAccessToken = data.accessToken;
-            const newRefreshToken = data.refreshToken;
+            const newAccessToken = data.data.accessToken;
 
             localStorage.setItem(ACCESS_TOKEN_KEY, newAccessToken);
-            localStorage.setItem(REFRESH_TOKEN_KEY, newRefreshToken);
 
             onRefreshed(newAccessToken);
 
-            originalRequest.headers[REQUEST_TOKEN_KEY] = `Bearer ${newAccessToken}`;
+            originalRequest.headers[
+              REQUEST_TOKEN_KEY
+            ] = `Bearer ${newAccessToken}`;
             return customAxios(originalRequest);
           } catch (refreshError) {
             localStorage.removeItem(ACCESS_TOKEN_KEY);

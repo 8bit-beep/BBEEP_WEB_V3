@@ -1,9 +1,23 @@
+import SignupInfo from "../../components/SignupInfo";
+import SignupPassword from "../../components/SignupPassword";
+import { useSignupPhaseStore } from "../../store/signup/useSignupPhaseStore";
+import { SignupPhase } from "../../types/store/signupPhaseState";
 import * as S from "./style";
 
 const Signup = () => {
+  const { signupPhase } = useSignupPhaseStore();
+
   return (
     <S.Container>
-      <div></div>
+      <S.Form>
+        <S.LogoWrap>
+          <S.LogoText>삑</S.LogoText>
+          <S.RouteName>삑에 회원가입</S.RouteName>
+        </S.LogoWrap>
+        <S.FormContentWrap>
+          {signupPhase === SignupPhase.INFO ? <SignupInfo /> : <SignupPassword />}
+        </S.FormContentWrap>
+      </S.Form>
     </S.Container>
   );
 };

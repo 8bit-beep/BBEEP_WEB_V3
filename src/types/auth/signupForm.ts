@@ -1,6 +1,6 @@
 export interface SignupForm {
   email: string;
-  nickname: string;
-  username: string;
   password: string;
+  name: string;
+  authority: "STUDENT" | "TEACHER"
 }
