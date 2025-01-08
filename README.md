@@ -1,1 +1,2 @@
-# cher1shRXD's TypeScript + React.js + Vite Template
+## BBEEP WEB
+대구소프트웨어마이스터고등학교의 실습동 인원관리 서비스 삑 웹입니다.
