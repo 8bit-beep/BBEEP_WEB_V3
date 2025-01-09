@@ -5,4 +5,6 @@ export const COLOR = {
   400: "#009688",
   500: "#00635a",
   tint: "#2F3945",
+  main: "#303A46",
+  soft: "#F6F7F9",
 };
