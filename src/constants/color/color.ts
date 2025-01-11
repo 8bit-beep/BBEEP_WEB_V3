@@ -7,4 +7,5 @@ export const COLOR = {
   tint: "#2F3945",
   main: "#303A46",
   soft: "#F6F7F9",
+  check: "#6F7071",
 };

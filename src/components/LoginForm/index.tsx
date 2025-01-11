@@ -8,6 +8,8 @@ import * as S from "./style";
 const LoginForm = () => {
   const { handleData, onSubmit } = useLogin();
   const { loginData } = useLoginDataStore();
+  const { error } = useErrorStore();
+
   return (
     <S.Container>
       <S.InputWrap>
@@ -27,16 +29,25 @@ const LoginForm = () => {
           value={loginData.password}
           error={false}
         />
+        <S.SelectWrapper>
+          <S.CheckBox type="checkbox" />
+          로그인 유지
+        </S.SelectWrapper>
+        <StyledButton
+          disabled={
+            loginData.password.trim().length === 0 ||
+            loginData.email.trim().length === 0
+          }
+          onClick={() => onSubmit(loginData)}
+        >
+          로그인
+        </StyledButton>
+        <S.OptionWrapper>
+          <S.Option>계정이 없으신가요?</S.Option>
+          <div style={{ fontSize: "1.7rem", color: "#D9D9D9" }}>|</div>
+          <S.Option>비밀번호를 잊으셨나요?</S.Option>
+        </S.OptionWrapper>
       </S.InputWrap>
-      <StyledButton
-        disabled={
-          loginData.password.trim().length > 0 &&
-          loginData.email.trim().length > 0
-        }
-        onClick={() => onSubmit(loginData)}
-      >
-        다음
-      </StyledButton>
     </S.Container>
   );
 };
