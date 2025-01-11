@@ -1,7 +1,7 @@
 import { Outlet } from "react-router-dom";
 import { Container, ExceptHeader, ExceptSidebar } from "./style";
-import Header from "../../components/Header";
-import Sidebar from "../../components/Sidebar";
+import Header from "../../components/common/Header";
+import Sidebar from "../../components/common/Sidebar";
 
 const RootLayout = () => {
   return (

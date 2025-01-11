@@ -1,12 +1,12 @@
-import { useState } from 'react';
-import useSignup from '../../hooks/auth/useSignup';
-import { useSignupDataStore } from '../../store/signup/useSignupDataStore';
-import StyledInput from '../StyledInput';
-import * as S from './style'
-import Spacer from '../Spacer';
-import StyledButton from '../StyledButton';
-import Warning from '../Warning';
-import { FormValidator } from '../../utils/validate';
+import { useState } from "react";
+import useSignup from "../../hooks/auth/useSignup";
+import { useSignupDataStore } from "../../store/signup/useSignupDataStore";
+import StyledInput from "../common/StyledInput";
+import * as S from "./style";
+import Spacer from "../common/Spacer";
+import StyledButton from "../common/StyledButton";
+import Warning from "../common/Warning";
+import { FormValidator } from "../../utils/validate";
 
 const SignupPassword = () => {
   const { signupData } = useSignupDataStore();
@@ -48,6 +48,6 @@ const SignupPassword = () => {
       </S.InputWrap>
     </S.Container>
   );
-}
+};
 
-export default SignupPassword
+export default SignupPassword;
