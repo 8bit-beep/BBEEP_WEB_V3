@@ -7,6 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 1.2rem;
   overflow: visible;
+  justify-content: center;
 `;
 
 export const Title = styled.p`

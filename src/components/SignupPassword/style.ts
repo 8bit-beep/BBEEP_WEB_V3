@@ -2,11 +2,12 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
-  height: 26rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   overflow: visible;
+  justify-content: center;
 `;
 
 export const Title = styled.p`
