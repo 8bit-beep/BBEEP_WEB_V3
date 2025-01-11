@@ -6,11 +6,17 @@ import * as S from './style'
 import Spacer from '../Spacer';
 import StyledButton from '../StyledButton';
 import Warning from '../Warning';
+import { FormValidator } from '../../utils/validate';
 
 const SignupPassword = () => {
   const { signupData } = useSignupDataStore();
   const { handleData, onSubmit } = useSignup();
   const [passwordCheck, setPasswordCheck] = useState("");
+
+  const passwordValidation = FormValidator.validatePasswordMatch(
+    signupData.password,
+    passwordCheck
+  );
 
   return (
     <S.Container>
@@ -22,11 +28,7 @@ const SignupPassword = () => {
           type="password"
           onChange={handleData}
           value={signupData.password}
-          error={
-            signupData.password.trim().length > 0 &&
-            passwordCheck.trim().length > 0 &&
-            signupData.password.trim() !== passwordCheck.trim()
-          }
+          error={passwordValidation.showError}
         />
         <StyledInput
           name="passwordCheck"
@@ -34,30 +36,13 @@ const SignupPassword = () => {
           type="password"
           onChange={(e) => setPasswordCheck(e.target.value)}
           value={passwordCheck}
-          error={
-            signupData.password.trim().length > 0 &&
-            passwordCheck.trim().length > 0 &&
-            signupData.password.trim() !== passwordCheck.trim()
-          }
+          error={passwordValidation.showError}
         />
         <Spacer />
-        <StyledButton
-          disabled={
-            signupData.password.trim().length < 1 ||
-            passwordCheck.trim().length < 1 ||
-            signupData.password.trim() !== passwordCheck.trim()
-          }
-          onClick={onSubmit}
-        >
+        <StyledButton disabled={!passwordValidation.isValid} onClick={onSubmit}>
           다음
         </StyledButton>
-        <Warning
-          visible={
-            signupData.password.trim().length > 0 &&
-            passwordCheck.trim().length > 0 &&
-            signupData.password.trim() !== passwordCheck.trim()
-          }
-        >
+        <Warning visible={passwordValidation.showError}>
           비밀번호가 일치하지 않습니다.
         </Warning>
       </S.InputWrap>
