@@ -49,6 +49,7 @@ export const LogoWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 15rem;
 `;
 
 export const LogoText = styled.p`

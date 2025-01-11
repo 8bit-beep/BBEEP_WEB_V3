@@ -25,12 +25,11 @@ export const OptionsContainer = styled.div`
   display: flex;
   height: 4.5rem;
   align-items: center;
-  justify-content: space-between;
 `;
 
 export const CheckWrap = styled.label`
   display: flex;
-  width: 100%;
+  width: 13rem;
   align-items: center;
   gap: 1rem;
   font-size: 1.4rem;

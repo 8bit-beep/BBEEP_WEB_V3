@@ -33,12 +33,14 @@ const LoginForm = () => {
           error={false}
         />
         <S.OptionsContainer>
+          {" "}
+          {/*로그인 유지, 비밀번호 오류*/}
           <S.CheckWrap>
             <S.CheckBox type="checkbox" />
             로그인 유지
           </S.CheckWrap>
           <Warning visible={loginData.email.length === 0}>
-            비밀번호가 일치하지 않습니다.
+            아이디 또는 비밀번호가 일치하지 않습니다.
           </Warning>
         </S.OptionsContainer>
         <StyledButton
