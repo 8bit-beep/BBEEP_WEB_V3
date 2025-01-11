@@ -8,21 +8,29 @@ export const Container = styled.div`
   flex-direction: column;
   gap: 1.2rem;
   overflow: visible;
+  align-items: center;
 `;
 
 export const InputWrap = styled.div`
-  width: 100%;
+  width: 80%;
   flex: 1;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
   overflow: visible;
-  align-items: center;
 `;
 
-export const SelectWrapper = styled.label`
+export const OptionsContainer = styled.div`
+  width: 100%;
   display: flex;
-  width: 10rem;
+  height: 4.5rem;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+export const CheckWrap = styled.label`
+  display: flex;
+  width: 100%;
   align-items: center;
   gap: 1rem;
   font-size: 1.4rem;

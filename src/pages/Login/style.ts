@@ -4,6 +4,7 @@ import { COLOR } from "../../constants/color/color";
 export const Container = styled.div`
   width: 100%;
   height: 100dvh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -28,12 +29,19 @@ export const Form = styled.div`
 export const ImgWrap = styled.div`
   width: 50%;
   height: 100%;
-  background-color: ${COLOR.main};
+  background: url("/assets/LoginBackGround.svg") no-repeat center;
+  background-size: cover;
 `;
 
 export const FormWrap = styled(ImgWrap)`
   background-color: ${COLOR.soft};
   padding: 3.2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  overflow: auto;
+  justify-content: flex-start;
+  background-image: none;
 `;
 
 export const LogoWrap = styled.div`

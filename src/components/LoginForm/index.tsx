@@ -1,14 +1,17 @@
+import { useNavigate } from "react-router-dom";
 import useLogin from "../../hooks/auth/useLogin";
 import { useErrorStore } from "../../store/global/useErrorStore";
 import { useLoginDataStore } from "../../store/login/useLoginDataStore";
 import StyledButton from "../StyledButton";
 import StyledInput from "../StyledInput";
 import * as S from "./style";
+import Warning from "../Warning";
 
 const LoginForm = () => {
   const { handleData, onSubmit } = useLogin();
   const { loginData } = useLoginDataStore();
   const { error } = useErrorStore();
+  const navigate = useNavigate();
 
   return (
     <S.Container>
@@ -29,10 +32,15 @@ const LoginForm = () => {
           value={loginData.password}
           error={false}
         />
-        <S.SelectWrapper>
-          <S.CheckBox type="checkbox" />
-          로그인 유지
-        </S.SelectWrapper>
+        <S.OptionsContainer>
+          <S.CheckWrap>
+            <S.CheckBox type="checkbox" />
+            로그인 유지
+          </S.CheckWrap>
+          <Warning visible={loginData.email.length === 0}>
+            비밀번호가 일치하지 않습니다.
+          </Warning>
+        </S.OptionsContainer>
         <StyledButton
           disabled={
             loginData.password.trim().length === 0 ||
@@ -43,7 +51,9 @@ const LoginForm = () => {
           로그인
         </StyledButton>
         <S.OptionWrapper>
-          <S.Option>계정이 없으신가요?</S.Option>
+          <S.Option onClick={() => navigate("/signup")}>
+            계정이 없으신가요?
+          </S.Option>
           <div style={{ fontSize: "1.7rem", color: "#D9D9D9" }}>|</div>
           <S.Option>비밀번호를 잊으셨나요?</S.Option>
         </S.OptionWrapper>

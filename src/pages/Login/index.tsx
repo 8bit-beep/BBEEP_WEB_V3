@@ -5,7 +5,7 @@ const Login = () => {
   return (
     <S.Container>
       <S.Form>
-        <S.ImgWrap></S.ImgWrap>
+        <S.ImgWrap />
         <S.FormWrap>
           <S.LogoWrap>
             <S.LogoText>삑</S.LogoText>
