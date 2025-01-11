@@ -49,6 +49,6 @@ export const RouteName = styled.p`
 export const FormContentWrap = styled.div`
   width: 100%;
   max-width: 35rem;
-  height: 32rem;
+  height: 28rem;
   overflow: visible;
 `
