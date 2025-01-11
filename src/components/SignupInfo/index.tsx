@@ -1,7 +1,8 @@
-import Spacer from "../Spacer";
-import StyledButton from "../StyledButton";
-import StyledInput from "../StyledInput";
-import Warning from "../Warning";
+import { FormValidator } from "../../utils/validate";
+import Spacer from "../common/Spacer";
+import StyledButton from "../common/StyledButton";
+import StyledInput from "../common/StyledInput";
+import Warning from "../common/Warning";
 import * as S from "./style";
 import useSignup from "../../hooks/auth/useSignup";
 import { useSignupDataStore } from "../../store/signup/useSignupDataStore";
@@ -14,6 +15,12 @@ const SignupInfo = () => {
   const { signupData } = useSignupDataStore();
   const { error } = useErrorStore();
   const { setSignupPhase } = useSignupPhaseStore();
+
+  const isEmailConflict = error?.response.data.status === 409;
+  const isFormValid = FormValidator.areObjectFieldsFilled(signupData, [
+    "email",
+    "name",
+  ]);
 
   return (
     <S.Container>
@@ -33,18 +40,16 @@ const SignupInfo = () => {
           type="email"
           onChange={handleData}
           value={signupData.email}
-          error={error?.response.data.status === 409}
+          error={isEmailConflict}
         />
         <Spacer />
-        <StyledButton disabled={
-          signupData.email.trim().length < 1 ||
-          signupData.name.trim().length < 1
-        } onClick={() => setSignupPhase(SignupPhase.PASSWORD)}>
+        <StyledButton
+          disabled={!isFormValid}
+          onClick={() => setSignupPhase(SignupPhase.PASSWORD)}
+        >
           다음
         </StyledButton>
-        <Warning visible={error?.response.data.status === 409}>
-          이미 유저가 존재합니다.
-        </Warning>
+        <Warning visible={isEmailConflict}>이미 유저가 존재합니다.</Warning>
       </S.InputWrap>
     </S.Container>
   );
