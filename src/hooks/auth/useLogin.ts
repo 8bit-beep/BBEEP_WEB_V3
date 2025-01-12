@@ -11,6 +11,7 @@ import { LoginResponse } from "../../types/response/loginResponse";
 import { useLoginDataStore } from "../../store/login/useLoginDataStore";
 import { ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import { notification } from "antd";
 
 const useLogin = () => {
   const { setError } = useErrorStore();
@@ -23,22 +24,29 @@ const useLogin = () => {
     setLoginData({ ...loginData, [name]: value });
   };
 
-  const onSubmit = async (loginForm: LoginForm) => {
+  const onSubmit = async (loginData: LoginForm) => {
     if (loading) return;
     try {
       setLoading(true);
       const { data } = await axios.post<BaseResponse<LoginResponse>>(
-        `${import.meta.env.VITE_API_URL}/auth/login`,
-        loginForm
+        `${import.meta.env.VITE_API_URL}/auth/sign-in`,
+        loginData
       );
       if (data) {
         localStorage.setItem(ACCESS_TOKEN_KEY, data.data.accessToken);
         localStorage.setItem(REFRESH_TOKEN_KEY, data.data.refreshToken);
         navigate("/home");
+        notification.open({
+          message: "로그인 성공",
+        });
+        navigate("/login");
       }
       return data;
     } catch (err: any) {
       setError(err);
+      console.log(err);
+      alert(loginData.email);
+      console.log(loginData.email);
     } finally {
       setLoading(false);
     }

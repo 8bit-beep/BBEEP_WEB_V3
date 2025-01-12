@@ -13,6 +13,12 @@ const LoginForm = () => {
   const { error } = useErrorStore();
   const navigate = useNavigate();
 
+  const activeEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onSubmit(loginData);
+    }
+  };
+
   return (
     <S.Container>
       <S.InputWrap>
@@ -22,7 +28,10 @@ const LoginForm = () => {
           type="email"
           onChange={handleData}
           value={loginData.email}
-          error={false}
+          error={error?.response.data.status === 401}
+          onKeyDown={(e) =>
+            activeEnter(e as React.KeyboardEvent<HTMLInputElement>)
+          }
         />
         <StyledInput
           name="password"
@@ -30,7 +39,10 @@ const LoginForm = () => {
           type="password"
           onChange={handleData}
           value={loginData.password}
-          error={false}
+          error={error?.response.data.status === 401}
+          onKeyDown={(e) =>
+            activeEnter(e as React.KeyboardEvent<HTMLInputElement>)
+          }
         />
         <S.OptionsContainer>
           {" "}
@@ -39,7 +51,7 @@ const LoginForm = () => {
             <S.CheckBox type="checkbox" />
             로그인 유지
           </S.CheckWrap>
-          <Warning visible={loginData.email.length === 0}>
+          <Warning visible={error?.response.data.status === 401}>
             아이디 또는 비밀번호가 일치하지 않습니다.
           </Warning>
         </S.OptionsContainer>
