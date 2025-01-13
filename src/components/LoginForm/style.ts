@@ -11,6 +11,14 @@ export const Container = styled.div`
   align-items: center;
 `;
 
+export const Title = styled.p`
+  font-size: 2rem;
+  font-weight: 400;
+  display: flex;
+  justify-self: flex-start;
+  width: 80%;
+`;
+
 export const InputWrap = styled.div`
   width: 80%;
   flex: 1;
@@ -64,4 +72,5 @@ export const OptionWrapper = styled.div`
 export const Option = styled.div`
   font-size: 1.2em;
   cursor: pointer;
+  text-align: center;
 `;

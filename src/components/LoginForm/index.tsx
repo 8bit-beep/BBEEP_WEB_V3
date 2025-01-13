@@ -21,6 +21,7 @@ const LoginForm = () => {
 
   return (
     <S.Container>
+      <S.Title>개인정보 입력</S.Title>
       <S.InputWrap>
         <StyledInput
           name="email"

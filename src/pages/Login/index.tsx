@@ -9,7 +9,6 @@ const Login = () => {
         <S.FormWrap>
           <S.LogoWrap>
             <S.LogoText>삑</S.LogoText>
-            <S.RouteName>삑에 로그인</S.RouteName>
           </S.LogoWrap>
           <LoginForm />
         </S.FormWrap>
