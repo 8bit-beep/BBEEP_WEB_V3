@@ -45,8 +45,6 @@ const useLogin = () => {
     } catch (err: any) {
       setError(err);
       console.log(err);
-      alert(loginData.email);
-      console.log(loginData.email);
     } finally {
       setLoading(false);
     }

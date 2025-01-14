@@ -71,7 +71,12 @@ export const OptionWrapper = styled.div`
 `;
 
 export const Option = styled.div`
-  font-size: 1.2em;
+  font-size: 1.2rem;
   cursor: pointer;
   text-align: center;
+`;
+
+export const OptionBar = styled.div`
+  font-size: 1.8rem;
+  color: #d9d9d9; // 일회용 컬러(색깔 구분)
 `;
