@@ -43,27 +43,28 @@ export const CheckWrap = styled.label`
   font-size: 1.4rem;
   height: 4.5rem;
   cursor: pointer;
-  color: ${COLOR.check};
+  color: #6f7071;
 `;
 
 export const CheckBox = styled.input`
   all: unset;
   width: 1.8rem;
   height: 1.8rem;
-  border: 1px solid ${COLOR.check};
+  border: 1px solid ${COLOR.Gray};
   border-radius: 0.2rem;
 
   :checked {
     background-image: url("/assets/LoginCheck.svg");
     background-repeat: no-repeat;
     background-position: center;
+    border: 1px solid ${COLOR.Dark};
   }
 `;
 
 export const OptionWrapper = styled.div`
   display: flex;
   width: 100%;
-  color: #acadae; // 사실상 일회용 컬러
+  color: ${COLOR.Gray}; // 사실상 일회용 컬러
   gap: 10%;
   justify-content: center;
   align-items: center;

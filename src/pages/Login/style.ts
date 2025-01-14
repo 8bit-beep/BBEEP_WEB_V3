@@ -34,7 +34,7 @@ export const ImgWrap = styled.div`
 `;
 
 export const FormWrap = styled(ImgWrap)`
-  background-color: ${COLOR.soft};
+  background-color: ${COLOR.LoginBackground};
   padding: 3.2rem 1.2rem;
   display: flex;
   flex-direction: column;
@@ -52,13 +52,6 @@ export const LogoWrap = styled.div`
   height: 15rem;
 `;
 
-export const LogoText = styled.p`
-  font-family: "SBAggroB";
-  font-size: 8rem;
-  color: ${COLOR.tint};
-`;
-
-export const RouteName = styled.p`
-  font-size: 1.5rem;
-  color: ${COLOR.tint};
+export const Logo = styled.img`
+  width: 8rem;
 `;
