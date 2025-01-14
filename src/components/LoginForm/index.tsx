@@ -29,7 +29,7 @@ const LoginForm = () => {
           type="email"
           onChange={handleData}
           value={loginData.email}
-          error={error?.response.data.status === 401}
+          error={error}
           onKeyDown={(e) =>
             activeEnter(e as React.KeyboardEvent<HTMLInputElement>)
           }
@@ -40,7 +40,7 @@ const LoginForm = () => {
           type="password"
           onChange={handleData}
           value={loginData.password}
-          error={error?.response.data.status === 401}
+          error={error}
           onKeyDown={(e) =>
             activeEnter(e as React.KeyboardEvent<HTMLInputElement>)
           }
@@ -52,8 +52,17 @@ const LoginForm = () => {
             <S.CheckBox type="checkbox" />
             로그인 유지
           </S.CheckWrap>
-          <Warning visible={error?.response.data.status === 401}>
-            아이디 또는 비밀번호가 일치하지 않습니다.
+          <Warning
+            visible={
+              error?.response?.data?.status === 400 ||
+              error?.response?.data?.status === 404
+            }
+          >
+            {error?.response?.data?.status === 400
+              ? "비밀번호가 잘못되었습니다."
+              : error?.response?.data?.status === 404
+              ? "존재하지 않는 이메일입니다."
+              : ""}
           </Warning>
         </S.OptionsContainer>
         <StyledButton
@@ -69,7 +78,7 @@ const LoginForm = () => {
           <S.Option onClick={() => navigate("/signup")}>
             계정이 없으신가요?
           </S.Option>
-          <div style={{ fontSize: "1.7rem", color: "#D9D9D9" }}>|</div>
+          <S.OptionBar>|</S.OptionBar>
           <S.Option>비밀번호를 잊으셨나요?</S.Option>
         </S.OptionWrapper>
       </S.InputWrap>
