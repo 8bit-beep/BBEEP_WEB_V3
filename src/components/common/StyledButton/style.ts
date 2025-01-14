@@ -4,7 +4,7 @@ import { COLOR } from "../../../constants/color/color";
 export const Button = styled.button`
   width: 100%;
   height: 5rem;
-  background-color: ${COLOR.tint};
+  background-color: ${COLOR.Dark};
   text-align: center;
   font-size: 1.8rem;
   color: white;
@@ -13,8 +13,9 @@ export const Button = styled.button`
   border: none;
   outline: none;
   transition: all 0.4s;
+  font-weight: 600;
   &:disabled {
-    background-color: #c9c9c9;
+    background-color: ${COLOR.Gray};
     cursor: not-allowed;
   }
 `;

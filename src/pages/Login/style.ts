@@ -1,9 +1,57 @@
 import styled from "@emotion/styled";
+import { COLOR } from "../../constants/color/color";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  height: 100dvh;
+  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-`
+  background: url("/assets/BbeepBackGround.svg") no-repeat center;
+  background-size: cover;
+  padding: 2rem;
+  overflow: visible;
+`;
+
+export const Form = styled.div`
+  width: 100%;
+  max-width: 100rem;
+  height: 62rem;
+  background-color: white;
+  box-shadow: 0.4rem 0.4rem 3rem 0 rgba(0, 0, 0, 0.37);
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  overflow: visible;
+`;
+
+export const ImgWrap = styled.div`
+  width: 50%;
+  height: 100%;
+  background: url("/assets/LoginBackGround.svg") no-repeat center;
+  background-size: cover;
+`;
+
+export const FormWrap = styled(ImgWrap)`
+  background-color: ${COLOR.LoginBackground};
+  padding: 3.2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  overflow: auto;
+  justify-content: flex-start;
+  background-image: none;
+`;
+
+export const LogoWrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 15rem;
+`;
+
+export const Logo = styled.img`
+  width: 8rem;
+`;

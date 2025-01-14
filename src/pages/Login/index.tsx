@@ -1,9 +1,18 @@
+import LoginForm from "../../components/LoginForm";
 import * as S from "./style";
 
 const Login = () => {
   return (
     <S.Container>
-      <div></div>
+      <S.Form>
+        <S.ImgWrap />
+        <S.FormWrap>
+          <S.LogoWrap>
+            <S.Logo src="/assets/Logo.svg" />
+          </S.LogoWrap>
+          <LoginForm />
+        </S.FormWrap>
+      </S.Form>
     </S.Container>
   );
 };

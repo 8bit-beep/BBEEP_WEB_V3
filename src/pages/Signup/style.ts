@@ -17,7 +17,7 @@ export const Form = styled.div`
   width: 100%;
   max-width: 100rem;
   height: 62rem;
-  background-color: white;
+  background-color: ${COLOR.LoginBackground};
   box-shadow: 0.4rem 0.4rem 3rem 0 rgba(0, 0, 0, 0.37);
   border-radius: 0.5rem;
   display: flex;
@@ -33,22 +33,20 @@ export const LogoWrap = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-`
+`;
 
-export const LogoText = styled.p`
-  font-family: "SBAggroB";
-  font-size: 8rem;
-  color: ${COLOR.tint};
+export const Logo = styled.img`
+  width: 8rem;
 `;
 
 export const RouteName = styled.p`
   font-size: 1.5rem;
-  color: ${COLOR.tint};
-`
+  color: ${COLOR.Dark};
+`;
 
 export const FormContentWrap = styled.div`
   width: 100%;
   max-width: 35rem;
   height: 28rem;
   overflow: visible;
-`
+`;
