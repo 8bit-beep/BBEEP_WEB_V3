@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR } from "../../constants/color/color";
+import { COLOR } from "../../../constants/color/color";
 
 export const Button = styled.button`
   width: 100%;
