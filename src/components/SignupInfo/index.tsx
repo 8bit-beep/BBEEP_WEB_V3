@@ -1,8 +1,8 @@
 import { FormValidator } from "../../utils/validate";
-import Spacer from "../common/Spacer";
-import StyledButton from "../common/StyledButton";
-import StyledInput from "../common/StyledInput";
-import Warning from "../common/Warning";
+import Spacer from "../Common/Spacer";
+import StyledButton from "../Common/StyledButton";
+import StyledInput from "../Common/StyledInput";
+import Warning from "../Common/Warning";
 import * as S from "./style";
 import useSignup from "../../hooks/auth/useSignup";
 import { useSignupDataStore } from "../../store/signup/useSignupDataStore";

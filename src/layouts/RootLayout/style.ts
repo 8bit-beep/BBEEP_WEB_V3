@@ -8,10 +8,11 @@ export const Container = styled.div`
 export const ExceptHeader = styled.div`
   width: 100%;
   height: calc(100% - 7rem);
-  display: flex;
+  overflow-y: scroll;
 `
 
-export const ExceptSidebar = styled.div`
-  width: calc(100% - 22rem);
-  height: 100%;
-`
+export const ExceptFooter = styled.div`
+  width: 100%;
+  min-height: calc(100% - 7rem);
+  display: flex;
+`;

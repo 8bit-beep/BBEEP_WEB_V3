@@ -5,7 +5,8 @@
   margin: 0;
   font-size: 10px;
   font-family: Pretendard;
-  overflow: hidden;
+  overscroll-behavior: none;
+  overflow: visible;
   box-sizing: border-box;
   -webkit-user-select: none;
   -moz-user-select: none;
