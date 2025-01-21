@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import useLogin from "../../hooks/auth/useLogin";
-import { useErrorStore } from "../../store/global/useErrorStore";
-import { useLoginDataStore } from "../../store/login/useLoginDataStore";
 import * as S from "./style";
-import Warning from "../Common/Warning";
-import StyledInput from "../Common/StyledInput";
-import StyledButton from "../Common/StyledButton";
+import useLogin from "../../../hooks/auth/useLogin";
+import { useErrorStore } from "../../../store/global/useErrorStore";
+import { useLoginDataStore } from "../../../store/login/useLoginDataStore";
+import Warning from "../../common/Warning";
+import StyledInput from "../../common/StyledInput";
+import StyledButton from "../../common/StyledButton";
 
 const LoginForm = () => {
   const { handleData, onSubmit } = useLogin();
