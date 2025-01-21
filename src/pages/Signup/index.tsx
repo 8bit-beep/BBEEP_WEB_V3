@@ -1,5 +1,5 @@
-import SignupInfo from "../../components/SignupInfo";
-import SignupPassword from "../../components/SignupPassword";
+import SignupInfo from "../../components/auth/SignupInfo";
+import SignupPassword from "../../components/auth/SignupPassword";
 import { useSignupPhaseStore } from "../../store/signup/useSignupPhaseStore";
 import { SignupPhase } from "../../types/store/signupPhaseState";
 import * as S from "./style";
