@@ -1,12 +1,12 @@
 import { useState } from "react";
-import useSignup from "../../hooks/auth/useSignup";
-import { useSignupDataStore } from "../../store/signup/useSignupDataStore";
-import StyledInput from "../Common/StyledInput";
 import * as S from "./style";
-import Spacer from "../Common/Spacer";
-import StyledButton from "../Common/StyledButton";
-import Warning from "../Common/Warning";
-import { FormValidator } from "../../utils/validate";
+import useSignup from "../../../hooks/auth/useSignup";
+import { useSignupDataStore } from "../../../store/signup/useSignupDataStore";
+import StyledInput from "../../common/StyledInput";
+import Spacer from "../../common/Spacer";
+import StyledButton from "../../common/StyledButton";
+import Warning from "../../common/Warning";
+import { FormValidator } from "../../../utils/validate";
 
 const SignupPassword = () => {
   const { signupData } = useSignupDataStore();
