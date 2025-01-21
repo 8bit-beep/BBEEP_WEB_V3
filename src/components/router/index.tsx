@@ -3,6 +3,9 @@ import RootLayout from "../../layouts/RootLayout";
 import Home from "../../pages/Home";
 import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
+import Move from "../../pages/Move";
+import MoveLayout from "../../layouts/MoveLayout";
+import MoveApproved from "../../pages/MoveApproved";
 
 const Router = () => {
   return (
@@ -10,6 +13,10 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
+          <Route path="move" element={<MoveLayout />}>
+            <Route index element={<Move />} />
+            <Route path="approved" element={<MoveApproved />} />
+          </Route>
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

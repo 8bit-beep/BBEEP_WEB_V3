@@ -1,17 +1,17 @@
 import { Outlet } from "react-router-dom";
-import { Container, ExceptHeader, ExceptSidebar } from "./style";
-import Header from "../../components/common/Header";
-import Sidebar from "../../components/common/Sidebar";
+import { Container, ExceptFooter, ExceptHeader } from "./style";
+import Header from "../../components/Common/Header";
+import Footer from "../../components/Common/Footer";
 
 const RootLayout = () => {
   return (
     <Container>
       <Header />
       <ExceptHeader>
-        <Sidebar />
-        <ExceptSidebar>
+        <ExceptFooter>
           <Outlet />
-        </ExceptSidebar>
+        </ExceptFooter>
+        <Footer />
       </ExceptHeader>
     </Container>
   );
