@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR } from "../../constants/color/color";
+import { COLOR } from "../../style/color/color";
 import { Link } from "react-router-dom";
 
 export const Section = styled.div`

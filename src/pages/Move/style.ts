@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { COLOR } from "../../constants/color/color";
+import { COLOR } from "../../style/color/color";
 
 export const Container = styled.div`
   width: 100%;
@@ -105,7 +105,7 @@ export const ButtonWrap = styled.div`
   gap: 1rem;
   flex: 2;
   justify-content: center;
-`
+`;
 
 export const TableItemContent = styled.p<{
   $flex: string;
