@@ -1,7 +1,8 @@
-import { ChangeEvent } from "react";
+import { FC } from "react";
 import * as S from "./style";
+import { StyledInputProps } from "../../../types/props/styledInputProps";
 
-const StyledInput = ({
+const StyledInput: FC<StyledInputProps> = ({
   type,
   placeholder,
   value,
@@ -9,14 +10,6 @@ const StyledInput = ({
   name,
   error,
   onKeyDown,
-}: {
-  type: "text" | "email" | "password";
-  placeholder: string;
-  value: string;
-  onChange: (e: ChangeEvent<HTMLInputElement>) => any;
-  name: string;
-  error: boolean;
-  onKeyDown?: (e: React.KeyboardEvent<HTMLInputElement>) => void; // 엔터 키 눌러서 로그인할 때 사용
 }) => {
   return (
     <S.Input
