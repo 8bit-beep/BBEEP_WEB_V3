@@ -1,14 +1,14 @@
-import { FormValidator } from "../../utils/validate";
-import Spacer from "../Common/Spacer";
-import StyledButton from "../Common/StyledButton";
-import StyledInput from "../Common/StyledInput";
-import Warning from "../Common/Warning";
 import * as S from "./style";
-import useSignup from "../../hooks/auth/useSignup";
-import { useSignupDataStore } from "../../store/signup/useSignupDataStore";
-import { useErrorStore } from "../../store/global/useErrorStore";
-import { useSignupPhaseStore } from "../../store/signup/useSignupPhaseStore";
-import { SignupPhase } from "../../types/store/signupPhaseState";
+import Spacer from "../../common/Spacer";
+import { FormValidator } from "../../../utils/validate";
+import StyledButton from "../../common/StyledButton";
+import StyledInput from "../../common/StyledInput";
+import Warning from "../../common/Warning";
+import useSignup from "../../../hooks/auth/useSignup";
+import { useSignupDataStore } from "../../../store/signup/useSignupDataStore";
+import { useErrorStore } from "../../../store/global/useErrorStore";
+import { useSignupPhaseStore } from "../../../store/signup/useSignupPhaseStore";
+import { SignupPhase } from "../../../types/store/signupPhaseState";
 
 const SignupInfo = () => {
   const { handleData } = useSignup();
