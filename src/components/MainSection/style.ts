@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 export const Section = styled.div`
   flex: 1;
-  min-width: 60rem;
+  min-width: 45rem;
   height: 40rem;
   background-color: ${COLOR.White};
   box-shadow: 0rem 0.1rem 1rem 0rem rgba(0, 0, 0, 0.05);

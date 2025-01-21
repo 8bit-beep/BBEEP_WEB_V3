@@ -11,7 +11,7 @@ interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
   _retry?: boolean;
 }
 
-const customAxios = axios.create({
+const bbeepAxios = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
   headers: {
     Accept: "application/json, text/plain, */*, multipart/form-data",
@@ -31,7 +31,7 @@ const addRefreshSubscriber = (callback: (token: string) => void) => {
   refreshSubscribers.push(callback);
 };
 
-customAxios.interceptors.request.use(
+bbeepAxios.interceptors.request.use(
   async (config) => {
     const token = localStorage.getItem(ACCESS_TOKEN_KEY);
     if (token) {
@@ -50,7 +50,7 @@ customAxios.interceptors.request.use(
   }
 );
 
-customAxios.interceptors.response.use(
+bbeepAxios.interceptors.response.use(
   (response) => {
     return response;
   },
@@ -86,7 +86,7 @@ customAxios.interceptors.response.use(
             originalRequest.headers[
               REQUEST_TOKEN_KEY
             ] = `Bearer ${newAccessToken}`;
-            return customAxios(originalRequest);
+            return bbeepAxios(originalRequest);
           } catch (refreshError) {
             localStorage.removeItem(ACCESS_TOKEN_KEY);
             localStorage.removeItem(REFRESH_TOKEN_KEY);
@@ -99,7 +99,7 @@ customAxios.interceptors.response.use(
         return new Promise((resolve) => {
           addRefreshSubscriber((newToken: string) => {
             originalRequest.headers[REQUEST_TOKEN_KEY] = `Bearer ${newToken}`;
-            resolve(customAxios(originalRequest));
+            resolve(bbeepAxios(originalRequest));
           });
         });
       } else {
@@ -111,4 +111,4 @@ customAxios.interceptors.response.use(
   }
 );
 
-export default customAxios;
+export default bbeepAxios;
