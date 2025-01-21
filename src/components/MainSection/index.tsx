@@ -1,19 +1,14 @@
-import { ReactNode } from "react";
+import { FC } from "react";
 import ThemedIcon from "../Common/ThemedIcon";
 import * as S from "./style";
+import { MainSecionProps } from "../../types/props/mainSectionProps";
 
-const MainSection = ({
+const MainSection: FC<MainSecionProps> = ({
   children,
   title,
   subtitle,
   href,
   icon,
-}: {
-  children: ReactNode;
-  title: string;
-  subtitle?: string;
-  href: string;
-  icon: string;
 }) => {
   return (
     <S.Section>
