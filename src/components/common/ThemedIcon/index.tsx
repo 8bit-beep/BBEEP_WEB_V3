@@ -1,8 +1,7 @@
-import { FC } from "react";
 import { Icon } from "./style";
 import { ThemedIconProps } from "../../../types/props/themedIconProps";
 
-const ThemedIcon: FC<ThemedIconProps> = ({ src, width, height }) => {
+const ThemedIcon = ({ src, width, height }: ThemedIconProps) => {
   return <Icon src={src} $height={height} $width={width} />;
 };
 

@@ -1,8 +1,7 @@
-import { FC } from "react";
 import * as S from "./style";
 import { WarningProps } from "../../../types/props/warningProps";
 
-const Warning: FC<WarningProps> = ({ children, visible }) => {
+const Warning = ({ children, visible }: WarningProps) => {
   return <S.Warning>{visible && children}</S.Warning>;
 };
 

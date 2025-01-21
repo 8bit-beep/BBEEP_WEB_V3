@@ -1,8 +1,7 @@
-import { FC } from "react";
 import * as S from "./style";
 import { StyledInputProps } from "../../../types/props/styledInputProps";
 
-const StyledInput: FC<StyledInputProps> = ({
+const StyledInput = ({
   type,
   placeholder,
   value,
@@ -10,7 +9,7 @@ const StyledInput: FC<StyledInputProps> = ({
   name,
   error,
   onKeyDown,
-}) => {
+}: StyledInputProps) => {
   return (
     <S.Input
       type={type}

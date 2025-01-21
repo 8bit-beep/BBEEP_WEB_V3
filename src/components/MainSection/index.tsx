@@ -1,15 +1,14 @@
-import { FC } from "react";
 import ThemedIcon from "../Common/ThemedIcon";
 import * as S from "./style";
 import { MainSecionProps } from "../../types/props/mainSectionProps";
 
-const MainSection: FC<MainSecionProps> = ({
+const MainSection = ({
   children,
   title,
   subtitle,
   href,
   icon,
-}) => {
+}: MainSecionProps) => {
   return (
     <S.Section>
       <S.SectionHeader>
