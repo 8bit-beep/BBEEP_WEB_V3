@@ -1,10 +1,15 @@
 import * as S from "./style";
+import BbeepLogo from "/assets/Logo.svg";
 
 const Header = () => {
   return (
+    <>
     <S.Container>
-      <>헤더영역</>
+      <S.HeaderWrap>
+        <img src={BbeepLogo} alt="로고" />
+      </S.HeaderWrap>
     </S.Container>
+    </>
   );
 };
 
