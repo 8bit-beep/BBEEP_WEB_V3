@@ -3,7 +3,7 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   width: 100%;
   height: 71px;
-  background-color: pink;
+  background-color: #ffffff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@ export const HeaderWrap = styled.div`
   width: 100%;
   max-width: 1280px;
   display: flex;
-  padding: 0 20px;
+  padding: 0 80px;
 
   img {
     width: 49px;
