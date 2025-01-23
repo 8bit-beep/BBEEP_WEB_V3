@@ -1,6 +1,5 @@
 import * as S from "./style";
-import { StyledInputProps } from "../../../types/props/styledInputProps";
-import StyledInput from "../StyledInput";
+import { ConfirmStyledInputProps } from "../../../types/props/confirmStyledInputProps";
 
 const ConfirmStyledInput = ({
   type,
@@ -10,19 +9,24 @@ const ConfirmStyledInput = ({
   name,
   error,
   onKeyDown,
-}: StyledInputProps) => {
+  confirmOption,
+  maxLength,
+}: ConfirmStyledInputProps) => {
   return (
     <S.InputWrap>
-      <S.Input
-        type={type}
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-        name={name}
-        $isError={error}
-        onKeyDown={onKeyDown}
-      />
-      <S.ConfirmButton>보내기</S.ConfirmButton>
+      <S.InputContainer>
+        <S.Input
+          type={type}
+          placeholder={placeholder}
+          value={value}
+          onChange={onChange}
+          name={name}
+          $isError={error}
+          onKeyDown={onKeyDown}
+          maxLength={maxLength}
+        />
+        <S.ConfirmButton>{confirmOption}</S.ConfirmButton>
+      </S.InputContainer>
     </S.InputWrap>
   );
 };

@@ -20,6 +20,6 @@ export const InputWrap = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.5rem;
   overflow: visible;
 `;
