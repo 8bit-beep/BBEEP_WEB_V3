@@ -1,42 +1,23 @@
-import { useMutation } from "@tanstack/react-query";
-import axios from "axios";
-import { ChangeEvent } from "react";
-import { useErrorStore } from "../../store/global/useErrorStore";
+import { ChangeEvent, useState } from "react";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
-import { useNavigate } from "react-router-dom";
-import { notification } from "antd";
+import { mutation } from "../../queries/auth/resetPassword";
 import { useResetPasswordDataStore } from "../../store/resetPassword/useResetPasswordData";
 
 const useResetPassword = () => {
   const { resetPasswordData, setResetPasswordData } =
     useResetPasswordDataStore();
-  const { setError } = useErrorStore();
   const { loading, setLoading } = useLoadingStore();
-  const navigate = useNavigate();
 
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setResetPasswordData({ ...resetPasswordData, [name]: value });
   };
 
-  const mutation = useMutation({
-    mutationFn: async () => {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/reset-password`,
-        resetPasswordData
-      );
-      return data;
-    },
-    onError: (err: any) => {
-      setError(err);
-    },
-    onSuccess: () => {
-      notification.open({
-        message: "비밀번호 변경에 성공했습니다.",
-      });
-      navigate("/login");
-    },
-  });
+  const activeEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onSubmit();
+    }
+  };
 
   const onSubmit = async () => {
     if (loading) return;
@@ -45,10 +26,15 @@ const useResetPassword = () => {
     setLoading(false);
   };
 
+  const [passwordCheck, setPasswordCheck] = useState("");
+
   return {
     onSubmit,
     handleData,
     isSuccess: mutation.isSuccess,
+    activeEnter,
+    passwordCheck,
+    setPasswordCheck,
   };
 };
 

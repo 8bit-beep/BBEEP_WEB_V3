@@ -1,4 +1,3 @@
-import { useState } from "react";
 import useResetPassword from "../../../hooks/auth/useResetPassword";
 import { useResetPasswordDataStore } from "../../../store/resetPassword/useResetPasswordData";
 import { FormValidator } from "../../../utils/validate";
@@ -8,18 +7,13 @@ import Warning from "../../common/Warning";
 import * as S from "./style";
 
 const ResetPasswordChange = () => {
-  const { handleData, onSubmit } = useResetPassword();
-  const [passwordCheck, setPasswordCheck] = useState("");
+  const { handleData, onSubmit, activeEnter, passwordCheck, setPasswordCheck } =
+    useResetPassword();
   const { resetPasswordData } = useResetPasswordDataStore();
   const passwordValidation = FormValidator.validatePasswordMatch(
     resetPasswordData.password,
     passwordCheck
   );
-  const activeEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      onSubmit();
-    }
-  };
   return (
     <S.Container>
       <S.Title>비밀번호 재설정</S.Title>

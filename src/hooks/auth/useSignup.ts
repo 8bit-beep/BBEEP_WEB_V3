@@ -1,6 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useState } from "react";
 import { useSignupDataStore } from "../../store/signup/useSignupDataStore";
 import { useErrorStore } from "../../store/global/useErrorStore";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
@@ -49,10 +49,14 @@ const useSignup = () => {
     setLoading(false);
   };
 
+  const [passwordCheck, setPasswordCheck] = useState("");
+
   return {
     onSubmit,
     handleData,
     isSuccess: mutation.isSuccess,
+    passwordCheck,
+    setPasswordCheck,
   };
 };
 

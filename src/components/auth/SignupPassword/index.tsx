@@ -1,4 +1,3 @@
-import { useState } from "react";
 import * as S from "./style";
 import useSignup from "../../../hooks/auth/useSignup";
 import { useSignupDataStore } from "../../../store/signup/useSignupDataStore";
@@ -10,8 +9,7 @@ import { FormValidator } from "../../../utils/validate";
 
 const SignupPassword = () => {
   const { signupData } = useSignupDataStore();
-  const { handleData, onSubmit } = useSignup();
-  const [passwordCheck, setPasswordCheck] = useState("");
+  const { handleData, onSubmit, passwordCheck, setPasswordCheck } = useSignup();
 
   const passwordValidation = FormValidator.validatePasswordMatch(
     signupData.password,

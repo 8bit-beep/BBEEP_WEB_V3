@@ -19,6 +19,12 @@ const useLogin = () => {
   const { loading, setLoading } = useLoadingStore();
   const navigate = useNavigate();
 
+  const activeEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onSubmit(loginData);
+    }
+  };
+
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setLoginData({ ...loginData, [name]: value });
@@ -50,7 +56,7 @@ const useLogin = () => {
     }
   };
 
-  return { handleData, onSubmit };
+  return { handleData, onSubmit, activeEnter };
 };
 
 export default useLogin;
