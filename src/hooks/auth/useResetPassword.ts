@@ -3,8 +3,6 @@ import axios from "axios";
 import { ChangeEvent } from "react";
 import { useErrorStore } from "../../store/global/useErrorStore";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
-import { useSignupPhaseStore } from "../../store/signup/useSignupPhaseStore";
-import { SignupPhase } from "../../types/store/signupPhaseState";
 import { useNavigate } from "react-router-dom";
 import { notification } from "antd";
 import { useResetPasswordDataStore } from "../../store/resetPassword/useResetPasswordData";
@@ -12,7 +10,6 @@ import { useResetPasswordDataStore } from "../../store/resetPassword/useResetPas
 const useResetPassword = () => {
   const { resetPasswordData, setResetPasswordData } =
     useResetPasswordDataStore();
-  const { setSignupPhase } = useSignupPhaseStore();
   const { setError } = useErrorStore();
   const { loading, setLoading } = useLoadingStore();
   const navigate = useNavigate();
@@ -25,14 +22,13 @@ const useResetPassword = () => {
   const mutation = useMutation({
     mutationFn: async () => {
       const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/auth/sign-up`,
+        `${import.meta.env.VITE_API_URL}/auth/reset-password`,
         resetPasswordData
       );
       return data;
     },
     onError: (err: any) => {
       setError(err);
-      setSignupPhase(SignupPhase.INFO);
     },
     onSuccess: () => {
       notification.open({

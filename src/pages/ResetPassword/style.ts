@@ -21,9 +21,9 @@ export const Form = styled.div`
   box-shadow: 0.4rem 0.4rem 3rem 0 rgba(0, 0, 0, 0.37);
   border-radius: 0.5rem;
   display: flex;
+  gap: 7rem;
   flex-direction: column;
   align-items: center;
-  gap: 4rem;
   padding: 3.2rem 1.2rem;
   overflow: visible;
 `;

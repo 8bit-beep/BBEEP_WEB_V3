@@ -1,4 +1,4 @@
 export interface ResetPasswordForm {
-  email: string;
-  code: number;
+  password: string;
+  passwordCheck: string;
 }

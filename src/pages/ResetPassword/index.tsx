@@ -1,4 +1,4 @@
-import ResetPasswordInfo from "../../components/auth/ResetPasswordInfo";
+import ResetPasswordChange from "../../components/auth/ResetPasswordChange";
 import * as S from "./style";
 
 const ResetPassword = () => {
@@ -6,9 +6,7 @@ const ResetPassword = () => {
     <S.Container>
       <S.Form>
         <S.Logo src="/assets/Logo.svg" />
-        <S.FormContentWrap>
-          <ResetPasswordInfo />
-        </S.FormContentWrap>
+        <ResetPasswordChange />
       </S.Form>
     </S.Container>
   );
