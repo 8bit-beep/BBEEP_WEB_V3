@@ -13,8 +13,13 @@ const ResetPasswordChange = () => {
   const { resetPasswordData } = useResetPasswordDataStore();
   const passwordValidation = FormValidator.validatePasswordMatch(
     resetPasswordData.password,
-    resetPasswordData.passwordCheck
+    passwordCheck
   );
+  const activeEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      onSubmit();
+    }
+  };
   return (
     <S.Container>
       <S.Title>비밀번호 재설정</S.Title>
@@ -26,6 +31,9 @@ const ResetPasswordChange = () => {
           onChange={handleData}
           value={resetPasswordData.password}
           error={passwordValidation.showError}
+          onKeyDown={(e) =>
+            activeEnter(e as React.KeyboardEvent<HTMLInputElement>)
+          }
         />
         <StyledInput
           name="passwordCheck"
@@ -34,6 +42,9 @@ const ResetPasswordChange = () => {
           onChange={(e) => setPasswordCheck(e.target.value)}
           value={passwordCheck}
           error={passwordValidation.showError}
+          onKeyDown={(e) =>
+            activeEnter(e as React.KeyboardEvent<HTMLInputElement>)
+          }
         />
         <StyledButton disabled={!passwordValidation.isValid} onClick={onSubmit}>
           변경하기

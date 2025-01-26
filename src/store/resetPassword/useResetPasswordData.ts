@@ -6,7 +6,6 @@ export const useResetPasswordDataStore = create<ResetPasswordDataState>(
   (set) => ({
     resetPasswordData: {
       password: "",
-      passwordCheck: "",
     },
     setResetPasswordData: (resetPasswordData: ResetPasswordForm) =>
       set({ resetPasswordData }),
