@@ -6,28 +6,21 @@ import StyledInput from "../../common/StyledInput";
 import Warning from "../../common/Warning";
 import useSignup from "../../../hooks/auth/useSignup";
 import { useSignupDataStore } from "../../../store/signup/useSignupDataStore";
-import { useErrorStore } from "../../../store/global/useErrorStore";
-import { useSignupPhaseStore } from "../../../store/signup/useSignupPhaseStore";
-import { SignupPhase } from "../../../types/store/signupPhaseState";
 
 const SignupInfo = () => {
-  const { handleData } = useSignup();
   const { signupData } = useSignupDataStore();
-  const { error } = useErrorStore();
-  const { setSignupPhase } = useSignupPhaseStore();
-
-  const isEmailConflict = error?.response.data.status === 409;
-  const isFormValid = FormValidator.areObjectFieldsFilled(signupData, [
-    "email",
-    "name",
-  ]);
+  const { handleData, onSubmit, passwordCheck, setPasswordCheck } = useSignup();
+  const passwordValidation = FormValidator.validatePasswordMatch(
+    signupData.password,
+    passwordCheck
+  );
 
   return (
     <S.Container>
-      <S.Title>개인정보 입력</S.Title>
+      <S.Title>회원정보 설정</S.Title>
       <S.InputWrap>
         <StyledInput
-          name="name"
+          name="text"
           placeholder="이름을 입력하세요."
           type="text"
           onChange={handleData}
@@ -35,21 +28,28 @@ const SignupInfo = () => {
           error={false}
         />
         <StyledInput
-          name="email"
-          placeholder="이메일을 입력하세요."
-          type="email"
+          name="password"
+          placeholder="비밀번호를 입력하세요."
+          type="password"
           onChange={handleData}
-          value={signupData.email}
-          error={isEmailConflict}
+          value={signupData.password}
+          error={passwordValidation.showError}
+        />
+        <StyledInput
+          name="passwordCheck"
+          placeholder="비밀번호를 재입력하세요."
+          type="password"
+          onChange={(e) => setPasswordCheck(e.target.value)}
+          value={passwordCheck}
+          error={passwordValidation.showError}
         />
         <Spacer />
-        <StyledButton
-          disabled={!isFormValid}
-          onClick={() => setSignupPhase(SignupPhase.PASSWORD)}
-        >
-          다음
+        <StyledButton disabled={!passwordValidation.isValid} onClick={onSubmit}>
+          회원가입
         </StyledButton>
-        <Warning visible={isEmailConflict}>이미 유저가 존재합니다.</Warning>
+        <Warning visible={passwordValidation.showError}>
+          비밀번호가 일치하지 않습니다.
+        </Warning>
       </S.InputWrap>
     </S.Container>
   );
