@@ -1,12 +1,13 @@
 import { ChangeEvent, useState } from "react";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
-import { mutation } from "../../queries/auth/resetPassword";
+import { useResetPasswordMutation } from "../../queries/auth/resetPassword";
 import { useResetPasswordDataStore } from "../../store/resetPassword/useResetPasswordData";
 
 const useResetPassword = () => {
   const { resetPasswordData, setResetPasswordData } =
     useResetPasswordDataStore();
   const { loading, setLoading } = useLoadingStore();
+  const resetPasswordMutation = useResetPasswordMutation();
 
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -21,8 +22,8 @@ const useResetPassword = () => {
 
   const onSubmit = async () => {
     if (loading) return;
-    setLoading(mutation.isPending);
-    await mutation.mutateAsync();
+    setLoading(true);
+    await resetPasswordMutation.mutateAsync();
     setLoading(false);
   };
 
@@ -31,7 +32,7 @@ const useResetPassword = () => {
   return {
     onSubmit,
     handleData,
-    isSuccess: mutation.isSuccess,
+    isSuccess: resetPasswordMutation.isSuccess,
     activeEnter,
     passwordCheck,
     setPasswordCheck,
