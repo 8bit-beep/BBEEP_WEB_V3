@@ -6,6 +6,7 @@ import Signup from "../../pages/Signup";
 import Move from "../../pages/Move";
 import MoveLayout from "../../layouts/MoveLayout";
 import MoveApproved from "../../pages/MoveApproved";
+import ResetPassword from "../../pages/ResetPassword";
 
 const Router = () => {
   return (
@@ -20,6 +21,7 @@ const Router = () => {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/reset-password" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );

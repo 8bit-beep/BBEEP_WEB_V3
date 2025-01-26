@@ -8,16 +8,10 @@ import StyledInput from "../../common/StyledInput";
 import StyledButton from "../../common/StyledButton";
 
 const LoginForm = () => {
-  const { handleData, onSubmit } = useLogin();
+  const { handleData, onSubmit, activeEnter } = useLogin();
   const { loginData } = useLoginDataStore();
   const { error } = useErrorStore();
   const navigate = useNavigate();
-
-  const activeEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    if (e.key === "Enter") {
-      onSubmit(loginData);
-    }
-  };
 
   return (
     <S.Container>

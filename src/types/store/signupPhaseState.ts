@@ -1,9 +1,9 @@
 export enum SignupPhase {
   INFO = "INFO",
-  PASSWORD = "PASSWORD"
+  PASSWORD = "PASSWORD",
 }
 
 export interface SignupPhaseState {
-  signupPhase: SignupPhase,
+  signupPhase: SignupPhase;
   setSignupPhase: (signupPhase: SignupPhase) => void;
 }
