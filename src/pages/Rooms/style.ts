@@ -81,32 +81,6 @@ export const TableItem = styled.div`
   align-items: center;
 `;
 
-const Button = styled.button`
-  font-size: 1.6rem;
-  color: ${COLOR.White};
-  text-align: center;
-  padding: 0.5rem 1.5rem;
-  border-radius: 1rem;
-  outline: none;
-  border: none;
-  cursor: pointer;
-`;
-
-export const Approve = styled(Button)`
-  background-color: ${COLOR.Main};
-`;
-
-export const Reject = styled(Button)`
-  background-color: ${COLOR.Red};
-`;
-
-export const ButtonWrap = styled.div`
-  display: flex;
-  gap: 1rem;
-  flex: 2;
-  justify-content: center;
-`;
-
 export const TableItemContent = styled.p<{
   $flex: string;
   $notCenter?: boolean;
@@ -116,7 +90,7 @@ export const TableItemContent = styled.p<{
   display: flex;
   align-items: center;
   flex: ${({ $flex }) => $flex};
-  text-align: ${({ $notCenter }) => ($notCenter ? "" : "center")};
+  justify-content: ${({ $notCenter }) => ($notCenter ? "" : "center")};
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
