@@ -8,36 +8,39 @@ import { FormValidator } from "../../../utils/validate";
 import { SignupPhase } from "../../../types/store/signupPhaseState";
 import { useErrorStore } from "../../../store/global/useErrorStore";
 import { useSignupPhaseStore } from "../../../store/signup/useSignupPhaseStore";
+import CertificationInput from "../../common/CertificationInput";
 
 const SignupEmail = () => {
-  const { handleData } = useSignup();
+  const { handleData, code, setCode } = useSignup();
   const { signupData } = useSignupDataStore();
   const { setSignupPhase } = useSignupPhaseStore();
   const { error } = useErrorStore();
   const isEmailConflict = error?.response.data.status === 409;
-  const isFormValid = FormValidator.areObjectFieldsFilled(signupData, [
-    "email",
-  ]);
+  const isFormValid =
+    FormValidator.areObjectFieldsFilled(signupData, ["email"]) &&
+    FormValidator.isNotEmpty(code);
 
   return (
     <S.Container>
       <S.Title>이메일 인증</S.Title>
       <S.InputWrap>
-        <StyledInput
+        <CertificationInput
           name="email"
           placeholder="이메일을 입력하세요."
           type="email"
           onChange={handleData}
           value={signupData.email}
           error={isEmailConflict}
+          buttonName="전송하기"
         />
-        <StyledInput
-          name="name"
+        <CertificationInput
+          name="text"
           placeholder="인증코드를 입력하세요."
           type="text"
-          onChange={handleData}
-          value={signupData.name}
+          onChange={(e) => setCode(e.target.value)}
+          value={code}
           error={false}
+          buttonName="인증하기"
         />
         <StyledButton
           disabled={!isFormValid}
