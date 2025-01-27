@@ -4,21 +4,17 @@ export const Container = styled.div`
   width: 100%;
   height: 7rem;
   display: flex;
-<<<<<<< Updated upstream
   align-items: center;
   background-color: #323A45;
   padding: 0 124px;
-=======
   background-color: #323A45;
   justify-content: center;
   align-items: center;
->>>>>>> Stashed changes
 `
 
 export const Logo = styled.img`
   width: 49px;
   height: 44px;
-<<<<<<< Updated upstream
 `
 
 export const FooterSentence = styled.img`
@@ -43,9 +39,5 @@ export const Text = styled.p`
   font-size: 12px;
   color: #FFFFFF;
   display: block;
-`
-=======
   cursor: pointer;
 `
-
->>>>>>> Stashed changes
