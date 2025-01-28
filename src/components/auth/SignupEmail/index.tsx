@@ -1,7 +1,6 @@
 import * as S from "./style";
 import useSignup from "../../../hooks/auth/useSignup";
 import { useSignupDataStore } from "../../../store/signup/useSignupDataStore";
-import StyledInput from "../../common/StyledInput";
 import StyledButton from "../../common/StyledButton";
 import Warning from "../../common/Warning";
 import { FormValidator } from "../../../utils/validate";
@@ -15,9 +14,9 @@ const SignupEmail = () => {
   const { signupData } = useSignupDataStore();
   const { setSignupPhase } = useSignupPhaseStore();
   const { error } = useErrorStore();
-  const isFormValid =
-    FormValidator.areObjectFieldsFilled(signupData, ["email"]) &&
-    FormValidator.isNotEmpty(code);
+  const isFormValid = FormValidator.areObjectFieldsFilled(signupData, [
+    "email",
+  ]);
 
   return (
     <S.Container>
@@ -33,7 +32,7 @@ const SignupEmail = () => {
           buttonName="전송하기"
         />
         <CertificationInput
-          name="text"
+          name="code"
           placeholder="인증코드를 입력하세요."
           type="text"
           onChange={(e) => setCode(e.target.value)}

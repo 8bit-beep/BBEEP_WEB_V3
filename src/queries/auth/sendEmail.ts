@@ -4,20 +4,15 @@ import axios from "axios";
 import { useErrorStore } from "../../store/global/useErrorStore";
 import { notification } from "antd";
 
-export const useVerifyEmailMutation = () => {
+export const useSendEmailMutation = () => {
   const { signupData } = useSignupDataStore();
   const { setError } = useErrorStore();
 
   return useMutation({
-    mutationFn: async (code: number) => {
-      const { data } = await axios.get(
-        `${import.meta.env.VITE_API_URL}/email/verify`,
-        {
-          params: {
-            email: signupData.email,
-            code: code,
-          },
-        }
+    mutationFn: async () => {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/email/send`,
+        { email: signupData.email }
       );
       return data;
     },
@@ -26,7 +21,7 @@ export const useVerifyEmailMutation = () => {
     },
     onSuccess: () => {
       notification.open({
-        message: "이메일 인증에 성공했습니다.",
+        message: "이메일을 보냈습니다.",
       });
     },
   });
