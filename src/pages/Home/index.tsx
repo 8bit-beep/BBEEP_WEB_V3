@@ -63,7 +63,7 @@ const Home = () => {
             title="스터디 출석 현황"
             icon="Person"
             subtitle="Lab 19, 20실"
-            href="/rooms"
+            href="/attends"
           >
             <S.TableHead>
               <S.TableColumn $flex="1">학번</S.TableColumn>

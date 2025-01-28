@@ -4,8 +4,8 @@ import Home from "../../pages/Home";
 import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
 import Shifts from "../../pages/Shifts";
-import ResetPassword from "../../pages/ResetPassword";
-import Rooms from "../../pages/Rooms";
+import ResetPassword from "../../pages/ResetPassword";3
+import Attends from "../../pages/Attends";
 
 const Router = () => {
   return (
@@ -14,7 +14,7 @@ const Router = () => {
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="/shifts" element={<Shifts />} />
-          <Route path="/rooms" element={<Rooms />} />
+          <Route path="/attends" element={<Attends />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
