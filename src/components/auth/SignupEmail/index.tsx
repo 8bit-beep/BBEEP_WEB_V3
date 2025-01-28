@@ -15,7 +15,6 @@ const SignupEmail = () => {
   const { signupData } = useSignupDataStore();
   const { setSignupPhase } = useSignupPhaseStore();
   const { error } = useErrorStore();
-  const isEmailConflict = error?.response.data.status === 409;
   const isFormValid =
     FormValidator.areObjectFieldsFilled(signupData, ["email"]) &&
     FormValidator.isNotEmpty(code);
@@ -30,7 +29,7 @@ const SignupEmail = () => {
           type="email"
           onChange={handleData}
           value={signupData.email}
-          error={isEmailConflict}
+          error={false}
           buttonName="전송하기"
         />
         <CertificationInput
@@ -48,7 +47,7 @@ const SignupEmail = () => {
         >
           다음
         </StyledButton>
-        <Warning visible={isEmailConflict}>이미 유저가 존재합니다.</Warning>
+        <Warning visible={false}>이미 유저가 존재합니다.</Warning>
       </S.InputWrap>
     </S.Container>
   );

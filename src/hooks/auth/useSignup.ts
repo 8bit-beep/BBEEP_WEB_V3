@@ -2,11 +2,13 @@ import { ChangeEvent, useState } from "react";
 import { useSignupDataStore } from "../../store/signup/useSignupDataStore";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
 import { useSignUpMutation } from "../../queries/auth/signup";
+import { useVerifyEmailMutation } from "../../queries/auth/verifyEmail";
 
 const useSignup = () => {
   const { signupData, setSignupData } = useSignupDataStore();
   const { loading, setLoading } = useLoadingStore();
   const signUpPasswordMutation = useSignUpMutation();
+  const verifyEmailMutation = useVerifyEmailMutation();
 
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -17,6 +19,13 @@ const useSignup = () => {
     if (loading) return;
     setLoading(signUpPasswordMutation.isPending);
     await signUpPasswordMutation.mutateAsync();
+    setLoading(false);
+  };
+
+  const sendEmail = async () => {
+    if (loading) return;
+    setLoading(verifyEmailMutation.isPending);
+    await verifyEmailMutation.mutateAsync();
     setLoading(false);
   };
 
@@ -31,6 +40,7 @@ const useSignup = () => {
     setPasswordCheck,
     code,
     setCode,
+    sendEmail,
   };
 };
 

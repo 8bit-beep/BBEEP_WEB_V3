@@ -2,7 +2,9 @@ import styled from "@emotion/styled";
 import { COLOR } from "../../../style/color/color";
 
 export const InputContainer = styled.div`
-  position: absolute;
+  width: 100%;
+  height: 5rem;
+  position: relative;
 `;
 
 export const Button = styled.div`
@@ -11,7 +13,7 @@ export const Button = styled.div`
   border-radius: 0.8rem;
   position: absolute;
   color: ${COLOR.White};
-  right: 1%;
+  right: 2%;
   top: 18%;
   cursor: pointer;
 `;

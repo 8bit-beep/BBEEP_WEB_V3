@@ -1,6 +1,7 @@
 import StyledInput from "../StyledInput";
 import * as S from "./style";
 import { CertificationInputProps } from "../../../types/props/certificationInputProps";
+import useSignup from "../../../hooks/auth/useSignup";
 
 const CertificationInput = ({
   type,
@@ -10,8 +11,9 @@ const CertificationInput = ({
   name,
   error,
   onKeyDown,
-  button,
+  buttonName,
 }: CertificationInputProps) => {
+  const { sendEmail } = useSignup();
   return (
     <S.InputContainer>
       <StyledInput
@@ -23,7 +25,7 @@ const CertificationInput = ({
         $isError={error}
         onKeyDown={onKeyDown}
       />
-      <S.Button>{button}</S.Button>
+      <S.Button onClick={() => sendEmail()}>{buttonName}</S.Button>
     </S.InputContainer>
   );
 };
