@@ -10,13 +10,8 @@ const useSignup = () => {
   const { loading, setLoading } = useLoadingStore();
   const signUpPasswordMutation = useSignUpMutation();
   const sendEmailMutation = useSendEmailMutation();
-  const [code, setCode] = useState<number>(0);
   const verifyEmailMutation = useVerifyEmailMutation();
   const [passwordCheck, setPasswordCheck] = useState("");
-
-  useEffect(() => {
-    console.log(code);
-  }, [code]);
 
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -37,11 +32,10 @@ const useSignup = () => {
     setLoading(false);
   };
 
-  const verifyEmail = async (code: number) => {
+  const verifyEmail = async () => {
     if (loading) return;
     setLoading(verifyEmailMutation.isPending);
-    alert(code);
-    await verifyEmailMutation.mutateAsync(code);
+    await verifyEmailMutation.mutateAsync();
     setLoading(false);
   };
 
@@ -51,8 +45,6 @@ const useSignup = () => {
     isSuccess: signUpPasswordMutation.isSuccess,
     passwordCheck,
     setPasswordCheck,
-    code,
-    setCode,
     sendEmail,
     verifyEmail,
   };

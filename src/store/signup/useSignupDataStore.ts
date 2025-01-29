@@ -7,6 +7,7 @@ export const useSignupDataStore = create<SignupDataState>((set) => ({
     email: "",
     password: "",
     name: "",
+    code: 0,
   },
   setSignupData: (signupData: SignupForm) => set({ signupData }),
 }));

@@ -9,13 +9,13 @@ export const useVerifyEmailMutation = () => {
   const { setError } = useErrorStore();
 
   return useMutation({
-    mutationFn: async (code: number) => {
+    mutationFn: async () => {
       const { data } = await axios.get(
         `${import.meta.env.VITE_API_URL}/email/verify`,
         {
           params: {
             email: signupData.email,
-            code: code,
+            code: signupData.code,
           },
         }
       );

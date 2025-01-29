@@ -10,7 +10,7 @@ import { useSignupPhaseStore } from "../../../store/signup/useSignupPhaseStore";
 import CertificationInput from "../../common/CertificationInput";
 
 const SignupEmail = () => {
-  const { handleData, code, setCode } = useSignup();
+  const { handleData } = useSignup();
   const { signupData } = useSignupDataStore();
   const { setSignupPhase } = useSignupPhaseStore();
   const { error } = useErrorStore();
@@ -35,8 +35,8 @@ const SignupEmail = () => {
           name="code"
           placeholder="인증코드를 입력하세요."
           type="text"
-          onChange={(e) => setCode(e.target.value)}
-          value={code}
+          onChange={handleData}
+          value={signupData.code}
           error={false}
           buttonName="인증하기"
         />
