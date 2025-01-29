@@ -8,6 +8,8 @@ import { SignupPhase } from "../../../types/store/signupPhaseState";
 import { useErrorStore } from "../../../store/global/useErrorStore";
 import { useSignupPhaseStore } from "../../../store/signup/useSignupPhaseStore";
 import CertificationInput from "../../common/CertificationInput";
+import { useVerifyPhaseStore } from "../../../store/signup/useVerifyPhase";
+import { VerifyPhase } from "../../../types/store/verifyPhase";
 
 const SignupEmail = () => {
   const { handleData } = useSignup();
@@ -17,36 +19,54 @@ const SignupEmail = () => {
   const isFormValid = FormValidator.areObjectFieldsFilled(signupData, [
     "email",
   ]);
+  const { verifyPhase } = useVerifyPhaseStore();
 
   return (
     <S.Container>
       <S.Title>이메일 인증</S.Title>
       <S.InputWrap>
-        <CertificationInput
-          name="email"
-          placeholder="이메일을 입력하세요."
-          type="email"
-          onChange={handleData}
-          value={signupData.email}
-          error={false}
-          buttonName="전송하기"
-        />
-        <CertificationInput
-          name="code"
-          placeholder="인증코드를 입력하세요."
-          type="text"
-          onChange={handleData}
-          value={signupData.code}
-          error={false}
-          buttonName="인증하기"
-        />
+        {verifyPhase === VerifyPhase.EMAIL ? (
+          <CertificationInput
+            name="email"
+            placeholder="이메일을 입력하세요."
+            type="email"
+            onChange={handleData}
+            value={signupData.email}
+            error={false}
+            buttonName="전송하기"
+          />
+        ) : (
+          <>
+            <CertificationInput
+              name="email"
+              placeholder="이메일을 입력하세요."
+              type="email"
+              onChange={handleData}
+              value={signupData.email}
+              error={false}
+              buttonName="전송하기"
+            />
+            <CertificationInput
+              name="code"
+              placeholder="인증코드를 입력하세요."
+              type="text"
+              onChange={handleData}
+              value={signupData.code}
+              error={false}
+              buttonName="인증하기"
+            />
+          </>
+        )}
+
         <StyledButton
           disabled={!isFormValid}
           onClick={() => setSignupPhase(SignupPhase.INFO)}
         >
           다음
         </StyledButton>
-        <Warning visible={false}>이미 유저가 존재합니다.</Warning>
+        <Warning visible={!!error}>
+          {error || "이미 유저가 존재합니다."}
+        </Warning>
       </S.InputWrap>
     </S.Container>
   );

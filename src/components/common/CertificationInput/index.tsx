@@ -13,8 +13,7 @@ const CertificationInput = ({
   onKeyDown,
   buttonName,
 }: CertificationInputProps) => {
-  const { sendEmail, verifyEmail, code } = useSignup();
-
+  const { sendEmail, verifyEmail } = useSignup();
   return (
     <S.InputContainer>
       <StyledInput
@@ -28,7 +27,7 @@ const CertificationInput = ({
       />
       <S.Button
         onClick={
-          buttonName == "전송하기" ? () => sendEmail() : () => verifyEmail(code)
+          buttonName == "전송하기" ? () => sendEmail() : () => verifyEmail()
         }
       >
         {buttonName}

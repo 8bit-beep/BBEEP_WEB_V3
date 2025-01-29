@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { useSignupDataStore } from "../../store/signup/useSignupDataStore";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
 import { useSignUpMutation } from "../../queries/auth/signup";

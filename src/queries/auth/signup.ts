@@ -17,7 +17,11 @@ export const useSignUpMutation = () => {
     mutationFn: async () => {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/sign-up`,
-        signupData
+        {
+          email: signupData.email,
+          password: signupData.password,
+          role: "TEACHER",
+        }
       );
       return data;
     },
