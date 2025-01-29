@@ -3,20 +3,32 @@ import styled from "@emotion/styled";
 export const Container = styled.div`
   width: 100%;
   height: 71px;
-  background-color: #ffffff;
+  background-color: pink;
   display: flex;
-  justify-content: center;
   align-items: center;
+  position: relative;
 `
 
 export const HeaderWrap = styled.div`
   width: 100%;
   max-width: 1280px;
   display: flex;
-  padding: 0 80px;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 130px;
+  padding: 0 20px;
+`
 
-  img {
-    width: 49px;
-    height: 44px;
-  }
+export const NavWrap = styled.div`
+  display: flex;
+  gap: 40px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+`
+
+export const NavItem = styled.div`
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 20px;
 `
