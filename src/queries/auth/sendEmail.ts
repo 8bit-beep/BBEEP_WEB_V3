@@ -13,11 +13,9 @@ export const useSendEmailMutation = () => {
 
   return useMutation({
     mutationFn: async () => {
-      const { data } = await axios.post(
-        `${import.meta.env.VITE_API_URL}/email/send`,
-        { email: signupData.email }
-      );
-      return data;
+      await axios.post(`${import.meta.env.VITE_API_URL}/email/send`, {
+        email: signupData.email,
+      });
     },
     onError: (err: any) => {
       setError(err);

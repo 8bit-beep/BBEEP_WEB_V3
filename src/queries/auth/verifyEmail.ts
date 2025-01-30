@@ -3,11 +3,12 @@ import { useSignupDataStore } from "../../store/signup/useSignupDataStore";
 import axios from "axios";
 import { useErrorStore } from "../../store/global/useErrorStore";
 import { notification } from "antd";
+import { useCodeCertifiedStore } from "../../store/signup/useCodeCertified";
 
 export const useVerifyEmailMutation = () => {
   const { signupData } = useSignupDataStore();
+  const { setIsCodeCertified } = useCodeCertifiedStore();
   const { setError } = useErrorStore();
-
   return useMutation({
     mutationFn: async () => {
       const { data } = await axios.get(
@@ -23,8 +24,12 @@ export const useVerifyEmailMutation = () => {
     },
     onError: (err: any) => {
       setError(err);
+      notification.open({
+        message: "이메일 인증에 실패했습니다.",
+      });
     },
     onSuccess: () => {
+      setIsCodeCertified(true);
       notification.open({
         message: "이메일 인증에 성공했습니다.",
       });

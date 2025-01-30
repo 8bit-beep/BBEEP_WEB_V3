@@ -2,5 +2,6 @@ export interface SignupForm {
   email: string;
   password: string;
   name: string;
-  code: number;
+  code: string;
+  isCodeCertified: boolean;
 }

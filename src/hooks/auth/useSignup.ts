@@ -4,7 +4,6 @@ import { useLoadingStore } from "../../store/global/useLoadingStore";
 import { useSignUpMutation } from "../../queries/auth/signup";
 import { useVerifyEmailMutation } from "../../queries/auth/verifyEmail";
 import { useSendEmailMutation } from "../../queries/auth/sendEmail";
-import { useErrorStore } from "../../store/global/useErrorStore";
 
 const useSignup = () => {
   const { signupData, setSignupData } = useSignupDataStore();
@@ -13,8 +12,6 @@ const useSignup = () => {
   const sendEmailMutation = useSendEmailMutation();
   const verifyEmailMutation = useVerifyEmailMutation();
   const [passwordCheck, setPasswordCheck] = useState("");
-  const [codeStatus, setCodeStatus] = useState();
-  const { setError } = useErrorStore();
 
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -38,17 +35,7 @@ const useSignup = () => {
   const verifyEmail = async () => {
     if (loading) return;
     setLoading(verifyEmailMutation.isPending);
-    try {
-      const response = await signUpPasswordMutation.mutateAsync();
-      setError("");
-      setCodeStatus(response.status);
-    } catch (error: any) {
-      if (error.response?.status === 404) {
-        setError("인증 코드가 올바르지 않습니다.");
-      } else {
-        setError("인증 과정에서 오류가 발생했습니다.");
-      }
-    }
+    await verifyEmailMutation.mutateAsync();
     setLoading(false);
   };
 
@@ -60,8 +47,6 @@ const useSignup = () => {
     setPasswordCheck,
     sendEmail,
     verifyEmail,
-    codeStatus,
-    setCodeStatus,
   };
 };
 

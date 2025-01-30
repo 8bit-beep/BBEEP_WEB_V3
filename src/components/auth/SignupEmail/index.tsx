@@ -10,9 +10,11 @@ import { useSignupPhaseStore } from "../../../store/signup/useSignupPhaseStore";
 import CertificationInput from "../../common/CertificationInput";
 import { useVerifyPhaseStore } from "../../../store/signup/useVerifyPhase";
 import { VerifyPhase } from "../../../types/store/verifyPhase";
+import { useCodeCertifiedStore } from "../../../store/signup/useCodeCertified";
 
 const SignupEmail = () => {
-  const { handleData, codeStatus } = useSignup();
+  const { handleData } = useSignup();
+  const { isCodeCertified } = useCodeCertifiedStore();
   const { signupData } = useSignupDataStore();
   const { setSignupPhase } = useSignupPhaseStore();
   const { error } = useErrorStore();
@@ -20,7 +22,6 @@ const SignupEmail = () => {
     "email",
     "code",
   ]);
-  const codeVerified = FormValidator.isCodeMatch(codeStatus);
   const { verifyPhase } = useVerifyPhaseStore();
 
   return (
@@ -28,36 +29,36 @@ const SignupEmail = () => {
       <S.Title>이메일 인증</S.Title>
       <S.InputWrap>
         <CertificationInput
-          name="code"
-          placeholder="인증코드를 입력하세요."
-          type="text"
+          name="email"
+          placeholder="이메일을 입력하세요."
+          type="email"
           onChange={handleData}
-          value={signupData.code}
-          error={codeVerified.isValid}
-          buttonName="인증하기"
+          value={signupData.email}
+          error={false}
+          buttonName="전송하기"
         />
         {verifyPhase === VerifyPhase.EMAIL ? (
-          ""
+          <></>
         ) : (
           <CertificationInput
-            name="email"
-            placeholder="이메일을 입력하세요."
-            type="email"
+            name="code"
+            placeholder="인증코드를 입력하세요."
+            type="text"
             onChange={handleData}
-            value={signupData.email}
-            error={false}
-            buttonName="전송하기"
+            value={signupData.code}
+            error={error?.message === "인증번호가 유효하지 않습니다."}
+            buttonName="인증하기"
           />
         )}
 
         <StyledButton
-          disabled={!isFormValid}
+          disabled={!isFormValid || !isCodeCertified}
           onClick={() => setSignupPhase(SignupPhase.INFO)}
         >
           다음
         </StyledButton>
         <Warning visible={!!error}>
-          {error || "이미 유저가 존재합니다."}
+          {error?.message || "이미 유저가 존재합니다."}
         </Warning>
       </S.InputWrap>
     </S.Container>
