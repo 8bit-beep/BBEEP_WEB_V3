@@ -20,7 +20,7 @@ const SignupInfo = () => {
       <S.Title>회원정보 설정</S.Title>
       <S.InputWrap>
         <StyledInput
-          name="text"
+          name="name"
           placeholder="이름을 입력하세요."
           type="text"
           onChange={handleData}

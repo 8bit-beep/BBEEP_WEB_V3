@@ -27,7 +27,7 @@ export const useSignUpMutation = () => {
     },
     onError: (err: any) => {
       setError(err);
-      setSignupPhase(SignupPhase.INFO);
+      setSignupPhase(SignupPhase.EMAIL);
     },
     onSuccess: () => {
       notification.open({

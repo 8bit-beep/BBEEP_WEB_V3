@@ -25,6 +25,13 @@ export class FormValidator {
     };
   }
 
+  static isCodeMatch(error: any): ValidationRule {
+    return {
+      isValid: error === 200,
+      errorMessage: "인증번호가 맞지 않습니다.",
+    };
+  }
+
   static validate(...rules: ValidationRule[]): boolean {
     return rules.every((rule) => rule.isValid);
   }

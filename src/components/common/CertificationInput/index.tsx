@@ -22,7 +22,7 @@ const CertificationInput = ({
         value={value}
         onChange={onChange}
         name={name}
-        $isError={error}
+        error={error}
         onKeyDown={onKeyDown}
       />
       <S.Button

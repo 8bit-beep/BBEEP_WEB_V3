@@ -12,20 +12,33 @@ import { useVerifyPhaseStore } from "../../../store/signup/useVerifyPhase";
 import { VerifyPhase } from "../../../types/store/verifyPhase";
 
 const SignupEmail = () => {
-  const { handleData } = useSignup();
+  const { handleData, codeStatus } = useSignup();
   const { signupData } = useSignupDataStore();
   const { setSignupPhase } = useSignupPhaseStore();
   const { error } = useErrorStore();
   const isFormValid = FormValidator.areObjectFieldsFilled(signupData, [
     "email",
+    "code",
   ]);
+  const codeVerified = FormValidator.isCodeMatch(codeStatus);
   const { verifyPhase } = useVerifyPhaseStore();
 
   return (
     <S.Container>
       <S.Title>이메일 인증</S.Title>
       <S.InputWrap>
+        <CertificationInput
+          name="code"
+          placeholder="인증코드를 입력하세요."
+          type="text"
+          onChange={handleData}
+          value={signupData.code}
+          error={codeVerified.isValid}
+          buttonName="인증하기"
+        />
         {verifyPhase === VerifyPhase.EMAIL ? (
+          ""
+        ) : (
           <CertificationInput
             name="email"
             placeholder="이메일을 입력하세요."
@@ -35,27 +48,6 @@ const SignupEmail = () => {
             error={false}
             buttonName="전송하기"
           />
-        ) : (
-          <>
-            <CertificationInput
-              name="email"
-              placeholder="이메일을 입력하세요."
-              type="email"
-              onChange={handleData}
-              value={signupData.email}
-              error={false}
-              buttonName="전송하기"
-            />
-            <CertificationInput
-              name="code"
-              placeholder="인증코드를 입력하세요."
-              type="text"
-              onChange={handleData}
-              value={signupData.code}
-              error={false}
-              buttonName="인증하기"
-            />
-          </>
         )}
 
         <StyledButton
