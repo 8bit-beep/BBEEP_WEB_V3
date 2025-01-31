@@ -19,12 +19,12 @@ const SendPassword = () => {
           type="email"
           onChange={handleData}
           value={resetPasswordData.email}
-          error={false}
+          error={error}
           buttonName="전송하기"
           action={sendEmail}
         />
-        <Warning visible={!!error}>
-          {error?.message || "유저를 찾을 수 없습니다."}
+        <Warning visible={error?.response?.data?.status === 404}>
+          존재하지 않는 이메일입니다.
         </Warning>
       </S.InputWrap>
     </S.Container>

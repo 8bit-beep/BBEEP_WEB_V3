@@ -7,7 +7,6 @@ import Move from "../../pages/Move";
 import MoveLayout from "../../layouts/MoveLayout";
 import MoveApproved from "../../pages/MoveApproved";
 import ResetPassword from "../../pages/ResetPassword";
-import SendEmail from "../auth/SendPassword";
 import SendPasswordPage from "../../pages/SendPassword";
 
 const Router = () => {
@@ -24,7 +23,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/send-password" element={<SendPasswordPage />} />
-        <Route path="/users/password/:id" element={<ResetPassword />} />
+        <Route path="/reset-password/:id" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );

@@ -1,12 +1,14 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
 import { useResetPasswordMutation } from "../../queries/auth/resetPassword";
 import { useResetPasswordDataStore } from "../../store/resetPassword/useResetPasswordData";
 import { useSendEmailMutation } from "../../queries/auth/sendEmail";
+import { useErrorStore } from "../../store/global/useErrorStore";
 
 const useResetPassword = () => {
   const { resetPasswordData, setResetPasswordData } =
     useResetPasswordDataStore();
+  const { setError } = useErrorStore();
   const { loading, setLoading } = useLoadingStore();
   const resetPasswordMutation = useResetPasswordMutation();
   const sendEmailMutation = useSendEmailMutation({
@@ -22,6 +24,12 @@ const useResetPassword = () => {
       onSubmit();
     }
   };
+
+  useEffect(() => {
+    return () => {
+      setError("");
+    };
+  }, [setError]);
 
   const sendEmail = async () => {
     if (loading) return;

@@ -1,7 +1,6 @@
 import StyledInput from "../StyledInput";
 import * as S from "./style";
 import { CertificationInputProps } from "../../../types/props/certificationInputProps";
-import useSignup from "../../../hooks/auth/useSignup";
 
 const CertificationInput = ({
   type,

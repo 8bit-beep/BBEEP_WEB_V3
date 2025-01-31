@@ -73,7 +73,7 @@ const LoginForm = () => {
             계정이 없으신가요?
           </S.Option>
           <S.OptionBar>|</S.OptionBar>
-          <S.Option onClick={() => navigate("/send-email")}>
+          <S.Option onClick={() => navigate("/send-password")}>
             비밀번호를 잊으셨나요?
           </S.Option>
         </S.OptionWrapper>

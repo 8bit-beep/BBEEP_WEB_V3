@@ -61,7 +61,11 @@ const SignupEmail = () => {
           다음
         </StyledButton>
         <Warning visible={!!error}>
-          {error?.message || "이미 유저가 존재합니다."}
+          {error?.response?.data?.status === 404
+            ? "이미 존재하는 이메일입니다."
+            : error?.response?.data?.status === 500
+            ? "이메일을 보낼 수 없습니다."
+            : "코드가 일치하지 않습니다."}
         </Warning>
       </S.InputWrap>
     </S.Container>

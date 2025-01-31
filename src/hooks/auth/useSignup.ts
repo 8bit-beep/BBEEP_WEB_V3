@@ -1,9 +1,10 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useSignupDataStore } from "../../store/signup/useSignupDataStore";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
 import { useSignUpMutation } from "../../queries/auth/signup";
 import { useVerifyEmailMutation } from "../../queries/auth/verifyEmail";
 import { useSendEmailMutation } from "../../queries/auth/sendEmail";
+import { useErrorStore } from "../../store/global/useErrorStore";
 
 const useSignup = () => {
   const { signupData, setSignupData } = useSignupDataStore();
@@ -12,6 +13,7 @@ const useSignup = () => {
   const sendEmailMutation = useSendEmailMutation({ endpoint: "/email/send" });
   const verifyEmailMutation = useVerifyEmailMutation();
   const [passwordCheck, setPasswordCheck] = useState("");
+  const { setError } = useErrorStore();
 
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -24,6 +26,12 @@ const useSignup = () => {
     await signUpPasswordMutation.mutateAsync();
     setLoading(false);
   };
+
+  useEffect(() => {
+    return () => {
+      setError("");
+    };
+  }, [setError]);
 
   const sendEmail = async () => {
     if (loading) return;
