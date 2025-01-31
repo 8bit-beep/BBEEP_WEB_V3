@@ -1,7 +1,10 @@
 import { create } from "zustand";
-import { SignupPhase, SignupPhaseState } from "../../types/store/signupPhaseState";
+import {
+  SignupPhase,
+  SignupPhaseState,
+} from "../../types/store/signupPhaseState";
 
-export const useSignupPhaseStore = create<SignupPhaseState>(set=>({
-  signupPhase: SignupPhase.INFO,
-  setSignupPhase: (signupPhase: SignupPhase) => set({ signupPhase })
+export const useSignupPhaseStore = create<SignupPhaseState>((set) => ({
+  signupPhase: SignupPhase.EMAIL,
+  setSignupPhase: (signupPhase: SignupPhase) => set({ signupPhase }),
 }));

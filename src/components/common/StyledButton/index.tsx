@@ -1,11 +1,7 @@
-import * as S from './style'
-import { StyledButtonProps } from '../../../types/props/styledButtonProps'
+import * as S from "./style";
+import { StyledButtonProps } from "../../../types/props/styledButtonProps";
 
-const StyledButton = ({
-  children,
-  onClick,
-  disabled,
-}: StyledButtonProps) => {
+const StyledButton = ({ children, onClick, disabled }: StyledButtonProps) => {
   return (
     <S.Button onClick={onClick} disabled={disabled}>
       {children}
@@ -13,4 +9,4 @@ const StyledButton = ({
   );
 };
 
-export default StyledButton
+export default StyledButton;

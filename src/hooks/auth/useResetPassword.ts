@@ -1,13 +1,19 @@
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
 import { useResetPasswordMutation } from "../../queries/auth/resetPassword";
 import { useResetPasswordDataStore } from "../../store/resetPassword/useResetPasswordData";
+import { useSendEmailMutation } from "../../queries/auth/sendEmail";
+import { useErrorStore } from "../../store/global/useErrorStore";
 
 const useResetPassword = () => {
   const { resetPasswordData, setResetPasswordData } =
     useResetPasswordDataStore();
+  const { setError } = useErrorStore();
   const { loading, setLoading } = useLoadingStore();
   const resetPasswordMutation = useResetPasswordMutation();
+  const sendEmailMutation = useSendEmailMutation({
+    endpoint: "/users/password/send",
+  });
 
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
@@ -18,6 +24,19 @@ const useResetPassword = () => {
     if (e.key === "Enter") {
       onSubmit();
     }
+  };
+
+  useEffect(() => {
+    return () => {
+      setError("");
+    };
+  }, [setError]);
+
+  const sendEmail = async () => {
+    if (loading) return;
+    setLoading(sendEmailMutation.isPending);
+    await sendEmailMutation.mutateAsync();
+    setLoading(false);
   };
 
   const onSubmit = async () => {
@@ -36,6 +55,7 @@ const useResetPassword = () => {
     activeEnter,
     passwordCheck,
     setPasswordCheck,
+    sendEmail,
   };
 };
 

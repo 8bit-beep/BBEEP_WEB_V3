@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100%;
+  max-width: 35rem;
   display: flex;
   flex-direction: column;
   gap: 1.2rem;
@@ -20,6 +20,6 @@ export const InputWrap = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 1.2rem;
+  gap: 1.5rem;
   overflow: visible;
 `;

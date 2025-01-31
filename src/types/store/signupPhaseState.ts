@@ -1,6 +1,6 @@
 export enum SignupPhase {
+  EMAIL = "EMAIL",
   INFO = "INFO",
-  PASSWORD = "PASSWORD",
 }
 
 export interface SignupPhaseState {
