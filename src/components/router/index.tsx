@@ -8,6 +8,8 @@ import ResetPassword from "../../pages/ResetPassword";3
 import Attends from "../../pages/Attends";
 import NotAttendLayout from "../../layouts/NotAttendLayout";
 import NotAttend from "../../pages/NotAttend";
+import ResetPassword from "../../pages/ResetPassword";
+import SendPasswordPage from "../../pages/SendPassword";
 
 const Router = () => {
   return (
@@ -24,7 +26,8 @@ const Router = () => {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/send-password" element={<SendPasswordPage />} />
+        <Route path="/reset-password/:id" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );

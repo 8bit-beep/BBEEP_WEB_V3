@@ -9,7 +9,7 @@ import {
 import { BaseResponse } from "../../types/response/baseResponse";
 import { LoginResponse } from "../../types/response/loginResponse";
 import { useLoginDataStore } from "../../store/login/useLoginDataStore";
-import { ChangeEvent } from "react";
+import { ChangeEvent, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { notification } from "antd";
 
@@ -24,6 +24,12 @@ const useLogin = () => {
       onSubmit(loginData);
     }
   };
+
+  useEffect(() => {
+    return () => {
+      setError("");
+    };
+  }, [setError]);
 
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;

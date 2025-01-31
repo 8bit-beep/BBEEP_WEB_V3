@@ -39,11 +39,6 @@ export const Logo = styled.img`
   width: 8rem;
 `;
 
-export const RouteName = styled.p`
-  font-size: 1.5rem;
-  color: ${COLOR.Dark};
-`;
-
 export const FormContentWrap = styled.div`
   width: 100%;
   max-width: 35rem;
