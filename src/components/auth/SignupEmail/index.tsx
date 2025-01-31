@@ -39,9 +39,7 @@ const SignupEmail = () => {
           buttonName="전송하기"
           action={sendEmail}
         />
-        {verifyPhase === VerifyPhase.EMAIL ? (
-          <></>
-        ) : (
+        {verifyPhase === VerifyPhase.CODE && (
           <CertificationInput
             name="code"
             placeholder="인증코드를 입력하세요."
