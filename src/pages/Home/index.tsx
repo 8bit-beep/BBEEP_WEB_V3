@@ -31,7 +31,7 @@ const Home = () => {
               ))}
             </S.TableContent>
           </MainSection>
-          <MainSection title="불참자 목록" icon="Filter" href="/">
+          <MainSection title="불참자 목록" icon="Filter" href="/not-attend">
             <S.TableHead>
               <S.TableColumn $flex="1">학번</S.TableColumn>
               <S.TableColumn $flex="1">이름</S.TableColumn>

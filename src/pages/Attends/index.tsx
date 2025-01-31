@@ -50,21 +50,21 @@ const Attends = () => {
               <S.TableItemContent $flex="1">{item.username}</S.TableItemContent>
               <S.TableItemContent $flex="1">{item.club}</S.TableItemContent>
               <S.TableItemContent $flex="2">
-                {item.attendedTimes["8"].time || "--"}{" "}
+                {item.attendedTimes["8"].time !== "null" ? item.attendedTimes["8"].time : "--"}{" "}
                 {item.attendedTimes["8"].type === "NARSHA"
                   ? "(나르샤)"
                   : item.attendedTimes["8"].type === "AFTER_SCHOOL" &&
                     "(방과후)"}
               </S.TableItemContent>
               <S.TableItemContent $flex="2">
-                {item.attendedTimes["10"].time || "--"}{" "}
+                {item.attendedTimes["10"].time !== "null" ? item.attendedTimes["10"].time : "--"}{" "}
                 {item.attendedTimes["10"].type === "NARSHA"
                   ? "(나르샤)"
                   : item.attendedTimes["10"].type === "AFTER_SCHOOL" &&
                     "(방과후)"}
               </S.TableItemContent>
               <S.TableItemContent $flex="2">
-                {item.attendedTimes["11"].time || "--"}{" "}
+                {item.attendedTimes["11"].time !== "null" ? item.attendedTimes["11"].time : "--"}{" "}
                 {item.attendedTimes["11"].type === "NARSHA"
                   ? "(나르샤)"
                   : item.attendedTimes["11"].type === "AFTER_SCHOOL" &&

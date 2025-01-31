@@ -3,15 +3,6 @@ import { COLOR } from "../../style/color/color";
 
 export const Container = styled.div`
   width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${COLOR.Background};
-  padding: 3.4rem;
-`;
-
-export const ContentWrap = styled.div`
-  width: 100%;
   max-width: 100rem;
   height: 66rem;
   background-color: ${COLOR.White};
@@ -81,32 +72,6 @@ export const TableItem = styled.div`
   align-items: center;
 `;
 
-const Button = styled.button`
-  font-size: 1.6rem;
-  color: ${COLOR.White};
-  text-align: center;
-  padding: 0.5rem 1.5rem;
-  border-radius: 1rem;
-  outline: none;
-  border: none;
-  cursor: pointer;
-`;
-
-export const Approve = styled(Button)`
-  background-color: ${COLOR.Main};
-`;
-
-export const Reject = styled(Button)`
-  background-color: ${COLOR.Red};
-`;
-
-export const ButtonWrap = styled.div`
-  display: flex;
-  gap: 1rem;
-  flex: 2;
-  justify-content: center;
-`;
-
 export const TableItemContent = styled.p<{
   $flex: string;
   $notCenter?: boolean;
@@ -130,21 +95,4 @@ export const NoContent = styled.div`
   align-items: center;
   font-size: 1.6rem;
   color: ${COLOR.Gray};
-`;
-
-export const Period = styled.span`
-  font-size: 1.6rem;
-`;
-
-export const Status = styled.p<{ $isApproved: boolean }>`
-  font-size: 1.6rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  color: ${({$isApproved})=>$isApproved ? COLOR.Main : COLOR.Red};
-  flex: 2;
-  justify-content: center;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 `;
