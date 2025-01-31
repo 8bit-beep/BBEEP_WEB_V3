@@ -1,10 +1,9 @@
 import Dropdown from "../../components/Common/Dropdown";
 import ThemedIcon from "../../components/Common/ThemedIcon";
+import { ATTEND_TIME_KEYS } from "../../constants/attendTime/attendTimeKeys";
 import { useGetAttendsByRoom } from "../../hooks/attends/useGetAttendsByRoom";
 import { useGetRoomsByFloor } from "../../hooks/attends/useGetRoomsByFloor";
 import * as S from "./style";
-
-const ATTEND_TIME_KEYS = ["8", "10", "11"] as const;
 
 const Attends = () => {
   const { floor, handleFloor, roomData } = useGetRoomsByFloor();
