@@ -4,7 +4,6 @@ import Home from "../../pages/Home";
 import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
 import Shifts from "../../pages/Shifts";
-import ResetPassword from "../../pages/ResetPassword";3
 import Attends from "../../pages/Attends";
 import NotAttendLayout from "../../layouts/NotAttendLayout";
 import NotAttend from "../../pages/NotAttend";

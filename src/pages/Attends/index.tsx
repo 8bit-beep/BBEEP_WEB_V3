@@ -4,6 +4,8 @@ import { useGetAttendsByRoom } from "../../hooks/attends/useGetAttendsByRoom";
 import { useGetRoomsByFloor } from "../../hooks/attends/useGetRoomsByFloor";
 import * as S from "./style";
 
+const ATTEND_TIME_KEYS = ["8", "10", "11"] as const;
+
 const Attends = () => {
   const { floor, handleFloor, roomData } = useGetRoomsByFloor();
   const { room, handleRoom, attendsData } = useGetAttendsByRoom(floor);
@@ -42,41 +44,37 @@ const Attends = () => {
           <S.TableColumn $flex="1">참여 여부</S.TableColumn>
         </S.TableHead>
         <S.TableContent>
-          {!attendsData || attendsData?.length === 0 ? (<S.NoContent>출석 데이터가 없습니다.</S.NoContent>) : attendsData?.map((item, idx) => (
-            <S.TableItem key={idx}>
-              <S.TableItemContent $flex="1">
-                {item.studentId}
-              </S.TableItemContent>
-              <S.TableItemContent $flex="1">{item.username}</S.TableItemContent>
-              <S.TableItemContent $flex="1">{item.club}</S.TableItemContent>
-              <S.TableItemContent $flex="2">
-                {item.attendedTimes["8"].time !== "null" ? item.attendedTimes["8"].time : "--"}{" "}
-                {item.attendedTimes["8"].type === "NARSHA"
-                  ? "(나르샤)"
-                  : item.attendedTimes["8"].type === "AFTER_SCHOOL" &&
-                    "(방과후)"}
-              </S.TableItemContent>
-              <S.TableItemContent $flex="2">
-                {item.attendedTimes["10"].time !== "null" ? item.attendedTimes["10"].time : "--"}{" "}
-                {item.attendedTimes["10"].type === "NARSHA"
-                  ? "(나르샤)"
-                  : item.attendedTimes["10"].type === "AFTER_SCHOOL" &&
-                    "(방과후)"}
-              </S.TableItemContent>
-              <S.TableItemContent $flex="2">
-                {item.attendedTimes["11"].time !== "null" ? item.attendedTimes["11"].time : "--"}{" "}
-                {item.attendedTimes["11"].type === "NARSHA"
-                  ? "(나르샤)"
-                  : item.attendedTimes["11"].type === "AFTER_SCHOOL" &&
-                    "(방과후)"}
-              </S.TableItemContent>
-              <S.TableItemContent $flex="1">
-                <S.Attended $isAttended={item.isAttended}>
-                  {item.isAttended ? "O" : "X"}
-                </S.Attended>
-              </S.TableItemContent>
-            </S.TableItem>
-          ))}
+          {!attendsData || attendsData?.length === 0 ? (
+            <S.NoContent>출석 데이터가 없습니다.</S.NoContent>
+          ) : (
+            attendsData?.map((item, idx) => (
+              <S.TableItem key={idx}>
+                <S.TableItemContent $flex="1">
+                  {item.studentId}
+                </S.TableItemContent>
+                <S.TableItemContent $flex="1">
+                  {item.username}
+                </S.TableItemContent>
+                <S.TableItemContent $flex="1">{item.club}</S.TableItemContent>
+                {ATTEND_TIME_KEYS.map((attendTime) => (
+                  <S.TableItemContent $flex="2" key={attendTime + `${idx}`}>
+                    {item.attendedTimes[attendTime].time !== "null"
+                      ? item.attendedTimes[attendTime].time
+                      : "--"}{" "}
+                    {item.attendedTimes[attendTime].type === "NARSHA"
+                      ? "(나르샤)"
+                      : item.attendedTimes[attendTime].type ===
+                          "AFTER_SCHOOL" && "(방과후)"}
+                  </S.TableItemContent>
+                ))}
+                <S.TableItemContent $flex="1">
+                  <S.Attended $isAttended={item.isAttended}>
+                    {item.isAttended ? "O" : "X"}
+                  </S.Attended>
+                </S.TableItemContent>
+              </S.TableItem>
+            ))
+          )}
         </S.TableContent>
       </S.ContentWrap>
     </S.Container>
