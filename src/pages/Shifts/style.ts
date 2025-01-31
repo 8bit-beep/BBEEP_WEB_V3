@@ -116,16 +116,35 @@ export const TableItemContent = styled.p<{
   display: flex;
   align-items: center;
   flex: ${({ $flex }) => $flex};
-  text-align: ${({ $notCenter }) => ($notCenter ? "" : "center")};
+  justify-content: ${({ $notCenter }) => ($notCenter ? "" : "center")};
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 `;
 
-export const IsApproved = styled.span<{ $isApproved: boolean }>`
+export const NoContent = styled.div`
+  width: 100%;
+  height: 10rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1.6rem;
-  font-weight: 600;
+  color: ${COLOR.Gray};
+`;
+
+export const Period = styled.span`
+  font-size: 1.6rem;
+`;
+
+export const Status = styled.p<{ $isApproved: boolean }>`
+  font-size: 1.6rem;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  color: ${({$isApproved})=>$isApproved ? COLOR.Main : COLOR.Red};
   flex: 2;
-  text-align: center;
-  color: ${({ $isApproved }) => ($isApproved ? COLOR.Main : COLOR.Red)};
+  justify-content: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 `;

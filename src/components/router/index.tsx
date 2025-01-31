@@ -3,9 +3,11 @@ import RootLayout from "../../layouts/RootLayout";
 import Home from "../../pages/Home";
 import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
-import Move from "../../pages/Move";
-import MoveLayout from "../../layouts/MoveLayout";
-import MoveApproved from "../../pages/MoveApproved";
+import Shifts from "../../pages/Shifts";
+import ResetPassword from "../../pages/ResetPassword";3
+import Attends from "../../pages/Attends";
+import NotAttendLayout from "../../layouts/NotAttendLayout";
+import NotAttend from "../../pages/NotAttend";
 import ResetPassword from "../../pages/ResetPassword";
 import SendPasswordPage from "../../pages/SendPassword";
 
@@ -15,9 +17,11 @@ const Router = () => {
       <Routes>
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
-          <Route path="move" element={<MoveLayout />}>
-            <Route index element={<Move />} />
-            <Route path="approved" element={<MoveApproved />} />
+          <Route path="/shifts" element={<Shifts />} />
+          <Route path="/attends" element={<Attends />} />
+          <Route path="not-attend" element={<NotAttendLayout />}>
+            <Route index element={<NotAttend />} />
+            <Route path="today" element={<></>} />
           </Route>
         </Route>
         <Route path="/login" element={<Login />} />

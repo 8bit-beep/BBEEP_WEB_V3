@@ -6,7 +6,7 @@ const Home = () => {
     <S.Container>
       <S.ContentWrap>
         <S.SectionWrap>
-          <MainSection title="실 이동 신청 목록" icon="Lab" href="/move">
+          <MainSection title="실 이동 신청 목록" icon="Lab" href="/shifts">
             <S.TableHead>
               <S.TableColumn $flex="1">학번</S.TableColumn>
               <S.TableColumn $flex="1">이름</S.TableColumn>
@@ -31,7 +31,7 @@ const Home = () => {
               ))}
             </S.TableContent>
           </MainSection>
-          <MainSection title="불참자 목록" icon="Filter" href="/">
+          <MainSection title="불참자 목록" icon="Filter" href="/not-attend">
             <S.TableHead>
               <S.TableColumn $flex="1">학번</S.TableColumn>
               <S.TableColumn $flex="1">이름</S.TableColumn>
@@ -63,7 +63,7 @@ const Home = () => {
             title="스터디 출석 현황"
             icon="Person"
             subtitle="Lab 19, 20실"
-            href="/"
+            href="/attends"
           >
             <S.TableHead>
               <S.TableColumn $flex="1">학번</S.TableColumn>
@@ -77,7 +77,7 @@ const Home = () => {
             <S.TableContent>
               {Array.from({ length: 20 }).map((_, idx) => (
                 <S.TableItem key={idx}>
-                  <S.TableItemContent $flex="1"></S.TableItemContent>
+                  <S.TableItemContent $flex="1">1210</S.TableItemContent>
                   <S.TableItemContent $flex="1">김응찬</S.TableItemContent>
                   <S.TableItemContent $flex="1">B1ND</S.TableItemContent>
                   <S.TableItemContent $flex="2.4">4:30</S.TableItemContent>

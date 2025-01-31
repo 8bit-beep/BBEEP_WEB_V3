@@ -6,7 +6,7 @@ export const COLOR = {
   Gray: "#B7B7B7",
   Black: "#000000",
   White: "#FFFFFF",
-  Background: "#F0F0F0",
+  Background: "#F7F7F7",
   LoginBackground: "#F6F7F9",
   Placeholder: "rgb(0,0,0,0.5);",
 };
