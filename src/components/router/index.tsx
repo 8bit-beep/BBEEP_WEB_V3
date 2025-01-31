@@ -24,7 +24,7 @@ const Router = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/send-password" element={<SendPasswordPage />} />
-        <Route path="/users/password*" element={<ResetPassword />} />
+        <Route path="/users/password/:id" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );
