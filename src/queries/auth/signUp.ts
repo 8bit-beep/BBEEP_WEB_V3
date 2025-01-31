@@ -6,26 +6,40 @@ import { useSignupPhaseStore } from "../../store/signup/useSignupPhaseStore";
 import { SignupPhase } from "../../types/store/signupPhaseState";
 import { useNavigate } from "react-router-dom";
 import { notification } from "antd";
+import { useCodeCertifiedStore } from "../../store/signup/useCodeCertified";
 
 export const useSignUpMutation = () => {
   const { signupData } = useSignupDataStore();
   const { setSignupPhase } = useSignupPhaseStore();
   const { setError } = useErrorStore();
   const navigate = useNavigate();
-
+  const { setIsCodeCertified } = useCodeCertifiedStore();
   return useMutation({
     mutationFn: async () => {
       const { data } = await axios.post(
         `${import.meta.env.VITE_API_URL}/auth/sign-up`,
-        signupData
+        {
+          email: signupData.email,
+          password: signupData.password,
+          username: signupData.name,
+          role: "TEACHER",
+          grade: 0,
+          cls: 0,
+          num: 0,
+          fixedRoom: "NOTFOUND",
+        }
       );
       return data;
     },
     onError: (err: any) => {
       setError(err);
-      setSignupPhase(SignupPhase.INFO);
+      notification.open({
+        message: "오류가 발생했습니다.",
+      });
     },
     onSuccess: () => {
+      setIsCodeCertified(false);
+      setSignupPhase(SignupPhase.EMAIL);
       notification.open({
         message: "회원가입 성공",
         description: "서비스 이용을 위해 로그인 해주세요.",
