@@ -15,6 +15,12 @@ export const useResetPasswordMutation = () => {
       const { data } = await axios.patch(
         `${import.meta.env.VITE_API_URL}/users/password/${params.id}`,
         { password: resetPasswordData.password }
+
+  return useMutation({
+    mutationFn: async () => {
+      const { data } = await axios.post(
+        `${import.meta.env.VITE_API_URL}/auth/reset-password`,
+        resetPasswordData
       );
       return data;
     },

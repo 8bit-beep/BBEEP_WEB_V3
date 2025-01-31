@@ -14,6 +14,7 @@ const useResetPassword = () => {
   const sendEmailMutation = useSendEmailMutation({
     endpoint: "/users/password/send",
   });
+
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setResetPasswordData({ ...resetPasswordData, [name]: value });
