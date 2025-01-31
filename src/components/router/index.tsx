@@ -7,6 +7,8 @@ import Move from "../../pages/Move";
 import MoveLayout from "../../layouts/MoveLayout";
 import MoveApproved from "../../pages/MoveApproved";
 import ResetPassword from "../../pages/ResetPassword";
+import SendEmail from "../auth/SendPassword";
+import SendPasswordPage from "../../pages/SendPassword";
 
 const Router = () => {
   return (
@@ -21,7 +23,8 @@ const Router = () => {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
-        <Route path="/reset-password" element={<ResetPassword />} />
+        <Route path="/send-password" element={<SendPasswordPage />} />
+        <Route path="/users/password*" element={<ResetPassword />} />
       </Routes>
     </BrowserRouter>
   );

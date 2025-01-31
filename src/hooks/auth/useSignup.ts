@@ -9,7 +9,7 @@ const useSignup = () => {
   const { signupData, setSignupData } = useSignupDataStore();
   const { loading, setLoading } = useLoadingStore();
   const signUpPasswordMutation = useSignUpMutation();
-  const sendEmailMutation = useSendEmailMutation();
+  const sendEmailMutation = useSendEmailMutation({ endpoint: "/email/send" });
   const verifyEmailMutation = useVerifyEmailMutation();
   const [passwordCheck, setPasswordCheck] = useState("");
 

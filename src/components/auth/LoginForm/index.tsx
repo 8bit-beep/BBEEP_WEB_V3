@@ -73,7 +73,9 @@ const LoginForm = () => {
             계정이 없으신가요?
           </S.Option>
           <S.OptionBar>|</S.OptionBar>
-          <S.Option>비밀번호를 잊으셨나요?</S.Option>
+          <S.Option onClick={() => navigate("/send-email")}>
+            비밀번호를 잊으셨나요?
+          </S.Option>
         </S.OptionWrapper>
       </S.InputWrap>
     </S.Container>

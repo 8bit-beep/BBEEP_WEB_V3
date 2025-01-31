@@ -2,13 +2,16 @@ import { ChangeEvent, useState } from "react";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
 import { useResetPasswordMutation } from "../../queries/auth/resetPassword";
 import { useResetPasswordDataStore } from "../../store/resetPassword/useResetPasswordData";
+import { useSendEmailMutation } from "../../queries/auth/sendEmail";
 
 const useResetPassword = () => {
   const { resetPasswordData, setResetPasswordData } =
     useResetPasswordDataStore();
   const { loading, setLoading } = useLoadingStore();
   const resetPasswordMutation = useResetPasswordMutation();
-
+  const sendEmailMutation = useSendEmailMutation({
+    endpoint: "/users/password/send",
+  });
   const handleData = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setResetPasswordData({ ...resetPasswordData, [name]: value });
@@ -18,6 +21,13 @@ const useResetPassword = () => {
     if (e.key === "Enter") {
       onSubmit();
     }
+  };
+
+  const sendEmail = async () => {
+    if (loading) return;
+    setLoading(sendEmailMutation.isPending);
+    await sendEmailMutation.mutateAsync();
+    setLoading(false);
   };
 
   const onSubmit = async () => {
@@ -36,6 +46,7 @@ const useResetPassword = () => {
     activeEnter,
     passwordCheck,
     setPasswordCheck,
+    sendEmail,
   };
 };
 

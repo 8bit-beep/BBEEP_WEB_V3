@@ -18,6 +18,7 @@ const SignupEmail = () => {
   const { signupData } = useSignupDataStore();
   const { setSignupPhase } = useSignupPhaseStore();
   const { error } = useErrorStore();
+  const { sendEmail, verifyEmail } = useSignup();
   const isFormValid = FormValidator.areObjectFieldsFilled(signupData, [
     "email",
     "code",
@@ -36,6 +37,7 @@ const SignupEmail = () => {
           value={signupData.email}
           error={false}
           buttonName="전송하기"
+          action={sendEmail}
         />
         {verifyPhase === VerifyPhase.EMAIL ? (
           <></>
@@ -48,6 +50,7 @@ const SignupEmail = () => {
             value={signupData.code}
             error={error?.message === "인증번호가 유효하지 않습니다."}
             buttonName="인증하기"
+            action={verifyEmail}
           />
         )}
 
