@@ -8,13 +8,13 @@ const Header = () => {
   const [Item, setItem] = useState<"홈"|"실 조회"|"실 이동 관리"|"결석자 조회">("홈");
 
   useEffect(() => {
-    if (location.pathname === "/") {
+    if (location.pathname === "/Home") {
       setItem("홈");
-    } else if (location.pathname === "/class") {
+    } else if (location.pathname === "/attends") {
       setItem("실 조회");
-    } else if (location.pathname === "/class/move") {
+    } else if (location.pathname === "/shifts") {
       setItem("실 이동 관리");
-    } else if (location.pathname === "/absent") {
+    } else if (location.pathname === "not-attend") {
       setItem("결석자 조회");
     }
   }, [location.pathname]);
