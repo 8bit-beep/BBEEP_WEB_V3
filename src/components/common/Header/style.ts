@@ -1,9 +1,18 @@
 import styled from "@emotion/styled";
+import { Link } from "react-router-dom";
 
 export const Container = styled.div`
-  width: 100%;
-  height: 7rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+
+`
+
+export const Logo = styled.div`
+
+`
+
+export const Menu = styled.div`
+
+`
+
+export const MenuItem = styled(Link)`
+
 `
