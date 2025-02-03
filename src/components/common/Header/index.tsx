@@ -2,12 +2,17 @@ import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import * as S from './style';
 import Logo from '/assets/Logo.svg';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const location = useLocation();
+  const navigate = useNavigate();
   const [activeItem, setActiveItem] = useState<"홈" | "실 조회" | "실 이동 관리" | "결석자 조회">("홈");
 
-  // 경로에 맞춰 activeItem 업데이트
+  const handleLogoClick = () => {
+    navigate("/");
+  }
+
   useEffect(() => {
     if (location.pathname === "/") {
       setActiveItem("홈");
@@ -23,7 +28,7 @@ const Header = () => {
   return (
     <S.Container>
       <S.HeaderWrap>
-        <S.Logo>
+        <S.Logo onClick={handleLogoClick}>
           <img src={Logo} alt="logo" />
         </S.Logo>
 

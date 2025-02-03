@@ -48,6 +48,7 @@ export const MenuItem = styled(Link)<{ active: boolean }>`
     left: 50%;
     width: 30px;
     height: 2px;
+    border-radius: 5px;
     background-color: ${({ active }) => (active ? '#305B7D' : 'transparent')};
     transform: translateX(-50%);
   }
