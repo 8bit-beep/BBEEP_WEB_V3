@@ -9,7 +9,7 @@ const Header = () => {
 
   useEffect(() => {
 
-    if (location.pathname === "/Home") {
+    if (location.pathname === "/") {
       setItem("홈");
     } else if (location.pathname === "/attends") {
       setItem("실 조회");
@@ -22,16 +22,18 @@ const Header = () => {
 
   return (
     <S.Container>
+      <S.HeaderWrap>
       <S.Logo>
         <img src={Logo} alt="logo" />
       </S.Logo>
 
       <S.Menu>
         <S.MenuItem to="/" active={Item === "홈"}>홈</S.MenuItem>
-        <S.MenuItem to="not-attend" active={Item === "실 조회"}>실 조회</S.MenuItem>
+        <S.MenuItem to="/attends" active={Item === "실 조회"}>실 조회</S.MenuItem>
         <S.MenuItem to="/shifts" active={Item === "실 이동 관리"}>실 이동 관리</S.MenuItem>
-        <S.MenuItem to="/attends" active={Item === "결석자 조회"}>결석자 조회</S.MenuItem>
+        <S.MenuItem to="not-attend" active={Item === "결석자 조회"}>결석자 조회</S.MenuItem>
       </S.Menu>
+      </S.HeaderWrap>
     </S.Container>
 )};
 
