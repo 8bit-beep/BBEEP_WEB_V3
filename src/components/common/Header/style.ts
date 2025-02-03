@@ -22,8 +22,11 @@ export const Menu = styled.div`
   margin-left: 338px;
 `
 
-export const MenuItem = styled(Link)<{ active: boolean }>`
+export const MenuItem = styled(Link)<{ $active: boolean }>`
   font-size: 17px;
+  font-weight: 400;
   text-decoration: none;
-  color: black;
+  color: #000;
+  position: relative;
+  padding-bottom: 10px;
 `

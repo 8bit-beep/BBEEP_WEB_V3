@@ -26,13 +26,13 @@ const Header = () => {
       </S.Logo>
 
       <S.Menu>
-        <S.MenuItem to="/" active={Item === "홈"}>홈</S.MenuItem>
-        <S.MenuItem to="/class" active={Item === "실 조회"}>실 조회</S.MenuItem>
-        <S.MenuItem to="/class/move" active={Item === "실 이동 관리"}>실 이동 관리</S.MenuItem>
-        <S.MenuItem to="/absent" active={Item === "결석자 조회"}>결석자 조회</S.MenuItem>
+        <S.MenuItem to="/" $active={Item === "홈"}>홈</S.MenuItem>
+        <S.MenuItem to="/class" $active={Item === "실 조회"}>실 조회</S.MenuItem>
+        <S.MenuItem to="/class/move" $active={Item === "실 이동 관리"}>실 이동 관리</S.MenuItem>
+        <S.MenuItem to="/absent" $active={Item === "결석자 조회"}>결석자 조회</S.MenuItem>
       </S.Menu>
     </S.Container>
-  )
-}
+  );
+};
 
 export default Header
