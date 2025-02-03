@@ -8,16 +8,9 @@ export const Container = styled.div`
   align-items: center;
   background-color: #323A45;
   padding: 0 124px;
-  background-color: #323A45;
   justify-content: center;
   align-items: center;
 `;
-=======
-  background-color: #323A45;
-  justify-content: center;
-  align-items: center;
-`
->>>>>>> 954ee07cbb1a6c3f9481abf41ea28c4a743630d9
 
 export const Logo = styled.img`
   width: 49px;
@@ -49,8 +42,3 @@ export const Text = styled.p`
   display: block;
   cursor: pointer;
 `
-=======
-  cursor: pointer;
-`
-
->>>>>>> 954ee07cbb1a6c3f9481abf41ea28c4a743630d9
