@@ -27,7 +27,7 @@ export const Logo = styled.div`
 export const Menu = styled.nav`
   display: flex;
   align-items: center;
-  margin-left: 338px;
+  margin-left: 337px;
   gap: 40px;
 `;
 

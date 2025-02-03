@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 
 export const Container = styled.div`
-    
+    position: relative;
 `
 
 export const ProfileButton = styled.button`
@@ -10,10 +10,11 @@ export const ProfileButton = styled.button`
     background: none;
     border: none;
     cursor: pointer;
-    margin-right: 55px;
+    margin-right: 120px;
 `
 
 export const ProfileName = styled.div`
+    width: 100px;
     font-size: 18px;
     font-weight: 600;
     color: #000;
@@ -23,24 +24,39 @@ export const Arrow = styled.img<{ $isOpened: boolean }>`
     position: relative;
     top: 3px;
     transform: ${(props) => (props.$isOpened ? 'rotate(180deg)' : 'rotate(0deg)')};
-    transition: transform 0.5s ease;
+    transition: transform 0.4s ease;
     margin-left: 
 `
 
 export const OptionContainer = styled.div`
-
+    width: 140px;
+    position: absolute;
+    top: 40px;
+    background: #fff; 
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
 `
 
 export const Email = styled.p`
+    width: 150px;
+    height: 12px;
+    margin-left: 17px;
+    margin-top: 13px;
     font-size: 11px;
     font-weight: 500;
 `
 
 export const LogoutButton = styled.button`
+    width: 140px;
+    height: 37px;
     font-size: 12px;
     font-weight: 500;
     background: none;
     border: none;
     cursor: pointer;
     color: #FF6C6C;
+    margin-top: 13px;
+
+    &:hover {
+        color: #FF4C4C;
+    }
 `
