@@ -1,12 +1,15 @@
 import { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import * as S from './style';
 import Logo from '/assets/Logo.svg';
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import ProfileDropdown from '../Dropdown/ProfileDropdown';
+
+
 
 const Header = () => {
-  const location = useLocation();
   const navigate = useNavigate();
+  const location = useLocation();
   const [activeItem, setActiveItem] = useState<"홈" | "실 조회" | "실 이동 관리" | "결석자 조회">("홈");
 
   const handleLogoClick = () => {
@@ -55,8 +58,9 @@ const Header = () => {
           </S.MenuItem>
         </S.Menu>
       </S.HeaderWrap>
+      <ProfileDropdown />
     </S.Container>
   );
 };
 
-export default Header;
+export default Header

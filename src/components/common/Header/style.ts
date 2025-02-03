@@ -52,8 +52,4 @@ export const MenuItem = styled(Link)<{ active: boolean }>`
     background-color: ${({ active }) => (active ? '#305B7D' : 'transparent')};
     transform: translateX(-50%);
   }
-
-  &:hover::after {
-    background-color: #305B7D;
-  }
 `;
