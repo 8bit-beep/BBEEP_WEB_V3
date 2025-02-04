@@ -25,7 +25,6 @@ export const Arrow = styled.img<{ $isOpened: boolean }>`
     top: 3px;
     transform: ${(props) => (props.$isOpened ? 'rotate(180deg)' : 'rotate(0deg)')};
     transition: transform 0.4s ease;
-    margin-left: 
 `
 
 export const OptionContainer = styled.div`
