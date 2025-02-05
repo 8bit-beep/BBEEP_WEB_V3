@@ -6,7 +6,6 @@ export const Container = styled.header`
   height: 71px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   background-color: #fff;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   padding: 0 20px;
@@ -44,7 +43,6 @@ export const MenuItem = styled(Link)<{ active: boolean }>`
     content: '';
     position: absolute;
     top: 46px;
-    bottom: 0;
     left: 50%;
     width: 30px;
     height: 2px;
