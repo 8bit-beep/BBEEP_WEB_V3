@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { COLOR } from "../../../../style/color/color";
 
 export const Container = styled.div`
     position: relative;
@@ -17,7 +18,7 @@ export const ProfileButton = styled.button`
 export const ProfileName = styled.div`
     font-size: 18px;
     font-weight: 600;
-    color: #000;
+    color: ${COLOR.Black};
 `;
 
 export const Arrow = styled.img<{ $isOpened: boolean }>`
@@ -29,7 +30,7 @@ export const OptionContainer = styled.div`
     width: 140px;
     position: absolute;
     top: 40px;
-    background: #fff;
+    background: ${COLOR.White};
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     padding: 10px 0;
 `;
@@ -44,15 +45,11 @@ export const Email = styled.p`
 export const LogoutButton = styled.button`
     width: 140px;
     height: 37px;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
     background: none;
     border: none;
     cursor: pointer;
-    color: #FF6C6C;
+    color: ${COLOR.Red};
     margin-top: 13px;
-
-    &:hover {
-        color: #FF4C4C;
-    }
 `;
