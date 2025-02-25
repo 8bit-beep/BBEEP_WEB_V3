@@ -1,40 +1,36 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import { COLOR } from '../../../style/color/color';
 
 export const Container = styled.header`
-  width: 100vw;
-  height: 71px;
+  width: 100%;
+  height: 7rem;
   display: flex;
   align-items: center;
-  background-color: #fff;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: ${COLOR.White};
+  box-shadow: 0px 4px 10px ${COLOR.Black};
   padding: 0 20px;
-`;
+`
 
 export const HeaderWrap = styled.div`
-  width: 1020px;
   display: flex;
-  align-items: center;
-  margin-left: 130px;
-`;
+  margin-left: 125px;
+
+`
 
 export const Logo = styled.div`
-  width: 47.6px;
-  height: 43.3px;
-`;
+  cursor: pointer;
+`
 
 export const Menu = styled.nav`
-  display: flex;
-  align-items: center;
-  margin-left: 337px;
-  gap: 40px;
-`;
+
+`
 
 export const MenuItem = styled(Link)<{ active: boolean }>`
   font-size: 17px;
   font-weight: 400;
   text-decoration: none;
-  color: #000;
+  color: ${COLOR.Black};
   cursor: pointer;
   position: relative;
   padding-bottom: 5px;
@@ -50,4 +46,4 @@ export const MenuItem = styled(Link)<{ active: boolean }>`
     background-color: ${({ active }) => (active ? '#305B7D' : 'transparent')};
     transform: translateX(-50%);
   }
-`;
+`

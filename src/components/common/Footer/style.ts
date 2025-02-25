@@ -4,7 +4,6 @@ export const Container = styled.div`
   width: 100%;
   height: 7rem;
   display: flex;
-<<<<<<< HEAD
   align-items: center;
   background-color: #323A45;
   padding: 0 124px;
@@ -15,7 +14,6 @@ export const Container = styled.div`
 export const Logo = styled.img`
   width: 49px;
   height: 44px;
-<<<<<<< HEAD
 `
 
 export const FooterSentence = styled.img`
