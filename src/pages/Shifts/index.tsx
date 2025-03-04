@@ -1,6 +1,6 @@
-import ThemedIcon from "../../components/Common/ThemedIcon";
 import { useGetShiftsQuery } from "../../queries/shifts/getShifts";
 import * as S from "./style";
+import ThemedIcon from "../../components/common/ThemedIcon";
 
 const Shifts = () => {
   const shiftData = useGetShiftsQuery();

@@ -1,24 +1,25 @@
-import ThemedIcon from "../../components/Common/ThemedIcon";
 import * as S from "./style";
 import { useGetNotAttends } from "../../hooks/attends/useGetNotAttends";
-import Dropdown from "../../components/Common/Dropdown";
+import ThemedIcon from "../../components/common/ThemedIcon";
+import Dropdown from "../../components/common/Dropdown";
 
-const NotAttend = () => {
+
+const NotAttendToday = () => {
   const { floor, type, handleFloor, handleType, notAttedsData } =
-    useGetNotAttends();
-
+    useGetNotAttends(true);
+  
   return (
     <S.Container>
       <S.ContentHeaderWrap>
         <ThemedIcon src="/assets/Excluded.svg" width="2.5rem" height="2.5rem" />
         <div>
-          <S.Title>불참자 조회하기</S.Title>
+          <S.Title>오늘 불참자 조회하기</S.Title>
           <S.Subtitle>
             아직 출석하지 않은 사람들을 확인해 보세요!
           </S.Subtitle>
         </div>
         <S.Spacer />
-
+        
         <Dropdown
           value={type}
           setValue={handleType}
@@ -71,4 +72,4 @@ const NotAttend = () => {
   );
 };
 
-export default NotAttend;
+export default NotAttendToday;

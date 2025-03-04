@@ -1,7 +1,19 @@
 import MainSection from "../../components/MainSection";
 import * as S from "./style";
+import {useGetRoomsByFloor} from "../../hooks/attends/useGetRoomsByFloor.ts";
+import {useGetAttendsByRoom} from "../../hooks/attends/useGetAttendsByRoom.ts";
+import Dropdown from "../../components/common/Dropdown";
+import {ATTEND_TIME_KEYS} from "../../constants/attendTime/attendTimeKeys.ts";
+import {useGetNotAttends} from "../../hooks/attends/useGetNotAttends.ts";
+import {useGetShiftsQuery} from "../../queries/shifts/getShifts.ts";
 
 const Home = () => {
+  const { floor: roomsFloor, roomData } = useGetRoomsByFloor();
+  const { room, handleRoom, attendsData } = useGetAttendsByRoom(roomsFloor);
+  const { notAttedsData } =
+    useGetNotAttends();
+  const shiftData = useGetShiftsQuery();
+  
   return (
     <S.Container>
       <S.ContentWrap>
@@ -16,19 +28,24 @@ const Home = () => {
               </S.TableColumn>
             </S.TableHead>
             <S.TableContent>
-              {Array.from({ length: 20 }).map((_, idx) => (
-                <S.TableItem key={idx}>
-                  <S.TableItemContent $flex="1">1210</S.TableItemContent>
-                  <S.TableItemContent $flex="1">김엉한</S.TableItemContent>
-                  <S.TableItemContent $flex="1.4">
-                    Lab 10 {"->"} Lab 20
-                  </S.TableItemContent>
-                  <S.TableItemContent $notCenter $flex="3">
-                    일단은 만들어 놓고 얘기할게요 이렇게 이렇게 이렇게 이렇게
-                    이렇게 길어질수 있잖아요~~~~~~~~
-                  </S.TableItemContent>
-                </S.TableItem>
-              ))}
+              {
+                shiftData?.map((item) => (
+                  <S.TableItem key={item.id}>
+                    <S.TableItemContent $flex="1">
+                      {item.studentId}
+                    </S.TableItemContent>
+                    <S.TableItemContent $flex="1">
+                      {item.username}
+                    </S.TableItemContent>
+                    <S.TableItemContent $flex="1.4">
+                      {item.fixedRoom} {"->"} {item.room}
+                    </S.TableItemContent>
+                    <S.TableItemContent $notCenter $flex="3">
+                      {item.cause}
+                    </S.TableItemContent>
+                  </S.TableItem>
+                ))
+              }
             </S.TableContent>
           </MainSection>
           <MainSection title="불참자 목록" icon="Filter" href="/not-attend">
@@ -42,48 +59,57 @@ const Home = () => {
               </S.TableColumn>
             </S.TableHead>
             <S.TableContent>
-              {Array.from({ length: 20 }).map((_, idx) => (
-                <S.TableItem key={idx}>
-                  <S.TableItemContent $flex="1">1210</S.TableItemContent>
-                  <S.TableItemContent $flex="1">김엉한</S.TableItemContent>
-                  <S.TableItemContent $flex="1">Lab 19, 20</S.TableItemContent>
-                  <S.TableItemContent $flex="1.2">
-                    8-9, 10-11
-                  </S.TableItemContent>
-                  <S.TableItemContent $notCenter $flex="3">
-                    나르샤
-                  </S.TableItemContent>
-                </S.TableItem>
-              ))}
-            </S.TableContent>
+              {
+                notAttedsData?.map((item, idx) => (
+                  <S.TableItem key={idx}>
+                    <S.TableItemContent $flex="1">
+                      {item.studentId}
+                    </S.TableItemContent>
+                    <S.TableItemContent $flex="1">{item.username}</S.TableItemContent>
+                    <S.TableItemContent $flex="1">{item.room}</S.TableItemContent>
+                    <S.TableItemContent $flex="1.2">{item.period}교시</S.TableItemContent>
+                    <S.TableItemContent $notCenter $flex="3">
+                      {item.reason}
+                    </S.TableItemContent>
+                  </S.TableItem>
+                ))}
+              </S.TableContent>
           </MainSection>
         </S.SectionWrap>
         <S.SectionWrap>
           <MainSection
             title="스터디 출석 현황"
             icon="Person"
-            subtitle="Lab 19, 20실"
+            subtitle={<Dropdown value={room} setValue={handleRoom} options={roomData} />}
             href="/attends"
           >
             <S.TableHead>
               <S.TableColumn $flex="1">학번</S.TableColumn>
               <S.TableColumn $flex="1">이름</S.TableColumn>
               <S.TableColumn $flex="1">소속</S.TableColumn>
-              <S.TableColumn $flex="2.4">8 9교시 출석</S.TableColumn>
-              <S.TableColumn $flex="2.2">10교시 출석</S.TableColumn>
-              <S.TableColumn $flex="2.2">11교시 출석</S.TableColumn>
+              <S.TableColumn $flex="2">8 9교시 출석</S.TableColumn>
+              <S.TableColumn $flex="2">10교시 출석</S.TableColumn>
+              <S.TableColumn $flex="2">11교시 출석</S.TableColumn>
               <S.TableColumn $flex="2">참여 여부</S.TableColumn>
             </S.TableHead>
             <S.TableContent>
-              {Array.from({ length: 20 }).map((_, idx) => (
+              {attendsData?.map((item, idx) => (
                 <S.TableItem key={idx}>
-                  <S.TableItemContent $flex="1">1210</S.TableItemContent>
-                  <S.TableItemContent $flex="1">김응찬</S.TableItemContent>
-                  <S.TableItemContent $flex="1">B1ND</S.TableItemContent>
-                  <S.TableItemContent $flex="2.4">4:30</S.TableItemContent>
-                  <S.TableItemContent $flex="2.2">7:10</S.TableItemContent>
-                  <S.TableItemContent $flex="2.2">8:50</S.TableItemContent>
-                  <S.TableItemContent $flex="2">O</S.TableItemContent>
+                  <S.TableItemContent $flex="1">{item.studentId}</S.TableItemContent>
+                  <S.TableItemContent $flex="1">{item.username}</S.TableItemContent>
+                  <S.TableItemContent $flex="1">{item.club}</S.TableItemContent>
+                  {ATTEND_TIME_KEYS.map((attendTime) => (
+                    <S.TableItemContent $flex="2" key={attendTime + `${idx}`}>
+                      {item.attendedTimes[attendTime].time !== "null"
+                        ? item.attendedTimes[attendTime].time
+                        : "--"}{" "}
+                      {item.attendedTimes[attendTime].type === "NARSHA"
+                        ? "(나르샤)"
+                        : item.attendedTimes[attendTime].type ===
+                        "AFTER_SCHOOL" && "(방과후)"}
+                    </S.TableItemContent>
+                  ))}
+                  <S.TableItemContent $flex="2">{item.isAttended ? "O" : "X"}</S.TableItemContent>
                 </S.TableItem>
               ))}
             </S.TableContent>
