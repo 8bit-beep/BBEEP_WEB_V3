@@ -9,6 +9,7 @@ import NotAttendLayout from "../../layouts/NotAttendLayout";
 import NotAttend from "../../pages/NotAttend";
 import ResetPassword from "../../pages/ResetPassword";
 import SendPasswordPage from "../../pages/SendPassword";
+import NotAttendToday from "../../pages/NotAttendToday";
 
 const Router = () => {
   return (
@@ -20,7 +21,7 @@ const Router = () => {
           <Route path="/attends" element={<Attends />} />
           <Route path="not-attend" element={<NotAttendLayout />}>
             <Route index element={<NotAttend />} />
-            <Route path="today" element={<></>} />
+            <Route path="today" element={<NotAttendToday />} />
           </Route>
         </Route>
         <Route path="/login" element={<Login />} />

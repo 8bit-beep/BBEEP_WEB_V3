@@ -1,6 +1,6 @@
-import ThemedIcon from "../Common/ThemedIcon";
 import * as S from "./style";
 import { MainSecionProps } from "../../types/props/mainSectionProps";
+import ThemedIcon from "../common/ThemedIcon";
 
 const MainSection = ({
   children,
