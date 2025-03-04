@@ -12,7 +12,7 @@ const Footer = () => {
 
       <S.TextWrapper>
         <S.Text>연락처</S.Text>
-        <S.Text>Copyright 2023. Team 8bit All rights reserved.</S.Text>
+        <S.Text>Copyright 2023. Team 8bit All rights reserved</S.Text>
       </S.TextWrapper>
     </S.Container>
   );

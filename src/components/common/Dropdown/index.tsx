@@ -23,7 +23,7 @@ const Dropdown = ({ value, setValue, options }: DropdownProps) => {
   }, []);
 
   return (
-    <S.Container ref={dropdownRef} onClick={() => setIsOpened((prev) => !prev)}>
+    <S.Container ref={dropdownRef}  onClick={() => setIsOpened((prev) => !prev)}>
       <S.Value>{value.name}</S.Value>
       <S.Arrow src="/assets/ListOpen.svg" $isOpened={isOpened} />
       {isOpened && (
