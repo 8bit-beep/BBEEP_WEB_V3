@@ -6,6 +6,7 @@ import Dropdown from "../../components/common/Dropdown";
 import {ATTEND_TIME_KEYS} from "../../constants/attendTime/attendTimeKeys.ts";
 import {useGetNotAttends} from "../../hooks/attends/useGetNotAttends.ts";
 import {useGetShiftsQuery} from "../../queries/shifts/getShifts.ts";
+import {parseReason} from "../../utils/parseReason.ts";
 
 const Home = () => {
   const { floor: roomsFloor, roomData } = useGetRoomsByFloor();
@@ -68,9 +69,7 @@ const Home = () => {
                     <S.TableItemContent $flex="1">{item.username}</S.TableItemContent>
                     <S.TableItemContent $flex="1">{item.room}</S.TableItemContent>
                     <S.TableItemContent $flex="1.2">{item.period}교시</S.TableItemContent>
-                    <S.TableItemContent $notCenter $flex="3">
-                      {item.reason}
-                    </S.TableItemContent>
+                    <S.TableItemContent $flex="3" $notCenter>{parseReason(item.reason as "ABSENT" | "OUTGOING" | "SLEEPOVER" | "NOT_ATTEND" | "OTHER")}</S.TableItemContent>
                   </S.TableItem>
                 ))}
               </S.TableContent>

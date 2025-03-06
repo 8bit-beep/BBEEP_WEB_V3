@@ -2,6 +2,7 @@ import * as S from "./style";
 import { useGetNotAttends } from "../../hooks/attends/useGetNotAttends";
 import ThemedIcon from "../../components/common/ThemedIcon";
 import Dropdown from "../../components/common/Dropdown";
+import {parseReason} from "../../utils/parseReason.ts";
 
 
 const NotAttendToday = () => {
@@ -60,7 +61,7 @@ const NotAttendToday = () => {
               </S.TableItemContent>
               <S.TableItemContent $flex="1">{item.username}</S.TableItemContent>
               <S.TableItemContent $flex="1">{item.room}</S.TableItemContent>
-              <S.TableItemContent $flex="2">{item.reason}</S.TableItemContent>
+              <S.TableItemContent $flex="2">{parseReason(item.reason as "ABSENT" | "OUTGOING" | "SLEEPOVER" | "NOT_ATTEND" | "OTHER")}</S.TableItemContent>
               <S.TableItemContent $notCenter $flex="5">
                 {item.period}교시
               </S.TableItemContent>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import ProfileDropdown from "../Dropdown/ProfileDropdown";
 
+
 const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -47,7 +48,6 @@ const Header = () => {
               결석자 조회
             </S.MenuItem>
           </S.Menu>
-          <S.BottomBar location={location.pathname} />
         </S.MenuWrap>
         <ProfileDropdown />
       </S.HeaderWrap>
