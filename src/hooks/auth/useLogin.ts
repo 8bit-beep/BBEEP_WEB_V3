@@ -47,11 +47,10 @@ const useLogin = () => {
       if (data) {
         localStorage.setItem(ACCESS_TOKEN_KEY, data.data.accessToken);
         localStorage.setItem(REFRESH_TOKEN_KEY, data.data.refreshToken);
-        navigate("/home");
+        navigate("/");
         notification.open({
           message: "로그인 성공",
         });
-        navigate("/login");
       }
       return data;
     } catch (err: any) {
