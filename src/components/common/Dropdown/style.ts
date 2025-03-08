@@ -32,13 +32,14 @@ export const Arrow = styled.img<{ $isOpened: boolean }>`
 
 export const OptionContainer = styled.div`
   width: 100%;
-  max-height: 50rem;
+  max-height: 17rem;
   background-color: ${COLOR.White};
   overflow: scroll;
   border-radius: 1rem;
   position: absolute;
   left: 0;
   top: calc(100% + 1rem);
+  z-index: 100;
   box-shadow: 0 0.1rem 1rem 0 rgba(0, 0, 0, 0.05);
   -ms-overflow-style: scrollbar;
   scrollbar-width: thin;

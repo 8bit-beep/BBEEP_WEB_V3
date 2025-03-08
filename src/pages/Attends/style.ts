@@ -3,6 +3,7 @@ import { COLOR } from "../../style/color/color";
 
 export const Container = styled.div`
   width: 100%;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -12,8 +13,8 @@ export const Container = styled.div`
 
 export const ContentWrap = styled.div`
   width: 100%;
+  height: 100%;
   max-width: 100rem;
-  height: 66rem;
   background-color: ${COLOR.White};
   border-radius: 1rem;
   overflow: hidden;

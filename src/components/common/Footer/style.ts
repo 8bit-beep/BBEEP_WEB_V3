@@ -8,7 +8,6 @@ export const Container = styled.div`
   background-color: #323A45;
   padding: 0 124px;
   justify-content: center;
-  align-items: center;
 `;
 
 export const Logo = styled.img`

@@ -12,7 +12,7 @@ export const useGetme = () => {
     return data.data;
   };
   const { data } = useQuery({
-    queryKey: ["me"],
+    queryKey: ["me", accessToken],
     queryFn: fetchData,
     enabled: !!accessToken,
   });

@@ -4,7 +4,7 @@ import { COLOR } from "../../style/color/color";
 export const Container = styled.div`
   width: 100%;
   max-width: 100rem;
-  height: 66rem;
+  height: 100%;
   background-color: ${COLOR.White};
   border-radius: 1rem;
   overflow: hidden;
