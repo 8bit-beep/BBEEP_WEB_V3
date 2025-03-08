@@ -10,7 +10,7 @@ const Header = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [activeItem, setActiveItem] = useState<
-    "홈" | "실 조회" | "실 이동 관리" | "결석자 조회"
+    "홈" | "반별 조회" | "실 이동 관리" | "결석자 조회"
   >("홈");
 
   const handleLogoClick = () => {
@@ -21,7 +21,7 @@ const Header = () => {
     if (location.pathname === "/") {
       setActiveItem("홈");
     } else if (location.pathname === "/attends") {
-      setActiveItem("실 조회");
+      setActiveItem("반별 조회");
     } else if (location.pathname === "/shifts") {
       setActiveItem("실 이동 관리");
     } else if (location.pathname === "/not-attend") {
@@ -38,8 +38,8 @@ const Header = () => {
             <S.MenuItem to="/" active={activeItem === "홈"}>
               홈
             </S.MenuItem>
-            <S.MenuItem to="/attends" active={activeItem === "실 조회"}>
-              실 조회
+            <S.MenuItem to="/attends" active={activeItem === "반별 조회"}>
+              반별 조회
             </S.MenuItem>
             <S.MenuItem to="/shifts" active={activeItem === "실 이동 관리"}>
               실 이동 관리
