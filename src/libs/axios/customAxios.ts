@@ -71,15 +71,20 @@ bbeepAxios.interceptors.response.use(
           isRefreshing = true;
 
           try {
-            const { data } = await axios.get<BaseResponse<TokenResponse>>(
+            const { data } = await axios.post<BaseResponse<TokenResponse>>(
               `${
                 import.meta.env.VITE_API_URL
-              }/auth/refresh?refreshToken=${refreshToken}`
+              }/auth/refresh`,
+              {
+                refreshToken
+              }
             );
 
             const newAccessToken = data.data.accessToken;
+            const newRefreshToken = data.data.refreshToken;
 
             localStorage.setItem(ACCESS_TOKEN_KEY, newAccessToken);
+            localStorage.setItem(REFRESH_TOKEN_KEY, newRefreshToken);
 
             onRefreshed(newAccessToken);
 

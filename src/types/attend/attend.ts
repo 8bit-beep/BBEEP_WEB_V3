@@ -1,21 +1,8 @@
-import { Clubs } from "../clubs/clubs";
-
-interface AttendTime {
-  time?: string;
-  room?: string;
-  type?: string;
-}
-
-interface AttendedTimes {
-  "8": AttendTime;
-  "10": AttendTime;
-  "11": AttendTime;
-}
+import {AttendStatus} from "../enums/AttendStatus.ts";
 
 export interface Attend {
   studentId: string;
   username: string;
-  club: Clubs;
-  attendedTimes: AttendedTimes;
-  isAttended: boolean;
+  fixedRoom: string;
+  status: AttendStatus;
 }

@@ -1,24 +1,26 @@
-import { useEffect, useState } from "react";
-import { Option } from "../../types/props/dropdownProps";
-import { useGetAttendsByRoomQuery } from "../../queries/attends/getAttendsByRoom";
-import { ROOMS } from "../../constants/rooms/rooms";
-import { RoomOption } from "../../types/rooms/roomOption";
+import {useEffect, useState} from "react";
+import {RoomName} from "../../types/enums/roomName.ts";
+import {useGetAttendsByRoomQuery} from "../../queries/attends/getAttendsByRoom.ts";
 
-export const useGetAttendsByRoom = (floor: Option) => {
-  const [room, setRoom] = useState<RoomOption>(ROOMS[0]);
-  const attendsData = useGetAttendsByRoomQuery(room);
-
+export const useGetAttendsByRoom = (room: RoomName | null) => {
+  const [loading, setLoading] = useState(false);
+  const { data, isLoading } = useGetAttendsByRoomQuery(room);
+  
   useEffect(() => {
-    setRoom(floor.value === "ALL" ? ROOMS[0] : ROOMS.filter((item) => item.floor === floor.value)[0]);
-  }, [floor.value]);
-
-  const handleRoom = (e: RoomOption) => {
-    setRoom(e);
-  };
-
+    if (isLoading) {
+      setLoading(true);
+      return;
+    }
+    
+    const timeout = setTimeout(() => {
+      setLoading(false);
+    }, 500);
+    
+    return () => clearTimeout(timeout);
+  }, [isLoading]);
+  
   return {
-    room,
-    handleRoom,
-    attendsData,
-  };
-};
+    data,
+    isLoading: isLoading || loading,
+  }
+}

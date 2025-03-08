@@ -1,0 +1,15 @@
+export type RoomName =
+  | "PROJECT3"
+  | "PROJECT4"
+  | "LAB1"
+  | "LAB2"
+  | "LAB3"
+  | "LAB4"
+  | "LAB5"
+  | "LAB6"
+  | "LAB7"
+  | "LAB8"
+  | "LAB9"
+  | "LAB10"
+  | "LAB11"
+  | "SERVER";

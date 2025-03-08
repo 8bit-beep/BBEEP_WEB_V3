@@ -1,20 +1,23 @@
 import { useQuery } from "@tanstack/react-query";
-
 import bbeepAxios from "../../libs/axios/customAxios";
-import { BaseResponse } from "../../types/response/baseResponse";
 import { Attend } from "../../types/attend/attend";
-import { RoomOption } from "../../types/rooms/roomOption";
+import {RoomName} from "../../types/enums/roomName.ts";
+import {ACCESS_TOKEN_KEY} from "../../constants/token/token.ts";
 
-export const useGetAttendsByRoomQuery = (room: RoomOption) => {
+export const useGetAttendsByRoomQuery = (room: RoomName | null) => {
+  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  
   const fetchData = async () => {
-    const { data } = await bbeepAxios.get<BaseResponse<Attend[]>>(`/attends/rooms?room=${room.value}`);
-    return data.data;
+    const { data } = await bbeepAxios.get<Attend[]>(`/students/room?roomName=${room}`);
+    return data;
   };
 
-  const { data } = useQuery({
-    queryKey: ["getAttendsByRoom", room.value],
+  const { data, isLoading } = useQuery({
+    queryKey: ["getAttendsByRoom", room],
     queryFn: fetchData,
+    enabled: !!accessToken && !!room,
   });
+  
 
-  return data;
+  return { data, isLoading };
 };
