@@ -4,5 +4,8 @@ export interface Attend {
   studentId: string;
   username: string;
   fixedRoom: string;
-  status: AttendStatus;
+  statuses: {
+    period: number;
+    status: AttendStatus;
+  }[];
 }

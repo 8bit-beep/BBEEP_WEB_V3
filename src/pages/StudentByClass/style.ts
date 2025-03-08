@@ -75,40 +75,18 @@ export const TableContent = styled.div`
   padding: 2.2rem 5rem;
 `;
 
-export const TableItem = styled.div`
+
+export const ListGap = styled.div`
   width: 100%;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-`;
-
-export const TableItemContent = styled.p<{
-  $flex: string;
-  $notCenter?: boolean;
-}>`
-  font-size: 1.6rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  flex: ${({ $flex }) => $flex};
-  justify-content: ${({ $notCenter }) => ($notCenter ? "" : "center")};
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-`;
-
-export const Attended = styled.span<{ $isAttended: boolean }>`
-  font-size: 1.6rem;
-  font-weight: 600;
-  color: ${({ $isAttended }) => ($isAttended ? COLOR.Serve : COLOR.Red)};
-`;
+  margin-bottom: 1rem;
+`
 
 export const NoContent = styled.div`
   width: 100%;
-  height: 10rem;
+  height: 20rem;
   display: flex;
-  justify-content: center;
   align-items: center;
-  font-size: 1.6rem;
+  justify-content: center;
+  font-size: 2rem;
   color: ${COLOR.Gray};
 `

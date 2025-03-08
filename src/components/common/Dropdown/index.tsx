@@ -32,7 +32,10 @@ const Dropdown = ({ value, setValue, options }: DropdownProps) => {
             <S.Option
               $isSelected={value.value === item.value}
               key={item.value}
-              onClick={() => setValue(item)}
+              onClick={() => {
+                setValue(item);
+                setIsOpened(false);
+              }}
             >
               {item.name}
             </S.Option>

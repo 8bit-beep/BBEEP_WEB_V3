@@ -20,5 +20,7 @@ export const parseAttendStatus = (attend: AttendStatus) => {
       return "실 이동 출석"
     case "SHIFT_NOT_ATTEND":
       return "실 이동 미출석"
+    default:
+      return "기타"
   }
 }

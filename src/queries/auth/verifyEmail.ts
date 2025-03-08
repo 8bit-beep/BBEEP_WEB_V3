@@ -18,6 +18,7 @@ export const useVerifyEmailMutation = () => {
             email: signupData.email,
             code: signupData.code,
           },
+          headers: { "Content-Type": "application/json", 'ngrok-skip-browser-warning': '69420', },
         }
       );
       return data;
