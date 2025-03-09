@@ -31,7 +31,7 @@ export const useSignUpMutation = () => {
       );
       return data;
     },
-    onError: (err: any) => {
+    onError: (err) => {
       setError(err);
       notification.open({
         message: "오류가 발생했습니다.",
