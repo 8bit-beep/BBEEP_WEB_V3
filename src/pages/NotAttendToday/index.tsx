@@ -25,10 +25,9 @@ const NotAttendToday = () => {
           <S.TableColumn $flex="1">학번</S.TableColumn>
           <S.TableColumn $flex="1">이름</S.TableColumn>
           <S.TableColumn $flex="1">실</S.TableColumn>
-          <S.TableColumn $notCenter $flex="1">
+          <S.TableColumn $notCenter $flex="8">
             불참 교시
           </S.TableColumn>
-          <S.TableColumn $notCenter $flex="7" />
         </S.TableHead>
         <S.TableContent>
           {
