@@ -11,7 +11,7 @@ import ExcelItem from "../../components/ExcelItem";
 const Excel = () => {
   const currentMonth = new Date().getMonth();
   const [year, setYear] = useState<Option>({ name: "2025년", value: "2025" });
-  const [month, setMonth] = useState<Option>({ name: `${currentMonth+1}월`, value: `${currentMonth+1}월` });
+  const [month, setMonth] = useState<Option>({ name: `${currentMonth+1}월`, value: `${currentMonth+1}` });
   
   const handleYear = (option: Option) => {
     setYear(option);
