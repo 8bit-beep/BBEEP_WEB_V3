@@ -18,12 +18,12 @@ export const useVerifyEmailMutation = () => {
             email: signupData.email,
             code: signupData.code,
           },
-          headers: { "Content-Type": "application/json", 'ngrok-skip-browser-warning': '69420', },
+          headers: { "Content-Type": "application/json", withCredentials: true },
         }
       );
       return data;
     },
-    onError: (err: any) => {
+    onError: (err) => {
       setError(err);
       notification.open({
         message: "이메일 인증에 실패했습니다.",

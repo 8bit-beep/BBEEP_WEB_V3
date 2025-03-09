@@ -8,6 +8,7 @@ import StudentByClass from "../../pages/StudentByClass";
 import ResetPassword from "../../pages/ResetPassword";
 import SendPasswordPage from "../../pages/SendPassword";
 import NotAttendToday from "../../pages/NotAttendToday";
+import Excel from "../../pages/Excel";
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
           <Route path="/shifts" element={<Shifts />} />
           <Route path="/classes" element={<StudentByClass />} />
           <Route path="/not-attend" element={<NotAttendToday />} />
+          <Route path="/excel" element={<Excel />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
