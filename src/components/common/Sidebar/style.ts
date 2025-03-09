@@ -11,6 +11,13 @@ export const Container = styled.div`
   padding: 1.6rem;
 `
 
+export const SidebarHeader = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+`
+
 export const RoomName = styled.p`
   font-size: 2.5rem;
   font-weight: 500;
@@ -38,4 +45,16 @@ export const NoContent = styled.div`
   justify-content: center;
   font-size: 2rem;
   color: ${COLOR.Gray};
+`
+
+export const Refetch = styled.div`
+  padding: 0.8rem 1.6rem;
+  color: ${COLOR.Main};
+  background: ${COLOR.Background};
+  border-radius: 100rem;
+  transition: all 0.3s;
+  font-size: 1.4rem;
+  &:active {
+    transform: scale(0.95);
+  }
 `

@@ -12,12 +12,12 @@ export const useGetAttendsByRoomQuery = (room: RoomName | null) => {
     return data;
   };
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, refetch } = useQuery({
     queryKey: ["getAttendsByRoom", room],
     queryFn: fetchData,
     enabled: !!accessToken && !!room,
   });
   
 
-  return { data, isLoading };
+  return { data, isLoading, refetch };
 };

@@ -4,7 +4,7 @@ import {useGetAttendsByRoomQuery} from "../../queries/attends/getAttendsByRoom.t
 
 export const useGetAttendsByRoom = (room: RoomName | null) => {
   const [loading, setLoading] = useState(false);
-  const { data, isLoading } = useGetAttendsByRoomQuery(room);
+  const { data, isLoading, refetch } = useGetAttendsByRoomQuery(room);
   
   useEffect(() => {
     if (isLoading) {
@@ -22,5 +22,6 @@ export const useGetAttendsByRoom = (room: RoomName | null) => {
   return {
     data,
     isLoading: isLoading || loading,
+    refetch,
   }
 }
