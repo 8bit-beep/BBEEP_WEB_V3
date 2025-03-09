@@ -6,9 +6,16 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   background-color: #323A45;
-  padding: 0 124px;
   justify-content: center;
 `;
+
+export const FooterContainer = styled.div`
+  max-width: 160rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
 
 export const Logo = styled.img`
   width: 49px;

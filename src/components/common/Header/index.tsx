@@ -31,6 +31,9 @@ const Header = () => {
             <S.MenuItem to="not-attend" active={location.pathname === "/not-attend"}>
               결석자 조회
             </S.MenuItem>
+            <S.MenuItem to="excel" active={location.pathname === "/excel"}>
+              엑셀 다운로드
+            </S.MenuItem>
           </S.Menu>
         </S.MenuWrap>
         <S.ProfileWrap>

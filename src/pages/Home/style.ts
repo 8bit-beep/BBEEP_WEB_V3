@@ -21,14 +21,15 @@ export const ToggleWrap = styled.div`
   background: ${COLOR.White};
   border-radius: 0.8rem;
   position: fixed;
-  top: 10rem;
+  top: 8rem;
   left: 1rem;
   gap: 0.4rem;
+  border: 0.1rem solid ${COLOR.Main};
 `
 
 export const ToggleItem = styled.div<{ $isFocused: boolean }>`
   flex: 1;
-  padding: 0.4rem 0;
+  padding: 0.8rem 0;
   background: ${({ $isFocused }) => $isFocused ? COLOR.Main : COLOR.White};
   font-size: 1.6rem;
   color: ${({ $isFocused }) => $isFocused ? COLOR.White : COLOR.Black};
