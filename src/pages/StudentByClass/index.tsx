@@ -60,9 +60,7 @@ const StudentByClass = () => {
         <S.TableContent>
           {
             isLoading ? Array.from({length: 4}).map((_, idx) => (
-              <S.ListGap key={idx}>
-                <Skeleton width="100%" height="5rem" borderRadius="0.8rem" />
-              </S.ListGap>
+                <Skeleton width="100%" height="5rem" borderRadius="0.8rem" key={idx} />
             )) : data && data.length > 0 ? data?.map((item) => (
               <S.ListGap key={item.studentId}>
                 <ClassStudent data={item} />

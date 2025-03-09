@@ -1,6 +1,7 @@
 import {RoomIndicatorProps} from "../../types/props/roomIndicatorProps.ts";
 import * as S from './style.ts'
 import {useSidebarDataStore} from "../../store/sidebar/useSidebarDataStore.ts";
+import {parseRoomName} from "../../utils/parseRoomName.ts";
 
 const RoomIndicator = ({ room, top, left }: RoomIndicatorProps) => {
   const { setSidebarData } = useSidebarDataStore();
@@ -16,7 +17,7 @@ const RoomIndicator = ({ room, top, left }: RoomIndicatorProps) => {
       id={room}
       onClick={handleOpen}
     >
-      <S.Label>{room}</S.Label>
+      <S.Label>{parseRoomName(room)}</S.Label>
     </S.IndicatorContainer>
   );
 };

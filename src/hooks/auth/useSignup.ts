@@ -1,7 +1,7 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import { useSignupDataStore } from "../../store/signup/useSignupDataStore";
 import { useLoadingStore } from "../../store/global/useLoadingStore";
-import { useSignUpMutation } from "../../queries/auth/signup";
+import { useSignUpMutation } from "../../queries/auth/signup.ts";
 import { useVerifyEmailMutation } from "../../queries/auth/verifyEmail";
 import { useSendEmailMutation } from "../../queries/auth/sendEmail";
 import { useErrorStore } from "../../store/global/useErrorStore";

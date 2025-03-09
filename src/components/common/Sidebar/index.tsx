@@ -5,6 +5,7 @@ import {useGetAttendsByRoom} from "../../../hooks/attends/useGetAttendsByRoom.ts
 import AttendStudent from "../../students/AttendStudent";
 import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
+import {parseRoomName} from "../../../utils/parseRoomName.ts";
 
 const Sidebar = () => {
   const { sidebarData, setSidebarData } = useSidebarDataStore();
@@ -17,7 +18,7 @@ const Sidebar = () => {
   
   return (
     <S.Container>
-      <S.RoomName>{sidebarData} 인원</S.RoomName>
+      <S.RoomName>{parseRoomName(sidebarData || "NOTFOUND")} 인원</S.RoomName>
       <S.StudentsWrap>
         {
           isLoading ? Array.from({length: 4}).map((_, idx) => (

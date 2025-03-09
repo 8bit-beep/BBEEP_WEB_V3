@@ -3,8 +3,8 @@ export interface Shift {
   studentId: string;
   username: string;
   fixedRoom: string;
-  room: string;
+  shiftRoom: string;
   period: 8 | 10 | 11;
-  cause: string;
-  type: "WAITING" | "ALLOWED" | "NOT_ALLOWED";
+  reason: string;
+  status: "WAITING" | "APPROVED" | "REJECTED";
 }

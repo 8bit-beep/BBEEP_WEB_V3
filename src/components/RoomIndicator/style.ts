@@ -28,4 +28,7 @@ export const Label = styled.p`
   justify-content: center;
   font-weight: 700;
   font-size: 1.5rem;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
 `;

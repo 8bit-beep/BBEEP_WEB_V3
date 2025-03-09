@@ -3,6 +3,16 @@ import { COLOR } from "../../style/color/color";
 
 export const Container = styled.div`
   width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${COLOR.Background};
+  padding: 3.4rem;
+`;
+
+export const ContentWrap = styled.div`
+  width: 100%;
   max-width: 100rem;
   height: 100%;
   background-color: ${COLOR.White};
@@ -18,10 +28,6 @@ export const ContentHeaderWrap = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-`;
-
-export const Spacer = styled.div`
-  flex: 1;
 `;
 
 export const Title = styled.p`
@@ -65,27 +71,7 @@ export const TableContent = styled.div`
   padding: 2.2rem 5rem;
 `;
 
-export const TableItem = styled.div`
-  width: 100%;
-  display: flex;
-  gap: 2rem;
-  align-items: center;
-`;
 
-export const TableItemContent = styled.p<{
-  $flex: string;
-  $notCenter?: boolean;
-}>`
-  font-size: 1.6rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  flex: ${({ $flex }) => $flex};
-  justify-content: ${({ $notCenter }) => ($notCenter ? "" : "center")};
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-`;
 
 export const NoContent = styled.div`
   width: 100%;

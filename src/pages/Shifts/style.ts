@@ -134,15 +134,19 @@ export const NoContent = styled.div`
 `;
 
 
-export const Status = styled.p<{ $isApproved: boolean }>`
-  font-size: 1.6rem;
+export const Status = styled.div`
   height: 3rem;
   display: flex;
   align-items: center;
-  color: ${({$isApproved})=>$isApproved ? COLOR.Main : COLOR.Red};
   flex: 2;
   justify-content: center;
+  gap: 1rem;
+`;
+
+export const StatusText = styled.p<{ $isApproved: boolean }>`
+  color: ${({$isApproved})=> $isApproved ? COLOR.Main : COLOR.Red};
+  font-size: 1.6rem;
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
-`;
+`
