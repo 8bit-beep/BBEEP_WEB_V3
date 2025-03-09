@@ -49,3 +49,7 @@ export const MenuItem = styled(Link)<{ active: boolean }>`
   padding: 2.5rem 1rem 0 1rem;
   border-bottom: ${({ active })=> active ? "2px" : "0px"} solid ${COLOR.Main};
 `;
+
+export const ProfileWrap = styled.div`
+  width: 14rem;
+`

@@ -5,8 +5,6 @@ import Login from "../../pages/Login";
 import Signup from "../../pages/Signup";
 import Shifts from "../../pages/Shifts";
 import StudentByClass from "../../pages/StudentByClass";
-import NotAttendLayout from "../../layouts/NotAttendLayout";
-import NotAttend from "../../pages/NotAttend";
 import ResetPassword from "../../pages/ResetPassword";
 import SendPasswordPage from "../../pages/SendPassword";
 import NotAttendToday from "../../pages/NotAttendToday";
@@ -18,11 +16,8 @@ const Router = () => {
         <Route path="/" element={<RootLayout />}>
           <Route index element={<Home />} />
           <Route path="/shifts" element={<Shifts />} />
-          <Route path="/attends" element={<StudentByClass />} />
-          <Route path="not-attend" element={<NotAttendLayout />}>
-            <Route index element={<NotAttend />} />
-            <Route path="today" element={<NotAttendToday />} />
-          </Route>
+          <Route path="/classes" element={<StudentByClass />} />
+          <Route path="/not-attend" element={<NotAttendToday />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />

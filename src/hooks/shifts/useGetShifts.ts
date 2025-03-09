@@ -1,9 +1,9 @@
-import { useGetNotAttendsQuery } from "../../queries/attends/getNotAttends";
 import {useEffect, useState} from "react";
+import {useGetShiftsQuery} from "../../queries/shifts/getShifts.ts";
 
-export const useGetNotAttends = () => {
+export const useGEtShifts = () => {
   const [loading, setLoading] = useState(false);
-  const { data, isLoading } = useGetNotAttendsQuery();
+  const { data, isLoading } = useGetShiftsQuery()
   
   useEffect(() => {
     if (isLoading) {
@@ -19,9 +19,9 @@ export const useGetNotAttends = () => {
       clearTimeout(timeout);
     }
   },[isLoading]);
-
+  
   return {
     data,
-    isLoading: isLoading && loading,
+    isLoading : isLoading && loading,
   }
-};
+}

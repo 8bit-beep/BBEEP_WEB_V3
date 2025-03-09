@@ -1,20 +1,20 @@
 import { useQuery } from "@tanstack/react-query";
 import bbeepAxios from "../../libs/axios/customAxios";
-import { NotAttend } from "../../types/attend/notAttend";
-import { BaseResponse } from "../../types/response/baseResponse";
+import {Attend} from "../../types/attend/attend.ts";
 
-export const useGetNotAttendsQuery = (isToday: boolean) => {
+export const useGetNotAttendsQuery = () => {
   const fetchData = async () => {
-    const { data } = await bbeepAxios.get<BaseResponse<NotAttend[]>>(
-      `/not-attends?isToday=${isToday}`
-    );
-    return data.data;
+    const { data } = await bbeepAxios.get<Attend[]>(`/students/not-attend`);
+    return data;
   };
 
-  const { data } = useQuery({
-    queryKey: ["getNotAttends", isToday],
+  const { data, isLoading } = useQuery({
+    queryKey: ["getNotAttends"],
     queryFn: fetchData,
   });
 
-  return data;
+  return {
+    data,
+    isLoading,
+  };
 };
