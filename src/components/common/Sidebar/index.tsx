@@ -9,7 +9,7 @@ import {parseRoomName} from "../../../utils/parseRoomName.ts";
 
 const Sidebar = () => {
   const { sidebarData, setSidebarData } = useSidebarDataStore();
-  const { data, isLoading } = useGetAttendsByRoom(sidebarData);
+  const { data, isLoading, refetch } = useGetAttendsByRoom(sidebarData);
   const location = useLocation();
   
   useEffect(() => {
@@ -18,7 +18,11 @@ const Sidebar = () => {
   
   return (
     <S.Container>
-      <S.RoomName>{parseRoomName(sidebarData || "NOTFOUND")} 인원</S.RoomName>
+      <S.SidebarHeader>
+        <S.RoomName>{parseRoomName(sidebarData || "NOTFOUND")} 인원</S.RoomName>
+        <S.Refetch onClick={() => refetch()}>새로고침</S.Refetch>
+      </S.SidebarHeader>
+      
       <S.StudentsWrap>
         {
           isLoading ? Array.from({length: 4}).map((_, idx) => (
