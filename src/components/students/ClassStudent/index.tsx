@@ -8,6 +8,8 @@ import {attendStatusOption} from "../../../constants/attendStatus/attendStatusOp
 import {useUpdateAcceptedStatus} from "../../../queries/class/updateAcceptedStatus.ts";
 import {decodeStudentId} from "../../../utils/decodeStudentId.ts";
 import {AttendStatus} from "../../../types/enums/AttendStatus.ts";
+import {parseRoomName} from "../../../utils/parseRoomName.ts";
+import {RoomName} from "../../../types/enums/roomName.ts";
 
 const ClassStudent = ({ data }: ClassStudentProps) => {
   const [eight, setEight] = useState<Option>({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status });
@@ -41,7 +43,7 @@ const ClassStudent = ({ data }: ClassStudentProps) => {
     <S.Container>
       <S.Column $flex="1">{data.studentId}</S.Column>
       <S.Column $flex="1">{data.username}</S.Column>
-      <S.Column $flex="1">{data.fixedRoom}</S.Column>
+      <S.Column $flex="1">{parseRoomName(data.fixedRoom as RoomName)}</S.Column>
       <S.Column $flex="2">
         <Dropdown setValue={(option: Option) => handleStatusByTime(option, "8")} value={eight} options={attendStatusOption} />
       </S.Column>
