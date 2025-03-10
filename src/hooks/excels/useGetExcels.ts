@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {useGetExcelsQuery} from "../../queries/excel/getExcels.ts";
 
 export const useGetExcels = (year: string, month: string) => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const { data, isLoading } = useGetExcelsQuery(year, month);
   
   useEffect(() => {
@@ -22,6 +22,6 @@ export const useGetExcels = (year: string, month: string) => {
   
   return {
     data,
-    isLoading: isLoading && loading,
+    isLoading: isLoading || loading,
   }
 }

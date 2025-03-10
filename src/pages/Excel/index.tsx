@@ -38,19 +38,15 @@ const Excel = () => {
           <Dropdown setValue={handleYear} value={year} options={[{ name: "2025년", value: "2025" }]} />
           <Dropdown setValue={handleMonth} value={month} options={monthOption} />
         </S.ContentHeaderWrap>
-        {
-          data && data.length > 0 ? (
             <S.Grid>
               {
                 isLoading ? Array.from({ length: 4 }).map((_, idx) => (
-                  <Skeleton key={idx} width="100%" height="16rem" borderRadius="0.8rem" />
-                )) : data.map((item) => (
+                  <Skeleton key={idx} width="100%" height="24rem" borderRadius="0.8rem" />
+                )) : data && data.length > 0 ? data.map((item) => (
                   <ExcelItem fileName={item} key={item} />
-                ))
+                )) : <S.NoContent>출석 기록이 없습니다.</S.NoContent>
               }
             </S.Grid>
-          ): <S.NoContent>출석 기록이 없습니다.</S.NoContent>
-        }
       </S.ContentWrap>
     </S.Container>
   )

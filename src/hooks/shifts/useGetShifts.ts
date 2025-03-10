@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import {useGetShiftsQuery} from "../../queries/shifts/getShifts.ts";
 
-export const useGEtShifts = () => {
+export const useGetShifts = () => {
   const [loading, setLoading] = useState(false);
   const { data, isLoading } = useGetShiftsQuery()
   
@@ -22,6 +22,6 @@ export const useGEtShifts = () => {
   
   return {
     data,
-    isLoading : isLoading && loading,
+    isLoading : isLoading || loading,
   }
 }

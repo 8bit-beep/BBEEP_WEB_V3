@@ -14,7 +14,6 @@ import {Check, X} from "lucide-react";
 import {COLOR} from "../../../style/color/color.ts";
 
 const NotAttendStudent = ({ data }: AttendStudentProps) => {
-  console.log(data);
   const [attend, setAttend] = useState<Option>({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status });
   
   const { grade, cls, number } = decodeStudentId(data.studentId);
@@ -41,7 +40,7 @@ const NotAttendStudent = ({ data }: AttendStudentProps) => {
         {
           attend.value !== data.statuses[0].status && (
             <>
-              <S.Save onClick={() => save.mutate()}>
+              <S.Save onClick={() => save.mutateAsync().then(() => setAttend({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status }))}>
                 <Check color={COLOR.Green} size={16} />
               </S.Save>
               <S.Clear onClick={() => setAttend({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status })}>

@@ -22,6 +22,6 @@ export const useGetStudentByClass = (grade: string, cls: string) => {
   
   return {
     data,
-    isLoading : isLoading && loading,
+    isLoading : isLoading || loading,
   }
 }

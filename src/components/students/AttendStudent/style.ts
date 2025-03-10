@@ -1,12 +1,12 @@
 import styled from "@emotion/styled";
 import {COLOR} from "../../../style/color/color.ts";
 
-export const Container = styled.div`
+export const Container = styled.div<{ $isNotAttend: boolean }>`
   width: 100%;
   padding: 1.4rem;
   display: flex;
   align-items: center;
-  background: white;
+  background: ${({ $isNotAttend }) => $isNotAttend ? COLOR.LightGray : COLOR.White};
   border-radius: 0.8rem;
   gap: 0.8rem;
 `
@@ -16,8 +16,9 @@ export const StudentId = styled.p`
   color: ${COLOR.Gray};
 `
 
-export const StudentName = styled.p`
+export const StudentName = styled.p<{ $isNotAttend: boolean }>`
   font-size: 1.8rem;
+  color: ${({ $isNotAttend }) => $isNotAttend ? "#666" : COLOR.Black};
 `
 
 export const Spacer = styled.div`
