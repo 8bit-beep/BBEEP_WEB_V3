@@ -43,7 +43,7 @@ const ClassStudent = ({ data }: ClassStudentProps) => {
     <S.Container>
       <S.Column $flex="1">{data.studentId}</S.Column>
       <S.Column $flex="1">{data.username}</S.Column>
-      <S.Column $flex="1">{parseRoomName(data.fixedRoom as RoomName)}</S.Column>
+      <S.Column $flex="2.2">{parseRoomName(data.fixedRoom as RoomName)}</S.Column>
       <S.Column $flex="2">
         <Dropdown setValue={(option: Option) => handleStatusByTime(option, "8")} value={eight} options={attendStatusOption} />
       </S.Column>

@@ -52,7 +52,7 @@ const StudentByClass = () => {
         <S.TableHead>
           <S.TableColumn $flex="1">학번</S.TableColumn>
           <S.TableColumn $flex="1">이름</S.TableColumn>
-          <S.TableColumn $flex="1">실</S.TableColumn>
+          <S.TableColumn $flex="2.2">실</S.TableColumn>
           <S.TableColumn $flex="2">8~9교시 출석</S.TableColumn>
           <S.TableColumn $flex="2">10~11교시 출석</S.TableColumn>
           <S.TableColumn $flex="2">최종 출석</S.TableColumn>
