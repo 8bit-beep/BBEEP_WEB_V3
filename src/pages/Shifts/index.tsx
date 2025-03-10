@@ -1,4 +1,3 @@
-import { useGetShiftsQuery } from "../../queries/shifts/getShifts";
 import * as S from "./style";
 import ThemedIcon from "../../components/common/ThemedIcon";
 import {parseRoomName} from "../../utils/parseRoomName.ts";
@@ -7,9 +6,10 @@ import {useUpdateShiftStatus} from "../../queries/shifts/useUpdateShiftStatus.ts
 import {XCircle} from "lucide-react";
 import {COLOR} from "../../style/color/color.ts";
 import Skeleton from "../../components/common/Skeleton";
+import {useGetShifts} from "../../hooks/shifts/useGetShifts.ts";
 
 const Shifts = () => {
-  const { data, isLoading } = useGetShiftsQuery();
+  const { data, isLoading } = useGetShifts();
   const approve = useUpdateShiftStatus("APPROVED");
   const reject = useUpdateShiftStatus("REJECTED");
   const cancel = useUpdateShiftStatus("WAITING");

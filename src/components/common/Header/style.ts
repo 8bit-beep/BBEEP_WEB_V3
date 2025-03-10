@@ -32,7 +32,7 @@ export const Logo = styled.img`
 export const Menu = styled.nav`
   height: 100%;
   display: flex;
-  gap: 5rem;
+  gap: 2rem;
 `;
 
 export const MenuWrap = styled.div`

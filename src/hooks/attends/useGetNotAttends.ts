@@ -22,6 +22,6 @@ export const useGetNotAttends = () => {
 
   return {
     data,
-    isLoading: isLoading && loading,
+    isLoading: isLoading || loading,
   }
 };

@@ -24,9 +24,9 @@ const AttendStudent = ({ data }: AttendStudentProps) => {
   const save = useUpdateAttendStatusMutation(attendStatus.value as AttendStatus, grade, cls, number, data.fixedRoom as RoomName)
   
   return (
-    <S.Container>
+    <S.Container $isNotAttend={data.statuses[0].status === "NOT_ATTEND" || data.statuses[0].status === "SHIFT_NOT_ATTEND"}>
       <S.StudentId>{data.studentId}</S.StudentId>
-      <S.StudentName>{data.username}</S.StudentName>
+      <S.StudentName $isNotAttend={data.statuses[0].status === "NOT_ATTEND" || data.statuses[0].status === "SHIFT_NOT_ATTEND"}>{data.username}</S.StudentName>
       <S.Spacer />
       <Dropdown setValue={handleAttendStatus} value={attendStatus} options={attendStatusOption} />
       {
