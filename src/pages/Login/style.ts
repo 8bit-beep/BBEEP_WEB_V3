@@ -43,15 +43,3 @@ export const FormWrap = styled(ImgWrap)`
   justify-content: flex-start;
   background-image: none;
 `;
-
-export const LogoWrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 15rem;
-`;
-
-export const Logo = styled.img`
-  width: 8rem;
-`;

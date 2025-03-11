@@ -7,9 +7,6 @@ const Login = () => {
       <S.Form>
         <S.ImgWrap />
         <S.FormWrap>
-          <S.LogoWrap>
-            <S.Logo src="/assets/Logo.svg" />
-          </S.LogoWrap>
           <LoginForm />
         </S.FormWrap>
       </S.Form>
