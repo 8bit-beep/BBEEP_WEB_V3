@@ -37,8 +37,6 @@ export const Button = styled.div`
   color: white;
   width: 80%;
   height: 5rem;
-  font-size: 2rem;
-  font-weight: 900;
   gap: 1rem;
   display: flex;
   justify-content: center;
@@ -46,6 +44,11 @@ export const Button = styled.div`
   border-radius: 0.6rem;
   align-self: center;
   cursor: pointer;
+`;
+
+export const ButtonText = styled.p`
+  font-size: 2rem;
+  font-weight: bolder;
 `;
 
 export const DodamLogo = styled.img`
