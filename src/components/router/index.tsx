@@ -6,6 +6,7 @@ import Shifts from "../../pages/Shifts";
 import StudentByClass from "../../pages/StudentByClass";
 import NotAttendToday from "../../pages/NotAttendToday";
 import Excel from "../../pages/Excel";
+import Dauth from "../../pages/Dauth";
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
           <Route path="/excel" element={<Excel />} />
         </Route>
         <Route path="/login" element={<Login />} />
+        <Route path="/callback/dauth" element={<Dauth />} />
       </Routes>
     </BrowserRouter>
   );
