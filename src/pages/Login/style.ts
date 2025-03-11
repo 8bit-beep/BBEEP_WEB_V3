@@ -3,8 +3,7 @@ import { COLOR } from "../../style/color/color";
 
 export const Container = styled.div`
   width: 100%;
-  height: 100dvh;
-  min-height: 100vh;
+  height: 100svh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -35,11 +34,12 @@ export const ImgWrap = styled.div`
 
 export const FormWrap = styled(ImgWrap)`
   background-color: ${COLOR.LoginBackground};
-  padding: 3.2rem 1.2rem;
+  padding: 1.2rem 1.2rem;
   display: flex;
   flex-direction: column;
-  gap: 5rem;
+  gap: 3rem;
   overflow: auto;
   justify-content: flex-start;
+  align-items: flex-end;
   background-image: none;
 `;
