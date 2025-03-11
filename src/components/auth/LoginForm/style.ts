@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import {Link} from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
@@ -32,7 +33,7 @@ export const Logo = styled.img`
   width: 8rem;
 `;
 
-export const Button = styled.div`
+export const Button = styled(Link)`
   background-color: #0083f0;
   color: white;
   width: 80%;
@@ -44,6 +45,7 @@ export const Button = styled.div`
   border-radius: 0.6rem;
   align-self: center;
   cursor: pointer;
+  text-decoration: none;
 `;
 
 export const ButtonText = styled.p`
