@@ -1,1 +1,0 @@
-export const ATTEND_TIME_KEYS = ["8", "10", "11"] as const;
