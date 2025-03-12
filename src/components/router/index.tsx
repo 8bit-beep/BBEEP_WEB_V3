@@ -7,6 +7,7 @@ import StudentByClass from "../../pages/StudentByClass";
 import NotAttendToday from "../../pages/NotAttendToday";
 import Excel from "../../pages/Excel";
 import Dauth from "../../pages/Dauth";
+import Forbidden from "../../pages/Forbidden";
 
 const Router = () => {
   return (
@@ -21,6 +22,7 @@ const Router = () => {
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/callback/dauth" element={<Dauth />} />
+        <Route path="/forbidden" element={<Forbidden />} />
       </Routes>
     </BrowserRouter>
   );
