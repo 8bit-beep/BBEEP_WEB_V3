@@ -49,7 +49,7 @@ const Shifts = () => {
                   {item.username}
                 </S.TableItemContent>
                 <S.TableItemContent $flex="2">
-                  {parseRoomName(item.fixedRoom as RoomName)} {"->"} {parseRoomName(item.shiftRoom as RoomName)}
+                  {parseRoomName(item.shiftRoom as RoomName)}
                 </S.TableItemContent>
                 <S.TableItemContent $flex="2">
                   {item.period}교시
