@@ -120,7 +120,7 @@ export const TableItemContent = styled.p<{
   justify-content: ${({ $notCenter }) => ($notCenter ? "" : "center")};
   text-overflow: ellipsis;
   white-space: nowrap;
-  overflow: hidden;
+  overflow: scroll;
 `;
 
 export const NoContent = styled.div`
