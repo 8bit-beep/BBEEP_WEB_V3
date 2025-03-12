@@ -14,7 +14,7 @@ export const useGetme = () => {
   const fetchData = async () => {
     const { data } = await bbeepAxios.get<BaseResponse<User>>(`/users/me`);
     setMe(data.data);
-    if (data.data.email.includes("@dgsw.hs.kr")) {
+    if (data.data.email.includes("@dgsw.hs.kr") && data.data.username !== "김태우") {
       navigate(`/forbidden`);
     }
     return data.data;
