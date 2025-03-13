@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import {COLOR} from "../../style/color/color.ts";
 
 export const IndicatorContainer = styled.div<{
   top: string | number;
@@ -8,10 +7,10 @@ export const IndicatorContainer = styled.div<{
   width: 10rem;
   height: 10rem;
   position: absolute;
-  top: ${props => props.top}px;
-  left: ${props => props.left}px;
+  top: ${(props) => props.top}px;
+  left: ${(props) => props.left}px;
   background-color: white;
-  box-shadow: 0 0 0.5rem 0.001rem ${COLOR.Gray};
+  box-shadow: 0 0 0.9rem 0.001rem rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: transform 300ms;
   border-radius: 0.8rem;

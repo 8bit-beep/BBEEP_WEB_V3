@@ -30,6 +30,17 @@ export const ContentHeaderWrap = styled.div`
   gap: 1rem;
 `;
 
+export const HeaderWrap = styled.div`
+display:flex;
+align-items:center;
+gap: 1rem;
+@media (max-width:768px) {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+`
+
 export const Spacer = styled.div`
   flex: 1;
 `;
@@ -38,12 +49,19 @@ export const Title = styled.p`
   font-size: 2.5rem;
   font-weight: 700;
   color: ${COLOR.Black};
+  @media (max-width:768px) {
+    font-size:1.6rem;
+    text-align:center;
+  }
 `;
 
 export const Subtitle = styled.p`
   font-size: 1.2rem;
   font-weight: 400;
   color: ${COLOR.Black};
+  @media (max-width:768px) {
+    display:none;
+  }
 `;
 
 export const TableHead = styled.div`
@@ -61,6 +79,12 @@ export const TableColumn = styled.p<{ $flex: string; $notCenter?: boolean }>`
   color: ${COLOR.White};
   text-align: ${({ $notCenter }) => ($notCenter ? "" : "center")};
 `;
+
+export const TableColumnLast = styled(TableColumn)`
+  @media (max-width:768px) {
+    display:none;
+  }
+`
 
 export const TableContent = styled.div`
   width: 100%;

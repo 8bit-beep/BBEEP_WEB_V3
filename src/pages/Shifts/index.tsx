@@ -18,13 +18,16 @@ const Shifts = () => {
     <S.Container>
       <S.ContentWrap>
         <S.ContentHeaderWrap>
-          <ThemedIcon src="/assets/Lab.svg" width="2.5rem" height="2.5rem" />
-          <div>
-            <S.Title>실 이동 관리</S.Title>
-            <S.Subtitle>
-              현재 실 이동을 대기 중인 학생 목록과 승인 목록을 확인해 보세요!
-            </S.Subtitle>
-          </div>
+          <S.HeaderWrap>
+            <ThemedIcon src="/assets/Lab.svg" width="2.5rem" height="2.5rem" />
+            <div>
+              <S.Title>실 이동 관리</S.Title>
+            
+              <S.Subtitle>
+                현재 실 이동을 대기 중인 학생 목록과 승인 목록을 확인해 보세요!
+              </S.Subtitle>
+            </div>
+          </S.HeaderWrap>
         </S.ContentHeaderWrap>
         <S.TableHead>
           <S.TableColumn $flex="1">학번</S.TableColumn>

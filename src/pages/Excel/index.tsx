@@ -27,13 +27,15 @@ const Excel = () => {
     <S.Container>
       <S.ContentWrap>
         <S.ContentHeaderWrap>
-          <ThemedIcon src="/assets/Lab.svg" width="2.5rem" height="2.5rem" />
-          <div>
-            <S.Title>엑셀 다운로드</S.Title>
-            <S.Subtitle>
-              출석 기록을 다운로드 하세요!
-            </S.Subtitle>
-          </div>
+          <S.HeaderWrap>
+            <ThemedIcon src="/assets/Lab.svg" width="2.5rem" height="2.5rem" />
+            <div>
+              <S.Title>엑셀 다운로드</S.Title>
+              <S.Subtitle>
+                출석 기록을 다운로드 하세요!
+              </S.Subtitle>
+            </div>
+          </S.HeaderWrap>
           <S.Spacer />
           <Dropdown setValue={handleYear} value={year} options={[{ name: "2025년", value: "2025" }]} />
           <Dropdown setValue={handleMonth} value={month} options={monthOption} />

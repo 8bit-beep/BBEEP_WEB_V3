@@ -13,6 +13,7 @@ const NotAttendToday = () => {
     <S.Container>
       <S.ContentWrap>
         <S.ContentHeaderWrap>
+                    <S.HeaderWrap>
           <ThemedIcon src="/assets/Excluded.svg" width="2.5rem" height="2.5rem" />
           <div>
             <S.Title>오늘 불참자 조회하기</S.Title>
@@ -20,6 +21,7 @@ const NotAttendToday = () => {
               아직 출석하지 않은 사람들을 확인해 보세요!
             </S.Subtitle>
           </div>
+          </S.HeaderWrap>
         </S.ContentHeaderWrap>
         <S.TableHead>
           <S.TableColumn $flex="1">학번</S.TableColumn>
