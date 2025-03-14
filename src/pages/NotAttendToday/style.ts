@@ -67,15 +67,17 @@ export const TableHead = styled.div`
   padding: 1rem 5rem;
   background-color: ${COLOR.Dark};
   display: flex;
-  gap: 2rem;
+  justify-content:space-around;
 `;
 
 export const TableColumn = styled.p<{ $flex: string; $notCenter?: boolean }>`
-  flex: ${({ $flex }) => $flex};
   font-size: 2rem;
   font-weight: 600;
   color: ${COLOR.White};
   text-align: ${({ $notCenter }) => ($notCenter ? "" : "center")};
+  @media (max-width:768px) {
+    font-size:1.6rem;
+  }
 `;
 
 export const TableContent = styled.div`

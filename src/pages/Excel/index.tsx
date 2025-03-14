@@ -40,7 +40,7 @@ const Excel = () => {
           <Dropdown setValue={handleYear} value={year} options={[{ name: "2025년", value: "2025" }]} />
           <Dropdown setValue={handleMonth} value={month} options={monthOption} />
         </S.ContentHeaderWrap>
-            <S.Grid>
+            <S.Grid isLoading={isLoading} data={data}>
               {
                 isLoading ? Array.from({ length: 4 }).map((_, idx) => (
                   <Skeleton key={idx} width="100%" height="24rem" borderRadius="0.8rem" />

@@ -78,6 +78,9 @@ export const TableColumn = styled.p<{ $flex: string; $notCenter?: boolean }>`
   font-weight: 600;
   color: ${COLOR.White};
   text-align: ${({ $notCenter }) => ($notCenter ? "" : "center")};
+  @media (max-width:768px) {
+    font-size:1.6rem;
+  }
 `;
 
 export const TableColumnLast = styled(TableColumn)`

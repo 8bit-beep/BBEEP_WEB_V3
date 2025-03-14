@@ -1,6 +1,11 @@
 import styled from "@emotion/styled";
 import { COLOR } from "../../style/color/color";
 
+interface GridProps {
+  isLoading : any;
+  data : any;
+}
+
 export const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -65,7 +70,7 @@ export const Subtitle = styled.p`
 `;
 
 
-export const Grid = styled.div`
+export const Grid = styled.div<GridProps>`
   width: 100%;
   flex: 1;
   overflow: scroll;
@@ -73,6 +78,7 @@ export const Grid = styled.div`
   grid-template-columns: repeat(5, 1fr);
   padding: 1rem;
   gap: 1rem;
+  display:${(props)=>props.isLoading && props.data && props.data.length > 0 ? "block" : "flex"};
 `
 
 export const NoContent = styled.div`
