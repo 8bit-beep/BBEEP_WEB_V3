@@ -1,12 +1,12 @@
 import * as S from "./style";
 import ThemedIcon from "../../components/common/ThemedIcon";
-import {parseRoomName} from "../../utils/parseRoomName.ts";
-import {RoomName} from "../../types/enums/roomName.ts";
-import {useUpdateShiftStatus} from "../../queries/shifts/useUpdateShiftStatus.ts";
-import {XCircle} from "lucide-react";
-import {COLOR} from "../../style/color/color.ts";
+import { parseRoomName } from "../../utils/parseRoomName.ts";
+import { RoomName } from "../../types/enums/roomName.ts";
+import { useUpdateShiftStatus } from "../../queries/shifts/useUpdateShiftStatus.ts";
+import { XCircle } from "lucide-react";
+import { COLOR } from "../../style/color/color.ts";
 import Skeleton from "../../components/common/Skeleton";
-import {useGetShifts} from "../../hooks/shifts/useGetShifts.ts";
+import { useGetShifts } from "../../hooks/shifts/useGetShifts.ts";
 
 const Shifts = () => {
   const { data, isLoading } = useGetShifts();
@@ -39,10 +39,17 @@ const Shifts = () => {
           <S.TableColumn $flex="2">승인 / 거절</S.TableColumn>
         </S.TableHead>
         <S.TableContent>
-          {
-            isLoading ? Array.from({length: 4}).map((_, idx) => (
-              <Skeleton width="100%" height="5rem" borderRadius="0.8rem" key={idx} />
-            )) : data && data.length > 0 ? data?.map((item) => (
+          {isLoading ? (
+            Array.from({ length: 4 }).map((_, idx) => (
+              <Skeleton
+                width="100%"
+                height="5rem"
+                borderRadius="0.8rem"
+                key={idx}
+              />
+            ))
+          ) : data && data.length > 0 ? (
+            data?.map((item) => (
               <S.TableItem key={item.id}>
                 <S.TableItemContent $flex="1">
                   {item.studentId}
@@ -61,18 +68,33 @@ const Shifts = () => {
                 </S.TableItemContent>
                 {item.status === "WAITING" ? (
                   <S.ButtonWrap>
-                    <S.Approve onClick={() => approve.mutate(item.id)}>승인</S.Approve>
-                    <S.Reject onClick={() => reject.mutate(item.id)}>거절</S.Reject>
+                    <S.Approve onClick={() => approve.mutate(item.id)}>
+                      승인
+                    </S.Approve>
+                    <S.Reject onClick={() => reject.mutate(item.id)}>
+                      거절
+                    </S.Reject>
                   </S.ButtonWrap>
                 ) : (
                   <S.Status>
-                    <S.StatusText $isApproved={item.status === "APPROVED"}>{item.status === "APPROVED" ? "승인됨" : item.status === "REJECTED" ?  "거절됨" : "대기중"}</S.StatusText>
-                    <XCircle color={COLOR.Red} onClick={() => cancel.mutate(item.id)} />
+                    <S.StatusText $isApproved={item.status === "APPROVED"}>
+                      {item.status === "APPROVED"
+                        ? "승인됨"
+                        : item.status === "REJECTED"
+                        ? "거절됨"
+                        : "대기중"}
+                    </S.StatusText>
+                    <XCircle
+                      color={COLOR.Red}
+                      onClick={() => cancel.mutate(item.id)}
+                    />
                   </S.Status>
                 )}
               </S.TableItem>
-            )) : <S.NoContent>실 이동 데이터가 없습니다.</S.NoContent>
-          }
+            ))
+          ) : (
+            <S.NoContent>실 이동 데이터가 없습니다.</S.NoContent>
+          )}
         </S.TableContent>
       </S.ContentWrap>
     </S.Container>

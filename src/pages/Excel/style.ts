@@ -29,7 +29,7 @@ export const ContentWrap = styled.div`
 
 export const ContentHeaderWrap = styled.div`
   width: 100%;
-  padding: 2.5rem 4rem;
+  padding: 2.5rem 8rem;
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -53,10 +53,13 @@ export const Spacer = styled.div`
 export const Title = styled.p`
   font-size: 2.5rem;
   font-weight: 700;
+  text-align:center;
   color: ${COLOR.Black};
   @media (max-width:768px) {
     font-size:1.6rem;
-    text-align:center;
+  }
+  @media  (max-width:714px) {
+    font-size:1.2rem;
   }
 `;
 

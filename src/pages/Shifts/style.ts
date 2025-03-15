@@ -52,9 +52,12 @@ export const Title = styled.p`
   font-size: 2.5rem;
   font-weight: 700;
   color: ${COLOR.Black};
+  text-align:center;
   @media (max-width:768px) {
     font-size:1.6rem;
-    text-align:center;
+  }
+  @media  (max-width:714px) {
+    font-size:1.2rem;
   }
 `;
 
