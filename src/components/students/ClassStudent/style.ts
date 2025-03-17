@@ -6,7 +6,7 @@ export const Container = styled.div`
   gap: 2rem;
 `
 
-export const Column = styled.div<{ $flex: string; }>`
+export const Column = styled.div<{ $flex: string }>`
   flex: ${({ $flex }) => $flex};
   font-size: 2rem;
   font-weight: 600;
@@ -14,5 +14,6 @@ export const Column = styled.div<{ $flex: string; }>`
   text-align: center;
   align-items: center;
   justify-content: center;
+
 `;
 
