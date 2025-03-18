@@ -30,7 +30,7 @@ const NotAttendToday = () => {
           <S.TableColumn $flex="1">
             불참 교시
           </S.TableColumn>
-          <S.TableColumn $flex="1">
+          <S.TableColumn $flex="1.2">
           
           </S.TableColumn>
         </S.TableHead>
