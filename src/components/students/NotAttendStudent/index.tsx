@@ -18,9 +18,9 @@ const NotAttendStudent = ({ data }: AttendStudentProps) => {
   
   const save = useUpdateNotAttendStatusMutation(attend.value as AttendStatus, grade, cls, number);
   
-  const handleAttend = (option: Option) => {
+  const handleAttend = async (option: Option) => {
     setAttend(option);
-    save.mutateAsync().then(() => setAttend({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status }))
+    await save.mutateAsync().then(() => setAttend({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status }))
   }
   
   
