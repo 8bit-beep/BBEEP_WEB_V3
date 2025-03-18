@@ -10,8 +10,6 @@ import {parseAttendStatus} from "../../../utils/parseAttendStatus.ts";
 import {useUpdateNotAttendStatusMutation} from "../../../queries/attends/updateNotAttendStatus.ts";
 import {AttendStatus} from "../../../types/enums/AttendStatus.ts";
 import {decodeStudentId} from "../../../utils/decodeStudentId.ts";
-import {Check, X} from "lucide-react";
-import {COLOR} from "../../../style/color/color.ts";
 
 const NotAttendStudent = ({ data }: AttendStudentProps) => {
   const [attend, setAttend] = useState<Option>({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status });
@@ -22,6 +20,7 @@ const NotAttendStudent = ({ data }: AttendStudentProps) => {
   
   const handleAttend = (option: Option) => {
     setAttend(option);
+    save.mutate();
   }
   
   
@@ -37,18 +36,6 @@ const NotAttendStudent = ({ data }: AttendStudentProps) => {
       </S.TableItemContent>
       <S.DropdownWrapper>
         <Dropdown setValue={handleAttend} value={attend} options={attendStatusOption} />
-        {
-          attend.value !== data.statuses[0].status && (
-            <>
-              <S.Save onClick={() => save.mutateAsync().then(() => setAttend({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status }))}>
-                <Check color={COLOR.Green} size={16} />
-              </S.Save>
-              <S.Clear onClick={() => setAttend({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status })}>
-                <X color={COLOR.Red} size={16} />
-              </S.Clear>
-            </>
-          )
-        }
       </S.DropdownWrapper>
     </S.TableItem>
   )

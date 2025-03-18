@@ -34,11 +34,6 @@ export const HeaderWrap = styled.div`
 display:flex;
 align-items:center;
 gap: 1rem;
-@media (max-width:768px) {
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
 `
 
 export const Spacer = styled.div`
@@ -62,9 +57,6 @@ export const Subtitle = styled.p`
   font-size: 1.2rem;
   font-weight: 400;
   color: ${COLOR.Black};
-  @media (max-width:768px) {
-    display:none;
-  }
 `;
 
 export const TableHead = styled.div`
@@ -85,12 +77,6 @@ export const TableColumn = styled.p<{ $flex: string; $notCenter?: boolean }>`
     font-size:1.6rem;
   }
 `;
-
-export const TableColumnLast = styled(TableColumn)`
-  @media (max-width:768px) {
-    display:none;
-  }
-`
 
 export const TableContent = styled.div`
   width: 100%;
