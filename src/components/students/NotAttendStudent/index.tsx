@@ -20,7 +20,7 @@ const NotAttendStudent = ({ data }: AttendStudentProps) => {
   
   const handleAttend = (option: Option) => {
     setAttend(option);
-    save.mutate();
+    save.mutateAsync().then(() => setAttend({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status }))
   }
   
   
