@@ -34,14 +34,6 @@ export const HeaderWrap = styled.div`
 display:flex;
 align-items:center;
 gap: 1rem;
-@media (max-width:768px) {
-  width:100%;
-  align-self:center;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  text-align:center;
-}
 `
 
 export const Title = styled.p`
