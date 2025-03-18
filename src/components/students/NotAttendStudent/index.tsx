@@ -31,7 +31,7 @@ const NotAttendStudent = ({ data }: AttendStudentProps) => {
         {data.studentId}
       </S.TableItemContent>
       <S.TableItemContent $flex="1">{data.username}</S.TableItemContent>
-      <S.TableItemContent $flex="1.2">{parseRoomName(data.fixedRoom as RoomName)}</S.TableItemContent>
+      <S.TableItemContent $flex="1">{parseRoomName(data.fixedRoom as RoomName)}</S.TableItemContent>
       <S.TableItemContent $flex="1">
         {data.statuses[0].period}교시
       </S.TableItemContent>

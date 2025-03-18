@@ -23,9 +23,9 @@ export const TableItemContent = styled.p<{
 `;
 
 export const DropdownWrapper = styled.div`
-  flex: 7;
+  flex: 1;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   align-items: center;
   gap: 0.8rem;
 `

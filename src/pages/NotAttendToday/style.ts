@@ -71,7 +71,6 @@ export const TableHead = styled.div`
   padding: 1rem 5rem;
   background-color: ${COLOR.Dark};
   display: flex;
-  justify-content:space-around;
 `;
 
 export const TableColumn = styled.p<{ $flex: string; $notCenter?: boolean }>`
@@ -79,6 +78,7 @@ export const TableColumn = styled.p<{ $flex: string; $notCenter?: boolean }>`
   font-weight: 600;
   color: ${COLOR.White};
   text-align: ${({ $notCenter }) => ($notCenter ? "" : "center")};
+  flex: ${({ $flex }) => $flex};
   @media (max-width:768px) {
     font-size:1.6rem;
   }
