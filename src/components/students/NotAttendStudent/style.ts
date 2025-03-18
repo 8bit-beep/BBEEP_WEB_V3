@@ -23,7 +23,7 @@ export const TableItemContent = styled.p<{
 `;
 
 export const DropdownWrapper = styled.div`
-  flex: 1;
+  flex: 1.2;
   display: flex;
   justify-content: center;
   align-items: center;
