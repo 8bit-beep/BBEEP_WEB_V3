@@ -6,23 +6,28 @@ import { Option } from "../../types/props/dropdownProps.ts";
 import { useGetStudentByClass } from "../../hooks/class/useGetStudentByClass.ts";
 import Skeleton from "../../components/common/Skeleton";
 import ClassStudent from "../../components/students/ClassStudent";
-import TimeDropdown from "../../components/common/Dropdown/TimeDropdown/index.tsx";
 
 const StudentByClass = () => {
-  const [time, setTime] = useState<Option>({name:"8, 9교시", value:"89"})
-  const [grade, setGrade] = useState<Option>({ name: "1학년", value: "1" });
-  const [cls, setCls] = useState<Option>({ name: "1반", value: "1" });
-
-  const handleTime = (option: Option) =>{
-    setTime(option)
+  const getStoredOption = (name: string) => {
+    const data = localStorage.getItem(name);
+    if(data) {
+      return JSON.parse(data);
+    }else{
+      return;
+    }
   }
+  
+  const [grade, setGrade] = useState<Option>(getStoredOption("GRADE_OPTION") || { name: "1학년", value: "1" });
+  const [cls, setCls] = useState<Option>(getStoredOption("CLS_OPTION") || { name: "1반", value: "1" });
 
   const handleGrade = (option: Option) => {
     setGrade(option);
+    localStorage.setItem("GRADE_OPTION", JSON.stringify(option));
   };
 
   const handleCls = (option: Option) => {
     setCls(option);
+    localStorage.setItem("CLS_OPTION", JSON.stringify(option));
   };
 
   const { data, isLoading } = useGetStudentByClass(grade.value, cls.value);
@@ -41,10 +46,6 @@ const StudentByClass = () => {
           </div>
           </S.HeaderWrap>
           <S.Spacer />
-          <TimeDropdown value={time} setValue={handleTime} options={[
-            {value:"89", name:"8, 9교시"},
-            {value:"1011", name:"10, 11교시"}
-          ]}/>
           <Dropdown
             value={grade}
             setValue={handleGrade}
