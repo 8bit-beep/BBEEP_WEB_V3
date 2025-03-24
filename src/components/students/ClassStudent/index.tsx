@@ -55,7 +55,7 @@ const ClassStudent = ({ data }: ClassStudentProps) => {
         <Dropdown setValue={(option: Option) => handleStatusByTime(option, "8")} value={eight} options={attendStatusOption} />
       </S.Column>
       <S.Column $flex="2">
-        <Dropdown setValue={(option: Option) => handleStatusByTime(option, "9")} value={eight} options={attendStatusOption} />
+        <Dropdown setValue={(option: Option) => handleStatusByTime(option, "9")} value={nine} options={attendStatusOption} />
       </S.Column>
       <S.Column $flex="2">
         <Dropdown setValue={(option: Option) => handleStatusByTime(option, "10")} value={ten} options={attendStatusOption} />
