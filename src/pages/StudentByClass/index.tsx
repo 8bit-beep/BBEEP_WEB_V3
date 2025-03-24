@@ -1,9 +1,9 @@
 import * as S from "./style";
 import Dropdown from "../../components/common/Dropdown";
 import ThemedIcon from "../../components/common/ThemedIcon";
-import { useState } from "react";
-import { Option } from "../../types/props/dropdownProps.ts";
-import { useGetStudentByClass } from "../../hooks/class/useGetStudentByClass.ts";
+import {useState} from "react";
+import {Option} from "../../types/props/dropdownProps.ts";
+import {useGetStudentByClass} from "../../hooks/class/useGetStudentByClass.ts";
 import Skeleton from "../../components/common/Skeleton";
 import ClassStudent from "../../components/students/ClassStudent";
 
@@ -101,3 +101,4 @@ const StudentByClass = () => {
 };
 
 export default StudentByClass;
+
