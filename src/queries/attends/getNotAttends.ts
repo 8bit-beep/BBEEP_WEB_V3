@@ -13,7 +13,7 @@ export const useGetNotAttendsQuery = (filterBy: Option, grade: Option, cls: Opti
   };
 
   const { data, isLoading } = useQuery({
-    queryKey: ["getNotAttends", filterBy.value, cls.value, grade.value, room.value],
+    queryKey: ["getNotAttends", filterBy.value, grade.value, cls.value, room.value],
     queryFn: fetchData,
     enabled: !!accessToken,
   });
