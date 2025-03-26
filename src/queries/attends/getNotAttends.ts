@@ -8,7 +8,7 @@ export const useGetNotAttendsQuery = (filterBy: Option, grade: Option, cls: Opti
   const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
   
   const fetchData = async () => {
-    const { data } = await bbeepAxios.get<Attend[]>(`/students/not-attend/${filterBy.value}?${filterBy.value === "room" ? `roomName=${room}` : `grade=${grade}&cls=${cls}`}`);
+    const { data } = await bbeepAxios.get<Attend[]>(`/students/not-attend/${filterBy.value}?${filterBy.value === "room" ? `roomName=${room.value}` : `grade=${grade.value}&cls=${cls.value}`}`);
     return data;
   };
 
