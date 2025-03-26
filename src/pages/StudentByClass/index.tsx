@@ -9,52 +9,52 @@ import ClassStudent from "../../components/students/ClassStudent";
 import {getStoredOption} from "../../utils/getStoredOption.ts";
 
 const StudentByClass = () => {
-  const [grade, setGrade] = useState<Option>(getStoredOption("GRADE_OPTION") || { name: "1학년", value: "1" });
-  const [cls, setCls] = useState<Option>(getStoredOption("CLS_OPTION") || { name: "1반", value: "1" });
-
+  const [grade, setGrade] = useState<Option>(getStoredOption("GRADE_OPTION") || {name: "1학년", value: "1"});
+  const [cls, setCls] = useState<Option>(getStoredOption("CLS_OPTION") || {name: "1반", value: "1"});
+  
   const handleGrade = (option: Option) => {
     setGrade(option);
     localStorage.setItem("GRADE_OPTION", JSON.stringify(option));
   };
-
+  
   const handleCls = (option: Option) => {
     setCls(option);
     localStorage.setItem("CLS_OPTION", JSON.stringify(option));
   };
-
-  const { data, isLoading } = useGetStudentByClass(grade.value, cls.value);
-
+  
+  const {data, isLoading} = useGetStudentByClass(grade.value, cls.value);
+  
   return (
     <S.Container>
       <S.ContentWrap>
         <S.ContentHeaderWrap>
           <S.HeaderWrap>
-          <ThemedIcon src="/assets/Group.svg" width="5rem" height="2.5rem" />
-          <div>
-            <S.Title>반별 조회하기</S.Title>
-            <S.Subtitle>
-              담임 선생님께서 학생의 출석 상태를 미리 입력하세요!
-            </S.Subtitle>
-          </div>
+            <ThemedIcon src="/assets/Group.svg" width="5rem" height="2.5rem"/>
+            <div>
+              <S.Title>반별 조회하기</S.Title>
+              <S.Subtitle>
+                담임 선생님께서 학생의 출석 상태를 미리 입력하세요!
+              </S.Subtitle>
+            </div>
           </S.HeaderWrap>
-          <S.Spacer />
+          <S.Spacer/>
           <Dropdown
             value={grade}
             setValue={handleGrade}
             options={[
-              { value: "1", name: "1학년" },
-              { value: "2", name: "2학년" },
-              { value: "3", name: "3학년" },
+              {value: "1", name: "1학년"},
+              {value: "2", name: "2학년"},
+              {value: "3", name: "3학년"},
             ]}
           />
           <Dropdown
             value={cls}
             setValue={handleCls}
             options={[
-              { value: "1", name: "1반" },
-              { value: "2", name: "2반" },
-              { value: "3", name: "3반" },
-              { value: "4", name: "4반" },
+              {value: "1", name: "1반"},
+              {value: "2", name: "2반"},
+              {value: "3", name: "3반"},
+              {value: "4", name: "4반"},
             ]}
           />
         </S.ContentHeaderWrap>
@@ -69,7 +69,7 @@ const StudentByClass = () => {
         </S.TableHead>
         <S.TableContent>
           {isLoading ? (
-            Array.from({ length: 4 }).map((_, idx) => (
+            Array.from({length: 4}).map((_, idx) => (
               <Skeleton
                 width="100%"
                 height="5rem"
@@ -80,7 +80,7 @@ const StudentByClass = () => {
           ) : data && data.length > 0 ? (
             data?.map((item) => (
               <S.ListGap key={item.studentId}>
-                <ClassStudent data={item} />
+                <ClassStudent data={item}/>
               </S.ListGap>
             ))
           ) : (
