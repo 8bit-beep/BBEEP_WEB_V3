@@ -3,11 +3,40 @@ import { useGetNotAttends } from "../../hooks/attends/useGetNotAttends";
 import ThemedIcon from "../../components/common/ThemedIcon";
 import Skeleton from "../../components/common/Skeleton";
 import NotAttendStudent from "../../components/students/NotAttendStudent";
+import Dropdown from "../../components/common/Dropdown";
+import {useState} from "react";
+import {Option} from "../../types/props/dropdownProps.ts";
+import {getStoredOption} from "../../utils/getStoredOption.ts";
+import {ROOMS} from "../../constants/room/rooms.ts";
 
 
 const NotAttendToday = () => {
-  const { data, isLoading } =
-    useGetNotAttends();
+  const [filterBy, setFilterBy] = useState<Option>(getStoredOption("FILTER_BY") || { name: "스터디", value: "room" });
+  const [grade, setGrade] = useState<Option>(getStoredOption("NOTATTEND_GRADE") || { name: "1학년", value: "1" });
+  const [cls, setCls] = useState<Option>(getStoredOption("NOTATTEND_CLS") || { name: "1반", value: "1" });
+  const [room, setRoom] = useState<Option>(getStoredOption("NOTATTEND_ROOM") || { name: "프로젝트 1", value: "PROJECT1" });
+  
+  const handleFilterBy = (option: Option) => {
+    setFilterBy(option);
+    localStorage.setItem("FILTER_BY", JSON.stringify(option));
+  }
+  
+  const handleGrade = (option: Option) => {
+    setGrade(option);
+    localStorage.setItem("NOTATTEND_GRADE", JSON.stringify(option));
+  }
+  
+  const handleCls = (option: Option) => {
+    setCls(option);
+    localStorage.setItem("NOTATTEND_CLS", JSON.stringify(option));
+  }
+  
+  const handleRoom = (option: Option) => {
+    setRoom(option);
+    localStorage.setItem("NOTATTEND_ROOM", JSON.stringify(option));
+  }
+  
+  const { data, isLoading } = useGetNotAttends(filterBy, grade, cls, room);
   
   return (
     <S.Container>
@@ -22,6 +51,35 @@ const NotAttendToday = () => {
                 </S.Subtitle>
               </div>
           </S.HeaderWrap>
+          <S.Spacer />
+          <Dropdown setValue={handleFilterBy} value={filterBy} options={[{ name: "스터디", value: "room" },{ name: "학반", value: "class" }]} />
+          {
+            filterBy.value === "class" ? (
+              <>
+                <Dropdown
+                  value={grade}
+                  setValue={handleGrade}
+                  options={[
+                    { value: "1", name: "1학년" },
+                    { value: "2", name: "2학년" },
+                    { value: "3", name: "3학년" },
+                  ]}
+                />
+                <Dropdown
+                  value={cls}
+                  setValue={handleCls}
+                  options={[
+                    { value: "1", name: "1반" },
+                    { value: "2", name: "2반" },
+                    { value: "3", name: "3반" },
+                    { value: "4", name: "4반" },
+                  ]}
+                />
+              </>
+            ) : (
+              <Dropdown setValue={handleRoom} value={room} options={ROOMS} />
+            )
+          }
         </S.ContentHeaderWrap>
         <S.TableHead>
           <S.TableColumn $flex="1">학번</S.TableColumn>

@@ -1,9 +1,10 @@
 import { useGetNotAttendsQuery } from "../../queries/attends/getNotAttends";
 import {useEffect, useState} from "react";
+import {Option} from "../../types/props/dropdownProps.ts";
 
-export const useGetNotAttends = () => {
+export const useGetNotAttends = (filterBy: Option, grade: Option, cls: Option, room: Option) => {
   const [loading, setLoading] = useState(false);
-  const { data, isLoading } = useGetNotAttendsQuery();
+  const { data, isLoading } = useGetNotAttendsQuery(filterBy, grade, cls, room);
   
   useEffect(() => {
     if (isLoading) {
