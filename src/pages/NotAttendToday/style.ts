@@ -31,9 +31,9 @@ export const ContentHeaderWrap = styled.div`
 `;
 
 export const HeaderWrap = styled.div`
-display:flex;
-align-items:center;
-gap: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 `
 
 export const Title = styled.p`
@@ -100,3 +100,7 @@ export const NoContent = styled.div`
   font-size: 1.6rem;
   color: ${COLOR.Gray};
 `;
+
+export const Spacer = styled.div`
+  flex: 1;
+`

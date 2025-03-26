@@ -6,17 +6,9 @@ import {Option} from "../../types/props/dropdownProps.ts";
 import {useGetStudentByClass} from "../../hooks/class/useGetStudentByClass.ts";
 import Skeleton from "../../components/common/Skeleton";
 import ClassStudent from "../../components/students/ClassStudent";
+import {getStoredOption} from "../../utils/getStoredOption.ts";
 
 const StudentByClass = () => {
-  const getStoredOption = (name: string) => {
-    const data = localStorage.getItem(name);
-    if(data) {
-      return JSON.parse(data);
-    }else{
-      return;
-    }
-  }
-  
   const [grade, setGrade] = useState<Option>(getStoredOption("GRADE_OPTION") || { name: "1학년", value: "1" });
   const [cls, setCls] = useState<Option>(getStoredOption("CLS_OPTION") || { name: "1반", value: "1" });
 

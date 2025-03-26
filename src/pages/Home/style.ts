@@ -36,3 +36,22 @@ export const ToggleItem = styled.div<{ $isFocused: boolean }>`
   border-radius: 0.4rem;
   text-align: center;
 `
+
+export const ConfirmAttend = styled.button`
+  width: 18rem;
+  padding: 1.2rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid ${COLOR.Main};
+  background: ${COLOR.Main};
+  text-align: center;
+  position: fixed;
+  top: 8rem;
+  left: 20rem;
+  color: ${COLOR.White};
+  font-size: 1.6rem;
+  cursor: pointer;
+  &:disabled {
+    background: ${COLOR.Gray};
+    border: 0.1rem solid ${COLOR.Gray};
+  }
+`
