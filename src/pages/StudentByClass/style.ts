@@ -98,7 +98,7 @@ export const ListGap = styled.div`
 
 export const NoContent = styled.div`
   width: 100%;
-  height: 20rem;
+  height: 10rem;
   display: flex;
   align-items: center;
   justify-content: center;

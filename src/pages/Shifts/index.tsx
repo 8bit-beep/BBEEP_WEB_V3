@@ -23,7 +23,7 @@ const Shifts = () => {
             <div>
               <S.Title>실 이동 관리</S.Title>
               <S.Subtitle>
-                현재 실 이동을 대기 중인 학생 목록과 승인 목록을 확인해 보세요
+                현재 실 이동을 대기 중인 학생 목록과 승인 목록을 확인해 보세요!
               </S.Subtitle>
             </div>
           </S.HeaderWrap>
