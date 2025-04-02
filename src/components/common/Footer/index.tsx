@@ -10,13 +10,13 @@ const Footer = () => {
           alt="출석체크하기 좋은 방법"
         />
         <S.PhoneIcon src="/assets/PhoneIcon.svg" alt="폰사진" />
-        
+
         <S.TextWrapper>
-          <S.Text>연락처</S.Text>
+          <S.Text>연락처: 010-4890-1466 (8bit 부장)</S.Text>
           <S.Text>Copyright 2023. Team 8bit All rights reserved</S.Text>
         </S.TextWrapper>
       </S.FooterContainer>
-      
+
     </S.Container>
   );
 };
