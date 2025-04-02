@@ -10,7 +10,7 @@ export const IndicatorContainer = styled.div<{
   top: ${(props) => props.top}px;
   left: ${(props) => props.left}px;
   background-color: white;
-  box-shadow: 0 0 0.9rem 0.001rem rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 1rem 0.001rem rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: transform 300ms;
   border-radius: 0.8rem;

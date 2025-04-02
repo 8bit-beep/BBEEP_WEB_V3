@@ -2,9 +2,9 @@ import {RoomName} from "../types/enums/roomName.ts";
 
 export const parseRoomName = (name: RoomName) => {
   if (name.startsWith("LAB") || name.startsWith("PROJECT")) {
-    return name.replace("PROJECT", "프로젝트실 ").replace("LAB", "랩실 ");
+    return name.replace("PROJECT", "프로젝트실 ").replace("LAB", "랩실 ").replace("_",", ");
   }
-  
+
   switch (name) {
     case "SERVER":
       return "서버실";

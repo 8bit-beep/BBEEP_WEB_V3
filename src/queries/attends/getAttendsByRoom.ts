@@ -6,7 +6,7 @@ import {ACCESS_TOKEN_KEY} from "../../constants/token/token.ts";
 
 export const useGetAttendsByRoomQuery = (room: RoomName | null) => {
   const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
-  
+
   const fetchData = async () => {
     const { data } = await bbeepAxios.get<Attend[]>(`/students/room?roomName=${room}`);
     return data;
@@ -17,7 +17,7 @@ export const useGetAttendsByRoomQuery = (room: RoomName | null) => {
     queryFn: fetchData,
     enabled: !!accessToken && !!room,
   });
-  
+
 
   return { data, isLoading, refetch };
 };
