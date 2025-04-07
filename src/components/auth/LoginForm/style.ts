@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Title = styled.p`
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 600;
   display: flex;
   justify-self: flex-start;
   width: 80%;

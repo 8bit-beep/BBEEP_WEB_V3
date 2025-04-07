@@ -51,7 +51,7 @@ export const Option = styled.div<{ $isSelected: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: ${({ $isSelected }) => $isSelected ? COLOR.Main : COLOR.Black};
+  color: ${COLOR.Black};
   font-size: 1.5rem;
   font-weight: 600;
   background-color: ${({ $isSelected }) =>
