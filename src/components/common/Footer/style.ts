@@ -7,7 +7,7 @@ export const Container = styled.div`
   align-items: center;
   background-color: #323A45;
   justify-content: center;
-  padding: 0 2rem;
+  padding: 0 4rem;
 `;
 
 export const FooterContainer = styled.div`

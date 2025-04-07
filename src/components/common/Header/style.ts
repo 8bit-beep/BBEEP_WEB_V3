@@ -5,7 +5,7 @@ import { COLOR } from "../../../style/color/color";
 export const Container = styled.header<{ $mobileMenu: boolean }>`
   width: 100%;
   height: ${({ $mobileMenu }) => $mobileMenu ? "32rem" : "7rem"};
-  padding: ${({ $mobileMenu }) => $mobileMenu ? "1rem" : "0"} 2rem;
+  padding: ${({ $mobileMenu }) => $mobileMenu ? "1rem" : "0"} 4rem;
   display: flex;
   flex-direction: column;
   align-items: ${({ $mobileMenu }) => $mobileMenu ? "start" : "center"};

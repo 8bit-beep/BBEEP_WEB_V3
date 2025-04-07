@@ -11,25 +11,25 @@ import {getStoredOption} from "../../utils/getStoredOption.ts";
 const StudentByClass = () => {
   const [grade, setGrade] = useState<Option>(getStoredOption("GRADE_OPTION") || {name: "1학년", value: "1"});
   const [cls, setCls] = useState<Option>(getStoredOption("CLS_OPTION") || {name: "1반", value: "1"});
-  
+
   const handleGrade = (option: Option) => {
     setGrade(option);
     localStorage.setItem("GRADE_OPTION", JSON.stringify(option));
   };
-  
+
   const handleCls = (option: Option) => {
     setCls(option);
     localStorage.setItem("CLS_OPTION", JSON.stringify(option));
   };
-  
+
   const {data, isLoading} = useGetStudentByClass(grade.value, cls.value);
-  
+
   return (
     <S.Container>
       <S.ContentWrap>
         <S.ContentHeaderWrap>
           <S.HeaderWrap>
-            <ThemedIcon src="/assets/Group.svg" width="5rem" height="2.5rem"/>
+            <ThemedIcon src="/assets/Group.png" width="2.5rem" height="2.5rem"/>
             <div>
               <S.Title>반별 조회하기</S.Title>
               <S.Subtitle>
