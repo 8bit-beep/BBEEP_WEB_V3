@@ -9,7 +9,6 @@ export const Container = styled.div`
 export const Column = styled.div<{ $flex: string }>`
   flex: ${({ $flex }) => $flex};
     font-size:1.6rem;
-  font-weight: 600;
   display: flex;
   text-align: center;
   align-items: center;
