@@ -4,6 +4,7 @@ import {ACCESS_TOKEN_KEY, REFRESH_TOKEN_KEY} from "../../constants/token/token.t
 import {TokenResponse} from "../../types/response/tokenResponse.ts";
 import {useNavigate} from "react-router-dom";
 import {notification} from "antd";
+import { setItemWithExpiry } from "../../utils/tokenStore.ts";
 
 export const useAuthMutation = (code: string | null) => {
   const navigate = useNavigate();
@@ -16,8 +17,8 @@ export const useAuthMutation = (code: string | null) => {
       code
     });
     
-    localStorage.setItem(ACCESS_TOKEN_KEY, data.accessToken);
-    localStorage.setItem(REFRESH_TOKEN_KEY, data.refreshToken);
+    setItemWithExpiry(ACCESS_TOKEN_KEY, data.accessToken);
+    setItemWithExpiry(REFRESH_TOKEN_KEY, data.refreshToken);
     
     notification.open({ message: "환영합니다!", description: "로그인 되었습니다." });
   }
