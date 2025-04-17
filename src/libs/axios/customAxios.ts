@@ -6,6 +6,7 @@ import {
 } from "../../constants/token/token";
 import { BaseResponse } from "../../types/response/baseResponse";
 import { TokenResponse } from "../../types/response/tokenResponse";
+import { getItemWithExpiry, setItemWithExpiry } from "../../utils/tokenStore";
 
 interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
   _retry?: boolean;
@@ -33,7 +34,7 @@ const addRefreshSubscriber = (callback: (token: string) => void) => {
 
 bbeepAxios.interceptors.request.use(
   async (config) => {
-    const token = localStorage.getItem(ACCESS_TOKEN_KEY);
+    const token = getItemWithExpiry(ACCESS_TOKEN_KEY);
     if (token) {
       config.headers[REQUEST_TOKEN_KEY] = `Bearer ${token}`;
     }
@@ -64,7 +65,7 @@ bbeepAxios.interceptors.response.use(
     }
     if (originalRequest && !originalRequest._retry) {
       originalRequest._retry = true;
-      const refreshToken = localStorage.getItem(REFRESH_TOKEN_KEY);
+      const refreshToken = getItemWithExpiry(REFRESH_TOKEN_KEY);
 
       if (refreshToken) {
         if (!isRefreshing) {
@@ -83,8 +84,8 @@ bbeepAxios.interceptors.response.use(
             const newAccessToken = data.data.accessToken;
             const newRefreshToken = data.data.refreshToken;
 
-            localStorage.setItem(ACCESS_TOKEN_KEY, newAccessToken);
-            localStorage.setItem(REFRESH_TOKEN_KEY, newRefreshToken);
+            setItemWithExpiry(ACCESS_TOKEN_KEY, newAccessToken);
+            setItemWithExpiry(REFRESH_TOKEN_KEY, newRefreshToken);
 
             onRefreshed(newAccessToken);
 

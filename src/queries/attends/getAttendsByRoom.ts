@@ -3,9 +3,10 @@ import bbeepAxios from "../../libs/axios/customAxios";
 import { Attend } from "../../types/attend/attend";
 import {RoomName} from "../../types/enums/roomName.ts";
 import {ACCESS_TOKEN_KEY} from "../../constants/token/token.ts";
+import { getItemWithExpiry } from "../../utils/tokenStore.ts";
 
 export const useGetAttendsByRoomQuery = (room: RoomName | null) => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  const accessToken = getItemWithExpiry(ACCESS_TOKEN_KEY);
 
   const fetchData = async () => {
     const { data } = await bbeepAxios.get<Attend[]>(`/students/room?roomName=${room}`);

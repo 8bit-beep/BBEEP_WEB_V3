@@ -3,7 +3,7 @@ import Logo from "/assets/Logo.svg";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import ProfileDropdown from "../Dropdown/ProfileDropdown";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import {AlignJustify, X} from "lucide-react";
 
 
@@ -15,6 +15,10 @@ const Header = () => {
   const handleLogoClick = () => {
     navigate("/");
   };
+
+  useEffect(() => {
+    setMobileMenu(false);
+  }, [location.pathname]);
 
   return (
     <S.Container $mobileMenu={mobileMenu}>

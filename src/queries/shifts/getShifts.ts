@@ -3,9 +3,10 @@ import bbeepAxios from "../../libs/axios/customAxios";
 import { Shift } from "../../types/shift/shift";
 import {PageResponse} from "../../types/response/pageResponse.ts";
 import {ACCESS_TOKEN_KEY} from "../../constants/token/token.ts";
+import { getItemWithExpiry } from "../../utils/tokenStore.ts";
 
 export const useGetShiftsQuery = () => {
-  const accessToken = localStorage.getItem(ACCESS_TOKEN_KEY);
+  const accessToken = getItemWithExpiry(ACCESS_TOKEN_KEY);
   
   const fetchData = async () => {
     const { data } = await bbeepAxios.get<PageResponse<Shift>>("/shifts");
