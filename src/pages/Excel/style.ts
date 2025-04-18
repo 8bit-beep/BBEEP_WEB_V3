@@ -79,6 +79,7 @@ export const Grid = styled.div<GridProps>`
   overflow: scroll;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 24rem;
   padding: 1rem;
   gap: 1rem;
 `
