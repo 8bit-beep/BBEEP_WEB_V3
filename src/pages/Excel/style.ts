@@ -81,7 +81,6 @@ export const Grid = styled.div<GridProps>`
   grid-template-columns: repeat(5, 1fr);
   padding: 1rem;
   gap: 1rem;
-  display:${(props)=>props.isLoading && props.data && props.data.length > 0 ? "block" : "flex"};
 `
 
 export const NoContent = styled.div`
