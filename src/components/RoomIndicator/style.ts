@@ -25,8 +25,8 @@ export const Label = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 700;
-  font-size: 1.5rem;
+  font-weight: 400;
+  font-size: 1.2rem;
   text-overflow: ellipsis;
   text-wrap: nowrap;
   overflow: hidden;

@@ -61,7 +61,7 @@ export const Subtitle = styled.p`
 export const TableHead = styled.div`
   width: 100%;
   padding: 1rem 5rem;
-  background-color: ${COLOR.Dark};
+  background-color: ${COLOR.Main};
   display: flex;
 `;
 

@@ -42,7 +42,7 @@ export const TextWrapper = styled.div`
 
 export const Text = styled.p`
   font-weight: 400;
-  font-size: 12px;
+  font-size: 1.2rem;
   color: #FFFFFF;
   display: block;
   cursor: pointer;

@@ -41,8 +41,8 @@ export const Spacer = styled.div`
 `;
 
 export const Title = styled.p`
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.4rem;
+  font-weight: 600;
   color: ${COLOR.Black};
   @media (max-width:768px) {
     font-size:1.6rem;
@@ -61,7 +61,7 @@ export const Subtitle = styled.p`
 export const TableHead = styled.div`
   width: 100%;
   padding: 1rem 5rem;
-  background-color: ${COLOR.Dark};
+  background-color: ${COLOR.Main};
   display: flex;
   gap: 2rem;
 `;
