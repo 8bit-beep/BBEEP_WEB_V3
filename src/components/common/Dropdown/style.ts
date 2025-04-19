@@ -17,8 +17,8 @@ export const Container = styled.div`
 
 export const Value = styled.p`
   color: ${COLOR.Dark};
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 400;
 `;
 
 export const Arrow = styled.img<{ $isOpened: boolean }>`
@@ -52,8 +52,8 @@ export const Option = styled.div<{ $isSelected: boolean }>`
   justify-content: center;
   align-items: center;
   color: ${COLOR.Black};
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 400;
   background-color: ${({ $isSelected }) =>
     $isSelected ? COLOR.Background : COLOR.White};
 `;

@@ -13,8 +13,8 @@ export const ProfileButton = styled.div`
 `;
 
 export const ProfileName = styled.div`
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: 2rem;
+  font-weight: 600;
 `;
 
 export const Arrow = styled.img<{ $isOpened: boolean }>`
@@ -43,4 +43,5 @@ export const LogoutButton = styled.div`
   color: ${COLOR.Red};
   cursor: pointer;
   font-size: 1.2rem;
+  font-weight: 400;
 `;

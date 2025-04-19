@@ -72,7 +72,7 @@ export const Subtitle = styled.p`
 export const TableHead = styled.div`
   width: 100%;
   padding: 1rem 5rem;
-  background-color: ${COLOR.Dark};
+  background-color: ${COLOR.Main};
   display: flex;
   gap: 2rem;
 `;
@@ -115,6 +115,7 @@ export const TableItem = styled.div`
 
 const Button = styled.button`
   font-size: 1.6rem;
+  font-weight: 400;
   color: ${COLOR.White};
   text-align: center;
   padding: 0.5rem 1.5rem;
