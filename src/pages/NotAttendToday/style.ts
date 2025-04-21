@@ -37,7 +37,7 @@ export const HeaderWrap = styled.div`
 `
 
 export const Title = styled.p`
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 700;
   color: ${COLOR.Black};
   text-align:center;

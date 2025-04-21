@@ -51,7 +51,7 @@ export const Spacer = styled.div`
 `;
 
 export const Title = styled.p`
-  font-size: 2.5rem;
+  font-size: 2.4rem;
   font-weight: 700;
   text-align:center;
   color: ${COLOR.Black};
