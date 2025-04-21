@@ -1,7 +1,7 @@
 export const COLOR = {
   Main: "#346287",
   Serve: "#32A89C",
-  Red: "#FF6C6C",
+  Red: "#EF5A5A",
   Dark: "#323A45",
   Gray: "#B7B7B7",
   LightGray: "#F4F4F4",

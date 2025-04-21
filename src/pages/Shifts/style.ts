@@ -49,8 +49,8 @@ export const Spacer = styled.div`
 `;
 
 export const Title = styled.p`
-  font-size: 2.5rem;
-  font-weight: 700;
+  font-size: 2.4rem;
+  font-weight: 600;
   color: ${COLOR.Black};
   @media (max-width:768px) {
     font-size:1.6rem;
@@ -83,7 +83,6 @@ export const TableColumn = styled.p<{ $flex: string; $notCenter?: boolean }>`
   font-weight: 600;
   color: ${COLOR.White};
   text-align: ${({ $notCenter }) => ($notCenter ? "" : "center")};
-
   @media (max-width: 783px) {
     font-size: 1.8rem;
   }
