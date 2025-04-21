@@ -13,8 +13,8 @@ const Home = () => {
                 <>
                     {/* <RoomIndicator room="LAB1" top={110} left={135} /> */}
                     <RoomIndicator room="PROJECT3" top={440} left={210} />
-                    <RoomIndicator room="SERVER" top={440} left={550} />
-                    {/* <RoomIndicator room="LAB2" top={110} left={810} /> */}
+                    {/* <RoomIndicator room="SERVER" top={440} left={550} />
+                    <RoomIndicator room="LAB2" top={110} left={810} /> */}
                     <RoomIndicator room="PROJECT4" top={440} left={810} />
                     {/* <RoomIndicator room="LAB3_4" top={250} left={2005} />
                     <RoomIndicator room="LAB5" top={220} left={2450} />
