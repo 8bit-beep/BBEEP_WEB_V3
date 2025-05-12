@@ -7,7 +7,8 @@ export const useConfirmAttend = () => {
   const [isButtonEnabled, setButtonEnabled] = useState(false);
   const [loading, setLoading] = useState(false);
   const [time, setTime] = useState(0);
-  const [data, setData] = useState<ConfirmAttend[]>([])
+  const initData = localStorage.getItem("ATTENDCONFIRM");
+  const [data, setData] = useState<ConfirmAttend[]>(initData ? JSON.parse(initData) as ConfirmAttend[] : []);
   
   useEffect(() => {
     const checkTime = () => {
@@ -44,6 +45,7 @@ export const useConfirmAttend = () => {
       setLoading(true);
       const { data } = await bbeepAxios.get<ConfirmAttend[]>(`/teacher/attends/${time}`);
       setData(data);
+      localStorage.setItem("ATTENDCONFIRM", JSON.stringify(data));
     }catch{
       notification.open({message: "출석 확인 실패", description: "나중에 다시 시도해주세요."});
     }finally {
