@@ -1,9 +1,11 @@
 import * as S from './style.ts'
 import {ExcelItemProps} from "../../types/props/ExcelItemProps.ts";
 import {File} from "lucide-react";
+import { useDownloadExcel } from '../../hooks/excels/useDownloadExcel.ts';
 
 const ExcelItem = ({ fileName }: ExcelItemProps) => {
-  const date = fileName.split('attendance_')[1].split('.xlsx')[0]
+  const date = fileName.split('attendance_')[1].split('.xlsx')[0];
+  const getUrl = useDownloadExcel(date);
   
   return (
     <S.Container>
@@ -11,7 +13,7 @@ const ExcelItem = ({ fileName }: ExcelItemProps) => {
         <File size={64} />
         <S.Date>{date}</S.Date>
       </S.Content>
-      <S.Download to={`${import.meta.env.VITE_API_URL}/excel/download?date=${date}`}>다운로드</S.Download>
+      <S.Download onClick={getUrl}>다운로드</S.Download>
     </S.Container>
   )
 }
