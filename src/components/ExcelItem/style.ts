@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import {COLOR} from "../../style/color/color.ts";
-import {Link} from "react-router-dom";
 
 export const Container = styled.div`
   width: 100%;
