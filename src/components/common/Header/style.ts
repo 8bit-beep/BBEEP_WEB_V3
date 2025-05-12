@@ -51,7 +51,7 @@ export const MenuWrap = styled.div`
   justify-content: center;
 `;
 
-export const MenuItem = styled(Link)<{ active: boolean }>`
+export const MenuItem = styled(Link)<{ active: string }>`
   font-size: 1.6rem;
   height: 100%;
   font-weight: 400;
@@ -60,7 +60,7 @@ export const MenuItem = styled(Link)<{ active: boolean }>`
   cursor: pointer;
   padding-top: 2.5rem;
   margin: 0 1rem;
-  border-bottom: ${({ active })=> active ? "2px" : "0px"} solid ${COLOR.Main};
+  border-bottom: ${({ active })=> active === "true" ? "2px" : "0px"} solid ${COLOR.Main};
 `;
 
 export const ProfileWrap = styled.div`

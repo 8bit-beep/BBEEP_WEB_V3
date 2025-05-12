@@ -26,19 +26,19 @@ const Header = () => {
         <S.Logo onClick={handleLogoClick} src={Logo} />
         <S.MenuWrap>
           <S.Menu>
-            <S.MenuItem to="/" active={location.pathname === "/"}>
+            <S.MenuItem to="/" active={(location.pathname === "/").toString()}>
               홈
             </S.MenuItem>
-            <S.MenuItem to="/classes" active={location.pathname === "/classes"}>
+            <S.MenuItem to="/classes" active={(location.pathname === "/classes").toString()}>
               반별 조회
             </S.MenuItem>
-            <S.MenuItem to="/shifts" active={location.pathname === "/shifts"}>
+            <S.MenuItem to="/shifts" active={(location.pathname === "/shifts").toString()}>
               실 이동 관리
             </S.MenuItem>
-            <S.MenuItem to="not-attend" active={location.pathname === "/not-attend"}>
+            <S.MenuItem to="not-attend" active={(location.pathname === "/not-attend").toString()}>
               결석자 조회
             </S.MenuItem>
-            <S.MenuItem to="excel" active={location.pathname === "/excel"}>
+            <S.MenuItem to="excel" active={(location.pathname === "/excel").toString()}>
               엑셀 다운로드
             </S.MenuItem>
           </S.Menu>
@@ -55,19 +55,19 @@ const Header = () => {
       {
         mobileMenu && (
           <>
-            <S.MenuItem to="/" active={location.pathname === "/"}>
+            <S.MenuItem to="/" active={(location.pathname === "/").toString()}>
               홈
             </S.MenuItem>
-            <S.MenuItem to="/classes" active={location.pathname === "/classes"}>
+            <S.MenuItem to="/classes" active={(location.pathname === "/classes").toString()}>
               반별 조회
             </S.MenuItem>
-            <S.MenuItem to="/shifts" active={location.pathname === "/shifts"}>
+            <S.MenuItem to="/shifts" active={(location.pathname === "/shifts").toString()}>
               실 이동 관리
             </S.MenuItem>
-            <S.MenuItem to="not-attend" active={location.pathname === "/not-attend"}>
+            <S.MenuItem to="not-attend" active={(location.pathname === "/not-attend").toString()}>
               결석자 조회
             </S.MenuItem>
-            <S.MenuItem to="excel" active={location.pathname === "/excel"}>
+            <S.MenuItem to="excel" active={(location.pathname === "/excel").toString()}>
               엑셀 다운로드
             </S.MenuItem>
           </>

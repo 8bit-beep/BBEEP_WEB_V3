@@ -1,11 +1,6 @@
 import styled from "@emotion/styled";
 import { COLOR } from "../../style/color/color";
 
-interface GridProps {
-  isLoading : any;
-  data : any;
-}
-
 export const Container = styled.div`
   width: 100%;
   height: 100%;
@@ -72,16 +67,22 @@ export const Subtitle = styled.p`
   }
 `;
 
-
-export const Grid = styled.div<GridProps>`
+export const GridWrap = styled.div`
   width: 100%;
   flex: 1;
-  overflow: scroll;
+  overflow-y: scroll;
+`
+
+export const Grid = styled.div`
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: 24rem;
   padding: 1rem;
   gap: 1rem;
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
 `
 
 export const NoContent = styled.div`
