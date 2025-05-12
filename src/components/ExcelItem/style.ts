@@ -28,7 +28,7 @@ export const Date = styled.p`
   font-size: 2rem;
 `
 
-export const Download = styled(Link)`
+export const Download = styled.button`
   width: 100%;
   padding: 1rem 0;
   text-align: center;
