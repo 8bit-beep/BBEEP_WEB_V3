@@ -1,9 +1,26 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
 import {VitePWA} from "vite-plugin-pwa";
+import { visualizer } from 'rollup-plugin-visualizer';
 
 // https://vite.dev/config/
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react-dom')) return 'react-dom';
+            if (id.includes('firebase')) return 'vendor-firebase';
+            if (id.includes('@ant-design')) return 'vendor-ant';
+            if (id.includes('emotion')) return 'vendor-emotion';
+            if (id.includes('react-query')) return 'vendor-react-query';
+            if (id.includes('axios')) return 'vendor-axios';
+          }
+        }
+      }
+    }
+  },
   plugins: [
     react(),
     VitePWA({
@@ -42,7 +59,8 @@ export default defineConfig({
           }
         ]
       }
-    })
+    }),
+    visualizer({ open: true })
   ],
   server: {
     host: '0.0.0.0',
