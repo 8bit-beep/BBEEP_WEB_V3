@@ -14,14 +14,12 @@ export const MapWrap = styled.div<{ scale: number }>`
   padding: 1.6rem;
   transform: ${({ scale }) => (`scale(${1 - (0.1 * scale)})`)};
   transform-origin: ${({ scale }) => (`${100 * scale}px`)}; 
-  
 `
 
-export const Map = styled.img<{ scale: number }>`
+export const Map = styled.img`
   object-fit: contain;
   margin: 8rem auto;
   height: 72rem;
-  margin-right: ${({ scale }) => (`${100 * scale}px`)}; 
 `;
 
 export const ToggleWrap = styled.div`
@@ -38,14 +36,14 @@ export const ToggleWrap = styled.div`
 `
 
 export const ToggleItem = styled.div<{ $isFocused: boolean }>`
-    flex: 1;
-    padding: 0.8rem 0;
-    background: ${({ $isFocused }) => ($isFocused ? COLOR.Main : COLOR.White)};
-    font-size: 1.6rem;
-    font-weight: 600;
-    color: ${({ $isFocused }) => ($isFocused ? COLOR.White : COLOR.Black)};
-    border-radius: 0.4rem;
-    text-align: center;
+  flex: 1;
+  padding: 0.8rem 0;
+  background: ${({ $isFocused }) => ($isFocused ? COLOR.Main : COLOR.White)};
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: ${({ $isFocused }) => ($isFocused ? COLOR.White : COLOR.Black)};
+  border-radius: 0.4rem;
+  text-align: center;
 `;
 
 export const ConfirmAttend = styled.button`
