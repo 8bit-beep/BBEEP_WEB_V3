@@ -6,7 +6,7 @@ import {
 } from "../../constants/token/token";
 import { BaseResponse } from "../../types/response/baseResponse";
 import { TokenResponse } from "../../types/response/tokenResponse";
-import { getItemWithExpiry, setItemWithExpiry } from "../../utils/tokenStore";
+import { cookie } from "../../utils/tokenStore";
 
 interface CustomAxiosRequestConfig extends InternalAxiosRequestConfig {
   _retry?: boolean;
@@ -34,7 +34,7 @@ const addRefreshSubscriber = (callback: (token: string) => void) => {
 
 bbeepAxios.interceptors.request.use(
   async (config) => {
-    const token = getItemWithExpiry(ACCESS_TOKEN_KEY);
+    const token = cookie.get(ACCESS_TOKEN_KEY);
     if (token) {
       config.headers[REQUEST_TOKEN_KEY] = `Bearer ${token}`;
     }
@@ -65,7 +65,7 @@ bbeepAxios.interceptors.response.use(
     }
     if (originalRequest && !originalRequest._retry) {
       originalRequest._retry = true;
-      const refreshToken = getItemWithExpiry(REFRESH_TOKEN_KEY);
+      const refreshToken = cookie.get(REFRESH_TOKEN_KEY);
 
       if (refreshToken) {
         if (!isRefreshing) {
@@ -84,8 +84,8 @@ bbeepAxios.interceptors.response.use(
             const newAccessToken = data.data.accessToken;
             const newRefreshToken = data.data.refreshToken;
 
-            setItemWithExpiry(ACCESS_TOKEN_KEY, newAccessToken);
-            setItemWithExpiry(REFRESH_TOKEN_KEY, newRefreshToken);
+            cookie.set(ACCESS_TOKEN_KEY, newAccessToken);
+            cookie.set(REFRESH_TOKEN_KEY, newRefreshToken);
 
             onRefreshed(newAccessToken);
 
@@ -94,8 +94,8 @@ bbeepAxios.interceptors.response.use(
             ] = `Bearer ${newAccessToken}`;
             return bbeepAxios(originalRequest);
           } catch (refreshError) {
-            localStorage.removeItem(ACCESS_TOKEN_KEY);
-            localStorage.removeItem(REFRESH_TOKEN_KEY);
+            cookie.remove(ACCESS_TOKEN_KEY);
+            cookie.remove(REFRESH_TOKEN_KEY);
             return Promise.reject(refreshError);
           } finally {
             isRefreshing = false;

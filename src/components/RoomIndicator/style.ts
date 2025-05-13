@@ -28,6 +28,5 @@ export const Label = styled.p`
   font-weight: 400;
   font-size: 1.2rem;
   text-overflow: ellipsis;
-  text-wrap: nowrap;
   overflow: hidden;
 `;
