@@ -54,11 +54,11 @@ const Home = () => {
                 )}
 
                 {floor === 2 ? (
-                    <S.Map src="/assets/SecondFloorMap.svg" alt="Second FloorMap" />
+                    <S.Map scale={scale} src="/assets/SecondFloorMap.svg" alt="Second FloorMap" />
                 ) : floor === 3 ? (
-                    <S.Map src="/assets/ThirdFloorMap.svg" alt="Third FloorMap" />
+                    <S.Map scale={scale} src="/assets/ThirdFloorMap.svg" alt="Third FloorMap" />
                 ) : (
-                    <S.Map src="/assets/FirstFloorMap.svg" alt="First FloorMap" />
+                    <S.Map scale={scale} src="/assets/FirstFloorMap.svg" alt="First FloorMap" />
                 )}
             </S.MapWrap>
             

@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 export const useMap = () => {
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState(6);
 
   const increase = () => {
     setScale(prev => prev < 7 ? prev += 1 : prev);
