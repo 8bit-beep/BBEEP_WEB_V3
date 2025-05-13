@@ -7,6 +7,7 @@ import {
 import { Link } from "react-router-dom";
 import { COLOR } from "../../../../style/color/color.ts";
 import { useGetme } from "../../../../queries/user/getme.ts";
+import { cookie } from "../../../../utils/tokenStore.ts";
 
 const ProfileDropdown = () => {
   const [isOpened, setIsOpened] = useState(false);
@@ -39,8 +40,8 @@ const ProfileDropdown = () => {
           {me?.email}
           <S.LogoutButton
             onClick={() => {
-              localStorage.removeItem(ACCESS_TOKEN_KEY);
-              localStorage.removeItem(REFRESH_TOKEN_KEY);
+              cookie.remove(ACCESS_TOKEN_KEY);
+              cookie.remove(REFRESH_TOKEN_KEY);
               initUser();
               setIsOpened(false);
             }}

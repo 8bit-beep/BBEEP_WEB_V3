@@ -1,22 +1,19 @@
-export const setItemWithExpiry = (key: string, value: unknown): void => {
-  const now = new Date();
-  const item = {
-    value,
-    expiry: now.getTime() + 12 * 60 * 60 * 1000,
-  };
-  localStorage.setItem(key, JSON.stringify(item));
+import Cookies from 'js-cookie';
+
+const COOKIE_DURATION_HOURS = 12;
+
+export const cookie = {
+  set(name: string, value: string) {
+    const expires = new Date(Date.now() + COOKIE_DURATION_HOURS * 60 * 60 * 1000);
+    Cookies.set(name, value, { expires });
+  },
+
+  get(name: string) {
+    return Cookies.get(name);
+  },
+
+  remove(name: string) {
+    Cookies.remove(name);
+  }
 };
 
-export const getItemWithExpiry = (key: string): unknown | null => {
-  const itemStr = localStorage.getItem(key);
-  if (!itemStr) {
-    return null;
-  }
-  const item = JSON.parse(itemStr) as { value: unknown; expiry: number };
-  const now = new Date();
-  if (now.getTime() > item.expiry) {
-    localStorage.removeItem(key);
-    return null;
-  }
-  return item.value;
-};

@@ -5,10 +5,10 @@ import {BaseResponse} from "../../types/response/baseResponse.ts";
 import {User} from "../../types/user/user.ts";
 import {useState} from "react";
 import {useNavigate} from "react-router-dom";
-import { getItemWithExpiry } from "../../utils/tokenStore.ts";
+import { cookie } from "../../utils/tokenStore.ts";
 
 export const useGetme = () => {
-  const accessToken = getItemWithExpiry(ACCESS_TOKEN_KEY);
+  const accessToken = cookie.get(ACCESS_TOKEN_KEY);
   const navigate = useNavigate();
 
   if(!accessToken) {
