@@ -1,6 +1,6 @@
 import * as S from "./style";
 import RoomIndicator from "../../components/RoomIndicator";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useConfirmAttend } from "../../hooks/attends/useConfirmAttend";
 import { NotebookIcon, X, ZoomIn, ZoomOut } from "lucide-react";
 import { useEditMemo } from "../../hooks/memo/useEditMemo";
@@ -12,9 +12,20 @@ const Home = () => {
     const [isMemoOpened, setIsMemoOpened] = useState(true);
     const { scale, increase, decrease } = useMap();
     const { memo, handleMemo } = useEditMemo();
+    const mapRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        if (mapRef.current) {
+          mapRef.current.scrollTo({
+            left: 1000,
+            top: 100,
+            behavior: 'smooth',
+          });
+        }
+      }, []);
 
     return (
-        <S.Container>
+        <S.Container ref={mapRef}>
             <S.MapWrap scale={scale}>
                 {floor === 2 ? (
                     <>
@@ -54,11 +65,11 @@ const Home = () => {
                 )}
 
                 {floor === 2 ? (
-                    <S.Map scale={scale} src="/assets/SecondFloorMap.svg" alt="Second FloorMap" />
+                    <S.Map src="/assets/SecondFloorMap.svg" alt="Second FloorMap" />
                 ) : floor === 3 ? (
-                    <S.Map scale={scale} src="/assets/ThirdFloorMap.svg" alt="Third FloorMap" />
+                    <S.Map src="/assets/ThirdFloorMap.svg" alt="Third FloorMap" />
                 ) : (
-                    <S.Map scale={scale} src="/assets/FirstFloorMap.svg" alt="First FloorMap" />
+                    <S.Map src="/assets/FirstFloorMap.svg" alt="First FloorMap" />
                 )}
             </S.MapWrap>
             
