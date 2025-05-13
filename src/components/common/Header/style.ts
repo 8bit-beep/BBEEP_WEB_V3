@@ -64,7 +64,7 @@ export const MenuItem = styled(Link)<{ active: string }>`
 `;
 
 export const ProfileWrap = styled.div`
-  width: 14rem;
+  width: 20rem;
   display: flex;
   align-items: center;
   justify-content: flex-end;
