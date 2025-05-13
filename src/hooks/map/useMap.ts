@@ -4,7 +4,7 @@ export const useMap = () => {
   const [scale, setScale] = useState(1);
 
   const increase = () => {
-    setScale(prev => prev < 3 ? prev += 1 : prev);
+    setScale(prev => prev < 7 ? prev += 1 : prev);
   }
 
   const decrease = () => {

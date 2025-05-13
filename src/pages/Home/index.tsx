@@ -110,7 +110,7 @@ const Home = () => {
             </S.MemoWrap>
             <S.ScaleControllerWrap>
                 <ZoomIn size={32} onClick={decrease} color={scale !== -2 ? "black" : "gray"} />
-                <ZoomOut size={32} onClick={increase} color={scale !== 3 ? "black" : "gray"} />
+                <ZoomOut size={32} onClick={increase} color={scale !== 7 ? "black" : "gray"} />
             </S.ScaleControllerWrap>
         </S.Container>
     );
