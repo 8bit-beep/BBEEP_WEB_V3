@@ -41,6 +41,9 @@ const Header = () => {
             <S.MenuItem to="excel" active={(location.pathname === "/excel").toString()}>
               엑셀 다운로드
             </S.MenuItem>
+            <S.MenuItem to="attend-approve" active={(location.pathname === "/attend-approve").toString()}>
+              출석 승인 현황
+            </S.MenuItem>
           </S.Menu>
         </S.MenuWrap>
         <S.ProfileWrap>
@@ -69,6 +72,9 @@ const Header = () => {
             </S.MenuItem>
             <S.MenuItem to="excel" active={(location.pathname === "/excel").toString()}>
               엑셀 다운로드
+            </S.MenuItem>
+            <S.MenuItem to="attend-approve" active={(location.pathname === "/attend-approve").toString()}>
+              출석 승인 현황
             </S.MenuItem>
           </>
         )
