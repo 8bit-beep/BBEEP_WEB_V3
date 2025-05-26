@@ -1,28 +1,18 @@
 import * as S from "./style";
 import RoomIndicator from "../../components/RoomIndicator";
-import { useEffect, useRef, useState } from "react";
-import { useConfirmAttend } from "../../hooks/attends/useConfirmAttend";
-import { NotebookIcon, X, ZoomIn, ZoomOut } from "lucide-react";
+import { useRef, useState } from "react";
+import { ChevronLeft, NotebookIcon, ZoomIn, ZoomOut } from "lucide-react";
 import { useEditMemo } from "../../hooks/memo/useEditMemo";
 import { useMap } from "../../hooks/map/useMap";
 
 const Home = () => {
     const [floor, setFloor] = useState(2);
-    const { isButtonEnabled, data, confirmAttend } = useConfirmAttend();
     const [isMemoOpened, setIsMemoOpened] = useState(true);
     const { scale, increase, decrease } = useMap();
     const { memo, handleMemo } = useEditMemo();
     const mapRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        if (mapRef.current) {
-          mapRef.current.scrollTo({
-            left: 1000,
-            top: 100,
-            behavior: 'smooth',
-          });
-        }
-      }, []);
+      
 
     return (
         <S.Container ref={mapRef}>
@@ -95,21 +85,13 @@ const Home = () => {
                 </S.ToggleItem>
             </S.ToggleWrap>
 
-            <S.ConfirmAttend
-                disabled={!isButtonEnabled}
-                onClick={confirmAttend}
-            >
-                {data.length === 0
-                    ? "출석 승인"
-                    : `${data[data.length - 1].time} 승인`}
-            </S.ConfirmAttend>
             <S.MemoWrap $isOpened={isMemoOpened}>
                 {
                     isMemoOpened ? (
                         <>
                             <S.MemoHeader>
                                 <p>메모사항</p>
-                                <X onClick={() => setIsMemoOpened(false)} />
+                                <ChevronLeft onClick={() => setIsMemoOpened(false)} />
                             </S.MemoHeader>
                             <S.Memo placeholder="메모사항을 입력해주세요." onChange={handleMemo} value={memo} />
                         </>

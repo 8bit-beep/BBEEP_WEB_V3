@@ -5,6 +5,14 @@ export const parseRoomName = (name: RoomName) => {
     return name.replace("PROJECT", "프로젝트실 ").replace("LAB", "랩실 ").replace("_",", ");
   }
 
+  if (name.includes("AFTER_SCHOOL")) {
+    return "방과후"
+  }
+
+  if (name.startsWith("C")) {
+    return name.replace("C", "").replace("_", " - ");
+  }
+
   switch (name) {
     case "SERVER":
       return "서버실";

@@ -8,6 +8,7 @@ import NotAttendToday from "../../pages/NotAttendToday";
 import Excel from "../../pages/Excel";
 import Dauth from "../../pages/Dauth";
 import Forbidden from "../../pages/Forbidden";
+import AttendApprove from "../../pages/AttendApprove";
 
 const Router = () => {
   return (
@@ -19,6 +20,7 @@ const Router = () => {
           <Route path="/classes" element={<StudentByClass />} />
           <Route path="/not-attend" element={<NotAttendToday />} />
           <Route path="/excel" element={<Excel />} />
+          <Route path="/attend-approve" element={<AttendApprove />} />
         </Route>
         <Route path="/login" element={<Login />} />
         <Route path="/callback/dauth" element={<Dauth />} />

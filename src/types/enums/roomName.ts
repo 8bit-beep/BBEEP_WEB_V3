@@ -24,4 +24,5 @@ export type RoomName =
     | "PROJECT5"
     | "PROJECT6"
     | "PRINTER_MAKER"
-    | "NOTFOUND";
+    | "NOTFOUND"
+    | "OTHER";
