@@ -14,12 +14,14 @@ export const MapWrap = styled.div<{ scale: number }>`
   padding: 1.6rem;
   transform: ${({ scale }) => (`scale(${1 - (0.1 * scale)})`)};
   transform-origin: ${({ scale }) => (`${100 * scale}px`)}; 
+  width: 100%;
 `
 
 export const Map = styled.img`
   object-fit: contain;
   margin: 8rem auto;
   height: 72rem;
+  padding-right: 16rem;
 `;
 
 export const ToggleWrap = styled.div`

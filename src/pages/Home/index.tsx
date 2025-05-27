@@ -57,7 +57,7 @@ const Home = () => {
                     <S.Map src="/assets/ThirdFloorMap.svg" alt="Third FloorMap" />
                 ) : (
                     <S.Map src="/assets/FirstFloorMap.svg" alt="First FloorMap" />
-                )}
+                )} 
             </S.MapWrap>
             
 
