@@ -22,6 +22,7 @@ export const useApproveAttend = (roomName: RoomName | null) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ["attendApprove"] });
       queryClient.invalidateQueries({ queryKey: ["attendApproveNot"] });
+      queryClient.invalidateQueries({ queryKey: ["attendApprove", roomName] })
     },
     onError: () => {
       notification.open({ message: "출석 승인 실패", description: "네트워크 에러" });
