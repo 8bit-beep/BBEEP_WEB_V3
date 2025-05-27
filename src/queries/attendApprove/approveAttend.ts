@@ -4,6 +4,7 @@ import bbeepAxios from "../../libs/axios/customAxios";
 import { RoomName } from "../../types/enums/roomName";
 import { cookie } from "../../utils/tokenStore";
 import { notification } from "antd";
+import { AxiosError } from "axios";
 
 export const useApproveAttend = (roomName: RoomName | null) => {
   const accessToken = cookie.get(ACCESS_TOKEN_KEY);
@@ -24,8 +25,8 @@ export const useApproveAttend = (roomName: RoomName | null) => {
       queryClient.invalidateQueries({ queryKey: ["attendApproveNot"] });
       queryClient.invalidateQueries({ queryKey: ["attendApprove", roomName] })
     },
-    onError: () => {
-      notification.open({ message: "출석 승인 실패", description: "네트워크 에러" });
+    onError: (e) => {
+      notification.open({ message: "출석 승인 실패", description: (e as AxiosError<{ message: string }>).response?.data.message});
     }
   })
 }
