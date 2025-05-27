@@ -57,12 +57,6 @@ const LongAbsenceItem = ({ data }: { data: LongAbsenceItemProps }) => {
                 onClick={() => mutateAsync({ grade: Number(grade.value), cls: Number(cls.value), num: Number(num), reason, startDate, endDate })
                 .then(() => {
                   setModalVisible(false);
-                  setGrade({ name: "1학년", value: "1" });
-                  setCls({ name: "1반", value: "1" });
-                  setNum("");
-                  setEndDate("");
-                  setStartDate("");
-                  setReason("");
                 })}
                 >
                   수정하기
