@@ -8,7 +8,7 @@ import * as S from './style'
 const ApproveItem = ({ data }: { data: ApproveItemProps }) => {
   const { mutate } = useApproveAttend(data.room.name);
   
-  return (
+  if(data.approveTeacher) return (
     <S.TableItem>
       <S.TableItemContent $flex="6" $notCenter>
         {parseRoomName(data.room.name)}
@@ -23,6 +23,8 @@ const ApproveItem = ({ data }: { data: ApproveItemProps }) => {
       </S.TableItemContent>
     </S.TableItem>
   )
+
+  return <></>
 }
 
 export default ApproveItem
