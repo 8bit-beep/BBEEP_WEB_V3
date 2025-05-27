@@ -21,7 +21,7 @@ const AttendApprove = () => {
   }
 
   const filterdData = filterBy.value === "approved" ? 
-    approveData?.filter((item) => item.room.name !== "NOTFOUND" && item.room.name !== "OTHER") 
+    approveData?.filter((item) => item.room.name !== "NOTFOUND" && item.room.name !== "OTHER").filter(item => item.approveTeacher)
     : notApproveData?.filter((item) => item.name !== "NOTFOUND" && item.name !== "OTHER")
 
   return (

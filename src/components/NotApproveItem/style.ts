@@ -12,7 +12,7 @@ export const TableItemContent = styled.p<{
   $notCenter?: boolean;
 }>`
   font-size: 1.6rem;
-  height: 3rem;
+  height: 4rem;
   display: flex;
   align-items: center;
   flex: ${({ $flex }) => $flex};
@@ -31,7 +31,7 @@ export const DropdownWrapper = styled.div`
 `
 
 export const ApproveButton = styled.button<{ $isApproved: boolean }>`
-  padding: 0.5rem 2rem;
+  padding: 0.8rem 2rem;
   border-radius: 1rem;
   background-color: ${({ $isApproved }) => $isApproved ? COLOR.Red : COLOR.Main};
   color: white;
