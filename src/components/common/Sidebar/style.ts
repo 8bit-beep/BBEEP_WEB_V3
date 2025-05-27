@@ -14,13 +14,14 @@ export const Container = styled.div`
 export const SidebarHeader = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 1rem;
 `
 
 export const RoomName = styled.p`
   font-size: 2.5rem;
   font-weight: 500;
+  flex: 1;
 `
 
 export const StudentsWrap = styled.div`
@@ -57,4 +58,14 @@ export const Refetch = styled.div`
   &:active {
     transform: scale(0.95);
   }
+`
+
+export const ApproveButton = styled.button<{ $isApproved: boolean }>`
+  padding: 0.5rem 2rem;
+  border-radius: 1rem;
+  background-color: ${({ $isApproved }) => $isApproved ? COLOR.Red : COLOR.Main};
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 1.4rem;
 `

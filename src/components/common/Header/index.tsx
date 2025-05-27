@@ -44,6 +44,9 @@ const Header = () => {
             <S.MenuItem to="attend-approve" active={(location.pathname === "/attend-approve").toString()}>
               출석 승인 현황
             </S.MenuItem>
+            {/* <S.MenuItem to="long-absence" active={(location.pathname === "/long-absence").toString()}>
+              장기 결석자
+            </S.MenuItem> */}
           </S.Menu>
         </S.MenuWrap>
         <S.ProfileWrap>
@@ -76,6 +79,9 @@ const Header = () => {
             <S.MenuItem to="attend-approve" active={(location.pathname === "/attend-approve").toString()}>
               출석 승인 현황
             </S.MenuItem>
+            {/* <S.MenuItem to="long-absence" active={(location.pathname === "/long-absence").toString()}>
+              장기 결석자
+            </S.MenuItem> */}
           </>
         )
       }

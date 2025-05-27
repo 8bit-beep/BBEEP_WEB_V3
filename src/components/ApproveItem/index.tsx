@@ -1,7 +1,7 @@
 import { useApproveAttend } from "../../queries/attendApprove/approveAttend"
 import { COLOR } from "../../style/color/color"
 import { ApproveItem as ApproveItemProps } from "../../types/attendApprove/approveItem"
-import { parseDate } from "../../utils/parseDate"
+import { parseTime } from "../../utils/parseTime"
 import { parseRoomName } from "../../utils/parseRoomName"
 import * as S from './style'
 
@@ -13,7 +13,7 @@ const ApproveItem = ({ data }: { data: ApproveItemProps }) => {
       <S.TableItemContent $flex="6" $notCenter>
         {parseRoomName(data.room.name)}
       </S.TableItemContent>
-      <S.TableItemContent $flex="2">{data.approveTeacher ? parseDate(data.approvedAt) : ""} {data.approveTeacher ? data.period + "교시" : ""}</S.TableItemContent>
+      <S.TableItemContent $flex="2">{data.approveTeacher ? parseTime(data.approvedAt) : ""} {data.approveTeacher ? data.period + "교시" : ""}</S.TableItemContent>
       <S.TableItemContent $flex="2">{data.approveTeacher?.username || ""}</S.TableItemContent>
       <S.TableItemContent $flex="2" style={{ color: data.approveTeacher ? COLOR.Serve : COLOR.Red }}>
         {data.approveTeacher ? "O" : "X"}

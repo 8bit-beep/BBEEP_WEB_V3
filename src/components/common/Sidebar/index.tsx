@@ -3,13 +3,15 @@ import {useSidebarDataStore} from "../../../store/sidebar/useSidebarDataStore.ts
 import Skeleton from "../Skeleton";
 import {useGetAttendsByRoom} from "../../../hooks/attends/useGetAttendsByRoom.ts";
 import AttendStudent from "../../students/AttendStudent";
-import {useLocation} from "react-router-dom";
 import {useEffect} from "react";
 import {parseRoomName} from "../../../utils/parseRoomName.ts";
+import { useApproveAttend } from "../../../queries/attendApprove/approveAttend.ts";
+import { useLocation } from "react-router-dom";
 
 const Sidebar = () => {
   const { sidebarData, setSidebarData } = useSidebarDataStore();
   const { data, isLoading, refetch } = useGetAttendsByRoom(sidebarData);
+  const { mutate } = useApproveAttend(sidebarData);
   const location = useLocation();
   
   useEffect(() => {
@@ -20,6 +22,7 @@ const Sidebar = () => {
     <S.Container>
       <S.SidebarHeader>
         <S.RoomName>{parseRoomName(sidebarData || "NOTFOUND")} 인원</S.RoomName>
+        <S.ApproveButton $isApproved={false} onClick={() => {mutate()}}>{false ? "승인취소": "승인하기"}</S.ApproveButton>
         <S.Refetch onClick={() => refetch()}>새로고침</S.Refetch>
       </S.SidebarHeader>
       

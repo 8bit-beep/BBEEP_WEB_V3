@@ -48,3 +48,46 @@ export const SidebarContainer = styled.div<{
   right: ${props => props.$sidebarOpen ? '0' : '-520px'};
   transition: all 300ms;
 `;
+
+
+export const MemoWrap = styled.div<{ $isOpened: boolean, $isMainPage: boolean }>`
+  position: fixed;
+  top: ${({ $isMainPage }) => ($isMainPage ? "14rem" : "8rem")};
+  left: 1rem;
+  width: ${({ $isOpened }) => ($isOpened ? "64rem" : "6rem")};
+  max-width: 100vw;
+  height: ${({ $isOpened }) => ($isOpened ? "32rem" : "6rem")};
+  border-radius: ${({ $isOpened }) => ($isOpened ? "1.2rem" : "6rem")};
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  border: 0.1rem solid #F1F1F1;
+  transition: all 0.2s;
+`
+
+export const Memo = styled.textarea`
+  width: 100%;
+  height: 28rem;
+  border-radius: 1.2rem;
+  border: none;
+  resize: none;
+  outline: none;
+  padding: 1.2rem;
+  padding-top: 0;
+  font-size: 1.4rem;
+`
+
+export const MemoHeader = styled.div`
+  width: 100%;
+  height: 4rem;
+  padding: 0 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & > p {
+    font-size: 20px;
+  }
+`

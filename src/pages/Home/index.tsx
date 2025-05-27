@@ -1,15 +1,12 @@
 import * as S from "./style";
 import RoomIndicator from "../../components/RoomIndicator";
 import { useRef, useState } from "react";
-import { ChevronLeft, NotebookIcon, ZoomIn, ZoomOut } from "lucide-react";
-import { useEditMemo } from "../../hooks/memo/useEditMemo";
+import { ZoomIn, ZoomOut } from "lucide-react";
 import { useMap } from "../../hooks/map/useMap";
 
 const Home = () => {
     const [floor, setFloor] = useState(2);
-    const [isMemoOpened, setIsMemoOpened] = useState(true);
     const { scale, increase, decrease } = useMap();
-    const { memo, handleMemo } = useEditMemo();
     const mapRef = useRef<HTMLDivElement>(null);
 
       
@@ -84,23 +81,6 @@ const Home = () => {
                     3층
                 </S.ToggleItem>
             </S.ToggleWrap>
-
-            <S.MemoWrap $isOpened={isMemoOpened}>
-                {
-                    isMemoOpened ? (
-                        <>
-                            <S.MemoHeader>
-                                <p>메모사항</p>
-                                <ChevronLeft onClick={() => setIsMemoOpened(false)} />
-                            </S.MemoHeader>
-                            <S.Memo placeholder="메모사항을 입력해주세요." onChange={handleMemo} value={memo} />
-                        </>
-                    ) : (
-                        <NotebookIcon onClick={() => setIsMemoOpened(true)} />
-                    )
-                }
-                
-            </S.MemoWrap>
             <S.ScaleControllerWrap>
                 <ZoomIn size={32} onClick={decrease} color={scale !== -2 ? "black" : "gray"} />
                 <ZoomOut size={32} onClick={increase} color={scale !== 7 ? "black" : "gray"} />
