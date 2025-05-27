@@ -1,7 +1,7 @@
 import * as S from "./style";
 import RoomIndicator from "../../components/RoomIndicator";
 import { useRef, useState } from "react";
-import { ChevronLeft, NotebookIcon, ZoomIn, ZoomOut } from "lucide-react";
+import { ZoomIn, ZoomOut } from "lucide-react";
 import { useMap } from "../../hooks/map/useMap";
 
 const Home = () => {
