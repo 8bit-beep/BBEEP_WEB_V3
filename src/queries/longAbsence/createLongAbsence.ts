@@ -10,11 +10,17 @@ export const useCreateLongAbsence = () => {
   const queryClient = useQueryClient();
 
   const createData = async (data: { grade: number; cls: number; num: number; startDate: string; endDate: string; reason: string }) => {
-    if(accessToken && data.num > 0 && data.startDate && data.endDate && new Date(data.startDate) < new Date(data.endDate)) {
+    if(!accessToken) {
+      Promise.reject();
+    }
+    if(data.num > 0 && data.startDate && data.endDate && new Date(data.startDate) < new Date(data.endDate) && data.reason.trim().length > 0) {
       await bbeepAxios.post("/long-absences", data);
     }else{
-      Promise.reject("권한또는 데이터가 없습니다.");
+      notification.open({ message: "장기 결석자 등록 실패", description: "장기 결석자 등록 정보가 모두 기입되었는지, 장기 결석 시작일이 종료일과 같거나 더 늦지 않는지 확인해주세요." })
+      Promise.reject();
     }
+
+    
   }
 
   return useMutation({

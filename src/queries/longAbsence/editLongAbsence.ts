@@ -9,11 +9,15 @@ export const useEditLongAbsence = (id: number) => {
   const accessToken = cookie.get(ACCESS_TOKEN_KEY);
   const queryClient = useQueryClient();
 
-  const updateData = async (data: { grade: number; cls: number; num: number; startDate: string; endDate: string; reason: string }) => {
-    if(accessToken && data.num > 0 && data.startDate && data.endDate && new Date(data.startDate) < new Date(data.endDate)) {
+  const updateData = async (data: { startDate: string; endDate: string; reason: string }) => {
+    if(!accessToken) {
+      Promise.reject();
+    }
+    if(data.startDate && data.endDate && new Date(data.startDate) < new Date(data.endDate) && data.reason.trim().length > 0) {
       await bbeepAxios.patch(`/long-absences/${id}`, data);
     }else{
-      Promise.reject("권한또는 데이터가 없습니다.");
+      notification.open({ message: "장기 결석자 수정 실패", description: "장기 결석자 수정 정보가 모두 기입되었는지, 장기 결석 시작일이 종료일과 같거나 더 늦지 않는지 확인해주세요." })
+      Promise.reject();
     }
   }
 
