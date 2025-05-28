@@ -14,13 +14,13 @@ import { Room } from '../../types/attend/room';
 const AttendApprove = () => {
   const { data: approveData, isLoading: approveLoading } = useGetAttendApproveQuery();
   const { data: notApproveData, isLoading: notApproveLoading } = useGetAttendApproveNotQuery();
-  const [filterBy, setFilterBy] = useState<Option>({ name: "미승인", value: "notApproved" });
+  const [filterBy, setFilterBy] = useState<Option>({ name: "전체", value: "all" });
 
   const handleFilterBy = (option: Option) => {
     setFilterBy(option);
   }
 
-  const filterdData = filterBy.value === "approved" ? 
+  const filterdData = filterBy.value === "all" ? 
     approveData?.filter((item) => item.room.name !== "NOTFOUND" && item.room.name !== "OTHER")
     : notApproveData?.filter((item) => item.name !== "NOTFOUND" && item.name !== "OTHER")
 
@@ -38,7 +38,7 @@ const AttendApprove = () => {
             </div>
           </S.HeaderWrap>
           <S.Spacer />
-          <Dropdown setValue={handleFilterBy} value={filterBy} options={[{ name: "승인완료", value: "approved" },{ name: "미승인", value: "notApproved" }]} />
+          <Dropdown setValue={handleFilterBy} value={filterBy} options={[{ name: "전체", value: "all" },{ name: "미승인", value: "notApproved" }]} />
         </S.ContentHeaderWrap>
         <S.TableHead>
           <S.TableColumn $flex="6" $notCenter>실 이름</S.TableColumn>
