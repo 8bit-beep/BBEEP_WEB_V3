@@ -5,6 +5,7 @@ import { parseRoomName } from "../../utils/parseRoomName";
 import * as S from './style'
 
 const NotAttendApprove = ({ data }: { data: Room }) => {
+  console.log(data);
   const { mutate } = useApproveAttend(data.name);
     
   return (
