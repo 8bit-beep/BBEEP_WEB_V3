@@ -18,8 +18,6 @@ jobs:
           script: |
             cd /var/BBEEP_WEB_V3 && \
             git pull && \
-            cher1shrxd && \
-            ${{ secrets.REMOTE_GITHUB_TOKEN }}
             pnpm install && \
             pnpm build && \
             systemctl restart nginx
