@@ -18,10 +18,10 @@ const Home = () => {
                     <>
                         
                         {/* <RoomIndicator room="LAB1" top={110} left={135} /> */}
-                        <RoomIndicator room="PROJECT3" top={610} left={120} />
+                        <RoomIndicator room="PROJECT3" top={560} left={74} />
                         {/* <RoomIndicator room="SERVER" top={440} left={550} />
                         <RoomIndicator room="LAB2" top={110} left={810} /> */}
-                        <RoomIndicator room="PROJECT4" top={610} left={740} />
+                        <RoomIndicator room="PROJECT4" top={560} left={690} />
                         {/* <RoomIndicator room="LAB3_4" top={250} left={2005} />
                         <RoomIndicator room="LAB5" top={220} left={2450} />
                         <RoomIndicator room="LAB6" top={570} left={2495} />
@@ -34,20 +34,20 @@ const Home = () => {
                 ) : floor === 3 ? (
                     <>
                         {/* <RoomIndicator room="LAB12" top={110} left={135} /> */}
-                        <RoomIndicator room="PROJECT5" top={610} left={120} />
+                        <RoomIndicator room="PROJECT5" top={560} left={74} />
                         {/* <RoomIndicator room="PRINTER_MAKER" top={440} left={550} />
                         <RoomIndicator room="LAB13" top={110} left={810} /> */}
-                        <RoomIndicator room="PROJECT6" top={610} left={740} />
+                        <RoomIndicator room="PROJECT6" top={560} left={690} />
                         {/* <RoomIndicator room="LAB14" top={250} left={1885} /> */}
-                        <RoomIndicator room="LAB15_16" top={190} left={2090} />
-                        <RoomIndicator room="LAB17_18" top={610} left={2240} />
-                        <RoomIndicator room="LAB19_20" top={610} left={1920} />
-                        <RoomIndicator room="LAB21_22" top={610} left={1620} />
+                        <RoomIndicator room="LAB15_16" top={150} left={2020} />
+                        <RoomIndicator room="LAB17_18" top={560} left={2185} />
+                        <RoomIndicator room="LAB19_20" top={560} left={1880} />
+                        <RoomIndicator room="LAB21_22" top={560} left={1574} />
                     </>
                 ) : (
                     <>
-                        <RoomIndicator room="PROJECT1" top={610} left={120} />
-                        <RoomIndicator room="PROJECT2" top={610} left={740} />
+                        <RoomIndicator room="PROJECT1" top={560} left={74} />
+                        <RoomIndicator room="PROJECT2" top={560} left={690} />
                     </>
                 )}
 

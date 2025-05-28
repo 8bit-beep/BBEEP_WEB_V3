@@ -4,8 +4,8 @@ export const IndicatorContainer = styled.div<{
   top: string | number;
   left: string | number;
 }>`
-  width: 10rem;
-  height: 10rem;
+  width: 20rem;
+  height: 20rem;
   position: absolute;
   top: ${(props) => props.top}px;
   left: ${(props) => props.left}px;
@@ -26,7 +26,7 @@ export const Label = styled.p`
   align-items: center;
   justify-content: center;
   font-weight: 400;
-  font-size: 1.2rem;
+  font-size: 3rem;
   text-overflow: ellipsis;
   overflow: hidden;
 `;
