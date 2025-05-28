@@ -8,7 +8,7 @@ import { useState } from 'react';
 import { Option } from '../../types/props/dropdownProps';
 import { useGetAttendApproveNotQuery } from '../../queries/attendApprove/getAttendApproveNot';
 import { ApproveItem as ApproveItemType } from '../../types/attendApprove/approveItem';
-import NotAttendApprove from '../../components/NotApproveItem';
+import NotAttendApprove from '../../components/NotAttendApprove';
 import { Room } from '../../types/attend/room';
 
 const AttendApprove = () => {
@@ -54,7 +54,7 @@ const AttendApprove = () => {
             !filterdData || approveLoading || notApproveLoading ? Array.from({length: 4}).map((_, idx) => (
               <Skeleton width="100%" height="5rem" borderRadius="0.8rem" key={idx} />
             )): filterdData?.map((item, idx) => (
-              filterBy.value === "approved" ? <ApproveItem data={item as ApproveItemType} key={idx} /> : <NotAttendApprove data={item as Room} />
+              filterBy.value === "all" ? <ApproveItem data={item as ApproveItemType} key={idx} /> : <NotAttendApprove data={item as Room} />
             ))
           }
         </S.TableContent>
