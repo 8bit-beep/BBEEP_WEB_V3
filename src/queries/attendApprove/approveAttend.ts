@@ -21,6 +21,7 @@ export const useApproveAttend = (roomName: RoomName | null) => {
   return useMutation({
     mutationFn: approveAttend,
     onSuccess: () => {
+      notification.open({ message: "출석 승인 완료" });
       queryClient.invalidateQueries({ queryKey: ["attendApprove"] });
       queryClient.invalidateQueries({ queryKey: ["attendApproveNot"] });
       queryClient.invalidateQueries({ queryKey: ["attendApprove", roomName] })

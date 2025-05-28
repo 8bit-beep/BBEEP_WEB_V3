@@ -24,7 +24,7 @@ const LongAbsenceItem = ({ data }: { data: LongAbsenceItemProps }) => {
       <S.TableItemContent $flex="2">
         {data.username}
       </S.TableItemContent>
-      <S.TableItemContent $flex="2">{data.grade}{data.cls}{data.num}</S.TableItemContent>
+      <S.TableItemContent $flex="2">{data.grade}{data.cls}{data.num > 9 ? data.num : `0${data.num}`}</S.TableItemContent>
       <S.TableItemContent $flex="6">{parseDate(data.startDate)}~{parseDate(data.endDate)}</S.TableItemContent>
       <S.TableItemContent $flex="5" $notCenter>
         {data.reason}
