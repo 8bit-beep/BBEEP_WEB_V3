@@ -105,3 +105,14 @@ export const NoContent = styled.div`
   font-size: 1.6rem;
   color: ${COLOR.Gray};
 `
+
+
+export const ApproveButton = styled.button<{ $isApproved: boolean }>`
+  padding: 0.8rem 2rem;
+  border-radius: 1rem;
+  background-color: ${({ $isApproved }) => $isApproved ? COLOR.Red : COLOR.Main};
+  color: white;
+  cursor: pointer;
+  border: none;
+  font-size: 1.4rem;
+`

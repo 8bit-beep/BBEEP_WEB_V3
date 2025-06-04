@@ -7,10 +7,15 @@ import {useGetStudentByClass} from "../../hooks/class/useGetStudentByClass.ts";
 import Skeleton from "../../components/common/Skeleton";
 import ClassStudent from "../../components/students/ClassStudent";
 import {getStoredOption} from "../../utils/getStoredOption.ts";
+import { useApproveAttend } from "../../queries/attendApprove/approveAttend.ts";
+import { useGetAttendApproveOneQuery } from "../../queries/attendApprove/getAttendApproveOne.ts";
+import { RoomName } from "../../types/enums/roomName.ts";
 
 const StudentByClass = () => {
   const [grade, setGrade] = useState<Option>(getStoredOption("GRADE_OPTION") || {name: "1학년", value: "1"});
   const [cls, setCls] = useState<Option>(getStoredOption("CLS_OPTION") || {name: "1반", value: "1"});
+  const { mutate } = useApproveAttend(`C${grade.value}_${cls.value}` as RoomName);
+  const { data: approve } = useGetAttendApproveOneQuery(`C${grade.value}_${cls.value}` as RoomName);
 
   const handleGrade = (option: Option) => {
     setGrade(option);
@@ -38,6 +43,7 @@ const StudentByClass = () => {
             </div>
           </S.HeaderWrap>
           <S.Spacer/>
+          <S.ApproveButton $isApproved={!!approve?.approveTeacher} onClick={() => {mutate()}}>{approve?.approveTeacher ? "승인취소": "승인하기"}</S.ApproveButton>
           <Dropdown
             value={grade}
             setValue={handleGrade}
