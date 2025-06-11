@@ -26,6 +26,10 @@ const AttendStudent = ({ data }: AttendStudentProps) => {
       save.mutate();
     }
   }, [attendStatus]);
+
+  useEffect(() => {
+    setAttendStatus({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status })
+  }, [data]);
   
   return (
     <S.Container $isNotAttend={data.statuses[0].status === "NOT_ATTEND" || data.statuses[0].status === "SHIFT_NOT_ATTEND"}>
