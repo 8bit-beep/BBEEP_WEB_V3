@@ -8,6 +8,7 @@ import {parseRoomName} from "../../../utils/parseRoomName.ts";
 import { useApproveAttend } from "../../../queries/attendApprove/approveAttend.ts";
 import { useLocation } from "react-router-dom";
 import { useGetAttendApproveOneQuery } from "../../../queries/attendApprove/getAttendApproveOne.ts";
+import { useQueryClient } from "@tanstack/react-query";
 
 const Sidebar = () => {
   const { sidebarData, setSidebarData } = useSidebarDataStore();
@@ -15,6 +16,7 @@ const Sidebar = () => {
   const { mutate } = useApproveAttend(sidebarData);
   const { data: approve } = useGetAttendApproveOneQuery(sidebarData);
   const location = useLocation();
+  const queryClient = useQueryClient();
   
   useEffect(() => {
     setSidebarData(null);
@@ -25,7 +27,7 @@ const Sidebar = () => {
       <S.SidebarHeader>
         <S.RoomName>{parseRoomName(sidebarData || "NOTFOUND")} 인원</S.RoomName>
         <S.ApproveButton $isApproved={!!approve?.approveTeacher} onClick={() => {mutate()}}>{approve?.approveTeacher ? "승인취소": "승인하기"}</S.ApproveButton>
-        <S.Refetch onClick={() => refetch()}>새로고침</S.Refetch>
+        <S.Refetch onClick={async () => { await queryClient.invalidateQueries({ queryKey: ["getAttendsByRoom", sidebarData] }); refetch()}}>새로고침</S.Refetch>
       </S.SidebarHeader>
       
       <S.StudentsWrap>

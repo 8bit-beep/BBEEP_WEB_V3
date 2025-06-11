@@ -28,6 +28,7 @@ const AttendStudent = ({ data }: AttendStudentProps) => {
   }, [attendStatus]);
 
   useEffect(() => {
+    console.log('데이터 변경됨')
     setAttendStatus({ name: parseAttendStatus(data.statuses[0].status), value: data.statuses[0].status })
   }, [data]);
   
