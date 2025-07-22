@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import * as S from "./style";
 import Header from "../../components/common/Header";
-import Footer from "../../components/common/Footer";
+import Footer from "../../components/common/Footer.tsx";
 import {ChevronLeft, NotebookIcon, X} from "lucide-react";
 import Sidebar from "../../components/common/Sidebar";
 import {useSidebarDataStore} from "../../store/sidebar/useSidebarDataStore.ts";

@@ -1,19 +1,19 @@
-import * as S from "./style";
 import RoomIndicator from "../../components/RoomIndicator";
 import { useRef, useState } from "react";
 import { ZoomIn, ZoomOut } from "lucide-react";
 import { useMap } from "../../hooks/map/useMap";
+import { COLOR } from "../../style/color/color";
 
 const Home = () => {
     const [floor, setFloor] = useState(2);
     const { scale, increase, decrease } = useMap();
     const mapRef = useRef<HTMLDivElement>(null);
-
-      
-
     return (
-        <S.Container ref={mapRef}>
-            <S.MapWrap scale={scale}>
+        <div className="w-full h-full overflow-scroll" ref={mapRef}>
+            {/* map 감싸는 공간 */}
+            <div className='w-full flex items-center relative p-6'
+            style={{transform: `scale(${1-(0.1 * scale)})`, 
+            transformOrigin: `${100 * scale}px`}}>
                 {floor === 2 ? (
                     <>
                         
@@ -52,40 +52,41 @@ const Home = () => {
                 )}
 
                 {floor === 2 ? (
-                    <S.Map src="/assets/SecondFloorMap.svg" alt="Second FloorMap" />
+                    <img src="/assets/SecondFloorMap.svg" alt="Second FloorMap" className="object-contain mt-32 mb-32
+                    mx-auto h-[72rem] pr-64"/>
                 ) : floor === 3 ? (
-                    <S.Map src="/assets/ThirdFloorMap.svg" alt="Third FloorMap" />
+                    <img src="/assets/ThirdFloorMap.svg" alt="Third FloorMap" className="object-contain mt-32 mb-32
+                    mx-auto h-[72rem] pr-64"/>
                 ) : (
-                    <S.Map src="/assets/FirstFloorMap.svg" alt="First FloorMap" />
+                    <img src="/assets/ThirdFloorMap.svg" alt="Third FloorMap" className="object-contain mt-32 mb-32
+                    mx-auto h-[72rem] pr-64"/>
                 )} 
-            </S.MapWrap>
+            </div>
             
+            {/* 1층 2층 3층 선택하는 공간 */}
+            <div className="w-72 p-2 flex justify-center items-center bg-white
+                fixed top-32 left-4 gap-1.5 border border-main rounded-xl">
+                {[1, 2, 3].map((i) => (
+                    <div
+                    key={i}
+                    className="flex-1 py-4 text-base items-center font-semibold rounded-xl text-center cursor-pointer"
+                    style={{ color: floor === i ? COLOR.White : COLOR.Black, 
+                        background: floor === i ? COLOR.Main : COLOR.White
+                    }}
+                    onClick={() => setFloor(i)}
+                    >
+                    {i}층
+                    </div>
+                ))}
+            </div>
 
-            <S.ToggleWrap>
-            <S.ToggleItem
-                    $isFocused={floor === 1}
-                    onClick={() => setFloor(1)}
-                >
-                    1층
-                </S.ToggleItem>
-                <S.ToggleItem
-                    $isFocused={floor === 2}
-                    onClick={() => setFloor(2)}
-                >
-                    2층
-                </S.ToggleItem>
-                <S.ToggleItem
-                    $isFocused={floor === 3}
-                    onClick={() => setFloor(3)}
-                >
-                    3층
-                </S.ToggleItem>
-            </S.ToggleWrap>
-            <S.ScaleControllerWrap>
+            <div className="w-28 h-56 border-1 border-solid border-gray rounded-xl
+            bg-white fixed right-8 bottom-36 flex flex-col gap-8 items-center
+            justify-between py-8 px-4 cursor-pointer">
                 <ZoomIn size={32} onClick={decrease} color={scale !== -2 ? "black" : "gray"} />
                 <ZoomOut size={32} onClick={increase} color={scale !== 7 ? "black" : "gray"} />
-            </S.ScaleControllerWrap>
-        </S.Container>
+            </div>
+        </div>
     );
 };
 

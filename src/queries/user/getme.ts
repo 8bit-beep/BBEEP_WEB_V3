@@ -11,9 +11,9 @@ export const useGetme = () => {
   const accessToken = cookie.get(ACCESS_TOKEN_KEY);
   const navigate = useNavigate();
 
-  if(!accessToken) {
-    navigate('/login')
-  }
+  // if(!accessToken) {
+  //   navigate('/login')
+  // }
 
   const [me, setMe] = useState<User | null>(null);
   
