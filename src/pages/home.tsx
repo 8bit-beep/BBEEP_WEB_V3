@@ -20,37 +20,34 @@ const Home = () => {
             >
                 {floor === 2 ? (
                     <>
-                        {/* <RoomIndicator room="LAB1" top={110} left={135} /> */}
-                        <RoomIndicator room="PROJECT3" top={560} left={74} />
-                        {/* <RoomIndicator room="SERVER" top={440} left={550} />
-                        <RoomIndicator room="LAB2" top={110} left={810} /> */}
-                        <RoomIndicator room="PROJECT4" top={560} left={690} />
-                        {/* <RoomIndicator room="LAB3_4" top={250} left={2005} />
-                        <RoomIndicator room="LAB5" top={220} left={2450} />
-                        <RoomIndicator room="LAB6" top={570} left={2495} />
-                        <RoomIndicator room="LAB7" top={570} left={2335} />
-                        <RoomIndicator room="LAB8" top={590} left={2175} />
-                        <RoomIndicator room="LAB9" top={590} left={2015} />
-                        <RoomIndicator room="LAB10" top={570} left={1700} />
-                        <RoomIndicator room="LAB11" top={570} left={1855} /> */}
+                        {/* <RoomIndicator room="LAB1" top={430} left={65} /> */}
+                        <RoomIndicator room="PROJECT3" top={670} left={63} />
+                        {/* <RoomIndicator room="SERVER" top={670} left={240} /> */}
+                        {/* <RoomIndicator room="LAB2" top={430} left={412} /> */}
+                        <RoomIndicator room="PROJECT4" top={670} left={412} />
+                        {/* <RoomIndicator room="LAB3_4" top={430} left={1010} /> */}
+                        {/* <RoomIndicator room="LAB5" top={430} left={1275} /> */}
+                        {/* <RoomIndicator room="LAB6_7" top={670} left={1270} /> */}
+                        {/* <RoomIndicator room="LAB8_9" top={670} left={1095} /> */}
+                        {/* <RoomIndicator room="LAB10_11" top={670} left={923} /> */}
                     </>
                 ) : floor === 3 ? (
                     <>
-                        {/* <RoomIndicator room="LAB12" top={110} left={135} /> */}
-                        <RoomIndicator room="PROJECT5" top={560} left={74} />
-                        {/* <RoomIndicator room="PRINTER_MAKER" top={440} left={550} />
-                        <RoomIndicator room="LAB13" top={110} left={810} /> */}
-                        <RoomIndicator room="PROJECT6" top={560} left={690} />
-                        {/* <RoomIndicator room="LAB14" top={250} left={1885} /> */}
-                        <RoomIndicator room="LAB15_16" top={150} left={2020} />
-                        <RoomIndicator room="LAB17_18" top={560} left={2185} />
-                        <RoomIndicator room="LAB19_20" top={560} left={1880} />
-                        <RoomIndicator room="LAB21_22" top={560} left={1574} />
+                        {/* <RoomIndicator room="LAB12" top={430} left={63} /> */}
+                        <RoomIndicator room="PROJECT5" top={670} left={63} />
+                        {/* <RoomIndicator room="PRINTER_MAKER" top={670} left={240} /> */}
+                        {/* <RoomIndicator room="LAB13" top={430} left={412} /> */}
+                        <RoomIndicator room="PROJECT6" top={670} left={412} />
+                        {/* <RoomIndicator room="LAB14" top={430} left={925} /> */}
+                        <RoomIndicator room="LAB15_16" top={425} left={1190} />
+                        <RoomIndicator room="LAB17_18" top={670} left={1270} />
+                        <RoomIndicator room="LAB19_20" top={670} left={1095} />
+                        <RoomIndicator room="LAB21_22" top={670} left={923} />
                     </>
                 ) : (
                     <>
-                        <RoomIndicator room="PROJECT1" top={560} left={74} />
-                        <RoomIndicator room="PROJECT2" top={560} left={690} />
+                        <RoomIndicator room="PROJECT1" top={555} left={320} />
+                        <RoomIndicator room="PROJECT2" top={555} left={1020} />
                     </>
                 )}
 
@@ -70,7 +67,7 @@ const Home = () => {
                     />
                 ) : (
                     <img
-                        src="/assets/ThirdFloorMap.svg"
+                        src="/assets/FirstFloorMap.svg"
                         alt="Third FloorMap"
                         className="object-contain mt-32 mb-32
                     mx-auto h-[72rem] pr-64"
@@ -98,9 +95,12 @@ const Home = () => {
                 ))}
             </div>
 
-            <div className="w-20 h-46 border-1 border-solid border-gray rounded-xl
+            {/* 축소 확대 하는 곳 */}
+            <div
+                className="h-46 border-1 border-solid border-gray rounded-xl
             bg-white fixed right-8 bottom-36 flex flex-col gap-8 items-center
-            justify-between py-8 px-4 cursor-pointer" >
+            justify-between py-8 px-8 cursor-pointer"
+            >
                 <ZoomIn
                     size={32}
                     onClick={decrease}

@@ -11,15 +11,15 @@ const RoomIndicator = ({ room, top, left }: RoomIndicatorProps) => {
 
     return (
         <div
-            className="w-80 h-80 absolute bg-white cursor-pointer
+            className="w-25 h-25 absolute bg-white cursor-pointer
             rounded-xl transition-transform duration-300 active:scale-95"
-            style={{ top: `${top / 16}rem`, left: `${left / 16}rem` }}
+            style={{ top: `${top / 16}rem`, left: `${left / 16}rem`, boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.05)" }}
             onClick={handleOpen}
             id={room}
         >
             <p
                 className="w-full h-full flex items-center justify-center
-      font-normal text-5xl overflow-ellipsis overflow-hidden"
+                text-base font-bold overflow-ellipsis overflow-hidden"
             >
                 {parseRoomName(room)}
             </p>
