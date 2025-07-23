@@ -2,22 +2,6 @@ import styled from "@emotion/styled";
 import {Link} from "react-router-dom";
 import { COLOR } from "../../../style/color/color";
 
-export const Container = styled.header<{ $mobileMenu: boolean }>`
-  width: 100%;
-  height: ${({ $mobileMenu }) => $mobileMenu ? "40rem" : "7rem"};
-  padding: ${({ $mobileMenu }) => $mobileMenu ? "1rem" : "0"} 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: ${({ $mobileMenu }) => $mobileMenu ? "start" : "center"};
-  justify-content: center;
-  background-color: ${COLOR.White};
-  position: fixed;
-  top: 0;
-  z-index: 100;
-  box-shadow: 1rem 0 0.1rem 0.001rem ${COLOR.Gray};
-  transition: all 0.2s;
-`;
-
 export const HeaderWrap = styled.div`
   width: 100%;
   max-width: 160rem;
@@ -26,29 +10,6 @@ export const HeaderWrap = styled.div`
   justify-content: space-between;
   align-items: center;
   gap: 2rem;
-`;
-
-export const Logo = styled.img`
-  cursor: pointer;
-  width: 5rem;
-  margin-right: 9rem;
-`;
-
-export const Menu = styled.nav`
-  height: 100%;
-  gap: 2rem;
-  display: flex;
-  @media (max-width: 80rem) {
-    display: none;
-  }
-`;
-
-export const MenuWrap = styled.div`
-  height: 100%;
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const MenuItem = styled(Link)<{ active: string }>`

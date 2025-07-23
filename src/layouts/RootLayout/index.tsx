@@ -9,7 +9,7 @@ import { useEditMemo } from "../../hooks/memo/useEditMemo.ts";
 import { useEffect, useState } from "react";
 
 const RootLayout = () => {
-  const { sidebarData, setSidebarData } = useSidebarDataStore();
+  const { sidebarData: sidebarOpen, setSidebarData } = useSidebarDataStore();
   const { memo, handleMemo } = useEditMemo();
   const [isMemoOpened, setIsMemoOpened] = useState(true);
   const location = useLocation();
@@ -24,37 +24,55 @@ const RootLayout = () => {
   },[location.pathname]);
   
   return (
-    <S.Container>
+    <div className="w-full h-[100svh] pt-36 bg-background">
       <Header />
-      <S.Content $sidebarOpen={!!sidebarData}>
+      {/* content */}
+      <div className="w-full relative transition-all duration-300 overflow-hidden" 
+      style={{paddingRight: !!sidebarOpen ? "520px" : "0",
+        height: "calc(100svh - 14rem)"
+      }}>
         <Outlet />
-        <S.CloseButton
-          $sidebarOpen={!!sidebarData}
+        <div
+          className="w-16 h-16 absolute top-3 bg-white rounded-full flex
+          items-center justify-center transition-all duration-300 delay-75 cursor-pointer"
+          style={{right: sidebarOpen ? "532px" : "-4rem"}}
           onClick={() => setSidebarData(null)}
         >
            <X />
-        </S.CloseButton>
-        <S.SidebarContainer $sidebarOpen={!!sidebarData}>
+        </div>
+        {/* sidebar container */}
+        <div className="w-screen max-w-[520px] absolute top-0 transition-all
+        duration-300"
+        style={{right: sidebarOpen ? '0' : '-520px'}}>
           <Sidebar />
-        </S.SidebarContainer>
-      </S.Content>
+        </div>
+      </div>
       <Footer />
-      <S.MemoWrap $isOpened={isMemoOpened} $isMainPage={isMainPage}>
+      <div className="fixed left-4 max-w-screen overflow-hidden flex justify-center
+      items-center flex-col bg-white border border-main transition-all duration-[0.2s] cursor-pointer"
+      style={{
+        top: isMainPage ? "10rem" : "6rem",
+        width: isMemoOpened ? "29rem" : "5rem",
+        height: isMemoOpened ? "29rem" : "5rem",
+        borderRadius: isMemoOpened ? "0.75rem" : "10rem"
+      }}>
         {
-            isMemoOpened ? (
-                <>
-                    <S.MemoHeader>
-                        <p>메모사항</p>
-                        <ChevronLeft onClick={() => setIsMemoOpened(false)} />
-                    </S.MemoHeader>
-                    <S.Memo placeholder="메모사항을 입력해주세요." onChange={handleMemo} value={memo} />
-                </>
-            ) : (
-                <NotebookIcon onClick={() => setIsMemoOpened(true)} />
-            )
+          isMemoOpened ? (
+            <>
+            {/* 메모 적는 곳 */}
+              <div className="w-full h-8 px-2.5 py-0 flex justify-between items-center">
+                <div className="text-2xl text-dark pl-2.5">메모사항</div>
+                <ChevronLeft onClick={() => setIsMemoOpened(false)} className="w-8 h-8"/>
+              </div>
+              <textarea className="w-full h-96 pt-4 p-5 border-none resize-none
+              outline-none text-base" placeholder="메모사항을 입력해주세요." onChange={handleMemo} value={memo} />
+            </>
+          ) : (
+            <NotebookIcon onClick={() => setIsMemoOpened(true)} />
+          )
         }
-      </S.MemoWrap>
-    </S.Container>
+      </div>
+    </div>
   );
 };
 

@@ -1,8 +1,8 @@
-import RoomIndicator from "../../components/RoomIndicator";
+import RoomIndicator from "../components/RoomIndicator";
 import { useRef, useState } from "react";
 import { ZoomIn, ZoomOut } from "lucide-react";
-import { useMap } from "../../hooks/map/useMap";
-import { COLOR } from "../../style/color/color";
+import { useMap } from "../hooks/map/useMap";
+import { COLOR } from "../style/color/color";
 
 const Home = () => {
     const [floor, setFloor] = useState(2);
@@ -11,12 +11,15 @@ const Home = () => {
     return (
         <div className="w-full h-full overflow-scroll" ref={mapRef}>
             {/* map 감싸는 공간 */}
-            <div className='w-full flex items-center relative p-6'
-            style={{transform: `scale(${1-(0.1 * scale)})`, 
-            transformOrigin: `${100 * scale}px`}}>
+            <div
+                className="w-full flex items-center relative p-6"
+                style={{
+                    transform: `scale(${1 - 0.1 * scale})`,
+                    transformOrigin: `${100 * scale}px`,
+                }}
+            >
                 {floor === 2 ? (
                     <>
-                        
                         {/* <RoomIndicator room="LAB1" top={110} left={135} /> */}
                         <RoomIndicator room="PROJECT3" top={560} left={74} />
                         {/* <RoomIndicator room="SERVER" top={440} left={550} />
@@ -52,44 +55,65 @@ const Home = () => {
                 )}
 
                 {floor === 2 ? (
-                    <img src="/assets/SecondFloorMap.svg" alt="Second FloorMap" className="object-contain mt-32 mb-32
-                    mx-auto h-[72rem] pr-64"/>
+                    <img
+                        src="/assets/SecondFloorMap.svg"
+                        alt="Second FloorMap"
+                        className="object-contain mt-32 mb-32
+                    mx-auto h-[72rem] pr-64"
+                    />
                 ) : floor === 3 ? (
-                    <img src="/assets/ThirdFloorMap.svg" alt="Third FloorMap" className="object-contain mt-32 mb-32
-                    mx-auto h-[72rem] pr-64"/>
+                    <img
+                        src="/assets/ThirdFloorMap.svg"
+                        alt="Third FloorMap"
+                        className="object-contain mt-32 mb-32
+                    mx-auto h-[72rem] pr-64"
+                    />
                 ) : (
-                    <img src="/assets/ThirdFloorMap.svg" alt="Third FloorMap" className="object-contain mt-32 mb-32
-                    mx-auto h-[72rem] pr-64"/>
-                )} 
+                    <img
+                        src="/assets/ThirdFloorMap.svg"
+                        alt="Third FloorMap"
+                        className="object-contain mt-32 mb-32
+                    mx-auto h-[72rem] pr-64"
+                    />
+                )}
             </div>
-            
+
             {/* 1층 2층 3층 선택하는 공간 */}
-            <div className="w-72 p-2 flex justify-center items-center bg-white
-                fixed top-32 left-4 gap-1.5 border border-main rounded-xl">
+            <div
+                className="w-62 p-2 flex justify-center items-center bg-white
+                fixed top-24 left-4 gap-1.5 border border-main rounded-xl"
+            >
                 {[1, 2, 3].map((i) => (
                     <div
-                    key={i}
-                    className="flex-1 py-4 text-base items-center font-semibold rounded-xl text-center cursor-pointer"
-                    style={{ color: floor === i ? COLOR.White : COLOR.Black, 
-                        background: floor === i ? COLOR.Main : COLOR.White
-                    }}
-                    onClick={() => setFloor(i)}
+                        key={i}
+                        className="flex-1 py-2 text-base items-center font-semibold rounded-xl text-center cursor-pointer"
+                        style={{
+                            color: floor === i ? COLOR.White : COLOR.Black,
+                            background: floor === i ? COLOR.Main : COLOR.White,
+                        }}
+                        onClick={() => setFloor(i)}
                     >
-                    {i}층
+                        {i}층
                     </div>
                 ))}
             </div>
 
-            <div className="w-28 h-56 border-1 border-solid border-gray rounded-xl
+            <div className="w-20 h-46 border-1 border-solid border-gray rounded-xl
             bg-white fixed right-8 bottom-36 flex flex-col gap-8 items-center
-            justify-between py-8 px-4 cursor-pointer">
-                <ZoomIn size={32} onClick={decrease} color={scale !== -2 ? "black" : "gray"} />
-                <ZoomOut size={32} onClick={increase} color={scale !== 7 ? "black" : "gray"} />
+            justify-between py-8 px-4 cursor-pointer" >
+                <ZoomIn
+                    size={32}
+                    onClick={decrease}
+                    color={scale !== -2 ? "black" : "gray"}
+                />
+                <ZoomOut
+                    size={32}
+                    onClick={increase}
+                    color={scale !== 7 ? "black" : "gray"}
+                />
             </div>
         </div>
     );
 };
 
 export default Home;
-
-
