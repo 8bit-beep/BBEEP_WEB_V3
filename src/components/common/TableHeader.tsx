@@ -1,9 +1,9 @@
-import { TableHeaderProps } from "../../types/props/tableHeaderPRops";
+import { TableHeaderProps } from "../../types/props/tableHeaderProps";
 import ThemedIcon from "./ThemedIcon";
 
 const TableHeader = (props: TableHeaderProps) => {
     return (
-        <div className="flex items-center w-full bg-white justify-between px-10">
+        <div className="flex items-center w-full bg-white justify-between px-10 py-5">
             {/* title & icon & description wrap*/}
             <div className="flex items-center gap-3">
                 <ThemedIcon src={props.icon} width="2rem" height="2rem" />

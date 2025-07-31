@@ -11,9 +11,9 @@ const RoomIndicator = ({ room, top, left }: RoomIndicatorProps) => {
 
     return (
         <div
-            className="w-25 h-25 absolute bg-white cursor-pointer
+            className="w-30 h-30 absolute bg-white cursor-pointer
             rounded-xl transition-transform duration-300 active:scale-95"
-            style={{ top: `${top / 16}rem`, left: `${left / 16}rem`, boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.05)" }}
+            style={{ top: `${top}rem`, left: `${left}rem`, boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.05)" }}
             onClick={handleOpen}
             id={room}
         >
