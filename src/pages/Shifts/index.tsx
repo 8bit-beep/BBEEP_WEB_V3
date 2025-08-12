@@ -15,7 +15,7 @@ const Shifts = () => {
     const reject = useUpdateShiftStatus("REJECTED");
     const cancel = useUpdateShiftStatus("WAITING");
     return (
-        <S.Container>
+        <div className="w-full h-full flex justify-center items-center bg-background p-14">
             <TableContainer>
                 <TableHeader
                     icon="/assets/Lab.svg"
@@ -101,11 +101,13 @@ const Shifts = () => {
                             </S.TableItem>
                         ))
                     ) : (
-                        <S.NoContent>실 이동 데이터가 없습니다.</S.NoContent>
+                        <div className="w-full h-7 flex justify-center items-center text-xl text-gray">
+                            실 이동 데이터가 없습니다.
+                        </div>
                     )}
                 </S.TableContent>
             </TableContainer>
-        </S.Container>
+        </div>
     );
 };
 export default Shifts;

@@ -41,7 +41,7 @@ const StudentByClass = () => {
     const { data, isLoading } = useGetStudentByClass(grade.value, cls.value);
 
     return (
-        <S.Container>
+        <div className="w-full h-full flex justify-center items-center bg-background p-14">
             <TableContainer>
                 <TableHeader
                     icon="/assets/Group.png"
@@ -108,11 +108,13 @@ const StudentByClass = () => {
                             </S.ListGap>
                         ))
                     ) : (
-                        <S.NoContent>출석한 인원이 없습니다.</S.NoContent>
+                        <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
+                            출석한 인원이 없습니다.
+                        </div>
                     )}
                 </S.TableContent>
             </TableContainer>
-        </S.Container>
+        </div>
     );
 };
 

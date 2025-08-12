@@ -30,10 +30,3 @@ export const ProfileWrap = styled.div`
     align-items: center;
     justify-content: flex-end;
 `;
-
-export const MobileMenu = styled.div`
-    display: none;
-    @media (max-width: 80rem) {
-        display: flex;
-    }
-`;

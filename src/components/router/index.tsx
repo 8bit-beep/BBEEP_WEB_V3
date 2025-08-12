@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RootLayout from "../../layouts/RootLayout";
-import Home from "../../pages/home";
+import Home from "../../pages/Home";
 // import Login from "../../pages/Login";
 import Shifts from "../../pages/Shifts/index";
 import StudentByClass from "../../pages/StudentByClass";

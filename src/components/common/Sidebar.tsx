@@ -74,7 +74,7 @@ const Sidebar = () => {
                         </div>
                     ))
                 ) : (
-                    <div className="w-full h-80 flex items-center justify-center text-xl text-gray">
+                    <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
                         출석한 인원이 없습니다.
                     </div>
                 )}

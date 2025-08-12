@@ -51,7 +51,7 @@ const NotAttendToday = () => {
     const { data, isLoading } = useGetNotAttends(filterBy, grade, cls, room);
 
     return (
-        <S.Container>
+        <div className="w-full h-full flex justify-center items-center bg-background p-14">
             <TableContainer>
                 <TableHeader
                     icon="/assets/Excluded.svg"
@@ -116,11 +116,13 @@ const NotAttendToday = () => {
                     ) : data && data.length > 0 ? (
                         data.map((item) => <NotAttendStudent data={item} />)
                     ) : (
-                        <S.NoContent>결석자가 없습니다.</S.NoContent>
+                        <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
+                            결석자가 없습니다.
+                        </div>
                     )}
                 </S.TableContent>
             </TableContainer>
-        </S.Container>
+        </div>
     );
 };
 

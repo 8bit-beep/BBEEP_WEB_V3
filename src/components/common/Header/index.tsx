@@ -2,11 +2,11 @@ import * as S from "./style";
 import Logo from "/assets/Logo.svg";
 import { useNavigate } from "react-router-dom";
 import { useLocation } from "react-router-dom";
-import ProfileDropdown from "../Dropdown/ProfileDropdown";
 import { useEffect, useState } from "react";
 import { AlignJustify, X } from "lucide-react";
 import { COLOR } from "../../../style/color/color";
 import { Link } from "react-router-dom";
+import ProfileDropdown from "../Dropdown/ProfileDropDown";
 
 const Header = () => {
     const [mobileMenu, setMobileMenu] = useState(false);
@@ -70,13 +70,13 @@ const Header = () => {
                 <div className="flex items-center justify-end">
                     <ProfileDropdown />
                 </div>
-                <S.MobileMenu>
+                <div className="flex md:hidden">
                     {mobileMenu ? (
                         <X onClick={() => setMobileMenu(false)} />
                     ) : (
                         <AlignJustify onClick={() => setMobileMenu(true)} />
                     )}
-                </S.MobileMenu>
+                </div>
             </div>
             {mobileMenu && (
                 <>

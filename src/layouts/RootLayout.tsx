@@ -1,11 +1,11 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Header from "../components/common/Header/index.tsx";
 import Footer from "../components/common/Footer.tsx";
 import { ChevronLeft, NotebookIcon, X } from "lucide-react";
 import Sidebar from "../components/common/Sidebar.tsx";
 import { useSidebarDataStore } from "../store/sidebar/useSidebarDataStore.ts";
 import { useEditMemo } from "../hooks/memo/useEditMemo.ts";
 import { useEffect, useState } from "react";
+import Header from "../components/common/Header/index.tsx";
 
 const RootLayout = () => {
     const { sidebarData: sidebarOpen, setSidebarData } = useSidebarDataStore();
@@ -23,14 +23,14 @@ const RootLayout = () => {
     }, [location.pathname]);
 
     return (
-        <div className="w-full h-[100svh] pt-36 bg-background">
+        <div className="w-full h-[100svh] pt-12 bg-background">
             <Header />
             {/* content */}
             <div
                 className="w-full relative transition-all duration-300 overflow-hidden"
                 style={{
                     paddingRight: !!sidebarOpen ? "520px" : "0",
-                    height: "calc(100svh - 14rem)",
+                    height: "calc(100svh - 8rem)",
                 }}
             >
                 <Outlet />
