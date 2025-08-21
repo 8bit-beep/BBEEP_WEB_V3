@@ -1,14 +1,12 @@
-import ThemedIcon from "../../components/common/ThemedIcon";
-import Dropdown from "../../components/common/Dropdown/DropDown.tsx";
+import Dropdown from "../components/common/Dropdown/DropDown.tsx";
 import { useState } from "react";
-import { Option } from "../../types/props/dropdownProps.ts";
-import * as S from "./style";
-import { monthOption } from "../../constants/month/monthOption.ts";
-import { useGetExcels } from "../../hooks/excels/useGetExcels.ts";
-import Skeleton from "../../components/common/Skeleton";
-import ExcelItem from "../../components/ExcelItem";
-import TableHeader from "../../components/common/TableHeader.tsx";
-import TableContainer from "../../components/common/Table/TableContainer.tsx";
+import { Option } from "../types/props/dropdownProps.ts";
+import { monthOption } from "../constants/month/monthOption.ts";
+import { useGetExcels } from "../hooks/excels/useGetExcels.ts";
+import Skeleton from "../components/common/Skeleton/index.tsx";
+import TableHeader from "../components/common/Table/TableHeader.tsx";
+import TableContainer from "../components/common/Table/TableContainer.tsx";
+import ExcelItem from "../components/ExcelItem.tsx";
 
 const Excel = () => {
     const currentMonth = new Date().getMonth();
@@ -29,7 +27,7 @@ const Excel = () => {
     const { data, isLoading } = useGetExcels(year.value, month.value);
 
     return (
-        <S.Container>
+        <div className="w-full h-full flex justify-center items-center bg-background p-14">
             <TableContainer>
                 <TableHeader
                     icon="/assets/Lab.svg"
@@ -47,8 +45,8 @@ const Excel = () => {
                         options={monthOption}
                     />
                 </TableHeader>
-                <S.GridWrap>
-                    <S.Grid>
+                <div className="w-full flex-1 overflow-y-scroll">
+                    <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                         {isLoading ? (
                             Array.from({ length: 4 }).map((_, idx) => (
                                 <Skeleton
@@ -67,10 +65,10 @@ const Excel = () => {
                                 출석 기록이 없습니다.
                             </div>
                         )}
-                    </S.Grid>
-                </S.GridWrap>
+                    </div>
+                </div>
             </TableContainer>
-        </S.Container>
+        </div>
     );
 };
 export default Excel;

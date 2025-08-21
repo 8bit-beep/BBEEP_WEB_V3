@@ -1,17 +1,16 @@
-import * as S from "./style";
-import { useGetAttendApproveQuery } from "../../queries/attendApprove/getAttendApprove";
-import Skeleton from "../../components/common/Skeleton";
-import ApproveItem from "../../components/ApproveItem";
+import { useGetAttendApproveQuery } from "../queries/attendApprove/getAttendApprove";
+import Skeleton from "../components/common/Skeleton";
+import ApproveItem from "../components/ApproveItem";
 import { useState } from "react";
-import { Option } from "../../types/props/dropdownProps";
-import { useGetAttendApproveNotQuery } from "../../queries/attendApprove/getAttendApproveNot";
-import { ApproveItem as ApproveItemType } from "../../types/attendApprove/approveItem";
-import NotAttendApprove from "../../components/NotAttendApprove";
-import { Room } from "../../types/attend/room";
-import CustomDropdown from "../../components/common/Dropdown/DropDown";
-import TableHeader from "../../components/common/TableHeader";
-import TableContainer from "../../components/common/Table/TableContainer";
-import TableColumn from "../../components/common/Table/TableColumn";
+import { Option } from "../types/props/dropdownProps";
+import { useGetAttendApproveNotQuery } from "../queries/attendApprove/getAttendApproveNot";
+import { ApproveItem as ApproveItemType } from "../types/attendApprove/approveItem";
+import NotAttendApprove from "../components/NotAttendApprove";
+import { Room } from "../types/attend/room";
+import CustomDropdown from "../components/common/Dropdown/DropDown";
+import TableHeader from "../components/common/Table/TableHeader";
+import TableContainer from "../components/common/Table/TableContainer";
+import TableColumn from "../components/common/Table/TableColumn";
 
 const AttendApprove = () => {
     const { data: approveData, isLoading: approveLoading } =
@@ -39,7 +38,7 @@ const AttendApprove = () => {
               );
 
     return (
-        <S.Container>
+        <div className="w-full h-full flex justify-center items-center bg-background p-14">
             <TableContainer>
                 <TableHeader
                     icon="/assets/Excluded.svg"
@@ -64,7 +63,14 @@ const AttendApprove = () => {
                     <TableColumn $flex="2">승인 여부</TableColumn>
                     <TableColumn $flex="2" />
                 </div>
-                <S.TableContent>
+                {/* contents */}
+                <div
+                    className="w-full flex flex-1 overflow-x-hidden overflow-y-scroll px-10 py-3"
+                    style={{
+                        msOverflowStyle: "scrollbar",
+                        scrollbarWidth: "thin",
+                    }}
+                >
                     {!filterdData || approveLoading || notApproveLoading
                         ? Array.from({ length: 4 }).map((_, idx) => (
                               <Skeleton
@@ -84,9 +90,9 @@ const AttendApprove = () => {
                                   <NotAttendApprove data={item as Room} />
                               )
                           )}
-                </S.TableContent>
+                </div>
             </TableContainer>
-        </S.Container>
+        </div>
     );
 };
 

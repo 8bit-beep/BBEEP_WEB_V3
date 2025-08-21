@@ -1,15 +1,14 @@
-import * as S from "./style";
-import { useGetNotAttends } from "../../hooks/attends/useGetNotAttends";
-import Skeleton from "../../components/common/Skeleton";
-import NotAttendStudent from "../../components/students/NotAttendStudent";
+import { useGetNotAttends } from "../hooks/attends/useGetNotAttends.ts";
+import Skeleton from "../components/common/Skeleton/index.tsx";
+import NotAttendStudent from "../components/students/NotAttendStudent.tsx";
 import { useState } from "react";
-import { Option } from "../../types/props/dropdownProps.ts";
-import { getStoredOption } from "../../utils/getStoredOption.ts";
-import { ROOMS } from "../../constants/room/rooms.ts";
-import TableHeader from "../../components/common/TableHeader.tsx";
-import CustomDropdown from "../../components/common/Dropdown/DropDown.tsx";
-import TableContainer from "../../components/common/Table/TableContainer.tsx";
-import TableColumn from "../../components/common/Table/TableColumn.tsx";
+import { Option } from "../types/props/dropdownProps.ts";
+import { getStoredOption } from "../utils/getStoredOption.ts";
+import { ROOMS } from "../constants/room/rooms.ts";
+import TableHeader from "../components/common/Table/TableHeader.tsx";
+import CustomDropdown from "../components/common/Dropdown/DropDown.tsx";
+import TableContainer from "../components/common/Table/TableContainer.tsx";
+import TableColumn from "../components/common/Table/TableColumn.tsx";
 
 const NotAttendToday = () => {
     const [filterBy, setFilterBy] = useState<Option>(
@@ -103,7 +102,14 @@ const NotAttendToday = () => {
                     <TableColumn $flex="1">불참 교시</TableColumn>
                     <TableColumn $flex="1.2"></TableColumn>
                 </div>
-                <S.TableContent>
+                {/* contents */}
+                <div
+                    className="w-full flex flex-1 overflow-x-hidden overflow-y-scroll px-10 py-3"
+                    style={{
+                        msOverflowStyle: "scrollbar",
+                        scrollbarWidth: "thin",
+                    }}
+                >
                     {isLoading ? (
                         Array.from({ length: 4 }).map((_, idx) => (
                             <Skeleton
@@ -120,7 +126,7 @@ const NotAttendToday = () => {
                             결석자가 없습니다.
                         </div>
                     )}
-                </S.TableContent>
+                </div>
             </TableContainer>
         </div>
     );

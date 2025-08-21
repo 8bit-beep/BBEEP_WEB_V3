@@ -1,18 +1,17 @@
-import * as S from "./style";
 import { useState } from "react";
-import { Option } from "../../types/props/dropdownProps.ts";
-import { useGetStudentByClass } from "../../hooks/class/useGetStudentByClass.ts";
-import Skeleton from "../../components/common/Skeleton";
-import ClassStudent from "../../components/students/ClassStudent.tsx";
-import { getStoredOption } from "../../utils/getStoredOption.ts";
-import { useApproveAttend } from "../../queries/attendApprove/approveAttend.ts";
-import { useGetAttendApproveOneQuery } from "../../queries/attendApprove/getAttendApproveOne.ts";
-import { RoomName } from "../../types/enums/roomName.ts";
-import TableHeader from "../../components/common/TableHeader.tsx";
-import CustomDropdown from "../../components/common/Dropdown/DropDown.tsx";
-import { COLOR } from "../../style/color/color.ts";
-import TableContainer from "../../components/common/Table/TableContainer.tsx";
-import TableColumn from "../../components/common/Table/TableColumn.tsx";
+import { Option } from "../types/props/dropdownProps.ts";
+import { useGetStudentByClass } from "../hooks/class/useGetStudentByClass.ts";
+import Skeleton from "../components/common/Skeleton/index.tsx";
+import ClassStudent from "../components/students/ClassStudent.tsx";
+import { getStoredOption } from "../utils/getStoredOption.ts";
+import { useApproveAttend } from "../queries/attendApprove/approveAttend.ts";
+import { useGetAttendApproveOneQuery } from "../queries/attendApprove/getAttendApproveOne.ts";
+import { RoomName } from "../types/enums/roomName.ts";
+import TableHeader from "../components/common/Table/TableHeader.tsx";
+import CustomDropdown from "../components/common/Dropdown/DropDown.tsx";
+import { COLOR } from "../style/color/color.ts";
+import TableContainer from "../components/common/Table/TableContainer.tsx";
+import TableColumn from "../components/common/Table/TableColumn.tsx";
 
 const StudentByClass = () => {
     const [grade, setGrade] = useState<Option>(
@@ -91,7 +90,14 @@ const StudentByClass = () => {
                     <TableColumn $flex="2">10교시</TableColumn>
                     <TableColumn $flex="2">11교시</TableColumn>
                 </div>
-                <S.TableContent>
+                {/* contents */}
+                <div
+                    className="w-full flex flex-1 overflow-x-hidden overflow-y-scroll px-10 py-3"
+                    style={{
+                        msOverflowStyle: "scrollbar",
+                        scrollbarWidth: "thin",
+                    }}
+                >
                     {isLoading ? (
                         Array.from({ length: 4 }).map((_, idx) => (
                             <Skeleton
@@ -103,16 +109,16 @@ const StudentByClass = () => {
                         ))
                     ) : data && data.length > 0 ? (
                         data?.map((item) => (
-                            <S.ListGap key={item.studentId}>
+                            <div className="w-full mb-4" key={item.studentId}>
                                 <ClassStudent data={item} />
-                            </S.ListGap>
+                            </div>
                         ))
                     ) : (
                         <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
                             출석한 인원이 없습니다.
                         </div>
                     )}
-                </S.TableContent>
+                </div>
             </TableContainer>
         </div>
     );

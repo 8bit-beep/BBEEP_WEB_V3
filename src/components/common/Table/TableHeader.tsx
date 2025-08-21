@@ -1,5 +1,5 @@
-import { TableHeaderProps } from "../../types/props/tableHeaderProps";
-import ThemedIcon from "./ThemedIcon";
+import { TableHeaderProps } from "../../../types/props/tableHeaderProps";
+import ThemedIcon from "../ThemedIcon";
 
 const TableHeader = (props: TableHeaderProps) => {
     return (

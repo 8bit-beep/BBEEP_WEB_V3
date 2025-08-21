@@ -1,10 +1,9 @@
 import { useApproveAttend } from "../queries/attendApprove/approveAttend";
-import { COLOR } from "../style/color/color";
 import { ApproveItem as ApproveItemProps } from "../types/attendApprove/approveItem";
 import { parseTime } from "../utils/parseTime";
 import { parseRoomName } from "../utils/parseRoomName";
-import TableItemContent from "./common/TableItemContent";
-import ApproveButton from "./common/ApproveButton";
+import TableItemContent from "./common/Table/TableItemContent";
+import TableButton from "./common/ApproveButton";
 
 const ApproveItem = ({ data }: { data: ApproveItemProps }) => {
     const { mutate } = useApproveAttend(data.room.name);
@@ -24,19 +23,10 @@ const ApproveItem = ({ data }: { data: ApproveItemProps }) => {
             <TableItemContent flex="2">
                 {data.approveTeacher?.username || ""}
             </TableItemContent>
-            <TableItemContent
-                flex="2"
-                style={{ color: data.approveTeacher ? COLOR.Serve : COLOR.Red }}
-            >
-                {data.approveTeacher ? "O" : "X"}
-            </TableItemContent>
             <TableItemContent flex="2">
-                <ApproveButton
-                    isApproved={!!data.approveTeacher}
-                    mutate={mutate}
-                >
-                    {data.approveTeacher ? "승인취소" : "승인하기"}
-                </ApproveButton>
+                <TableButton isApproved={!!data.approveTeacher} mutate={mutate}>
+                    {data.approveTeacher ? "거절됨" : "승인됨"}
+                </TableButton>
             </TableItemContent>
         </div>
     );

@@ -6,12 +6,12 @@ import "../src/index.css";
 const queryClient = new QueryClient();
 
 const App = () => {
-  return (
-    <QueryClientProvider client={queryClient}>
-      <NotificationComponent />
-      <Router />
-    </QueryClientProvider>
-  );
+    return (
+        <QueryClientProvider client={queryClient}>
+            <NotificationComponent />
+            <Router />
+        </QueryClientProvider>
+    );
 };
 
 export default App;

@@ -7,7 +7,12 @@ interface TableItemContentProps {
     children?: React.ReactNode;
 }
 
-const TableItemContent = ({ flex, notCenter, style, children }: TableItemContentProps) => {
+const TableItemContent = ({
+    flex,
+    notCenter,
+    style,
+    children,
+}: TableItemContentProps) => {
     return (
         <p
             className="text-base h-16 items-center overflow-ellipsis whitespace-nowrap overflow-hidden"

@@ -13,7 +13,7 @@ const ApproveButton = ({
 }: ApproveButtonProps) => {
     return (
         <div
-            className="py-52 px-8 rounded-2xl"
+            className="py-1 px-3 rounded-xl"
             style={{ backgroundColor: isApproved ? COLOR.Red : COLOR.Main }}
             onClick={() => {
                 mutate();

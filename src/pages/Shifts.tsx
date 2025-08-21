@@ -1,14 +1,15 @@
-import * as S from "./style";
-import { parseRoomName } from "../../utils/parseRoomName.ts";
-import { RoomName } from "../../types/enums/roomName.ts";
-import { useUpdateShiftStatus } from "../../queries/shifts/useUpdateShiftStatus.ts";
+import { parseRoomName } from "../utils/parseRoomName.ts";
+import { RoomName } from "../types/enums/roomName.ts";
+import { useUpdateShiftStatus } from "../queries/shifts/useUpdateShiftStatus.ts";
 import { XCircle } from "lucide-react";
-import { COLOR } from "../../style/color/color.ts";
-import Skeleton from "../../components/common/Skeleton";
-import { useGetShifts } from "../../hooks/shifts/useGetShifts.ts";
-import TableHeader from "../../components/common/TableHeader.tsx";
-import TableContainer from "../../components/common/Table/TableContainer.tsx";
-import TableColumn from "../../components/common/Table/TableColumn.tsx";
+import { COLOR } from "../style/color/color.ts";
+import Skeleton from "../components/common/Skeleton/index.tsx";
+import { useGetShifts } from "../hooks/shifts/useGetShifts.ts";
+import TableHeader from "../components/common/Table/TableHeader.tsx";
+import TableContainer from "../components/common/Table/TableContainer.tsx";
+import TableColumn from "../components/common/Table/TableColumn.tsx";
+import TableItemContent from "../components/common/Table/TableItemContent.tsx";
+import TableButton from "../components/common/Table/TableButton.tsx";
 const Shifts = () => {
     const { data, isLoading } = useGetShifts();
     const approve = useUpdateShiftStatus("APPROVED");
@@ -32,7 +33,14 @@ const Shifts = () => {
                     </TableColumn>
                     <TableColumn $flex="2">승인 / 거절</TableColumn>
                 </div>
-                <S.TableContent>
+                {/* contents */}
+                <div
+                    className="w-full flex flex-1 overflow-x-hidden overflow-y-scroll px-10 py-3"
+                    style={{
+                        msOverflowStyle: "scrollbar",
+                        scrollbarWidth: "thin",
+                    }}
+                >
                     {isLoading ? (
                         Array.from({ length: 4 }).map((_, idx) => (
                             <Skeleton
@@ -44,68 +52,82 @@ const Shifts = () => {
                         ))
                     ) : data && data.length > 0 ? (
                         data.map((item) => (
-                            <S.TableItem key={item.id}>
-                                <S.TableItemContent $flex="1">
+                            <div
+                                className="w-full flex items-center"
+                                key={item.id}
+                            >
+                                <TableItemContent flex="1">
                                     {item.studentId}
-                                </S.TableItemContent>
-                                <S.TableItemContent $flex="1">
+                                </TableItemContent>
+                                <TableItemContent flex="1">
                                     {item.username}
-                                </S.TableItemContent>
-                                <S.TableItemContent $flex="2">
+                                </TableItemContent>
+                                <TableItemContent flex="2">
                                     {parseRoomName(item.shiftRoom as RoomName)}
-                                </S.TableItemContent>
-                                <S.TableItemContent $flex="2">
+                                </TableItemContent>
+                                <TableItemContent
+                                    flex="2"
+                                    style={{ fontWeight: 600 }}
+                                >
                                     {item.period}교시
-                                </S.TableItemContent>
-                                <S.TableItemContent $notCenter $flex="4">
+                                </TableItemContent>
+                                <TableItemContent notCenter flex="4">
                                     {item.reason}
-                                </S.TableItemContent>
+                                </TableItemContent>
+                                {/* 버튼 부분 */}
                                 {item.status === "WAITING" ? (
-                                    <S.ButtonWrap>
-                                        <S.Approve
+                                    <div className="flex gap-2 flex-[2] justify-center">
+                                        <TableButton
+                                            isSelected={true}
                                             onClick={() =>
                                                 approve.mutate(item.id)
                                             }
                                         >
                                             승인
-                                        </S.Approve>
-                                        <S.Reject
+                                        </TableButton>
+                                        <TableButton
+                                            isSelected={false}
                                             onClick={() =>
                                                 reject.mutate(item.id)
                                             }
                                         >
                                             거절
-                                        </S.Reject>
-                                    </S.ButtonWrap>
+                                        </TableButton>
+                                    </div>
                                 ) : (
-                                    <S.Status>
-                                        <S.StatusText
-                                            $isApproved={
-                                                item.status === "APPROVED"
-                                            }
+                                    <div className="h-9 flex items-center flex-[2] justify-center gap-2">
+                                        {/* 승인 됐는지 거절 됐는지 */}
+                                        <p
+                                            className="text-base text-ellipsis whitespace-nowrap overflow-hidden"
+                                            style={{
+                                                color:
+                                                    item.status === "APPROVED"
+                                                        ? COLOR.Main
+                                                        : COLOR.Red,
+                                            }}
                                         >
                                             {item.status === "APPROVED"
                                                 ? "승인됨"
                                                 : item.status === "REJECTED"
                                                 ? "거절됨"
                                                 : "대기중"}
-                                        </S.StatusText>
+                                        </p>
                                         <XCircle
                                             color={COLOR.Red}
                                             onClick={() =>
                                                 cancel.mutate(item.id)
                                             }
                                         />
-                                    </S.Status>
+                                    </div>
                                 )}
-                            </S.TableItem>
+                            </div>
                         ))
                     ) : (
                         <div className="w-full h-7 flex justify-center items-center text-xl text-gray">
                             실 이동 데이터가 없습니다.
                         </div>
                     )}
-                </S.TableContent>
+                </div>
             </TableContainer>
         </div>
     );

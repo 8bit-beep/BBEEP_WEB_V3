@@ -1,11 +1,11 @@
 import { Outlet, useLocation } from "react-router-dom";
-import Footer from "../components/common/Footer.tsx";
+import Footer from "../components/common/layouts/Footer.tsx";
 import { ChevronLeft, NotebookIcon, X } from "lucide-react";
-import Sidebar from "../components/common/Sidebar.tsx";
+import Sidebar from "../components/common/layouts/Sidebar.tsx";
 import { useSidebarDataStore } from "../store/sidebar/useSidebarDataStore.ts";
 import { useEditMemo } from "../hooks/memo/useEditMemo.ts";
 import { useEffect, useState } from "react";
-import Header from "../components/common/Header/index.tsx";
+import Header from "../components/common/layouts/Header.tsx";
 
 const RootLayout = () => {
     const { sidebarData: sidebarOpen, setSidebarData } = useSidebarDataStore();

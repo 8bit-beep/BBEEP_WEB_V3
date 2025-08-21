@@ -5,10 +5,10 @@ import { useCreateLongAbsence } from "../queries/longAbsence/createLongAbsence";
 import { useGetLongAbsenceQuery } from "../queries/longAbsence/getLongAbsence";
 import Skeleton from "../components/common/Skeleton";
 import CustomDropdown from "../components/common/Dropdown/DropDown";
-import TableHeader from "../components/common/TableHeader";
+import TableHeader from "../components/common/Table/TableHeader";
 import TableColumn from "../components/common/Table/TableColumn";
 import TableContainer from "../components/common/Table/TableContainer";
-import LongAbsenceItem from "../components/LongAbsenceItem";
+import LongAbsenceItem from "../components/common/LongAbsenceItem";
 
 const LongAbsence = () => {
     const [grade, setGrade] = useState<Option>({ name: "1학년", value: "1" });

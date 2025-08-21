@@ -34,7 +34,7 @@ const Home = () => {
                 ) : floor === 3 ? (
                     <>
                         {/* <RoomIndicator room="LAB12" top={430} left={63} /> */}
-                        <RoomIndicator room="PROJECT5" top={670} left={63} />
+                        <RoomIndicator room="PROJECT5" top={0} left={0} />
                         {/* <RoomIndicator room="PRINTER_MAKER" top={670} left={240} /> */}
                         {/* <RoomIndicator room="LAB13" top={430} left={412} /> */}
                         <RoomIndicator room="PROJECT6" top={670} left={412} />
@@ -83,9 +83,9 @@ const Home = () => {
                 {[1, 2, 3].map((i) => (
                     <div
                         key={i}
-                        className="flex-1 py-2 text-base items-center font-semibold rounded-xl text-center cursor-pointer"
+                        className="flex-1 py-2 px-1 text-base items-center font-semibold rounded-xl text-center cursor-pointer"
                         style={{
-                            color: floor === i ? COLOR.White : COLOR.Black,
+                            color: floor === i ? COLOR.White : COLOR.Main,
                             background: floor === i ? COLOR.Main : COLOR.White,
                         }}
                         onClick={() => setFloor(i)}
