@@ -3,7 +3,7 @@ import { Option } from "../types/props/dropdownProps";
 import { X } from "lucide-react";
 import { useCreateLongAbsence } from "../queries/longAbsence/createLongAbsence";
 import { useGetLongAbsenceQuery } from "../queries/longAbsence/getLongAbsence";
-import Skeleton from "../components/common/Skeleton";
+import Skeleton from "../components/common/Skeleton.tsx";
 import CustomDropdown from "../components/common/Dropdown/DropDown";
 import TableHeader from "../components/common/Table/TableHeader";
 import TableColumn from "../components/common/Table/TableColumn";

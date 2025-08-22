@@ -8,6 +8,15 @@
     font-style: normal;
 }
 
+@keyframes shimmer {
+    0% {
+        background-position: -200px 0;
+    }
+    100% {
+        background-position: 200px 0;
+    }
+}
+
 * {
     margin: 0;
     font-family: "Pretendard-Regular", sans-serif;

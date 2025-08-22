@@ -3,10 +3,10 @@ import { useState } from "react";
 import { Option } from "../types/props/dropdownProps.ts";
 import { monthOption } from "../constants/month/monthOption.ts";
 import { useGetExcels } from "../hooks/excels/useGetExcels.ts";
-import Skeleton from "../components/common/Skeleton/index.tsx";
 import TableHeader from "../components/common/Table/TableHeader.tsx";
 import TableContainer from "../components/common/Table/TableContainer.tsx";
 import ExcelItem from "../components/ExcelItem.tsx";
+import Skeleton from "../components/common/Skeleton.tsx";
 
 const Excel = () => {
     const currentMonth = new Date().getMonth();

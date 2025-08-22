@@ -1,5 +1,5 @@
 import { useGetAttendApproveQuery } from "../queries/attendApprove/getAttendApprove";
-import Skeleton from "../components/common/Skeleton";
+import Skeleton from "../components/common/Skeleton.tsx";
 import ApproveItem from "../components/ApproveItem";
 import { useState } from "react";
 import { Option } from "../types/props/dropdownProps";

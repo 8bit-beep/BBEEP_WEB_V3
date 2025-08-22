@@ -1,5 +1,4 @@
 import { useGetNotAttends } from "../hooks/attends/useGetNotAttends.ts";
-import Skeleton from "../components/common/Skeleton/index.tsx";
 import NotAttendStudent from "../components/students/NotAttendStudent.tsx";
 import { useState } from "react";
 import { Option } from "../types/props/dropdownProps.ts";
@@ -9,6 +8,7 @@ import TableHeader from "../components/common/Table/TableHeader.tsx";
 import CustomDropdown from "../components/common/Dropdown/DropDown.tsx";
 import TableContainer from "../components/common/Table/TableContainer.tsx";
 import TableColumn from "../components/common/Table/TableColumn.tsx";
+import Skeleton from "../components/common/Skeleton.tsx";
 
 const NotAttendToday = () => {
     const [filterBy, setFilterBy] = useState<Option>(

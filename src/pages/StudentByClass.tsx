@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Option } from "../types/props/dropdownProps.ts";
 import { useGetStudentByClass } from "../hooks/class/useGetStudentByClass.ts";
-import Skeleton from "../components/common/Skeleton/index.tsx";
 import ClassStudent from "../components/students/ClassStudent.tsx";
 import { getStoredOption } from "../utils/getStoredOption.ts";
 import { useApproveAttend } from "../queries/attendApprove/approveAttend.ts";
@@ -12,6 +11,7 @@ import CustomDropdown from "../components/common/Dropdown/DropDown.tsx";
 import { COLOR } from "../style/color/color.ts";
 import TableContainer from "../components/common/Table/TableContainer.tsx";
 import TableColumn from "../components/common/Table/TableColumn.tsx";
+import Skeleton from "../components/common/Skeleton.tsx";
 
 const StudentByClass = () => {
     const [grade, setGrade] = useState<Option>(

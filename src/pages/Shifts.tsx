@@ -3,13 +3,13 @@ import { RoomName } from "../types/enums/roomName.ts";
 import { useUpdateShiftStatus } from "../queries/shifts/useUpdateShiftStatus.ts";
 import { XCircle } from "lucide-react";
 import { COLOR } from "../style/color/color.ts";
-import Skeleton from "../components/common/Skeleton/index.tsx";
 import { useGetShifts } from "../hooks/shifts/useGetShifts.ts";
 import TableHeader from "../components/common/Table/TableHeader.tsx";
 import TableContainer from "../components/common/Table/TableContainer.tsx";
 import TableColumn from "../components/common/Table/TableColumn.tsx";
 import TableItemContent from "../components/common/Table/TableItemContent.tsx";
 import TableButton from "../components/common/Table/TableButton.tsx";
+import Skeleton from "../components/common/Skeleton.tsx";
 const Shifts = () => {
     const { data, isLoading } = useGetShifts();
     const approve = useUpdateShiftStatus("APPROVED");

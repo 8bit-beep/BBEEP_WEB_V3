@@ -1,5 +1,4 @@
 import { useSidebarDataStore } from "../../../store/sidebar/useSidebarDataStore.ts";
-import Skeleton from "../Skeleton/index.tsx";
 import { useGetAttendsByRoom } from "../../../hooks/attends/useGetAttendsByRoom.ts";
 import AttendStudent from "../../students/AttendStudent.tsx";
 import { useEffect } from "react";
@@ -8,6 +7,7 @@ import { useApproveAttend } from "../../../queries/attendApprove/approveAttend.t
 import { useLocation } from "react-router-dom";
 import { useGetAttendApproveOneQuery } from "../../../queries/attendApprove/getAttendApproveOne.ts";
 import { COLOR } from "../../../style/color/color.ts";
+import Skeleton from "../Skeleton.tsx";
 
 const Sidebar = () => {
     const { sidebarData, setSidebarData } = useSidebarDataStore();
