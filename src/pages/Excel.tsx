@@ -45,7 +45,13 @@ const Excel = () => {
                         options={monthOption}
                     />
                 </TableHeader>
-                <div className="w-full flex-1 overflow-y-scroll">
+                <div
+                    className="w-full flex flex-1 overflow-x-hidden overflow-y-scroll px-10 py-3"
+                    style={{
+                        msOverflowStyle: "scrollbar",
+                        scrollbarWidth: "thin",
+                    }}
+                >
                     <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
                         {isLoading ? (
                             Array.from({ length: 4 }).map((_, idx) => (

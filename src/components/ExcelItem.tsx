@@ -9,14 +9,14 @@ const ExcelItem = ({ fileName }: ExcelItemProps) => {
     return (
         <div
             className="w-full h-52 border border-gray rounded-xl flex items-center justify-between flex-col
-        px-1 pt-6 pb-2"
+        px-3 pt-6 pb-2"
         >
             <div className="w-full flex-[1] flex flex-col items-center justify-center gap-5">
                 <File size={44} />
                 <p className="text-black font-medium text-xl">{date}</p>
             </div>
             <div
-                className="w-full text-center text-xs font-normal bg-main rounded-xl cursor-pointer decoration-0 py-2"
+                className="w-full text-center text-xs font-normal text-white bg-main rounded-xl cursor-pointer decoration-0 py-2"
                 onClick={getUrl}
             >
                 다운로드
