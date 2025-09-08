@@ -32,7 +32,7 @@ const Header = () => {
 
     return (
         <header
-            className="w-full h-18 flex flex-col justify-center items-center bg-white fixed top-0 z-100 transition-all duration-[0.2s]"
+            className="w-full h-18 flex flex-col justify-center items-center bg-white fixed top-0 z-38 transition-all duration-[0.2s]"
             style={{
                 padding: mobileMenu ? "1rem 3rem" : "0 3rem",
                 height: mobileMenu ? "23rem" : "4.5rem",

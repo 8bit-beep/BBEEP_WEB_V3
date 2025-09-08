@@ -21,7 +21,7 @@ const Sidebar = () => {
     }, [location.pathname]);
 
     return (
-        <div className="w-full min-h-screen flex flex-col gap-3 bg-white pt-12 pb-36 px-4">
+        <div className="w-full min-h-screen flex flex-col gap-3 bg-white pt-13 pb-36 px-4">
             {/* sidebar header */}
             <div className="w-full flex items-center gap-4">
                 {/* 현재 실 */}

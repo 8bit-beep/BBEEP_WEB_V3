@@ -29,13 +29,13 @@ const RootLayout = () => {
             <div
                 className="w-full relative transition-all duration-300 overflow-hidden"
                 style={{
-                    paddingRight: !!sidebarOpen ? "520px" : "0",
                     height: "calc(100svh - 8rem)",
                 }}
             >
                 <Outlet />
+                {/* sidebar X 버튼 */}
                 <div
-                    className="w-16 h-16 absolute top-3 bg-white rounded-full flex
+                    className="w-16 h-16 absolute top-10 bg-white rounded-full flex
           items-center justify-center transition-all duration-300 delay-75 cursor-pointer"
                     style={{ right: sidebarOpen ? "532px" : "-4rem" }}
                     onClick={() => setSidebarData(null)}
@@ -44,8 +44,7 @@ const RootLayout = () => {
                 </div>
                 {/* sidebar container */}
                 <div
-                    className="w-screen max-w-[520px] absolute top-0 transition-all
-        duration-300"
+                    className="w-screen max-w-[520px] absolute top-0 transition-all duration-300"
                     style={{ right: sidebarOpen ? "0" : "-520px" }}
                 >
                     <Sidebar />

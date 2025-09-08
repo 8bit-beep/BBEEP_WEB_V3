@@ -43,7 +43,7 @@ const StudentByClass = () => {
         <div className="w-full h-full flex justify-center items-center bg-background p-14">
             <TableContainer>
                 <TableHeader
-                    icon="/assets/Group.png"
+                    icon="/assets/Group.svg"
                     title="반별 조회하기"
                     description="담임 선생님께서 학생의 출석 상태를 미리
                                 입력하세요!"
