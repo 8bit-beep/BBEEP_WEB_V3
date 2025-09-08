@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RootLayout from "../../layouts/RootLayout";
-import Home from "../../pages/Home";
 import Login from "../../pages/Login";
 import Shifts from "../../pages/Shifts";
 import StudentByClass from "../../pages/StudentByClass";
@@ -10,6 +9,7 @@ import Forbidden from "../../pages/Forbidden";
 import AttendApprove from "../../pages/AttendApprove";
 import LongAbsence from "../../pages/LongAbsence";
 import Dauth from "../../pages/Dauth";
+import Home from "../../pages/home";
 
 const Router = () => {
     return (
