@@ -1,0 +1,59 @@
+import { parseRoomName } from "../../utils/parseRoomName.ts";
+import { RoomName } from "../../types/enums/roomName.ts";
+import Dropdown from "../common/Dropdown/DropDown.tsx";
+import { attendStatusOption } from "../../constants/attendStatus/attendStatusOption.ts";
+import { AttendStudentProps } from "../../types/props/attendStudentProps.ts";
+import { useState } from "react";
+import { Option } from "../../types/props/dropdownProps.ts";
+import { parseAttendStatus } from "../../utils/parseAttendStatus.ts";
+import { useUpdateNotAttendStatusMutation } from "../../queries/attends/updateNotAttendStatus.ts";
+import { AttendStatus } from "../../types/enums/AttendStatus.ts";
+import { decodeStudentId } from "../../utils/decodeStudentId.ts";
+import TableItemContent from "../common/Table/TableItemContent.tsx";
+
+const NotAttendStudent = ({ data }: AttendStudentProps) => {
+    const [attend, setAttend] = useState<Option>({
+        name: parseAttendStatus(data.statuses[0].status),
+        value: data.statuses[0].status,
+    });
+
+    const { grade, cls, number } = decodeStudentId(data.studentId);
+
+    const save = useUpdateNotAttendStatusMutation(
+        attend.value as AttendStatus,
+        grade,
+        cls,
+        number
+    );
+
+    const handleAttend = async (option: Option) => {
+        setAttend(option);
+        await save.mutateAsync().then(() =>
+            setAttend({
+                name: parseAttendStatus(data.statuses[0].status),
+                value: data.statuses[0].status,
+            })
+        );
+    };
+
+    return (
+        <div className="w-full flex items-center" key={data.studentId}>
+            <TableItemContent flex="1">{data.studentId}</TableItemContent>
+            <TableItemContent flex="1">{data.username}</TableItemContent>
+            <TableItemContent flex="1">
+                {parseRoomName(data.fixedRoom as RoomName)}
+            </TableItemContent>
+            <TableItemContent flex="1">
+                {data.statuses[0].period}교시
+            </TableItemContent>
+            <div className="flex-[1.2] flex justify-center items-center">
+                <Dropdown
+                    setValue={handleAttend}
+                    value={attend}
+                    options={attendStatusOption}
+                />
+            </div>
+        </div>
+    );
+};
+export default NotAttendStudent;
