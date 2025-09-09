@@ -16,7 +16,7 @@ const LoginForm = () => {
                     className="w-full py-3 text-white flex gap-4 justify-center items-center rounded-xl self-center cursor-pointer decoration-none"
                     to={`https://dauth.b1nd.com/login?client_id=${
                         import.meta.env.VITE_DAUTH_CLIENT_ID
-                    }&redirect_uri=https://beep.cher1shrxd.me/callback/dauth`}
+                    }&redirect_uri=${import.meta.env.VITE_DAUTH_REDIRECT_URL}/callback/dauth`}
                 >
                     <p className="text-base font-semibold text-white">
                         도담도담으로 로그인
