@@ -16,7 +16,7 @@ jobs:
           password: ${{ secrets.REMOTE_SSH_KEY }} # ssh 접속용 password
           port: ${{ secrets.REMOTE_SSH_PORT }} # ssh 접속용 port
           script: |
-            cd /var/BBEEP_WEB_V3 && \
+            cd /var/dev-beep-web && \
             git pull && \
             pnpm install && \
             pnpm build && \
