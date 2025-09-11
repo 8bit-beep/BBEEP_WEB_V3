@@ -12,7 +12,6 @@ import { COLOR } from "../style/color/color.ts";
 import TableContainer from "../components/common/Table/TableContainer.tsx";
 import TableColumn from "../components/common/Table/TableColumn.tsx";
 import Skeleton from "../components/common/Skeleton.tsx";
-import { Attend } from "../types/attend/attend.ts";
 
 const StudentByClass = () => {
     const [grade, setGrade] = useState<Option>(
@@ -36,18 +35,6 @@ const StudentByClass = () => {
     const handleCls = (option: Option) => {
         setCls(option);
         localStorage.setItem("CLS_OPTION", JSON.stringify(option));
-    };
-
-    const mockData: Attend = {
-        studentId: "20231",
-        username: "김철수",
-        fixedRoom: "음악실",
-        statuses: [
-            { period: 8, status: "ATTEND" },
-            { period: 9, status: "ATTEND" },
-            { period: 10, status: "NOT_ATTEND" },
-            { period: 11, status: "NOT_ATTEND" },
-        ],
     };
 
     const { data, isLoading } = useGetStudentByClass(grade.value, cls.value);
