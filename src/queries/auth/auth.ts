@@ -8,6 +8,7 @@ import { TokenResponse } from "../../types/response/tokenResponse.ts";
 import { useNavigate } from "react-router-dom";
 import { notification } from "antd";
 import { cookie } from "../../utils/tokenStore.ts";
+import { BaseResponse } from "../../types/response/baseResponse.ts";
 
 export const useAuthMutation = (code: string | null) => {
     const navigate = useNavigate();
@@ -16,11 +17,9 @@ export const useAuthMutation = (code: string | null) => {
         if (!code) {
             await Promise.reject("코드가 없습니다.");
         }
-        const { data } = await axios.post<TokenResponse>(
+        const { data } = await axios.post<BaseResponse<TokenResponse>>(
             `${import.meta.env.VITE_API_URL}/dauth/login`,
-            {
-                code,
-            }
+            { code }
         );
 
         cookie.set(ACCESS_TOKEN_KEY, data.data.accessToken);

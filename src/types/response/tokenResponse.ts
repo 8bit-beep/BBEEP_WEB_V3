@@ -1,6 +1,4 @@
 export interface TokenResponse {
-    data: {
-        accessToken: string;
-        refreshToken: string;
-    };
+    accessToken: string;
+    refreshToken: string;
 }

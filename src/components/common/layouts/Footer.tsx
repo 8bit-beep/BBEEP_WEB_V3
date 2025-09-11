@@ -9,7 +9,7 @@ const Footer = () => {
                 />
                 <div className="text-right p-1">
                     <p className="font-normal text-sm text-white block">
-                        연락처: 010-4890-1466 (8bit 부장)
+                        연락처: 2210 김태우
                     </p>
                     <p className="font-normal text-sm text-white block">
                         Copyright 2023. Team 8bit All rights reserved

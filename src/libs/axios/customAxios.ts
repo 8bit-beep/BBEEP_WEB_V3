@@ -77,9 +77,8 @@ bbeepAxios.interceptors.response.use(
                         >(`${import.meta.env.VITE_API_URL}/auth/refresh`, {
                             refreshToken,
                         });
-
-                        const newAccessToken = data.data.data.accessToken;
-                        const newRefreshToken = data.data.data.refreshToken;
+                        const newAccessToken = data.data.accessToken;
+                        const newRefreshToken = data.data.refreshToken;
 
                         cookie.set(ACCESS_TOKEN_KEY, newAccessToken);
                         cookie.set(REFRESH_TOKEN_KEY, newRefreshToken);
