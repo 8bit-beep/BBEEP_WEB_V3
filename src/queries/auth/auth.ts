@@ -21,18 +21,12 @@ export const useAuthMutation = (code: string | null) => {
             `${import.meta.env.VITE_API_URL}/dauth/login`,
             { code }
         );
-
-        cookie.set(ACCESS_TOKEN_KEY, data.data.accessToken);
-        cookie.set(REFRESH_TOKEN_KEY, data.data.refreshToken);
-
         notification.open({
             message: "환영합니다!",
             description: "로그인 되었습니다.",
         });
-        console.log(ACCESS_TOKEN_KEY);
-        console.log(data);
-        console.log(data.data);
-        console.log(data.data.accessToken);
+        cookie.set(ACCESS_TOKEN_KEY, data.data.accessToken);
+        cookie.set(REFRESH_TOKEN_KEY, data.data.refreshToken);
     };
 
     const { isError, isPending, mutate } = useMutation({

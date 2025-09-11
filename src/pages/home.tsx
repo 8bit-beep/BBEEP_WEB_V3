@@ -55,6 +55,7 @@ const Home = () => {
                     </>
                 )}
 
+                {/* 지도 */}
                 {floor === 2 ? (
                     <img
                         src="/assets/SecondFloorMap.svg"

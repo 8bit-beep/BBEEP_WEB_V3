@@ -1,5 +1,5 @@
 export type RoomName =
-    "PROJECT1"
+    | "PROJECT1"
     | "PROJECT2"
     | "PROJECT3"
     | "PROJECT4"

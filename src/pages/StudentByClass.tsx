@@ -106,6 +106,7 @@ const StudentByClass = () => {
                                     height="5rem"
                                     borderRadius="0.8rem"
                                     key={idx}
+                                    margin={true}
                                 />
                             ))
                         ) : data && data.length > 0 ? (

@@ -1,6 +1,6 @@
 import { SkeletonProps } from "../../types/props/skeletonProps";
 
-const Skeleton = ({ width, height, borderRadius }: SkeletonProps) => {
+const Skeleton = ({ width, height, borderRadius, margin }: SkeletonProps) => {
     return (
         <div
             className={`
@@ -13,6 +13,7 @@ const Skeleton = ({ width, height, borderRadius }: SkeletonProps) => {
                 borderRadius: borderRadius || "4px",
                 animation: "shimmer 1.2s ease-in-out infinite",
                 backgroundPosition: "-200px 0",
+                marginBottom: margin && "16px",
             }}
         />
     );

@@ -60,6 +60,7 @@ const Excel = () => {
                                     width="100%"
                                     height="24rem"
                                     borderRadius="0.8rem"
+                                    margin={true}
                                 />
                             ))
                         ) : data && data.length > 0 ? (
@@ -68,7 +69,7 @@ const Excel = () => {
                             ))
                         ) : (
                             <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
-                                출석 기록이 없습니다.
+                                엑셀 파일이 없습니다.
                             </div>
                         )}
                     </div>

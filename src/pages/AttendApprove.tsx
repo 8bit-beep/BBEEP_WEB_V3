@@ -65,31 +65,34 @@ const AttendApprove = () => {
                 </div>
                 {/* contents */}
                 <div
-                    className="w-full flex flex-1 overflow-x-hidden overflow-y-scroll px-10 py-3"
+                    className="w-full flex flex-col overflow-y-scroll px-10 py-3 max-h-[600px]"
                     style={{
                         msOverflowStyle: "scrollbar",
                         scrollbarWidth: "thin",
                     }}
                 >
-                    {!filterdData || approveLoading || notApproveLoading
-                        ? Array.from({ length: 4 }).map((_, idx) => (
-                              <Skeleton
-                                  width="100%"
-                                  height="5rem"
-                                  borderRadius="0.8rem"
-                                  key={idx}
-                              />
-                          ))
-                        : filterdData?.map((item, idx) =>
-                              filterBy.value === "all" ? (
-                                  <ApproveItem
-                                      data={item as ApproveItemType}
+                    <div className="w-full mb-4 flex flex-col">
+                        {!filterdData || approveLoading || notApproveLoading
+                            ? Array.from({ length: 4 }).map((_, idx) => (
+                                  <Skeleton
+                                      width="100%"
+                                      height="5rem"
+                                      borderRadius="0.8rem"
                                       key={idx}
+                                      margin={true}
                                   />
-                              ) : (
-                                  <NotAttendApprove data={item as Room} />
-                              )
-                          )}
+                              ))
+                            : filterdData?.map((item, idx) =>
+                                  filterBy.value === "all" ? (
+                                      <ApproveItem
+                                          data={item as ApproveItemType}
+                                          key={idx}
+                                      />
+                                  ) : (
+                                      <NotAttendApprove data={item as Room} />
+                                  )
+                              )}
+                    </div>
                 </div>
             </TableContainer>
         </div>

@@ -10,4 +10,4 @@ export interface User {
     status: null;
     role: "STUDENT" | "TEACHER";
     profileImage: string | null;
-  }
+}

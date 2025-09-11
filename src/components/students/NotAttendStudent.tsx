@@ -37,7 +37,7 @@ const NotAttendStudent = ({ data }: AttendStudentProps) => {
     };
 
     return (
-        <div className="w-full flex items-center" key={data.studentId}>
+        <div className="w-full flex items-center h-16">
             <TableItemContent $flex={1}>{data.studentId}</TableItemContent>
             <TableItemContent $flex={1}>{data.username}</TableItemContent>
             <TableItemContent $flex={1}>

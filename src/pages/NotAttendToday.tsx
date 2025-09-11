@@ -27,6 +27,8 @@ const NotAttendToday = () => {
         }
     );
 
+    const { data, isLoading } = useGetNotAttends(filterBy, grade, cls, room);
+
     const handleFilterBy = (option: Option) => {
         setFilterBy(option);
         localStorage.setItem("FILTER_BY", JSON.stringify(option));
@@ -46,9 +48,6 @@ const NotAttendToday = () => {
         setRoom(option);
         localStorage.setItem("NOTATTEND_ROOM", JSON.stringify(option));
     };
-
-    const { data, isLoading } = useGetNotAttends(filterBy, grade, cls, room);
-
     return (
         <div className="w-full h-full flex justify-center items-center bg-background p-14">
             <TableContainer>
@@ -100,32 +99,34 @@ const NotAttendToday = () => {
                     <TableColumn $flex={1}>이름</TableColumn>
                     <TableColumn $flex={1}>실</TableColumn>
                     <TableColumn $flex={1}>불참 교시</TableColumn>
-                    <TableColumn $flex={1.2}></TableColumn>
+                    <TableColumn $flex={1.2}>출석 여부 수정</TableColumn>
                 </div>
                 {/* contents */}
                 <div
-                    className="w-full flex flex-1 overflow-x-hidden overflow-y-scroll px-10 py-3"
+                    className="w-full flex flex-col overflow-y-scroll px-10 py-3 max-h-[600px]"
                     style={{
                         msOverflowStyle: "scrollbar",
                         scrollbarWidth: "thin",
                     }}
                 >
-                    {isLoading ? (
-                        Array.from({ length: 4 }).map((_, idx) => (
-                            <Skeleton
-                                width="100%"
-                                height="5rem"
-                                borderRadius="0.8rem"
-                                key={idx}
-                            />
-                        ))
-                    ) : data && data.length > 0 ? (
-                        data.map((item) => <NotAttendStudent data={item} />)
-                    ) : (
-                        <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
-                            결석자가 없습니다.
-                        </div>
-                    )}
+                    <div className="w-full mb-4 flex flex-col">
+                        {isLoading ? (
+                            Array.from({ length: 4 }).map((_, idx) => (
+                                <Skeleton
+                                    width="100%"
+                                    height="5rem"
+                                    borderRadius="0.8rem"
+                                    key={idx}
+                                />
+                            ))
+                        ) : data && data.length > 0 ? (
+                            data.map((item) => <NotAttendStudent data={item} />)
+                        ) : (
+                            <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
+                                결석자가 없습니다.
+                            </div>
+                        )}
+                    </div>
                 </div>
             </TableContainer>
         </div>

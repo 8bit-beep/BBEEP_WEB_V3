@@ -56,6 +56,7 @@ const LongAbsence = () => {
                                 height="5rem"
                                 borderRadius="0.8rem"
                                 key={idx}
+                                margin={true}
                             />
                         ))
                     ) : data.length > 0 && data ? (
