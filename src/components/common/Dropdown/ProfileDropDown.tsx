@@ -60,7 +60,7 @@ const ProfileDropdown = () => {
                 //     border-bottom-right-radius: 0.4rem;
                 // `;
                 <div
-                    className="absolute flex flex-col items-center gap-4 bg-white"
+                    className="absolute flex flex-col items-center gap-4 top-6 bg-white"
                     style={{
                         boxShadow: "0px 3px 5px 0.1px rgba(0, 0, 0, 0.1)",
                     }}

@@ -18,19 +18,19 @@ const LongAbsenceItem = ({ data }: { data: LongAbsenceItemProps }) => {
     return (
         <div className="w-full flex items-center">
             {/* 메인 테이블 */}
-            <TableItemContent flex="2">
+            <TableItemContent $flex={2}>
                 {data.grade}
                 {data.cls}
                 {data.num > 9 ? data.num : `0${data.num}`}
             </TableItemContent>
-            <TableItemContent flex="2">{data.username}</TableItemContent>
-            <TableItemContent flex="6">
+            <TableItemContent $flex={2}>{data.username}</TableItemContent>
+            <TableItemContent $flex={6}>
                 {parseDate(data.startDate)}~{parseDate(data.endDate)}
             </TableItemContent>
-            <TableItemContent flex="5" notCenter>
+            <TableItemContent $flex={5} $notCenter>
                 {data.reason}
             </TableItemContent>
-            <TableItemContent flex="1.2">
+            <TableItemContent $flex={1.2}>
                 <TableButton
                     isSelected={true}
                     onClick={() => setModalVisible(true)}
@@ -38,7 +38,7 @@ const LongAbsenceItem = ({ data }: { data: LongAbsenceItemProps }) => {
                     수정
                 </TableButton>
             </TableItemContent>
-            <TableItemContent flex="1.2">
+            <TableItemContent $flex={1.2}>
                 <TableButton
                     isSelected={false}
                     onClick={() => {
