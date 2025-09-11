@@ -23,7 +23,8 @@ export const useGetme = () => {
         if (
             data.data.role === "STUDENT" &&
             data.data.username !== "김태우" &&
-            data.data.username !== "권수현"
+            data.data.username !== "권수현" &&
+            data.data.username !== "김성한"
         ) {
             navigate(`/forbidden`);
         }
