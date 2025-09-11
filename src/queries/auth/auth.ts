@@ -30,6 +30,9 @@ export const useAuthMutation = (code: string | null) => {
             description: "로그인 되었습니다.",
         });
         console.log(ACCESS_TOKEN_KEY);
+        console.log(data);
+        console.log(data.data);
+        console.log(data.data.accessToken);
     };
 
     const { isError, isPending, mutate } = useMutation({

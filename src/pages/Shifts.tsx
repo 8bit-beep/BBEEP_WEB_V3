@@ -1,38 +1,12 @@
-// import { useGetShifts } from "../hooks/shifts/useGetShifts.ts"; // <- 주석 처리
+import { useGetShifts } from "../hooks/shifts/useGetShifts.ts"; // <- 주석 처리
 import TableHeader from "../components/common/Table/TableHeader.tsx";
 import TableContainer from "../components/common/Table/TableContainer.tsx";
 import TableColumn from "../components/common/Table/TableColumn.tsx";
 import Skeleton from "../components/common/Skeleton.tsx";
 import ShiftStudent from "../components/students/ShiftStudent.tsx";
-import { Shift } from "../types/shift/shift.ts";
 
 const Shifts = () => {
-    // const { data, isLoading } = useGetShifts(); // 서버 데이터 대신
-    const isLoading = false;
-
-    // 하드코딩된 더미 데이터
-    const data: Shift[] = [
-        {
-            id: "1",
-            studentId: "1020",
-            username: "홍길동",
-            fixedRoom: "LAB10",
-            shiftRoom: "LAB11",
-            period: 8,
-            reason: "과학 프로젝트 실험 준비",
-            status: "WAITING",
-        },
-        {
-            id: "2",
-            studentId: "1020",
-            username: "홍길동",
-            fixedRoom: "LAB10",
-            shiftRoom: "LAB11",
-            period: 8,
-            reason: "과학 프로젝트 실험 준비",
-            status: "WAITING",
-        },
-    ];
+    const { data, isLoading } = useGetShifts(); // 서버 데이터 대신
 
     return (
         <div className="w-full h-full flex justify-center items-center bg-background p-14">
