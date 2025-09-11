@@ -32,14 +32,14 @@ const LongAbsence = () => {
                                 확인하세요!"
                 ></TableHeader>
                 <div className="py-3 px-10 flex w-full bg-main">
-                    <TableColumn $flex="2">학번</TableColumn>
-                    <TableColumn $flex="2">이름</TableColumn>
-                    <TableColumn $flex="6">기간</TableColumn>
-                    <TableColumn $flex="5" $notCenter>
+                    <TableColumn $flex={2}>학번</TableColumn>
+                    <TableColumn $flex={2}>이름</TableColumn>
+                    <TableColumn $flex={6}>기간</TableColumn>
+                    <TableColumn $flex={5} $notCenter>
                         사유
                     </TableColumn>
-                    <TableColumn $flex="1.2" />
-                    <TableColumn $flex="1.2" />
+                    <TableColumn $flex={1.2} />
+                    <TableColumn $flex={1.2} />
                 </div>
                 {/* table contents */}
                 <div
@@ -49,18 +49,24 @@ const LongAbsence = () => {
                         scrollbarWidth: "thin",
                     }}
                 >
-                    {!data || isLoading
-                        ? Array.from({ length: 4 }).map((_, idx) => (
-                              <Skeleton
-                                  width="100%"
-                                  height="5rem"
-                                  borderRadius="0.8rem"
-                                  key={idx}
-                              />
-                          ))
-                        : data.map((item) => (
-                              <LongAbsenceItem data={item} key={item.id} />
-                          ))}
+                    {!data || isLoading ? (
+                        Array.from({ length: 4 }).map((_, idx) => (
+                            <Skeleton
+                                width="100%"
+                                height="5rem"
+                                borderRadius="0.8rem"
+                                key={idx}
+                            />
+                        ))
+                    ) : data.length > 0 && data ? (
+                        data.map((item) => (
+                            <LongAbsenceItem data={item} key={item.id} />
+                        ))
+                    ) : (
+                        <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
+                            결석자가 없습니다.
+                        </div>
+                    )}
                 </div>
                 {modalVisible && (
                     <div

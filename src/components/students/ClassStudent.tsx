@@ -86,13 +86,13 @@ const ClassStudent = ({ data }: ClassStudentProps) => {
     };
 
     return (
-        <div className="w-full flex gap-4">
-            <TableColumnElem $flex="1">{data.studentId}</TableColumnElem>
-            <TableColumnElem $flex="1">{data.username}</TableColumnElem>
-            <TableColumnElem $flex="2.2">
+        <div className="w-full flex items-center h-16">
+            <TableColumnElem $flex={1}>{data.studentId}</TableColumnElem>
+            <TableColumnElem $flex={1}>{data.username}</TableColumnElem>
+            <TableColumnElem $flex={2.2}>
                 {parseRoomName(data.fixedRoom as RoomName)}
             </TableColumnElem>
-            <TableColumnElem $flex="2">
+            <TableColumnElem $flex={2}>
                 <Dropdown
                     setValue={(option: Option) =>
                         handleStatusByTime(option, "8")
@@ -101,7 +101,7 @@ const ClassStudent = ({ data }: ClassStudentProps) => {
                     options={attendStatusOption}
                 />
             </TableColumnElem>
-            <TableColumnElem $flex="2">
+            <TableColumnElem $flex={2}>
                 <Dropdown
                     setValue={(option: Option) =>
                         handleStatusByTime(option, "9")
@@ -110,7 +110,7 @@ const ClassStudent = ({ data }: ClassStudentProps) => {
                     options={attendStatusOption}
                 />
             </TableColumnElem>
-            <TableColumnElem $flex="2">
+            <TableColumnElem $flex={2}>
                 <Dropdown
                     setValue={(option: Option) =>
                         handleStatusByTime(option, "10")
@@ -119,7 +119,7 @@ const ClassStudent = ({ data }: ClassStudentProps) => {
                     options={attendStatusOption}
                 />
             </TableColumnElem>
-            <TableColumnElem $flex="2">
+            <TableColumnElem $flex={2}>
                 <Dropdown
                     setValue={(option: Option) =>
                         handleStatusByTime(option, "11")

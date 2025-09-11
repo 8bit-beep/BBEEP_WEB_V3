@@ -55,13 +55,13 @@ const AttendApprove = () => {
                     />
                 </TableHeader>
                 <div className="py-3 px-10 flex w-full bg-main">
-                    <TableColumn $flex="6" $notCenter>
+                    <TableColumn $flex={6} $notCenter>
                         실 이름
                     </TableColumn>
-                    <TableColumn $flex="2">승인 시각</TableColumn>
-                    <TableColumn $flex="2">담당선생님</TableColumn>
-                    <TableColumn $flex="2">승인 여부</TableColumn>
-                    <TableColumn $flex="2" />
+                    <TableColumn $flex={2}>승인 시각</TableColumn>
+                    <TableColumn $flex={2}>담당선생님</TableColumn>
+                    <TableColumn $flex={2}>승인 여부</TableColumn>
+                    <TableColumn $flex={2} />
                 </div>
                 {/* contents */}
                 <div

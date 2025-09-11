@@ -9,7 +9,7 @@ interface TableButtonProps {
 const TableButton = ({ ...props }: TableButtonProps) => {
     return (
         <div
-            className="py-1 px-3 rounded-xl text-base text-white"
+            className="flex items-center justify-center w-16 h-9 rounded-xl text-base text-white"
             style={{ background: props.isSelected ? COLOR.Main : COLOR.Red }}
             onClick={props.onClick}
         >

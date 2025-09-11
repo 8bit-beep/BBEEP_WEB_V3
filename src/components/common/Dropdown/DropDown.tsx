@@ -54,7 +54,7 @@ const CustomDropdown = ({ value, setValue, options }: DropdownProps) => {
                     {/*위는 컨테이너, 밑에는 콘텐츠 옵션 */}
                     {options.map((item) => (
                         <div
-                            className="w-full py-3 flex justify-center items-center text-black text-base font-medium"
+                            className="w-full py-3 flex justify-center items-center text-black text-base font-medium max-h-48"
                             style={{
                                 backgroundColor:
                                     value.value === item.value

@@ -23,7 +23,7 @@ const RoomIndicator = ({ room, top, left }: RoomIndicatorProps) => {
         >
             <p
                 className="w-full h-full flex items-center justify-center
-                text-base font-bold overflow-ellipsis overflow-hidden"
+                text-base font-medium overflow-ellipsis overflow-hidden"
             >
                 {parseRoomName(room)}
             </p>

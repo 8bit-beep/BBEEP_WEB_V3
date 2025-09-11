@@ -12,6 +12,7 @@ import { COLOR } from "../style/color/color.ts";
 import TableContainer from "../components/common/Table/TableContainer.tsx";
 import TableColumn from "../components/common/Table/TableColumn.tsx";
 import Skeleton from "../components/common/Skeleton.tsx";
+import { Attend } from "../types/attend/attend.ts";
 
 const StudentByClass = () => {
     const [grade, setGrade] = useState<Option>(
@@ -35,6 +36,18 @@ const StudentByClass = () => {
     const handleCls = (option: Option) => {
         setCls(option);
         localStorage.setItem("CLS_OPTION", JSON.stringify(option));
+    };
+
+    const mockData: Attend = {
+        studentId: "20231",
+        username: "김철수",
+        fixedRoom: "음악실",
+        statuses: [
+            { period: 8, status: "ATTEND" },
+            { period: 9, status: "ATTEND" },
+            { period: 10, status: "NOT_ATTEND" },
+            { period: 11, status: "NOT_ATTEND" },
+        ],
     };
 
     const { data, isLoading } = useGetStudentByClass(grade.value, cls.value);
@@ -82,42 +95,40 @@ const StudentByClass = () => {
                     />
                 </TableHeader>
                 <div className="py-3 px-10 flex w-full bg-main">
-                    <TableColumn $flex="1">학번</TableColumn>
-                    <TableColumn $flex="1">이름</TableColumn>
-                    <TableColumn $flex="2.2">실</TableColumn>
-                    <TableColumn $flex="2">8교시</TableColumn>
-                    <TableColumn $flex="2">9교시</TableColumn>
-                    <TableColumn $flex="2">10교시</TableColumn>
-                    <TableColumn $flex="2">11교시</TableColumn>
+                    <TableColumn $flex={1}>학번</TableColumn>
+                    <TableColumn $flex={1}>이름</TableColumn>
+                    <TableColumn $flex={2.2}>실</TableColumn>
+                    <TableColumn $flex={2}>8교시</TableColumn>
+                    <TableColumn $flex={2}>9교시</TableColumn>
+                    <TableColumn $flex={2}>10교시</TableColumn>
+                    <TableColumn $flex={2}>11교시</TableColumn>
                 </div>
                 {/* contents */}
                 <div
-                    className="w-full flex flex-1 overflow-x-hidden overflow-y-scroll px-10 py-3"
+                    className="w-full flex flex-col overflow-y-scroll px-10 py-3 max-h-[600px]"
                     style={{
                         msOverflowStyle: "scrollbar",
                         scrollbarWidth: "thin",
                     }}
                 >
-                    {isLoading ? (
-                        Array.from({ length: 4 }).map((_, idx) => (
-                            <Skeleton
-                                width="100%"
-                                height="5rem"
-                                borderRadius="0.8rem"
-                                key={idx}
-                            />
-                        ))
-                    ) : data && data.length > 0 ? (
-                        data?.map((item) => (
-                            <div className="w-full mb-4" key={item.studentId}>
-                                <ClassStudent data={item} />
+                    <div className="w-full mb-4 flex flex-col">
+                        {isLoading ? (
+                            Array.from({ length: 4 }).map((_, idx) => (
+                                <Skeleton
+                                    width="100%"
+                                    height="5rem"
+                                    borderRadius="0.8rem"
+                                    key={idx}
+                                />
+                            ))
+                        ) : data && data.length > 0 ? (
+                            data?.map((item) => <ClassStudent data={item} />)
+                        ) : (
+                            <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
+                                출석한 인원이 없습니다.
                             </div>
-                        ))
-                    ) : (
-                        <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
-                            출석한 인원이 없습니다.
-                        </div>
-                    )}
+                        )}
+                    </div>
                 </div>
             </TableContainer>
         </div>

@@ -11,15 +11,15 @@ const NotAttendApprove = ({ data }: { data: Room }) => {
 
     return (
         <div className="w-full flex items-center">
-            <TableItemContent flex="6" notCenter>
+            <TableItemContent $flex={6} $notCenter>
                 {parseRoomName(data.name)}
             </TableItemContent>
-            <TableItemContent flex="2"></TableItemContent>
-            <TableItemContent flex="2"></TableItemContent>
-            <TableItemContent flex="2" style={{ color: COLOR.Red }}>
+            <TableItemContent $flex={2}></TableItemContent>
+            <TableItemContent $flex={2}></TableItemContent>
+            <TableItemContent $flex={2} style={{ color: COLOR.Red }}>
                 X
             </TableItemContent>
-            <TableItemContent flex="2">
+            <TableItemContent $flex={2}>
                 <ApproveButton
                     isApproved={false}
                     mutate={() => {

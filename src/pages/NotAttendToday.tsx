@@ -96,11 +96,11 @@ const NotAttendToday = () => {
                     )}
                 </TableHeader>
                 <div className="py-3 px-10 flex w-full bg-main">
-                    <TableColumn $flex="1">학번</TableColumn>
-                    <TableColumn $flex="1">이름</TableColumn>
-                    <TableColumn $flex="1">실</TableColumn>
-                    <TableColumn $flex="1">불참 교시</TableColumn>
-                    <TableColumn $flex="1.2"></TableColumn>
+                    <TableColumn $flex={1}>학번</TableColumn>
+                    <TableColumn $flex={1}>이름</TableColumn>
+                    <TableColumn $flex={1}>실</TableColumn>
+                    <TableColumn $flex={1}>불참 교시</TableColumn>
+                    <TableColumn $flex={1.2}></TableColumn>
                 </div>
                 {/* contents */}
                 <div

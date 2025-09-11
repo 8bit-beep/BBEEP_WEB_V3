@@ -1,5 +1,5 @@
 export interface TableColumnProps {
-    $flex: string;
+    $flex: number;
     $notCenter?: boolean;
     children?: React.ReactNode;
 }

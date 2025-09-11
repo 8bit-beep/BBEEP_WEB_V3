@@ -16,14 +16,14 @@ const ApproveItem = ({ data }: { data: ApproveItemProps }) => {
             >
                 {parseRoomName(data.room.name)}
             </p>
-            <TableItemContent flex="2">
+            <TableItemContent $flex={2}>
                 {data.approveTeacher ? parseTime(data.approvedAt) : ""}{" "}
                 {data.approveTeacher ? data.period + "교시" : ""}
             </TableItemContent>
-            <TableItemContent flex="2">
+            <TableItemContent $flex={2}>
                 {data.approveTeacher?.username || ""}
             </TableItemContent>
-            <TableItemContent flex="2">
+            <TableItemContent $flex={2}>
                 <TableButton isApproved={!!data.approveTeacher} mutate={mutate}>
                     {data.approveTeacher ? "거절됨" : "승인됨"}
                 </TableButton>

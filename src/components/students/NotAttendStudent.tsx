@@ -38,12 +38,12 @@ const NotAttendStudent = ({ data }: AttendStudentProps) => {
 
     return (
         <div className="w-full flex items-center" key={data.studentId}>
-            <TableItemContent flex="1">{data.studentId}</TableItemContent>
-            <TableItemContent flex="1">{data.username}</TableItemContent>
-            <TableItemContent flex="1">
+            <TableItemContent $flex={1}>{data.studentId}</TableItemContent>
+            <TableItemContent $flex={1}>{data.username}</TableItemContent>
+            <TableItemContent $flex={1}>
                 {parseRoomName(data.fixedRoom as RoomName)}
             </TableItemContent>
-            <TableItemContent flex="1">
+            <TableItemContent $flex={1}>
                 {data.statuses[0].period}교시
             </TableItemContent>
             <div className="flex-[1.2] flex justify-center items-center">
