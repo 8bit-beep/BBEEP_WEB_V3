@@ -23,8 +23,8 @@ export const useAuthMutation = (code: string | null) => {
             }
         );
 
-        cookie.set(ACCESS_TOKEN_KEY, data.accessToken);
-        cookie.set(REFRESH_TOKEN_KEY, data.refreshToken);
+        cookie.set(ACCESS_TOKEN_KEY, data.data.accessToken);
+        cookie.set(REFRESH_TOKEN_KEY, data.data.refreshToken);
 
         notification.open({
             message: "환영합니다!",
