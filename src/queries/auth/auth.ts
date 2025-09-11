@@ -19,14 +19,18 @@ export const useAuthMutation = (code: string | null) => {
         }
         const { data } = await axios.post<BaseResponse<TokenResponse>>(
             `${import.meta.env.VITE_API_URL}/dauth/login`,
-            { code }
+            {
+                code,
+            }
         );
+        console.log(data.data.accessToken);
+        cookie.set(ACCESS_TOKEN_KEY, data.data.accessToken);
+        cookie.set(REFRESH_TOKEN_KEY, data.data.refreshToken);
+
         notification.open({
             message: "환영합니다!",
             description: "로그인 되었습니다.",
         });
-        cookie.set(ACCESS_TOKEN_KEY, data.data.accessToken);
-        cookie.set(REFRESH_TOKEN_KEY, data.data.refreshToken);
     };
 
     const { isError, isPending, mutate } = useMutation({

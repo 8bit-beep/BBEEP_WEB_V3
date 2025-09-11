@@ -7,12 +7,7 @@ export const cookie = {
         const expires = new Date(
             Date.now() + COOKIE_DURATION_HOURS * 60 * 60 * 1000
         );
-        Cookies.set(name, value, {
-            expires,
-            path: "/",
-            sameSite: "lax",
-            secure: false,
-        });
+        Cookies.set(name, value, { expires });
     },
 
     get(name: string) {
@@ -20,6 +15,6 @@ export const cookie = {
     },
 
     remove(name: string) {
-        Cookies.remove(name, { path: "/" });
+        Cookies.remove(name);
     },
 };
