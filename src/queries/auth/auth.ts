@@ -26,7 +26,6 @@ export const useAuthMutation = (code: string | null) => {
         console.log(data.data.accessToken);
         cookie.set(ACCESS_TOKEN_KEY, data.data.accessToken);
         cookie.set(REFRESH_TOKEN_KEY, data.data.refreshToken);
-        console.log(cookie.get(ACCESS_TOKEN_KEY));
 
         notification.open({
             message: "환영합니다!",
