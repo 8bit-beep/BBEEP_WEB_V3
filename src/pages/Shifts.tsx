@@ -1,4 +1,4 @@
-import { useGetShifts } from "../hooks/shifts/useGetShifts.ts"; // <- 주석 처리
+import { useGetShifts } from "../hooks/shifts/useGetShifts.ts";
 import TableHeader from "../components/common/Table/TableHeader.tsx";
 import TableContainer from "../components/common/Table/TableContainer.tsx";
 import TableColumn from "../components/common/Table/TableColumn.tsx";
@@ -6,7 +6,7 @@ import Skeleton from "../components/common/Skeleton.tsx";
 import ShiftStudent from "../components/students/ShiftStudent.tsx";
 
 const Shifts = () => {
-    const { data, isLoading } = useGetShifts(); // 서버 데이터 대신
+    const { data, isLoading } = useGetShifts();
 
     return (
         <div className="w-full h-full flex justify-center items-center bg-background p-14">
