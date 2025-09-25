@@ -18,7 +18,7 @@ const Router = () => {
                 <Route path="/" element={<RootLayout />}>
                     <Route index element={<Home />} />
                     <Route path="/shifts" element={<Shifts />} />
-                    <Route path="/classes" element={<StudentByClass />} />
+                    <Route path="/attend" element={<StudentByClass />} />
                     <Route path="/not-attend" element={<NotAttendToday />} />
                     <Route path="/excel" element={<Excel />} />
                     <Route path="/attend-approve" element={<AttendApprove />} />

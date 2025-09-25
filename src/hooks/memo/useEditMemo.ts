@@ -32,9 +32,13 @@ export const useEditMemo = () => {
     mutateAsync(debouncedMemo);
   }, [debouncedMemo]);
 
+  const handleMemo = (e: ChangeEvent<HTMLTextAreaElement>) =>{
+      setMemo(e.target.value);
+  }
+
   return {
     memo,
     debouncedMemo,
-    handleMemo: (e: ChangeEvent<HTMLTextAreaElement>) => setMemo(e.target.value),
+    handleMemo
   };
 };

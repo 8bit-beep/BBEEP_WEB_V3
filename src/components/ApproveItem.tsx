@@ -1,5 +1,5 @@
 import { useApproveAttend } from "../queries/attendApprove/approveAttend";
-import { ApproveItem as ApproveItemProps } from "../types/attendApprove/approveItem";
+import { ApproveItem as ApproveItemProps } from "../types/approve/approveItem";
 import { parseTime } from "../utils/parseTime";
 import { parseRoomName } from "../utils/parseRoomName";
 import TableItemContent from "./common/Table/TableItemContent";

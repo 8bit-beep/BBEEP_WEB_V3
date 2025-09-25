@@ -1,10 +1,12 @@
 export type AttendStatus =
-    | "ATTEND"
+    | "CLUB"
+    | "CLASS"
     | "NOT_ATTEND"
     | "SLEEPOVER"
     | "OUTGOING"
+    | "FIELD_PRACTICE"
     | "NARSHA"
     | "AFTER_SCHOOL"
     | "SHIFT_ATTEND"
-    | "SHIFT_NOT_ATTEND"
-    | "FIELD_PRACTICE";
+    | "OTHER"
+    | "INDUSTRY";

@@ -9,6 +9,7 @@ import TableHeader from "../components/common/Table/TableHeader";
 import TableColumn from "../components/common/Table/TableColumn";
 import TableContainer from "../components/common/Table/TableContainer";
 import LongAbsenceItem from "../components/common/LongAbsenceItem";
+import {CLASS_OPTIONS, GRADE_OPTIONS} from "../constants/school/schoolOption.ts";
 
 const LongAbsence = () => {
     const [grade, setGrade] = useState<Option>({ name: "1학년", value: "1" });
@@ -97,21 +98,12 @@ const LongAbsence = () => {
                                     <CustomDropdown
                                         value={grade}
                                         setValue={(e) => setGrade(e)}
-                                        options={[
-                                            { name: "1학년", value: "1" },
-                                            { name: "2학년", value: "2" },
-                                            { name: "3학년", value: "3" },
-                                        ]}
+                                        options={GRADE_OPTIONS}
                                     />
                                     <CustomDropdown
                                         value={cls}
                                         setValue={(e) => setCls(e)}
-                                        options={[
-                                            { name: "1반", value: "1" },
-                                            { name: "2반", value: "2" },
-                                            { name: "3반", value: "3" },
-                                            { name: "4반", value: "4" },
-                                        ]}
+                                        options={CLASS_OPTIONS}
                                     />
                                     <input
                                         className="appearance-none w-[30%] text-base text-black font-medium px-2 py-2.5 bg-white outline-0 rounded-xl"

@@ -41,7 +41,7 @@ const Sidebar = () => {
                             mutate();
                         }}
                     >
-                        {approve?.approveTeacher ? "승인취소" : "승인하기"}
+                        {approve?.approveTeacher ? "승인취소" : "전체 승인하기"}
                     </button>
                     {/* 새로고침 버튼 */}
                     <div

@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ACCESS_TOKEN_KEY } from "../../constants/token/token"
 import bbeepAxios from "../../libs/axios/customAxios";
 import { cookie } from "../../utils/tokenStore"
-import { ApproveItem } from "../../types/attendApprove/approveItem";
+import { ApproveItem } from "../../types/approve/approveItem";
 import { RoomName } from "../../types/enums/roomName";
 
 export const useGetAttendApproveOneQuery = (roomName: RoomName | null) => {
@@ -14,7 +14,7 @@ export const useGetAttendApproveOneQuery = (roomName: RoomName | null) => {
   }
 
   const { data, isLoading } = useQuery({
-    queryKey: ["attendApprove", roomName],
+    queryKey: ["approve", roomName],
     queryFn: fetchData,
     enabled: !!accessToken && !!roomName
   });

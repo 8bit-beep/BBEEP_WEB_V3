@@ -1,21 +1,21 @@
 import { useGetNotAttendsQuery } from "../../queries/attends/getNotAttends";
 import {useEffect, useState} from "react";
-import {Option} from "../../types/props/dropdownProps.ts";
+import {StudentByAttendProps} from "../../types/props/studentByAttendProps.ts";
 
-export const useGetNotAttends = (filterBy: Option, grade: Option, cls: Option, room: Option) => {
+export const useGetNotAttends = (props: StudentByAttendProps) => {
   const [loading, setLoading] = useState(false);
-  const { data, isLoading } = useGetNotAttendsQuery(filterBy, grade, cls, room);
-  
+  const { data, isLoading } = useGetNotAttendsQuery(props);
+
   useEffect(() => {
     if (isLoading) {
       setLoading(true);
       return;
     }
-    
+
     const timeout = setTimeout(() => {
       setLoading(false);
     }, 500);
-    
+
     return () => {
       clearTimeout(timeout);
     }

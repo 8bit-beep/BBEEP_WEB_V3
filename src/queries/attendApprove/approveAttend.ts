@@ -14,7 +14,7 @@ export const useApproveAttend = (roomName: RoomName | null) => {
     if(accessToken && roomName) {
       await bbeepAxios.post("/approve", { roomName });
     } else {
-      Promise.reject("권한이 없습니다.");
+      await Promise.reject("권한이 없습니다.");
     }
   }
 
@@ -22,9 +22,9 @@ export const useApproveAttend = (roomName: RoomName | null) => {
     mutationFn: approveAttend,
     onSuccess: () => {
       notification.open({ message: "출석 승인 상태 변경 완료" });
-      queryClient.invalidateQueries({ queryKey: ["attendApprove"] });
+      queryClient.invalidateQueries({ queryKey: ["approve"] });
       queryClient.invalidateQueries({ queryKey: ["attendApproveNot"] });
-      queryClient.invalidateQueries({ queryKey: ["attendApprove", roomName] })
+      queryClient.invalidateQueries({ queryKey: ["approve", roomName] })
     },
     onError: (e) => {
       notification.open({ message: "출석 승인 실패", description: (e as AxiosError<{ message: string }>).response?.data.message});

@@ -13,13 +13,13 @@ const Header = () => {
     const location = useLocation();
 
     const menuItems = [
-        { to: "/", label: "홈" },
-        { to: "/classes", label: "반별 조회" },
-        { to: "/shifts", label: "실 이동 관리" },
-        { to: "/not-attend", label: "결석자 조회" },
-        { to: "/excel", label: "엑셀 다운로드" },
-        { to: "/attend-approve", label: "출석 승인 현황" },
-        { to: "/long-absence", label: "장기 결석자" },
+        {to: "/", label: "홈"},
+        {to: "/attend", label: "출석 조회"},
+        {to: "/shifts", label: "실 이동 관리"},
+        {to: "/not-attend", label: "결석자 조회"},
+        {to: "/excel", label: "엑셀 다운로드"},
+        {to: "/attend-approve", label: "출석 승인 현황"},
+        {to: "/long-absence", label: "장기 결석자"},
     ];
 
     const handleLogoClick = () => {
@@ -73,13 +73,13 @@ const Header = () => {
                 </div>
                 {/* profile wrap */}
                 <div className="flex items-center justify-end">
-                    <ProfileDropdown />
+                    <ProfileDropdown/>
                 </div>
-                <div className="flex md:hidden">
+                <div className="flex xl:hidden">
                     {mobileMenu ? (
-                        <X onClick={() => setMobileMenu(false)} />
+                        <X onClick={() => setMobileMenu(false)}/>
                     ) : (
-                        <AlignJustify onClick={() => setMobileMenu(true)} />
+                        <AlignJustify onClick={() => setMobileMenu(true)}/>
                     )}
                 </div>
             </div>

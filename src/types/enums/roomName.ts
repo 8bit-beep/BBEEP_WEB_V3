@@ -1,4 +1,6 @@
 export type RoomName =
+    | "NOTFOUND"
+    | "OTHER"
     | "PROJECT1"
     | "PROJECT2"
     | "PROJECT3"
@@ -21,8 +23,6 @@ export type RoomName =
     | "PROJECT5"
     | "PROJECT6"
     | "PRINTER_MAKER"
-    | "NOTFOUND"
-    | "OTHER"
     | "C1_1"
     | "C1_2"
     | "C1_3"

@@ -1,4 +1,4 @@
-import { ClassStudentProps } from "../../types/props/ClassStudentProps.ts";
+import { ClassStudentProps } from "../../types/props/classStudentProps.ts";
 import Dropdown from "../common/Dropdown/DropDown.tsx";
 import { useState } from "react";
 import { Option } from "../../types/props/dropdownProps.ts";

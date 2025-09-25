@@ -13,7 +13,7 @@ export const useDeleteLongAbsence = (id: number) => {
     if(accessToken){
       await bbeepAxios.delete(`/long-absences/${id}`);
     }else{
-      Promise.reject("권한이 없습니다.");
+      await Promise.reject("권한이 없습니다.");
     }
   }
 

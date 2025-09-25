@@ -23,7 +23,6 @@ export const useAuthMutation = (code: string | null) => {
                 code,
             }
         );
-        console.log(data.data.accessToken);
         cookie.set(ACCESS_TOKEN_KEY, data.data.accessToken);
         cookie.set(REFRESH_TOKEN_KEY, data.data.refreshToken);
 

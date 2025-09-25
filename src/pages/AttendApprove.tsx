@@ -4,7 +4,7 @@ import ApproveItem from "../components/ApproveItem";
 import { useState } from "react";
 import { Option } from "../types/props/dropdownProps";
 import { useGetAttendApproveNotQuery } from "../queries/attendApprove/getAttendApproveNot";
-import { ApproveItem as ApproveItemType } from "../types/attendApprove/approveItem";
+import { ApproveItem as ApproveItemType } from "../types/approve/approveItem";
 import NotAttendApprove from "../components/NotAttendApprove";
 import { Room } from "../types/attend/room";
 import CustomDropdown from "../components/common/Dropdown/DropDown";
@@ -26,15 +26,15 @@ const AttendApprove = () => {
         setFilterBy(option);
     };
 
-    const filterdData =
+    const filteredData =
         filterBy.value === "all"
             ? approveData?.filter(
                   (item) =>
-                      item.room.name !== "NOTFOUND" &&
-                      item.room.name !== "OTHER"
+                      item.room !== "NOTFOUND" &&
+                      item.room !== "OTHER"
               )
             : notApproveData?.filter(
-                  (item) => item.name !== "NOTFOUND" && item.name !== "OTHER"
+                  (item) => item.room !== "NOTFOUND" && item.room !== "OTHER"
               );
 
     return (
@@ -72,7 +72,7 @@ const AttendApprove = () => {
                     }}
                 >
                     <div className="w-full mb-4 flex flex-col">
-                        {!filterdData || approveLoading || notApproveLoading
+                        {!filteredData || approveLoading || notApproveLoading
                             ? Array.from({ length: 4 }).map((_, idx) => (
                                   <Skeleton
                                       width="100%"
@@ -82,7 +82,7 @@ const AttendApprove = () => {
                                       margin={true}
                                   />
                               ))
-                            : filterdData?.map((item, idx) =>
+                            : filteredData?.map((item, idx) =>
                                   filterBy.value === "all" ? (
                                       <ApproveItem
                                           data={item as ApproveItemType}

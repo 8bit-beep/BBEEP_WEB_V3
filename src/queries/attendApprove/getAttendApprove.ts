@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ACCESS_TOKEN_KEY } from "../../constants/token/token"
 import bbeepAxios from "../../libs/axios/customAxios";
 import { cookie } from "../../utils/tokenStore"
-import { ApproveItem } from "../../types/attendApprove/approveItem";
+import { ApproveItem } from "../../types/approve/approveItem";
 
 export const useGetAttendApproveQuery = () => {
   const accessToken = cookie.get(ACCESS_TOKEN_KEY);
@@ -13,7 +13,7 @@ export const useGetAttendApproveQuery = () => {
   }
 
   const { data, isLoading } = useQuery({
-    queryKey: ["attendApprove"],
+    queryKey: ["approve"],
     queryFn: fetchData,
     enabled: !!accessToken
   });

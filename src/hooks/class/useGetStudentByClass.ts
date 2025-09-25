@@ -1,25 +1,26 @@
 import {useEffect, useState} from "react";
-import {useGetStudentByClassQuery} from "../../queries/class/getStudentByClass.ts";
+import {useGetStudentByAttendQuery} from "../../queries/class/getStudentByAttend.ts";
+import {StudentByAttendProps} from "../../types/props/studentByAttendProps.ts";
 
-export const useGetStudentByClass = (grade: string, cls: string) => {
+export const useGetStudentByClass = (props: StudentByAttendProps) => {
   const [loading, setLoading] = useState(false);
-  const { data, isLoading } = useGetStudentByClassQuery(Number(grade), Number(cls));
-  
+  const { data, isLoading } = useGetStudentByAttendQuery(props);
+
   useEffect(() => {
     if (isLoading) {
       setLoading(true);
       return;
     }
-    
+
     const timeout = setTimeout(() => {
       setLoading(false);
     }, 500);
-    
+
     return () => {
       clearTimeout(timeout);
     }
   },[isLoading]);
-  
+
   return {
     data,
     isLoading : isLoading || loading,

@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface TableHeaderProps {
     icon: string;
     title: string;

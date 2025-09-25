@@ -1,4 +1,4 @@
-import { useGetShifts } from "../hooks/shifts/useGetShifts.ts";
+import {useGetShifts} from "../hooks/shifts/useGetShifts.ts";
 import TableHeader from "../components/common/Table/TableHeader.tsx";
 import TableContainer from "../components/common/Table/TableContainer.tsx";
 import TableColumn from "../components/common/Table/TableColumn.tsx";
@@ -6,7 +6,7 @@ import Skeleton from "../components/common/Skeleton.tsx";
 import ShiftStudent from "../components/students/ShiftStudent.tsx";
 
 const Shifts = () => {
-    const { data, isLoading } = useGetShifts();
+    const {data, isLoading} = useGetShifts();
 
     return (
         <div className="w-full h-full flex justify-center items-center bg-background p-14">
@@ -36,7 +36,7 @@ const Shifts = () => {
                 >
                     <div className="w-full mb-4 flex flex-col">
                         {isLoading ? (
-                            Array.from({ length: 4 }).map((_, idx) => (
+                            Array.from({length: 4}).map((_, idx) => (
                                 <Skeleton
                                     width="100%"
                                     height="5rem"
@@ -47,7 +47,7 @@ const Shifts = () => {
                             ))
                         ) : data && data.length > 0 ? (
                             data.map((item) => (
-                                <ShiftStudent key={item.id} data={item} />
+                                <ShiftStudent key={item.id} data={item}/>
                             ))
                         ) : (
                             <div className="w-full h-7 flex justify-center items-center text-xl text-gray">

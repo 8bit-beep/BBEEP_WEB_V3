@@ -4,12 +4,12 @@ import {
     REFRESH_TOKEN_KEY,
 } from "../../../constants/token/token.ts";
 import { Link } from "react-router-dom";
-import { useGetme } from "../../../queries/user/getme.ts";
+import { useGetMe } from "../../../queries/user/getme.ts";
 import { cookie } from "../../../utils/tokenStore.ts";
 
 const ProfileDropdown = () => {
     const [isOpened, setIsOpened] = useState(false);
-    const { me, initUser } = useGetme();
+    const { me, initUser } = useGetMe();
 
     return (
         <div className="flex flex-col">
@@ -44,23 +44,10 @@ const ProfileDropdown = () => {
                     />
                 )}
             </div>
+            {/* Dropdown */}
             {isOpened && (
-                // export const OptionContainer = styled.div`
-                //     position: absolute;
-                //     display: flex;
-                //     flex-direction: column;
-                //     align-items: center;
-                //     gap: 2rem;
-                //     background-color: white;
-                //     box-shadow: 0px 3px 5px 0.1px rgba(0, 0, 0, 0.1);
-                //     padding: 1rem;
-                //     top: 7rem;
-                //     font-size: 1.2rem;
-                //     border-bottom-left-radius: 0.4rem;
-                //     border-bottom-right-radius: 0.4rem;
-                // `;
                 <div
-                    className="absolute flex flex-col items-center gap-4 top-6 bg-white"
+                    className="absolute flex flex-col items-center gap-4 top-12 bg-white"
                     style={{
                         boxShadow: "0px 3px 5px 0.1px rgba(0, 0, 0, 0.1)",
                     }}

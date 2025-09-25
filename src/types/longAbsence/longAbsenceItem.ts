@@ -1,9 +1,6 @@
 export interface LongAbsenceItem {
-  id: number;
-  grade: number;
-  cls: number;
-  num: number;
-  username: string;
+  id: number; // 학생 번호
+  studentName: string;
   startDate: string;
   endDate: string;
   reason: string;
