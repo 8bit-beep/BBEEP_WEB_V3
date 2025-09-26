@@ -13,10 +13,10 @@ const ShiftStudent = ({ data }: { data: Shift }) => {
     const cancel = useUpdateShiftStatus("WAITING");
     return (
         <div className="w-full flex items-center h-16">
-            <TableItemContent $flex={1}>{data.studentId}</TableItemContent>
-            <TableItemContent $flex={1}>{data.username}</TableItemContent>
+            <TableItemContent $flex={1}>{data.user.studentInfo.id}</TableItemContent>
+            <TableItemContent $flex={1}>{data.user.username}</TableItemContent>
             <TableItemContent $flex={2}>
-                {parseRoomName(data.shiftRoom as RoomName)}
+                {parseRoomName(data.room.room as RoomName)}
             </TableItemContent>
             <TableItemContent $flex={2} style={{ fontWeight: 600 }}>
                 {data.period}교시

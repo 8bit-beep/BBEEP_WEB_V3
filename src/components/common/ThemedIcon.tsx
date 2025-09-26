@@ -6,7 +6,7 @@ const ThemedIcon = ({ src, width, height }: ThemedIconProps) => {
             src={src}
             className="object-contain object-center"
             style={{ width: width, height: height }}
-        />
+         alt='사진이 없습니다.'/>
     );
 };
 

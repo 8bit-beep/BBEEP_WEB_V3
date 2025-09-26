@@ -19,7 +19,7 @@ const LongAbsenceItem = ({ data }: { data: LongAbsenceItemProps }) => {
         <div className="w-full flex items-center">
             {/* 메인 테이블 */}
             <TableItemContent $flex={2}>
-                {data.grade}
+                {data.id}
                 {data.cls}
                 {data.num > 9 ? data.num : `0${data.num}`}
             </TableItemContent>

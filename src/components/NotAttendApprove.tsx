@@ -7,12 +7,12 @@ import TableItemContent from "./common/Table/TableItemContent";
 
 const NotAttendApprove = ({ data }: { data: Room }) => {
     console.log(data);
-    const { mutate } = useApproveAttend(data.name);
+    const { mutate } = useApproveAttend(data.room);
 
     return (
         <div className="w-full flex items-center">
             <TableItemContent $flex={6} $notCenter>
-                {parseRoomName(data.name)}
+                {parseRoomName(data.room)}
             </TableItemContent>
             <TableItemContent $flex={2}></TableItemContent>
             <TableItemContent $flex={2}></TableItemContent>

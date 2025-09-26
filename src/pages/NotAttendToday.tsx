@@ -32,7 +32,7 @@ const NotAttendToday = () => {
         getStoredOption("NOTATTEND_TYPE") || {name: "출석", value: "ATTEND"}
     );
 
-    const {data, isLoading} = useGetNotAttends(filterBy, grade, cls, room);
+    const {data, isLoading} = useGetNotAttends({filterBy, grade, cls, room, type});
 
     const handleFilterBy = (option: Option) => {
         setFilterBy(option);
@@ -128,7 +128,7 @@ const NotAttendToday = () => {
                                 />
                             ))
                         ) : data && data.length > 0 ? (
-                            data.map((item) => <NotAttendStudent data={item}/>)
+                            data.map((item) => <NotAttendStudent data={item} filterBy={filterBy.value}/>)
                         ) : (
                             <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
                                 결석자가 없습니다.

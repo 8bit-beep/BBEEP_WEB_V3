@@ -65,7 +65,13 @@ const StudentByClass = () => {
     };
 
 
-    const {data, isLoading} = useGetStudentByClass(grade.value, cls.value);
+    const {data, isLoading} = useGetStudentByClass({
+        filterBy: filterBy,
+        room: room,
+        grade: grade,
+        cls: cls,
+        type: type
+    });
 
     return (
         <div className="w-full h-full flex justify-center items-center bg-background p-14">
@@ -153,7 +159,7 @@ const StudentByClass = () => {
                                 />
                             ))
                         ) : data && data.length > 0 ? (
-                            data?.map((item) => <ClassStudent data={item}/>)
+                            data?.map((item) => <ClassStudent data={item} filterBy={filterBy.value}/>)
                         ) : (
                             <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
                                 출석한 인원이 없습니다.

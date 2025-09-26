@@ -6,7 +6,7 @@ import TableItemContent from "./common/Table/TableItemContent";
 import TableButton from "./common/ApproveButton";
 
 const ApproveItem = ({ data }: { data: ApproveItemProps }) => {
-    const { mutate } = useApproveAttend(data.room.name);
+    const { mutate } = useApproveAttend(data.room);
 
     return (
         <div className="w-full flex items-center">
@@ -14,7 +14,7 @@ const ApproveItem = ({ data }: { data: ApproveItemProps }) => {
                 className="items-center overflow-ellipsis whitespace-nowrap overflow-hidden"
                 style={{ flex: 6 }}
             >
-                {parseRoomName(data.room.name)}
+                {parseRoomName(data.room)}
             </p>
             <TableItemContent $flex={2}>
                 {data.approveTeacher ? parseTime(data.approvedAt) : ""}{" "}

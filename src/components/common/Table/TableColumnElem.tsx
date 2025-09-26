@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface TableColumnElemProps {
     $flex: number;
     children: React.ReactNode;

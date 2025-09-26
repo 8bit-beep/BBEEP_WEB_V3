@@ -1,4 +1,5 @@
 import { COLOR } from "../../style/color/color";
+import React from "react";
 
 interface ApproveButtonProps {
     isApproved: boolean;

@@ -1,17 +1,16 @@
-import { ClassStudentProps } from "../../types/props/classStudentProps.ts";
 import Dropdown from "../common/Dropdown/DropDown.tsx";
-import { useState } from "react";
-import { Option } from "../../types/props/dropdownProps.ts";
-import { parseAttendStatus } from "../../utils/parseAttendStatus.ts";
-import { attendStatusOption } from "../../constants/attendStatus/attendStatusOption.ts";
-import { useUpdateAcceptedStatus } from "../../queries/class/updateAcceptedStatus.ts";
-import { decodeStudentId } from "../../utils/decodeStudentId.ts";
-import { AttendStatus } from "../../types/enums/AttendStatus.ts";
-import { parseRoomName } from "../../utils/parseRoomName.ts";
-import { RoomName } from "../../types/enums/roomName.ts";
+import {useState} from "react";
+import {Option} from "../../types/props/dropdownProps.ts";
+import {parseAttendStatus} from "../../utils/parseAttendStatus.ts";
+import {attendStatusOption} from "../../constants/attendStatus/attendStatusOption.ts";
+import {useUpdateAcceptedStatus} from "../../queries/class/updateAcceptedStatus.ts";
+import {decodeStudentId} from "../../utils/decodeStudentId.ts";
+import {AttendStatus} from "../../types/enums/AttendStatus.ts";
+import {parseRoomName} from "../../utils/parseRoomName.ts";
 import TableColumnElem from "../common/Table/TableColumnElem.tsx";
+import {AttendStudentProps} from "../../types/props/attendStudentProps.ts";
 
-const ClassStudent = ({ data }: ClassStudentProps) => {
+const ClassStudent = ({data, filterBy}: AttendStudentProps) => {
     const [eight, setEight] = useState<Option>({
         name: parseAttendStatus(data.statuses[0].status),
         value: data.statuses[0].status,
@@ -29,7 +28,9 @@ const ClassStudent = ({ data }: ClassStudentProps) => {
         value: data.statuses[3].status,
     });
 
-    const { grade, cls, number } = decodeStudentId(data.studentId);
+    const currentFixedRoom = data.fixedRooms.filter(room => room.type === filterBy)
+
+    const {grade, cls, number} = decodeStudentId(data.studentId);
     const saveEight = useUpdateAcceptedStatus(
         grade,
         cls,
@@ -90,7 +91,11 @@ const ClassStudent = ({ data }: ClassStudentProps) => {
             <TableColumnElem $flex={1}>{data.studentId}</TableColumnElem>
             <TableColumnElem $flex={1}>{data.username}</TableColumnElem>
             <TableColumnElem $flex={2.2}>
-                {parseRoomName(data.fixedRoom as RoomName)}
+                {currentFixedRoom.map((room) => (
+                    <div key={room.id}>
+                        {parseRoomName(room.room)}
+                    </div>
+                ))}
             </TableColumnElem>
             <TableColumnElem $flex={2}>
                 <Dropdown

@@ -1,16 +1,15 @@
-import { AttendStudentProps } from "../../types/props/attendStudentProps.ts";
 import Dropdown from "../common/Dropdown/DropDown.tsx";
 import { attendStatusOption } from "../../constants/attendStatus/attendStatusOption.ts";
 import { parseAttendStatus } from "../../utils/parseAttendStatus.ts";
 import { useEffect, useState } from "react";
 import { Option } from "../../types/props/dropdownProps.ts";
 import { useUpdateAttendStatusMutation } from "../../queries/attends/updateAttendStatus.ts";
-import { AttendStatus } from "../../types/enums/AttendStatus.ts";
-import { RoomName } from "../../types/enums/roomName.ts";
 import { decodeStudentId } from "../../utils/decodeStudentId.ts";
 import { COLOR } from "../../style/color/color.ts";
+import {SidebarElementProps} from "../../types/props/sidebarElementProps.ts";
 
-const AttendStudent = ({ data }: AttendStudentProps) => {
+
+const AttendStudent = ({ data, room }: SidebarElementProps) => {
     const [attendStatus, setAttendStatus] = useState<Option>({
         name: parseAttendStatus(data.statuses[0].status),
         value: data.statuses[0].status,
@@ -22,23 +21,18 @@ const AttendStudent = ({ data }: AttendStudentProps) => {
 
     const { grade, cls, number } = decodeStudentId(data.studentId);
 
+    {/*일단 나둬보기*/}
     const save = useUpdateAttendStatusMutation(
-        attendStatus.value as AttendStatus,
-        grade,
-        cls,
-        number,
-        data.fixedRoom as RoomName
-    );
+        data.statuses[0].status , grade, cls, number, room);
 
     const isNotAttend =
-        data.statuses[0].status === "NOT_ATTEND" ||
-        data.statuses[0].status === "SHIFT_NOT_ATTEND";
+        data.statuses[0].status === "NOT_ATTEND";
 
     useEffect(() => {
         if (attendStatus.value !== data.statuses[0].status) {
             save.mutate();
         }
-    }, [attendStatus]);
+    }, [attendStatus, data.statuses, save]);
 
     return (
         <div

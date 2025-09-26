@@ -1,5 +1,4 @@
 import { parseRoomName } from "../../utils/parseRoomName.ts";
-import { RoomName } from "../../types/enums/roomName.ts";
 import Dropdown from "../common/Dropdown/DropDown.tsx";
 import { attendStatusOption } from "../../constants/attendStatus/attendStatusOption.ts";
 import { AttendStudentProps } from "../../types/props/attendStudentProps.ts";
@@ -11,7 +10,7 @@ import { AttendStatus } from "../../types/enums/AttendStatus.ts";
 import { decodeStudentId } from "../../utils/decodeStudentId.ts";
 import TableItemContent from "../common/Table/TableItemContent.tsx";
 
-const NotAttendStudent = ({ data }: AttendStudentProps) => {
+const NotAttendStudent = ({ data, filterBy}: AttendStudentProps) => {
     const [attend, setAttend] = useState<Option>({
         name: parseAttendStatus(data.statuses[0].status),
         value: data.statuses[0].status,
@@ -25,6 +24,8 @@ const NotAttendStudent = ({ data }: AttendStudentProps) => {
         cls,
         number
     );
+
+    const currentFixedRoom = data.fixedRooms.filter(room => room.type === filterBy)
 
     const handleAttend = async (option: Option) => {
         setAttend(option);
@@ -41,7 +42,11 @@ const NotAttendStudent = ({ data }: AttendStudentProps) => {
             <TableItemContent $flex={1}>{data.studentId}</TableItemContent>
             <TableItemContent $flex={1}>{data.username}</TableItemContent>
             <TableItemContent $flex={1}>
-                {parseRoomName(data.fixedRoom as RoomName)}
+                {currentFixedRoom.map((room) => (
+                    <div key={room.id}>
+                        {parseRoomName(room.room)}
+                    </div>
+                ))}
             </TableItemContent>
             <TableItemContent $flex={1}>
                 {data.statuses[0].period}교시

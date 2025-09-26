@@ -1,8 +1,8 @@
-import { useState } from "react";
-import { Option } from "../types/props/dropdownProps";
-import { X } from "lucide-react";
-import { useCreateLongAbsence } from "../queries/longAbsence/createLongAbsence";
-import { useGetLongAbsenceQuery } from "../queries/longAbsence/getLongAbsence";
+import {useState} from "react";
+import {Option} from "../types/props/dropdownProps";
+import {X} from "lucide-react";
+import {useCreateLongAbsence} from "../queries/longAbsence/createLongAbsence";
+import {useGetLongAbsenceQuery} from "../queries/longAbsence/getLongAbsence";
 import Skeleton from "../components/common/Skeleton.tsx";
 import CustomDropdown from "../components/common/Dropdown/DropDown";
 import TableHeader from "../components/common/Table/TableHeader";
@@ -12,15 +12,15 @@ import LongAbsenceItem from "../components/common/LongAbsenceItem";
 import {CLASS_OPTIONS, GRADE_OPTIONS} from "../constants/school/schoolOption.ts";
 
 const LongAbsence = () => {
-    const [grade, setGrade] = useState<Option>({ name: "1학년", value: "1" });
-    const [cls, setCls] = useState<Option>({ name: "1반", value: "1" });
+    const [grade, setGrade] = useState<Option>({name: "1학년", value: "1"});
+    const [cls, setCls] = useState<Option>({name: "1반", value: "1"});
     const [num, setNum] = useState("");
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
     const [reason, setReason] = useState("");
     const [modalVisible, setModalVisible] = useState(false);
-    const { mutateAsync } = useCreateLongAbsence();
-    const { data, isLoading } = useGetLongAbsenceQuery();
+    const {mutateAsync} = useCreateLongAbsence();
+    const {data, isLoading} = useGetLongAbsenceQuery();
 
     return (
         <div className="w-full h-full flex justify-center items-center bg-background p-14">
@@ -39,8 +39,8 @@ const LongAbsence = () => {
                     <TableColumn $flex={5} $notCenter>
                         사유
                     </TableColumn>
-                    <TableColumn $flex={1.2} />
-                    <TableColumn $flex={1.2} />
+                    <TableColumn $flex={1.2}/>
+                    <TableColumn $flex={1.2}/>
                 </div>
                 {/* table contents */}
                 <div
@@ -51,7 +51,7 @@ const LongAbsence = () => {
                     }}
                 >
                     {!data || isLoading ? (
-                        Array.from({ length: 4 }).map((_, idx) => (
+                        Array.from({length: 4}).map((_, idx) => (
                             <Skeleton
                                 width="100%"
                                 height="5rem"
@@ -62,7 +62,7 @@ const LongAbsence = () => {
                         ))
                     ) : data.length > 0 && data ? (
                         data.map((item) => (
-                            <LongAbsenceItem data={item} key={item.id} />
+                            <LongAbsenceItem data={item} key={item.id}/>
                         ))
                     ) : (
                         <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
@@ -74,7 +74,7 @@ const LongAbsence = () => {
                     <div
                         className="w-full h-full fixed top-0 left-0 z-1000 flex justify-center items-center"
                         onClick={() => setModalVisible(false)}
-                        style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
+                        style={{backgroundColor: "rgba(0, 0, 0, 0.4)"}}
                     >
                         {/* 위에는 그림자, 밑에는 모달 내용 */}
                         <div
@@ -94,7 +94,8 @@ const LongAbsence = () => {
                                     />
                                 </div>
                                 {/* field wrap */}
-                                <div className="w-full justify-between flex items-center text-base text-black font-medium">
+                                <div
+                                    className="w-full justify-between flex items-center text-base text-black font-medium">
                                     <CustomDropdown
                                         value={grade}
                                         setValue={(e) => setGrade(e)}
@@ -119,7 +120,8 @@ const LongAbsence = () => {
                                         value={num}
                                     />
                                 </div>
-                                <div className="w-full flex items-center justify-between text-base text-black font-medium">
+                                <div
+                                    className="w-full flex items-center justify-between text-base text-black font-medium">
                                     <input
                                         style={{
                                             boxShadow:
@@ -171,8 +173,8 @@ const LongAbsence = () => {
                                         endDate,
                                     }).then(() => {
                                         setModalVisible(false);
-                                        setGrade({ name: "1학년", value: "1" });
-                                        setCls({ name: "1반", value: "1" });
+                                        setGrade({name: "1학년", value: "1"});
+                                        setCls({name: "1반", value: "1"});
                                         setNum("");
                                         setEndDate("");
                                         setStartDate("");

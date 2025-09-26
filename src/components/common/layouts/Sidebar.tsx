@@ -18,7 +18,7 @@ const Sidebar = () => {
 
     useEffect(() => {
         setSidebarData(null);
-    }, [location.pathname]);
+    }, [location.pathname, setSidebarData]);
 
     return (
         <div className="w-full min-h-screen flex flex-col gap-3 bg-white pt-13 pb-36 px-4">
@@ -41,7 +41,7 @@ const Sidebar = () => {
                             mutate();
                         }}
                     >
-                        {approve?.approveTeacher ? "승인취소" : "전체 승인하기"}
+                        {approve?.approveTeacher ? "전체 승인취소" : "전체 승인하기"}
                     </button>
                     {/* 새로고침 버튼 */}
                     <div
@@ -67,7 +67,7 @@ const Sidebar = () => {
                 ) : data && data.length > 0 ? (
                     data?.map((item) => (
                         <div className="w-full mb-4" key={item.studentId}>
-                            <AttendStudent data={item} />
+                            <AttendStudent data={item} room={sidebarData || "NOTFOUND"} />
                         </div>
                     ))
                 ) : (
