@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { AlignJustify, X } from "lucide-react";
 import { COLOR } from "../../../style/color/color";
 import { Link } from "react-router-dom";
-import ProfileDropdown from "../Dropdown/ProfileDropDown";
+import ProfileDropdown from "../dropdown/ProfileDropDown";
 
 const Header = () => {
     const [mobileMenu, setMobileMenu] = useState(false);

@@ -2,8 +2,8 @@ import { useApproveAttend } from "../queries/attendApprove/approveAttend";
 import { ApproveItem as ApproveItemProps } from "../types/approve/approveItem";
 import { parseTime } from "../utils/parseTime";
 import { parseRoomName } from "../utils/parseRoomName";
-import TableItemContent from "./common/Table/TableItemContent";
-import TableButton from "./common/ApproveButton";
+import TableItemContent from "./common/table/TableItemContent";
+import TableButton from "./common/button/ApproveButton.tsx";
 
 const ApproveItem = ({ data }: { data: ApproveItemProps }) => {
     const { mutate } = useApproveAttend(data.room);

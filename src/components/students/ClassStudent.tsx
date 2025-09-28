@@ -1,4 +1,4 @@
-import Dropdown from "../common/Dropdown/DropDown.tsx";
+import Dropdown from "../common/dropdown/DropDown.tsx";
 import {useState} from "react";
 import {Option} from "../../types/props/dropdownProps.ts";
 import {parseAttendStatus} from "../../utils/parseAttendStatus.ts";
@@ -7,7 +7,7 @@ import {useUpdateAcceptedStatus} from "../../queries/class/updateAcceptedStatus.
 import {decodeStudentId} from "../../utils/decodeStudentId.ts";
 import {AttendStatus} from "../../types/enums/AttendStatus.ts";
 import {parseRoomName} from "../../utils/parseRoomName.ts";
-import TableColumnElem from "../common/Table/TableColumnElem.tsx";
+import TableColumnElem from "../common/table/TableColumnElem.tsx";
 import {AttendStudentProps} from "../../types/props/attendStudentProps.ts";
 
 const ClassStudent = ({data, filterBy}: AttendStudentProps) => {

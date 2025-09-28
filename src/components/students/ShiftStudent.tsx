@@ -3,8 +3,8 @@ import { useUpdateShiftStatus } from "../../queries/shifts/useUpdateShiftStatus"
 import { RoomName } from "../../types/enums/roomName";
 import { Shift } from "../../types/shift/shift";
 import { parseRoomName } from "../../utils/parseRoomName";
-import TableButton from "../common/Table/TableButton";
-import TableItemContent from "../common/Table/TableItemContent";
+import TableButton from "../common/table/TableButton";
+import TableItemContent from "../common/table/TableItemContent";
 import { COLOR } from "../../style/color/color";
 
 const ShiftStudent = ({ data }: { data: Shift }) => {

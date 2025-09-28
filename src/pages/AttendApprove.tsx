@@ -7,10 +7,10 @@ import { useGetAttendApproveNotQuery } from "../queries/attendApprove/getAttendA
 import { ApproveItem as ApproveItemType } from "../types/approve/approveItem";
 import NotAttendApprove from "../components/NotAttendApprove";
 import { Room } from "../types/attend/room";
-import CustomDropdown from "../components/common/Dropdown/DropDown";
-import TableHeader from "../components/common/Table/TableHeader";
-import TableContainer from "../components/common/Table/TableContainer";
-import TableColumn from "../components/common/Table/TableColumn";
+import CustomDropdown from "../components/common/dropdown/DropDown";
+import TableHeader from "../components/common/table/TableHeader";
+import TableContainer from "../components/common/table/TableContainer";
+import TableColumn from "../components/common/table/TableColumn";
 
 const AttendApprove = () => {
     const { data: approveData, isLoading: approveLoading } =

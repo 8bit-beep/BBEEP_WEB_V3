@@ -1,4 +1,4 @@
-import Dropdown from "../common/Dropdown/DropDown.tsx";
+import Dropdown from "../common/dropdown/DropDown.tsx";
 import { attendStatusOption } from "../../constants/attendStatus/attendStatusOption.ts";
 import { parseAttendStatus } from "../../utils/parseAttendStatus.ts";
 import { useEffect, useState } from "react";

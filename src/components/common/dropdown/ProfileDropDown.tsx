@@ -44,7 +44,7 @@ const ProfileDropdown = () => {
                     />
                 )}
             </div>
-            {/* Dropdown */}
+            {/* dropdown */}
             {isOpened && (
                 <div
                     className="absolute flex flex-col items-center gap-4 top-12 bg-white"

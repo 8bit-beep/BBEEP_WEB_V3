@@ -1,5 +1,5 @@
 import { parseRoomName } from "../../utils/parseRoomName.ts";
-import Dropdown from "../common/Dropdown/DropDown.tsx";
+import Dropdown from "../common/dropdown/DropDown.tsx";
 import { attendStatusOption } from "../../constants/attendStatus/attendStatusOption.ts";
 import { AttendStudentProps } from "../../types/props/attendStudentProps.ts";
 import { useState } from "react";
@@ -8,7 +8,7 @@ import { parseAttendStatus } from "../../utils/parseAttendStatus.ts";
 import { useUpdateNotAttendStatusMutation } from "../../queries/attends/updateNotAttendStatus.ts";
 import { AttendStatus } from "../../types/enums/AttendStatus.ts";
 import { decodeStudentId } from "../../utils/decodeStudentId.ts";
-import TableItemContent from "../common/Table/TableItemContent.tsx";
+import TableItemContent from "../common/table/TableItemContent.tsx";
 
 const NotAttendStudent = ({ data, filterBy}: AttendStudentProps) => {
     const [attend, setAttend] = useState<Option>({

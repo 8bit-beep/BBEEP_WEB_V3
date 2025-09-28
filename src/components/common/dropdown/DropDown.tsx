@@ -38,6 +38,7 @@ const CustomDropdown = ({ value, setValue, options }: DropdownProps) => {
                     transform: isOpened ? "rotate(180deg)" : "rotate(0deg)",
                     transition: "transform 0.4s",
                 }}
+                alt={value.name}
             />
             {/* 안에 콘텐츠들 */}
             {isOpened && (

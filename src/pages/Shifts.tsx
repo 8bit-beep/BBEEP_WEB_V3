@@ -1,7 +1,7 @@
 import {useGetShifts} from "../hooks/shifts/useGetShifts.ts";
-import TableHeader from "../components/common/Table/TableHeader.tsx";
-import TableContainer from "../components/common/Table/TableContainer.tsx";
-import TableColumn from "../components/common/Table/TableColumn.tsx";
+import TableHeader from "../components/common/table/TableHeader.tsx";
+import TableContainer from "../components/common/table/TableContainer.tsx";
+import TableColumn from "../components/common/table/TableColumn.tsx";
 import Skeleton from "../components/common/Skeleton.tsx";
 import ShiftStudent from "../components/students/ShiftStudent.tsx";
 

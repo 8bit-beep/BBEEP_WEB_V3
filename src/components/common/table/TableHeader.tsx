@@ -17,7 +17,7 @@ const TableHeader = (props: TableHeaderProps) => {
                     </div>
                 </div>
             </div>
-            <div className="flex gap-4">{props.children}</div>
+            <div className="flex gap-4">{props.children}</div>  {/* 버튼이나 드롭다운을 children에 넣기*/}
         </div>
     );
 };

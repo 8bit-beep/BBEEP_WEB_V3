@@ -1,4 +1,4 @@
-import { COLOR } from "../../style/color/color";
+import { COLOR } from "../../../style/color/color.ts";
 import React from "react";
 
 interface ApproveButtonProps {

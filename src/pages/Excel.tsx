@@ -1,10 +1,10 @@
-import Dropdown from "../components/common/Dropdown/DropDown.tsx";
+import Dropdown from "../components/common/dropdown/DropDown.tsx";
 import {useState} from "react";
 import {Option} from "../types/props/dropdownProps.ts";
 import {monthOption} from "../constants/month/monthOption.ts";
 import {useGetExcels} from "../hooks/excels/useGetExcels.ts";
-import TableHeader from "../components/common/Table/TableHeader.tsx";
-import TableContainer from "../components/common/Table/TableContainer.tsx";
+import TableHeader from "../components/common/table/TableHeader.tsx";
+import TableContainer from "../components/common/table/TableContainer.tsx";
 import ExcelItem from "../components/ExcelItem.tsx";
 import Skeleton from "../components/common/Skeleton.tsx";
 
