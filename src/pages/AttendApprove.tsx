@@ -1,21 +1,21 @@
-import { useGetAttendApproveQuery } from "../queries/attendApprove/getAttendApprove";
+import {useGetAttendApproveQuery} from "../queries/attendApprove/getAttendApprove";
 import Skeleton from "../components/common/Skeleton.tsx";
 import ApproveItem from "../components/ApproveItem";
-import { useState } from "react";
-import { Option } from "../types/props/dropdownProps";
-import { useGetAttendApproveNotQuery } from "../queries/attendApprove/getAttendApproveNot";
-import { ApproveItem as ApproveItemType } from "../types/approve/approveItem";
+import {useState} from "react";
+import {Option} from "../types/props/dropdownProps";
+import {useGetAttendApproveNotQuery} from "../queries/attendApprove/getAttendApproveNot";
+import {ApproveItem as ApproveItemType} from "../types/approve/approveItem";
 import NotAttendApprove from "../components/NotAttendApprove";
-import { Room } from "../types/attend/room";
+import {Room} from "../types/attend/room";
 import CustomDropdown from "../components/common/dropdown/DropDown";
 import TableHeader from "../components/common/table/TableHeader";
 import TableContainer from "../components/common/table/TableContainer";
 import TableColumn from "../components/common/table/TableColumn";
 
 const AttendApprove = () => {
-    const { data: approveData, isLoading: approveLoading } =
+    const {data: approveData, isLoading: approveLoading} =
         useGetAttendApproveQuery();
-    const { data: notApproveData, isLoading: notApproveLoading } =
+    const {data: notApproveData, isLoading: notApproveLoading} =
         useGetAttendApproveNotQuery();
     const [filterBy, setFilterBy] = useState<Option>({
         name: "전체",
@@ -29,13 +29,13 @@ const AttendApprove = () => {
     const filteredData =
         filterBy.value === "all"
             ? approveData?.filter(
-                  (item) =>
-                      item.room !== "NOTFOUND" &&
-                      item.room !== "OTHER"
-              )
+                (item) =>
+                    item.room !== "NOTFOUND" &&
+                    item.room !== "OTHER"
+            )
             : notApproveData?.filter(
-                  (item) => item.room !== "NOTFOUND" && item.room !== "OTHER"
-              );
+                (item) => item.room !== "NOTFOUND" && item.room !== "OTHER"
+            );
 
     return (
         <div className="w-full h-full flex justify-center items-center bg-background p-14">
@@ -49,8 +49,8 @@ const AttendApprove = () => {
                         setValue={handleFilterBy}
                         value={filterBy}
                         options={[
-                            { name: "전체", value: "all" },
-                            { name: "미승인", value: "notApproved" },
+                            {name: "전체", value: "all"},
+                            {name: "미승인", value: "notApproved"},
                         ]}
                     />
                 </TableHeader>
@@ -61,7 +61,7 @@ const AttendApprove = () => {
                     <TableColumn $flex={2}>승인 시각</TableColumn>
                     <TableColumn $flex={2}>담당선생님</TableColumn>
                     <TableColumn $flex={2}>승인 여부</TableColumn>
-                    <TableColumn $flex={2} />
+                    <TableColumn $flex={2}/>
                 </div>
                 {/* contents */}
                 <div
@@ -73,25 +73,29 @@ const AttendApprove = () => {
                 >
                     <div className="w-full mb-4 flex flex-col">
                         {!filteredData || approveLoading || notApproveLoading
-                            ? Array.from({ length: 4 }).map((_, idx) => (
-                                  <Skeleton
-                                      width="100%"
-                                      height="5rem"
-                                      borderRadius="0.8rem"
-                                      key={idx}
-                                      margin={true}
-                                  />
-                              ))
+                            ? Array.from({length: 4}).map((_, idx) => (
+                                <Skeleton
+                                    width="100%"
+                                    height="5rem"
+                                    borderRadius="0.8rem"
+                                    key={idx}
+                                    margin={true}
+                                />
+                            ))
                             : filteredData?.map((item, idx) =>
-                                  filterBy.value === "all" ? (
-                                      <ApproveItem
-                                          data={item as ApproveItemType}
-                                          key={idx}
-                                      />
-                                  ) : (
-                                      <NotAttendApprove data={item as Room} />
-                                  )
-                              )}
+                                filterBy.value === "all" ? (
+                                    <ApproveItem
+                                        data={item as ApproveItemType}
+                                        key={idx}
+                                    />
+                                ) : filterBy.value === "notApproved" ? (
+                                    <NotAttendApprove data={item as Room}/>
+                                ) : (
+                                    <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
+                                        출석 승인 현황이 없습니다.
+                                    </div>
+                                )
+                            )}
                     </div>
                 </div>
             </TableContainer>

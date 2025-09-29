@@ -48,7 +48,7 @@ const StudentByClass = () => {
                         }}
                         onClick={() => mutate()}
                     >
-                        {approve?.approveTeacher ? "승인취소" : "승인하기"}
+                        {approve?.approveTeacher ? "승인하기" : "승인취소"}
                     </div>
 
                     <StudentByClassFilters
