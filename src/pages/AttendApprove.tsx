@@ -72,8 +72,8 @@ const AttendApprove = () => {
                     }}
                 >
                     <div className="w-full mb-4 flex flex-col">
-                        {!filteredData || approveLoading || notApproveLoading
-                            ? Array.from({length: 4}).map((_, idx) => (
+                        {!filteredData || approveLoading || notApproveLoading ? (
+                            Array.from({length: 4}).map((_, idx) => (
                                 <Skeleton
                                     width="100%"
                                     height="5rem"
@@ -82,20 +82,19 @@ const AttendApprove = () => {
                                     margin={true}
                                 />
                             ))
-                            : filteredData?.map((item, idx) =>
+                        ) : filteredData.length === 0 ? (
+                            <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
+                                출석 승인 현황이 없습니다.
+                            </div>
+                        ) : (
+                            filteredData.map((item, idx) =>
                                 filterBy.value === "all" ? (
-                                    <ApproveItem
-                                        data={item as ApproveItemType}
-                                        key={idx}
-                                    />
-                                ) : filterBy.value === "notApproved" ? (
-                                    <NotAttendApprove data={item as Room}/>
+                                    <ApproveItem data={item as ApproveItemType} key={idx}/>
                                 ) : (
-                                    <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
-                                        출석 승인 현황이 없습니다.
-                                    </div>
+                                    <NotAttendApprove data={item as Room} key={idx}/>
                                 )
-                            )}
+                            )
+                        )}
                     </div>
                 </div>
             </TableContainer>

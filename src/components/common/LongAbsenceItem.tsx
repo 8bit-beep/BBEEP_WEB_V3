@@ -1,24 +1,24 @@
-import { useState } from "react";
-import { useDeleteLongAbsence } from "../../queries/longAbsence/deleteLongAbsence";
-import { LongAbsenceItem as LongAbsenceItemProps } from "../../types/longAbsence/longAbsenceItem";
-import { parseDate } from "../../utils/parseDate";
-import { useEditLongAbsence } from "../../queries/longAbsence/editLongAbsence";
+import {useState} from "react";
+import {useDeleteLongAbsence} from "../../queries/longAbsence/deleteLongAbsence";
+import {LongAbsenceItem as LongAbsenceItemProps} from "../../types/longAbsence/longAbsenceItem";
+import {parseDate} from "../../utils/parseDate";
+import {useEditLongAbsence} from "../../queries/longAbsence/editLongAbsence";
 import TableItemContent from "./table/TableItemContent";
 import TableButton from "./table/TableButton";
 import LongAbsenceModal from "./modal/LongAbsenceModal.tsx";
 
-const LongAbsenceItem = ({ data }: { data: LongAbsenceItemProps }) => {
+const LongAbsenceItem = ({data}: { data: LongAbsenceItemProps }) => {
     const [modalVisible, setModalVisible] = useState(false);
-    const { mutateAsync } = useEditLongAbsence(data.id);
-    const { mutate } = useDeleteLongAbsence(data.id);
+    const {mutateAsync} = useEditLongAbsence(data.absenceId);
+    const {mutate} = useDeleteLongAbsence(data.absenceId);
 
     return (
         <div className="w-full flex items-center">
             {/* main table */}
             <TableItemContent $flex={2}>
-                {data.id}
-                {/*{data.cls}*/}
-                {/*{data.num > 9 ? data.num : `0${data.num}`}*/}
+                {data.absenceId}
+                {data.studentInfo.cls}
+                {data.studentInfo.num > 9 ? data.studentInfo.num : `0${data.studentInfo.num}`}
             </TableItemContent>
             {/*<TableItemContent $flex={2}>{data.username}</TableItemContent>*/}
             <TableItemContent $flex={6}>

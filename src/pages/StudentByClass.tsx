@@ -42,13 +42,13 @@ const StudentByClass = () => {
                     <div
                         className="px-5 py-2.5 rounded-xl text-base text-white cursor-pointer font-medium"
                         style={{
-                            backgroundColor: approve?.approveTeacher
-                                ? COLOR.Main
-                                : COLOR.Red,
+                            backgroundColor: !approve?.approveTeacher
+                                ? COLOR.Red
+                                : COLOR.Main,
                         }}
                         onClick={() => mutate()}
                     >
-                        {approve?.approveTeacher ? "승인하기" : "승인취소"}
+                        {!approve?.approveTeacher ? "승인취소" : "승인하기"}
                     </div>
 
                     <StudentByClassFilters
