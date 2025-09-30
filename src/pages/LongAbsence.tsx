@@ -44,7 +44,7 @@ const LongAbsence = () => {
                             <Skeleton key={idx} width="100%" height="5rem" borderRadius="0.8rem" margin />
                         ))
                     ) : data?.length ? (
-                        data.map((item) => <LongAbsenceItem key={item.id} data={item} />)
+                        data.map((item) => <LongAbsenceItem key={item.absenceId} data={item} />)
                     ) : (
                         <div className="w-full h-10 flex justify-center items-center text-xl text-gray">
                             결석자가 없습니다.
