@@ -1,19 +1,19 @@
-import { useSidebarDataStore } from "../../../store/sidebar/useSidebarDataStore.ts";
-import { useGetAttendsByRoom } from "../../../hooks/attends/useGetAttendsByRoom.ts";
+import {useSidebarDataStore} from "../../../store/sidebar/useSidebarDataStore.ts";
+import {useGetAttendsByRoom} from "../../../hooks/attends/useGetAttendsByRoom.ts";
 import AttendStudent from "../../students/AttendStudent.tsx";
-import { useEffect } from "react";
-import { parseRoomName } from "../../../utils/parseRoomName.ts";
-import { useApproveAttend } from "../../../queries/attendApprove/approveAttend.ts";
-import { useLocation } from "react-router-dom";
-import { useGetAttendApproveOneQuery } from "../../../queries/attendApprove/getAttendApproveOne.ts";
-import { COLOR } from "../../../style/color/color.ts";
+import {useEffect} from "react";
+import {parseRoomName} from "../../../utils/parseRoomName.ts";
+import {useApproveAttend} from "../../../queries/attendApprove/approveAttend.ts";
+import {useLocation} from "react-router-dom";
+import {useGetAttendApproveOneQuery} from "../../../queries/attendApprove/getAttendApproveOne.ts";
+import {COLOR} from "../../../style/color/color.ts";
 import Skeleton from "../Skeleton.tsx";
 
 const Sidebar = () => {
-    const { sidebarData, setSidebarData } = useSidebarDataStore();
-    const { data, isLoading, refetch } = useGetAttendsByRoom(sidebarData);
-    const { mutate } = useApproveAttend(sidebarData);
-    const { data: approve } = useGetAttendApproveOneQuery(sidebarData);
+    const {sidebarData, setSidebarData} = useSidebarDataStore();
+    const {data, isLoading, refetch} = useGetAttendsByRoom(sidebarData, "CLUB");
+    const {mutate} = useApproveAttend(sidebarData);
+    const {data: approve} = useGetAttendApproveOneQuery(sidebarData);
     const location = useLocation();
 
     useEffect(() => {
@@ -55,7 +55,7 @@ const Sidebar = () => {
             <div className="w-full flex-1 bg-gray rounded-xl overflow-scroll">
                 {/* 학생들 나오는 곳 */}
                 {isLoading ? (
-                    Array.from({ length: 4 }).map((_, idx) => (
+                    Array.from({length: 4}).map((_, idx) => (
                         <div className="w-full mb-4" key={idx}>
                             <Skeleton
                                 width="100%"
@@ -67,7 +67,7 @@ const Sidebar = () => {
                 ) : data && data.length > 0 ? (
                     data?.map((item) => (
                         <div className="w-full mb-4" key={item.studentId}>
-                            <AttendStudent data={item} room={sidebarData || "NOTFOUND"} />
+                            <AttendStudent data={item} room={sidebarData || "NOTFOUND"}/>
                         </div>
                     ))
                 ) : (

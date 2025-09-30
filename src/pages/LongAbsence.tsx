@@ -52,7 +52,7 @@ const LongAbsence = () => {
                     )}
                 </div>
             </TableContainer>
-
+            {/* 장기 결석자 등록 누르면 나오는 모달 */}
             <LongAbsenceModal
                 visible={modalVisible}
                 onClose={() => setModalVisible(false)}

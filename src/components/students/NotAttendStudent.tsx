@@ -5,7 +5,7 @@ import { AttendStudentProps } from "../../types/props/attendStudentProps.ts";
 import { useState } from "react";
 import { Option } from "../../types/props/dropdownProps.ts";
 import { parseAttendStatus } from "../../utils/parseAttendStatus.ts";
-import { useUpdateNotAttendStatusMutation } from "../../queries/attends/updateNotAttendStatus.ts";
+import { useUpdateNotAttendStatusMutation } from "../../queries/notAttends/updateNotAttendStatus.ts";
 import { AttendStatus } from "../../types/enums/AttendStatus.ts";
 import { decodeStudentId } from "../../utils/decodeStudentId.ts";
 import TableItemContent from "../common/table/TableItemContent.tsx";

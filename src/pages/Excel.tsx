@@ -58,7 +58,7 @@ const Excel = () => {
                                 <Skeleton
                                     key={idx}
                                     width="100%"
-                                    height="24rem"
+                                    height="208px"
                                     borderRadius="0.8rem"
                                     margin={true}
                                 />

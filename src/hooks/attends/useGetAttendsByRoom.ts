@@ -5,17 +5,19 @@ import {ACCESS_TOKEN_KEY} from "../../constants/token/token.ts";
 import bbeepAxios from "../../libs/axios/customAxios.ts";
 import {Attend} from "../../types/attend/attend.ts";
 import {notification} from "antd";
+import {AttendStatus} from "../../types/enums/AttendStatus.ts";
 
-export const useGetAttendsByRoom = (room: RoomName | null) => {
+/**현재 출석 됐는지 안됐는지 보는 곳*/
+export const useGetAttendsByRoom = (room: RoomName | null, type: AttendStatus) => {
     const [loading, setLoading] = useState(false);
     const accessToken = cookie.get(ACCESS_TOKEN_KEY);
     const [data, setData] = useState<Attend[]>([]);
 
     const fetchData = async () => {
-        if (!accessToken || !room) return;
+        if (!accessToken || !room || type) return;
         try {
             setLoading(true);
-            const {data} = await bbeepAxios.get<Attend[]>(`/students/room?roomName=${room}`);
+            const {data} = await bbeepAxios.get<Attend[]>(`/students/room?room=${room}&type=${type}`);
             if (data) {
                 setData(data);
             }
@@ -28,7 +30,7 @@ export const useGetAttendsByRoom = (room: RoomName | null) => {
 
     useEffect(() => {
         fetchData();
-    }, [room]);
+    }, [room, type]);
 
     return {
         data,

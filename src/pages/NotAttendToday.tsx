@@ -1,4 +1,4 @@
-import { useGetNotAttends } from "../hooks/attends/useGetNotAttends";
+import { useGetNotAttends } from "../hooks/notAttends/useGetNotAttends.ts";
 import TableContainer from "../components/common/table/TableContainer";
 import TableHeader from "../components/common/table/TableHeader";
 import TableColumn from "../components/common/table/TableColumn";

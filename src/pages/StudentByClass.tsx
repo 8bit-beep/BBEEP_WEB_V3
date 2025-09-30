@@ -6,10 +6,10 @@ import TableContainer from "../components/common/table/TableContainer";
 import TableColumn from "../components/common/table/TableColumn";
 import Skeleton from "../components/common/Skeleton";
 import ClassStudent from "../components/students/ClassStudent";
-import { useGetStudentByClass } from "../hooks/class/useGetStudentByClass";
 import { COLOR } from "../style/color/color";
 import StudentByClassFilters from "../components/students/filters/StudentByClassFilters.tsx";
 import {useStudentByClassFilter} from "../hooks/students/useStudentByClassFilter.ts";
+import {useGetAttends} from "../hooks/attends/useGetAttends.ts";
 
 const StudentByClass = () => {
     const {
@@ -27,7 +27,7 @@ const StudentByClass = () => {
         `C${grade.value}_${cls.value}` as RoomName
     );
 
-    const { data, isLoading } = useGetStudentByClass({
+    const { data, isLoading } = useGetAttends({
         filterBy, room, grade, cls, type
     });
 

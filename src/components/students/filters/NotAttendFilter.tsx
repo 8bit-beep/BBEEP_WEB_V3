@@ -30,7 +30,7 @@ const NotAttendFilter = ({
                     <CustomDropdown value={room} setValue={setRoom} options={ROOMS}/>
                     <CustomDropdown value={type} setValue={setType} options={attendStatusOption}/>
                 </>
-            ) : null}
+            ) : <></>}
         </>
     );
 };

@@ -41,17 +41,18 @@ const LongAbsenceModal = ({visible, onClose, onSubmit}: LongAbsenceModalProps) =
                 {/* 헤더 */}
                 <div className="w-full flex items-center justify-between">
                     <p className="text-xl font-medium text-black">장기 결석자 등록</p>
-                    <X className="cursor-pointer w-5" onClick={onClose} />
+                    <X className="cursor-pointer w-5" onClick={onClose}/>
                 </div>
                 {/* 입력 폼 */}
                 <div className="gap-5 flex flex-col w-full">
                     <div className="flex justify-between">
-                        <CustomDropdown value={grade} setValue={setGrade} options={GRADE_OPTIONS} />
-                        <CustomDropdown value={cls} setValue={setCls} options={CLASS_OPTIONS} />
+                        <CustomDropdown value={grade} setValue={setGrade} options={GRADE_OPTIONS}/>
+                        <CustomDropdown value={cls} setValue={setCls} options={CLASS_OPTIONS}/>
                         <input
                             className="w-[30%] px-2 py-2.5 rounded-xl"
                             placeholder="번호"
                             type="number"
+                            style={{boxShadow: "0 0.1rem 1rem 0 rgba(0, 0, 0, 0.05)"}}
                             min={0}
                             max={19}
                             value={num}
@@ -62,6 +63,7 @@ const LongAbsenceModal = ({visible, onClose, onSubmit}: LongAbsenceModalProps) =
                         <input
                             type="date"
                             value={startDate}
+                            style={{boxShadow: "0 0.1rem 1rem 0 rgba(0, 0, 0, 0.05)"}}
                             onChange={(e) => setStartDate(e.target.value)}
                             className="px-5 py-2.5 rounded-xl"
                         />
@@ -69,6 +71,7 @@ const LongAbsenceModal = ({visible, onClose, onSubmit}: LongAbsenceModalProps) =
                         <input
                             type="date"
                             value={endDate}
+                            style={{boxShadow: "0 0.1rem 1rem 0 rgba(0, 0, 0, 0.05)"}}
                             onChange={(e) => setEndDate(e.target.value)}
                             className="px-5 py-2.5 rounded-xl"
                         />
@@ -76,6 +79,7 @@ const LongAbsenceModal = ({visible, onClose, onSubmit}: LongAbsenceModalProps) =
                     <input
                         className="w-full px-5 py-2.5 rounded-xl"
                         placeholder="장기 결석 사유를 입력해주세요."
+                        style={{boxShadow: "0 0.1rem 1rem 0 rgba(0, 0, 0, 0.05)"}}
                         value={reason}
                         onChange={(e) => setReason(e.target.value)}
                     />

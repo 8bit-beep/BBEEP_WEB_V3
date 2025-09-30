@@ -12,11 +12,11 @@ export const useGetNotAttendsQuery = (props: StudentByAttendProps) => {
             ? `/students/not-attend/room?roomName=${props.room.value}&type=${props.type.value}`
             : props.filterBy.value === "class"
                 ? `/students/not-attend/class?grade=${props.grade.value}&cls=${props.cls.value}`
-                : "/students/not-attend";
+                : `/students/not-attend`
 
     const fetchData = async () => {
         const {data} = await bbeepAxios.get<Attend[]>(endpoint);
-        return data;
+        return data as Attend[];
     };
 
     const {data, isLoading} = useQuery({
