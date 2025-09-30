@@ -19,6 +19,7 @@
 
 * {
     margin: 0;
+    letter-spacing: -0.5px;
     font-family: "Pretendard-Regular", sans-serif;
     overscroll-behavior: none;
     box-sizing: border-box;

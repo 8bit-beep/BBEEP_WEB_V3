@@ -22,7 +22,7 @@ const LoginForm = () => {
                     <p className={TextStyles.Body.regular + "text-base font-semibold text-white"}>
                         도담도담으로 로그인
                     </p>
-                    <img className="w-5" src="/assets/DodamLogo.svg"/>
+                    <img className="w-5" src="/assets/DodamLogo.svg" alt="dodamlogo"/>
                 </Link>
             </button>
             <div className="w-full h-5"/>

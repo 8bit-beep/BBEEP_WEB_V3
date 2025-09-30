@@ -1,6 +1,7 @@
 import {useState, useEffect, useRef} from "react";
 import {DropdownProps} from "../../../types/props/elements/dropdownProps.ts";
 import {COLOR} from "../../../style/color/color";
+import {TextStyles} from "../../../style/text/TextStyles.ts";
 
 const CustomDropdown = (props: DropdownProps) => {
     const [isOpened, setIsOpened] = useState(false);
@@ -30,7 +31,7 @@ const CustomDropdown = (props: DropdownProps) => {
             style={{boxShadow: "0 0.1rem 1rem 0 rgba(0, 0, 0, 0.05)"}}
         >
             {/* dropdown name & img */}
-            <p className="text-base text-black font-medium ">{props.value.name}</p>
+            <p className={TextStyles.Body.medium}>{props.value.name}</p>
             <img
                 className="w-3 object-contain object-center"
                 src="/assets/ListOpen.svg"
@@ -55,7 +56,7 @@ const CustomDropdown = (props: DropdownProps) => {
                     {/*위는 컨테이너, 밑에는 콘텐츠 옵션 */}
                     {props.options.map((item) => (
                         <div
-                            className="w-full py-3 flex justify-center items-center text-black text-base font-medium max-h-48"
+                            className={TextStyles.Body.medium+"w-full py-3 flex justify-center items-center  max-h-48"}
                             style={{
                                 backgroundColor:
                                     props.value.value === item.value

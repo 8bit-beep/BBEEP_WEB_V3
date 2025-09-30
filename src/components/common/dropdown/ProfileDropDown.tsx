@@ -6,26 +6,27 @@ import {
 import {Link} from "react-router-dom";
 import {useGetMe} from "../../../queries/user/getme.ts";
 import {cookie} from "../../../utils/tokenStore.ts";
+import {TextStyles} from "../../../style/text/TextStyles.ts";
 
 const ProfileDropdown = () => {
     const [isOpened, setIsOpened] = useState(false);
     const {me, initUser} = useGetMe();
 
     return (
-        <div className="flex flex-col">
+        <div className="flex flex-col p-4">
             {/* profile buttons */}
             <div
                 className="flex gap-7 items-center"
                 onClick={() => setIsOpened((prev) => !prev)}
             >
                 {me ? (
-                    <div className="font-medium text-xl text-black ">
+                    <div className={TextStyles.Caption1.regular}>
                         {me?.username} 선생님
                     </div>
                 ) : (
                     <Link
                         to="/login"
-                        className="text-base decoration-0 text-main"
+                        className={TextStyles.Caption1.regular+"decoration-0 text-main"}
                     >
                         로그인
                     </Link>
@@ -54,7 +55,7 @@ const ProfileDropdown = () => {
                 >
                     {me?.email}
                     <div
-                        className="font-normal text-xs text-red cursor-pointer"
+                        className={TextStyles.Caption1.regular+ "text-red cursor-pointer"}
                         onClick={() => {
                             cookie.remove(ACCESS_TOKEN_KEY);
                             cookie.remove(REFRESH_TOKEN_KEY);
