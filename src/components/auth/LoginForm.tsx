@@ -1,11 +1,11 @@
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 
 const LoginForm = () => {
     return (
         <div className="w-full h-full flex flex-col gap-5 overflow-visible items-center justify-around rounded-xl">
             {/* Logo Section */}
             <div className="flex items-center gap-1 flex-col">
-                <img className="w-14" src="/assets/Logo.svg" />
+                <img className="w-14" src="/assets/Logo.svg"/>
                 <p className="text-base font-normal text-main text-center">
                     인원체크를 간편하게
                 </p>
@@ -21,10 +21,10 @@ const LoginForm = () => {
                     <p className="text-base font-semibold text-white">
                         도담도담으로 로그인
                     </p>
-                    <img className="w-5" src="/assets/DodamLogo.svg" />
+                    <img className="w-5" src="/assets/DodamLogo.svg"/>
                 </Link>
             </button>
-            <div className="w-full h-5" />
+            <div className="w-full h-5"/>
         </div>
     );
 };

@@ -1,24 +1,24 @@
 import {ACCESS_TOKEN_KEY} from "../../constants/token/token.ts";
 import bbeepAxios from "../../libs/axios/customAxios.ts";
 import {useQuery} from "@tanstack/react-query";
-import { cookie } from "../../utils/tokenStore.ts";
+import {cookie} from "../../utils/tokenStore.ts";
 
 export const useGetExcelsQuery = (year: string, month: string) => {
-  const accessToken = cookie.get(ACCESS_TOKEN_KEY);
-  
-  const fetchData = async () => {
-    const { data } = await bbeepAxios.get<string[]>(`/excel/files?year=${year}&month=${month}`);
-    return data;
-  }
-  
-  const { data, isLoading } = useQuery({
-    queryKey: ["getExcels", year, month],
-    queryFn: fetchData,
-    enabled: !!accessToken,
-  });
-  
-  return {
-    data,
-    isLoading,
-  }
+    const accessToken = cookie.get(ACCESS_TOKEN_KEY);
+
+    const fetchData = async () => {
+        const {data} = await bbeepAxios.get<string[]>(`/excel/files?year=${year}&month=${month}`);
+        return data;
+    }
+
+    const {data, isLoading} = useQuery({
+        queryKey: ["getExcels", year, month],
+        queryFn: fetchData,
+        enabled: !!accessToken,
+    });
+
+    return {
+        data,
+        isLoading,
+    }
 }

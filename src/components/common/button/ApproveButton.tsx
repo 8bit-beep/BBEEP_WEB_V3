@@ -1,4 +1,4 @@
-import { COLOR } from "../../../style/color/color.ts";
+import {COLOR} from "../../../style/color/color.ts";
 import React from "react";
 
 interface ApproveButtonProps {
@@ -7,15 +7,11 @@ interface ApproveButtonProps {
     children: React.ReactNode;
 }
 
-const ApproveButton = ({
-    isApproved,
-    mutate,
-    children,
-}: ApproveButtonProps) => {
+const ApproveButton = ({isApproved, mutate, children,}: ApproveButtonProps) => {
     return (
         <div
             className="py-1 px-3 rounded-xl"
-            style={{ backgroundColor: isApproved ? COLOR.Red : COLOR.Main }}
+            style={{backgroundColor: isApproved ? COLOR.Red : COLOR.Main}}
             onClick={() => {
                 mutate();
             }}

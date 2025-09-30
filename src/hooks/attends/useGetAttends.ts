@@ -5,7 +5,7 @@ import {StudentByAttendProps} from "../../types/props/studentByAttendProps.ts";
 /** 출석 상태 알아보는 곳 (전체)*/
 export const useGetAttends = (props: StudentByAttendProps) => {
     const [loading, setLoading] = useState(false);
-    const { data, isLoading } = useGetAttendsQuery(props);
+    const {data, isLoading} = useGetAttendsQuery(props);
 
     useEffect(() => {
         if (isLoading) {
@@ -20,7 +20,7 @@ export const useGetAttends = (props: StudentByAttendProps) => {
         return () => {
             clearTimeout(timeout);
         }
-    },[isLoading]);
+    }, [isLoading]);
 
     return {
         data,

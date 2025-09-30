@@ -1,15 +1,15 @@
-import { useState } from "react";
+import {useState} from "react";
 import {
     ACCESS_TOKEN_KEY,
     REFRESH_TOKEN_KEY,
 } from "../../../constants/token/token.ts";
-import { Link } from "react-router-dom";
-import { useGetMe } from "../../../queries/user/getme.ts";
-import { cookie } from "../../../utils/tokenStore.ts";
+import {Link} from "react-router-dom";
+import {useGetMe} from "../../../queries/user/getme.ts";
+import {cookie} from "../../../utils/tokenStore.ts";
 
 const ProfileDropdown = () => {
     const [isOpened, setIsOpened] = useState(false);
-    const { me, initUser } = useGetMe();
+    const {me, initUser} = useGetMe();
 
     return (
         <div className="flex flex-col">
@@ -47,7 +47,7 @@ const ProfileDropdown = () => {
             {/* dropdown */}
             {isOpened && (
                 <div
-                    className="absolute flex flex-col items-center gap-4 top-12 bg-white"
+                    className="absolute flex flex-col items-center gap-4 top-16 bg-white"
                     style={{
                         boxShadow: "0px 3px 5px 0.1px rgba(0, 0, 0, 0.1)",
                     }}

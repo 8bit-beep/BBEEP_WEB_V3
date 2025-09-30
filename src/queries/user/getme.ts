@@ -1,24 +1,25 @@
-import { useQuery } from "@tanstack/react-query";
+import {useQuery} from "@tanstack/react-query";
 import bbeepAxios from "../../libs/axios/customAxios";
-import { ACCESS_TOKEN_KEY } from "../../constants/token/token.ts";
-import { BaseResponse } from "../../types/response/baseResponse.ts";
-import { User } from "../../types/entity/user.ts";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { cookie } from "../../utils/tokenStore.ts";
+import {ACCESS_TOKEN_KEY} from "../../constants/token/token.ts";
+import {BaseResponse} from "../../types/response/baseResponse.ts";
+import {User} from "../../types/entity/user.ts";
+import {useState} from "react";
+import {useNavigate} from "react-router-dom";
+import {cookie} from "../../utils/tokenStore.ts";
 
 export const useGetMe = () => {
     const accessToken = cookie.get(ACCESS_TOKEN_KEY);
     const navigate = useNavigate();
 
-    if(!accessToken) {
-      navigate('/login')
+    if (!accessToken) {
+        navigate('/login')
     }
 
     const [me, setMe] = useState<User | null>(null);
 
     const fetchData = async () => {
-        const { data } = await bbeepAxios.get<BaseResponse<User>>(`/users/me`);
+        // 권한 주기
+        const {data} = await bbeepAxios.get<BaseResponse<User>>(`/users/me`);
         setMe(data.data);
         if (
             data.data.role === "STUDENT" &&

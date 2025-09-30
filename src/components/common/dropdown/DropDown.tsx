@@ -1,8 +1,8 @@
-import { useState, useEffect, useRef } from "react";
-import { DropdownProps } from "../../../types/props/dropdownProps";
-import { COLOR } from "../../../style/color/color";
+import {useState, useEffect, useRef} from "react";
+import {DropdownProps} from "../../../types/props/dropdownProps";
+import {COLOR} from "../../../style/color/color";
 
-const CustomDropdown = ({ value, setValue, options }: DropdownProps) => {
+const CustomDropdown = ({value, setValue, options}: DropdownProps) => {
     const [isOpened, setIsOpened] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -27,7 +27,7 @@ const CustomDropdown = ({ value, setValue, options }: DropdownProps) => {
             className="flex rounded-xl px-5 py-2.5 gap-4 items-center relative cursor-pointer bg-white"
             ref={dropdownRef}
             onClick={() => setIsOpened((prev) => !prev)}
-            style={{ boxShadow: "0 0.1rem 1rem 0 rgba(0, 0, 0, 0.05)" }}
+            style={{boxShadow: "0 0.1rem 1rem 0 rgba(0, 0, 0, 0.05)"}}
         >
             {/* dropdown name & img */}
             <p className="text-base text-black font-medium ">{value.name}</p>

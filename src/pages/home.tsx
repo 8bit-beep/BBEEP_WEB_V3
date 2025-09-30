@@ -1,12 +1,12 @@
 import RoomIndicator from "../components/RoomIndicator";
-import { useRef, useState } from "react";
-import { ZoomIn, ZoomOut } from "lucide-react";
-import { useMap } from "../hooks/map/useMap";
-import { COLOR } from "../style/color/color";
+import {useRef, useState} from "react";
+import {ZoomIn, ZoomOut} from "lucide-react";
+import {useMap} from "../hooks/map/useMap";
+import {COLOR} from "../style/color/color";
 
 const Home = () => {
     const [floor, setFloor] = useState(2);
-    const { scale, increase, decrease } = useMap();
+    const {scale, increase, decrease} = useMap();
     const mapRef = useRef<HTMLDivElement>(null);
     return (
         <div className="w-full h-full overflow-scroll" ref={mapRef}>
@@ -21,10 +21,10 @@ const Home = () => {
                 {floor === 2 ? (
                     <>
                         {/* <RoomIndicator room="LAB1" top={430} left={50} /> */}
-                        <RoomIndicator room="PROJECT3" top={650} left={50} />
+                        <RoomIndicator room="PROJECT3" top={650} left={50}/>
                         {/* <RoomIndicator room="SERVER" top={650} left={215} /> */}
                         {/* <RoomIndicator room="LAB2" top={430} left={375} /> */}
-                        <RoomIndicator room="PROJECT4" top={650} left={375} />
+                        <RoomIndicator room="PROJECT4" top={650} left={375}/>
                         {/* <RoomIndicator room="LAB3_4" top={430} left={940} /> */}
                         {/* <RoomIndicator room="LAB5" top={430} left={1180} /> */}
                         {/* <RoomIndicator room="LAB6_7" top={650} left={1180} /> */}
@@ -34,24 +34,24 @@ const Home = () => {
                 ) : floor === 3 ? (
                     <>
                         {/* <RoomIndicator room="LAB12" top={430} left={50} /> */}
-                        <RoomIndicator room="PROJECT5" top={650} left={50} />
+                        <RoomIndicator room="PROJECT5" top={650} left={50}/>
                         {/* <RoomIndicator
                             room="PRINTER_MAKER"
                             top={650}
                             left={215}
                         /> */}
                         {/* <RoomIndicator room="LAB13" top={430} left={375} /> */}
-                        <RoomIndicator room="PROJECT6" top={650} left={540} />
+                        <RoomIndicator room="PROJECT6" top={650} left={540}/>
                         {/* <RoomIndicator room="LAB14" top={430} left={940} /> */}
-                        <RoomIndicator room="LAB15_16" top={425} left={1180} />
-                        <RoomIndicator room="LAB17_18" top={650} left={1180} />
-                        <RoomIndicator room="LAB19_20" top={650} left={1020} />
-                        <RoomIndicator room="LAB21_22" top={650} left={850} />
+                        <RoomIndicator room="LAB15_16" top={425} left={1180}/>
+                        <RoomIndicator room="LAB17_18" top={650} left={1180}/>
+                        <RoomIndicator room="LAB19_20" top={650} left={1020}/>
+                        <RoomIndicator room="LAB21_22" top={650} left={850}/>
                     </>
                 ) : (
                     <>
-                        <RoomIndicator room="PROJECT1" top={555} left={320} />
-                        <RoomIndicator room="PROJECT2" top={555} left={1020} />
+                        <RoomIndicator room="PROJECT1" top={555} left={320}/>
+                        <RoomIndicator room="PROJECT2" top={555} left={1020}/>
                     </>
                 )}
 

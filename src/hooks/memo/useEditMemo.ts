@@ -1,44 +1,44 @@
-import { ChangeEvent, useEffect, useState } from "react";
-import { useUpdateMemo } from "../../queries/memo/updateMemo";
-import { useGetMemo } from "../../queries/memo/getMemo";
+import {ChangeEvent, useEffect, useState} from "react";
+import {useUpdateMemo} from "../../queries/memo/updateMemo";
+import {useGetMemo} from "../../queries/memo/getMemo";
 
 export const useEditMemo = () => {
-  const memoData = useGetMemo();
-  const [memo, setMemo] = useState<string>("");
-  const [debouncedMemo, setDebouncedMemo] = useState<string>("");
-  const { mutateAsync } = useUpdateMemo(setMemo);
+    const memoData = useGetMemo();
+    const [memo, setMemo] = useState<string>("");
+    const [debouncedMemo, setDebouncedMemo] = useState<string>("");
+    const {mutateAsync} = useUpdateMemo(setMemo);
 
-  useEffect(() => {
-    if (memoData.data?.content) {
-      setMemo(memoData.data.content);
-      setDebouncedMemo(memoData.data.content);
+    useEffect(() => {
+        if (memoData.data?.content) {
+            setMemo(memoData.data.content);
+            setDebouncedMemo(memoData.data.content);
+        }
+    }, [memoData.data?.content]);
+
+    useEffect(() => {
+        if (!memoData.data) return;
+
+        const handler = setTimeout(() => {
+            setDebouncedMemo(memo);
+        }, 500);
+
+        return () => clearTimeout(handler);
+    }, [memo, memoData.data]);
+
+    useEffect(() => {
+        if (!memoData.data) return;
+        if (debouncedMemo === memoData.data.content) return;
+
+        mutateAsync(debouncedMemo);
+    }, [debouncedMemo]);
+
+    const handleMemo = (e: ChangeEvent<HTMLTextAreaElement>) => {
+        setMemo(e.target.value);
     }
-  }, [memoData.data?.content]);
 
-  useEffect(() => {
-    if (!memoData.data) return;
-
-    const handler = setTimeout(() => {
-      setDebouncedMemo(memo);
-    }, 500);
-
-    return () => clearTimeout(handler);
-  }, [memo, memoData.data]);
-
-  useEffect(() => {
-    if (!memoData.data) return;
-    if (debouncedMemo === memoData.data.content) return;
-
-    mutateAsync(debouncedMemo);
-  }, [debouncedMemo]);
-
-  const handleMemo = (e: ChangeEvent<HTMLTextAreaElement>) =>{
-      setMemo(e.target.value);
-  }
-
-  return {
-    memo,
-    debouncedMemo,
-    handleMemo
-  };
+    return {
+        memo,
+        debouncedMemo,
+        handleMemo
+    };
 };
