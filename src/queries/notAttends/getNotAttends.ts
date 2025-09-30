@@ -9,9 +9,9 @@ export const useGetNotAttendsQuery = (props: AttendFilterProps) => {
     const accessToken = cookie.get(ACCESS_TOKEN_KEY);
     const endpoint =
         props.filterBy.value === "room"
-            ? `/students/not-attend/room?roomName=${props.room.value}&type=${props.type.value}`
+            ? `/students/not-attend/room?room=${props.room.value}&type=${props.type.value}`
             : props.filterBy.value === "class"
-                ? `/students/not-attend/class?grade=${props.grade.value}&cls=${props.cls.value}`
+                ? `/students/not-attend/class?grade=${props.grade.value}&cls=${props.cls.value}&type=${props.type.value}`
                 : `/students/not-attend`
 
     const fetchData = async () => {
