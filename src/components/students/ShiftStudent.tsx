@@ -1,41 +1,42 @@
-import { XCircle } from "lucide-react";
-import { useUpdateShiftStatus } from "../../queries/shifts/useUpdateShiftStatus";
-import { RoomName } from "../../types/enums/roomName";
-import { Shift } from "../../types/shift/shift";
-import { parseRoomName } from "../../utils/parseRoomName";
+import {XCircle} from "lucide-react";
+import {useUpdateShiftStatus} from "../../queries/shifts/useUpdateShiftStatus";
+import {RoomName} from "../../types/enums/roomName";
+import {Shift} from "../../types/shift/shift";
+import {parseRoomName} from "../../utils/parseRoomName";
 import TableButton from "../common/table/TableButton";
 import TableItemContent from "../common/table/TableItemContent";
-import { COLOR } from "../../style/color/color";
+import {COLOR} from "../../style/color/color";
 
-const ShiftStudent = ({ data }: { data: Shift }) => {
+const ShiftStudent = ( props : Shift) => {
+
     const approve = useUpdateShiftStatus("APPROVED");
     const reject = useUpdateShiftStatus("REJECTED");
     const cancel = useUpdateShiftStatus("WAITING");
     return (
         <div className="w-full flex items-center h-16">
-            <TableItemContent $flex={1}>{data.user.studentInfo.id}</TableItemContent>
-            <TableItemContent $flex={1}>{data.user.username}</TableItemContent>
+            <TableItemContent $flex={1}>{props.user.studentInfo.id}</TableItemContent>
+            <TableItemContent $flex={1}>{props.user.username}</TableItemContent>
             <TableItemContent $flex={2}>
-                {parseRoomName(data.room.room as RoomName)}
+                {parseRoomName(props.room.room as RoomName)}
             </TableItemContent>
-            <TableItemContent $flex={2} style={{ fontWeight: 600 }}>
-                {data.period}교시
+            <TableItemContent $flex={2} style={{fontWeight: 600}}>
+                {props.period}교시
             </TableItemContent>
             <TableItemContent $notCenter $flex={4}>
-                {data.reason}
+                {props.reason}
             </TableItemContent>
             {/* 버튼 부분 */}
-            {data.status === "WAITING" ? (
+            {props.status === "WAITING" ? (
                 <div className="flex gap-2 flex-[2] justify-center">
                     <TableButton
                         isSelected={true}
-                        onClick={() => approve.mutate(data.id)}
+                        onClick={() => approve.mutate(props.id)}
                     >
                         승인
                     </TableButton>
                     <TableButton
                         isSelected={false}
-                        onClick={() => reject.mutate(data.id)}
+                        onClick={() => reject.mutate(props.id)}
                     >
                         거절
                     </TableButton>
@@ -47,20 +48,20 @@ const ShiftStudent = ({ data }: { data: Shift }) => {
                         className="text-base text-ellipsis whitespace-nowrap overflow-hidden"
                         style={{
                             color:
-                                data.status === "APPROVED"
+                                props.status === "APPROVED"
                                     ? COLOR.Main
                                     : COLOR.Red,
                         }}
                     >
-                        {data.status === "APPROVED"
+                        {props.status === "APPROVED"
                             ? "승인됨"
-                            : data.status === "REJECTED"
-                            ? "거절됨"
-                            : "대기중"}
+                            : props.status === "REJECTED"
+                                ? "거절됨"
+                                : "대기중"}
                     </p>
                     <XCircle
                         color={COLOR.Red}
-                        onClick={() => cancel.mutate(data.id)}
+                        onClick={() => cancel.mutate(props.id)}
                     />
                 </div>
             )}

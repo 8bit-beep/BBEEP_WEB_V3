@@ -1,9 +1,9 @@
 import { parseRoomName } from "../../utils/parseRoomName.ts";
 import Dropdown from "../common/dropdown/DropDown.tsx";
 import { attendStatusOption } from "../../constants/attendStatus/attendStatusOption.ts";
-import { AttendStudentProps } from "../../types/props/attendStudentProps.ts";
+import { AttendStudentProps } from "../../types/props/attend/attendStudentProps.ts";
 import { useState } from "react";
-import { Option } from "../../types/props/dropdownProps.ts";
+import { Option } from "../../types/props/elements/dropdownProps.ts";
 import { parseAttendStatus } from "../../utils/parseAttendStatus.ts";
 import { useUpdateNotAttendStatusMutation } from "../../queries/notAttends/updateNotAttendStatus.ts";
 import { AttendStatus } from "../../types/enums/AttendStatus.ts";

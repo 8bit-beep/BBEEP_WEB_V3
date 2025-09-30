@@ -1,9 +1,9 @@
-import { ExcelItemProps } from "../types/props/ExcelItemProps.ts";
+import { ExcelItemProps } from "../types/props/excel/excelItemProps.ts";
 import { File } from "lucide-react";
 import { useDownloadExcel } from "../hooks/excels/useDownloadExcel.ts";
 
-const ExcelItem = ({ fileName }: ExcelItemProps) => {
-    const date = fileName.split("attendance_")[1].split(".xlsx")[0];
+const ExcelItem = (props : ExcelItemProps) => {
+    const date = props.fileName.split("attendance_")[1].split(".xlsx")[0];
     const getUrl = useDownloadExcel(date);
 
     return (

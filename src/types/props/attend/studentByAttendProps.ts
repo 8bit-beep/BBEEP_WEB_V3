@@ -1,10 +1,10 @@
-import {Option} from "../dropdownProps.ts";
+import {Option} from "../elements/dropdownProps.ts";
 
-export interface AttendFilterProps {
+export interface StudentByAttendProps {
     filterBy: Option;
+    room: Option;
     grade: Option;
     cls: Option;
-    room: Option;
     type: Option;
     setFilterBy: (o: Option) => void;
     setGrade: (o: Option) => void;
@@ -12,4 +12,3 @@ export interface AttendFilterProps {
     setRoom: (o: Option) => void;
     setType: (o: Option) => void;
 }
-

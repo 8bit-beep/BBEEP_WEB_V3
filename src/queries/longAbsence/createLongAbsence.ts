@@ -4,19 +4,14 @@ import {cookie} from "../../utils/tokenStore"
 import bbeepAxios from "../../libs/axios/customAxios";
 import {notification} from "antd";
 import {AxiosError} from "axios";
+import {RegisterLongAbsence} from "../../types/longAbsence/registerLongAbsence.ts";
 
 export const useCreateLongAbsence = () => {
     const accessToken = cookie.get(ACCESS_TOKEN_KEY);
     const queryClient = useQueryClient();
 
-    const createData = async (data: {
-        grade: number;
-        cls: number;
-        num: number;
-        startDate: string;
-        endDate: string;
-        reason: string
-    }) => {
+
+    const createData = async (data: RegisterLongAbsence) => {
         if (!accessToken) {
             await Promise.reject();
         }

@@ -1,12 +1,12 @@
-import {RoomIndicatorProps} from "../types/props/roomIndicatorProps.ts";
+import {RoomIndicatorProps} from "../types/props/elements/roomIndicatorProps.ts";
 import {useSidebarDataStore} from "../store/sidebar/useSidebarDataStore.ts";
 import {parseRoomName} from "../utils/parseRoomName.ts";
 
-const RoomIndicator = ({room, top, left}: RoomIndicatorProps) => {
+const RoomIndicator = (props: RoomIndicatorProps) => {
     const {setSidebarData} = useSidebarDataStore();
 
     const handleOpen = () => {
-        setSidebarData(room);
+        setSidebarData(props.room);
     };
 
     return (
@@ -14,18 +14,18 @@ const RoomIndicator = ({room, top, left}: RoomIndicatorProps) => {
             className="w-30 h-30 absolute bg-white cursor-pointer
             rounded-xl transition-transform duration-300 active:scale-95"
             style={{
-                top: `${top}px`,
-                left: `${left}px`,
+                top: `${props.top}px`,
+                left: `${props.left}px`,
                 boxShadow: "0px 0px 20px 0px rgba(0, 0, 0, 0.05)",
             }}
             onClick={handleOpen}
-            id={room}
+            id={props.room}
         >
             <p
                 className="w-full h-full flex items-center justify-center
                 text-base font-medium overflow-ellipsis overflow-hidden"
             >
-                {parseRoomName(room)}
+                {parseRoomName(props.room)}
             </p>
         </div>
     );

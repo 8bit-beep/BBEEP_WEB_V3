@@ -1,4 +1,4 @@
-import {Option} from "../../types/props/dropdownProps.ts";
+import {Option} from "../../types/props/elements/dropdownProps.ts";
 
 export const GRADE_OPTIONS: Option[] = [
     { value: "1", name: "1학년" },

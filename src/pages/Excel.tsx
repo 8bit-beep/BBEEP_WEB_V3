@@ -1,6 +1,6 @@
 import Dropdown from "../components/common/dropdown/DropDown.tsx";
 import {useState} from "react";
-import {Option} from "../types/props/dropdownProps.ts";
+import {Option} from "../types/props/elements/dropdownProps.ts";
 import {monthOption} from "../constants/month/monthOption.ts";
 import {useGetExcels} from "../hooks/excels/useGetExcels.ts";
 import TableHeader from "../components/common/table/TableHeader.tsx";

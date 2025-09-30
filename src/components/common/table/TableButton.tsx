@@ -1,12 +1,7 @@
 import { COLOR } from "../../../style/color/color";
+import {TableButtonProps} from "../../../types/props/table/tableButtonProps.ts";
 
-interface TableButtonProps {
-    isSelected: boolean;
-    onClick: any;
-    children: React.ReactNode;
-}
-
-const TableButton = ({ ...props }: TableButtonProps) => {
+const TableButton = (props: TableButtonProps) => {
     return (
         <div
             className="flex items-center justify-center w-16 h-9 rounded-xl text-base text-white"

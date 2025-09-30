@@ -47,7 +47,7 @@ const Shifts = () => {
                             ))
                         ) : data && data.length > 0 ? (
                             data.map((item) => (
-                                <ShiftStudent key={item.id} data={item}/>
+                                <ShiftStudent key={item.id} {...item} />
                             ))
                         ) : (
                             <div className="w-full h-7 flex justify-center items-center text-xl text-gray">

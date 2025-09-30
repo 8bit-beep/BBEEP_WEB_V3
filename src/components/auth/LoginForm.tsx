@@ -1,12 +1,13 @@
 import {Link} from "react-router-dom";
+import {TextStyles} from "../../style/text/TextStyles.ts";
 
 const LoginForm = () => {
     return (
         <div className="w-full h-full flex flex-col gap-5 overflow-visible items-center justify-around rounded-xl">
             {/* Logo Section */}
             <div className="flex items-center gap-1 flex-col">
-                <img className="w-14" src="/assets/Logo.svg"/>
-                <p className="text-base font-normal text-main text-center">
+                <img className="w-14" src="/assets/Logo.svg" alt="logo"/>
+                <p className={TextStyles.Body.regular + " text-center text-main"}>
                     인원체크를 간편하게
                 </p>
             </div>
@@ -18,7 +19,7 @@ const LoginForm = () => {
                         import.meta.env.VITE_DAUTH_CLIENT_ID
                     }&redirect_uri=${import.meta.env.VITE_DAUTH_REDIRECT_URL}/callback/dauth`}
                 >
-                    <p className="text-base font-semibold text-white">
+                    <p className={TextStyles.Body.regular + "text-base font-semibold text-white"}>
                         도담도담으로 로그인
                     </p>
                     <img className="w-5" src="/assets/DodamLogo.svg"/>

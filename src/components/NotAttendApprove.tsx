@@ -5,14 +5,13 @@ import { parseRoomName } from "../utils/parseRoomName";
 import ApproveButton from "./common/button/ApproveButton.tsx";
 import TableItemContent from "./common/table/TableItemContent";
 
-const NotAttendApprove = ({ data }: { data: Room }) => {
-    console.log(data);
-    const { mutate } = useApproveAttend(data.room);
+const NotAttendApprove = ( props: Room ) => {
+    const { mutate } = useApproveAttend(props.room);
 
     return (
         <div className="w-full flex items-center">
             <TableItemContent $flex={6} $notCenter>
-                {parseRoomName(data.room)}
+                {parseRoomName(props.room)}
             </TableItemContent>
             <TableItemContent $flex={2}></TableItemContent>
             <TableItemContent $flex={2}></TableItemContent>

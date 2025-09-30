@@ -1,4 +1,4 @@
-import {Option} from "../../types/props/dropdownProps.ts";
+import {Option} from "../../types/props/elements/dropdownProps.ts";
 
 export const ROOMS : Option[] = [
   // { name: "프로젝트 1", value: "PROJECT1" },

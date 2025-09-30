@@ -1,4 +1,4 @@
-import { TableHeaderProps } from "../../../types/props/tableHeaderProps";
+import { TableHeaderProps } from "../../../types/props/table/tableHeaderProps.ts";
 import ThemedIcon from "../ThemedIcon";
 
 const TableHeader = (props: TableHeaderProps) => {

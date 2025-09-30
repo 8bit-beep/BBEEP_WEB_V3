@@ -2,7 +2,7 @@ import {useGetAttendApproveQuery} from "../queries/attendApprove/getAttendApprov
 import Skeleton from "../components/common/Skeleton.tsx";
 import ApproveItem from "../components/ApproveItem";
 import {useState} from "react";
-import {Option} from "../types/props/dropdownProps";
+import {Option} from "../types/props/elements/dropdownProps.ts";
 import {useGetAttendApproveNotQuery} from "../queries/attendApprove/getAttendApproveNot";
 import {ApproveItem as ApproveItemType} from "../types/approve/approveItem";
 import NotAttendApprove from "../components/NotAttendApprove";
@@ -91,7 +91,7 @@ const AttendApprove = () => {
                                 filterBy.value === "all" ? (
                                     <ApproveItem data={item as ApproveItemType} key={idx}/>
                                 ) : (
-                                    <NotAttendApprove data={item as Room} key={idx}/>
+                                    <NotAttendApprove key={idx} {...item as Room}/>
                                 )
                             )
                         )}

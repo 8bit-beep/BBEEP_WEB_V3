@@ -3,7 +3,7 @@ import LoginForm from "../components/auth/LoginForm";
 const Login = () => {
     return (
         <div
-            className="w-full h-[100svh] flex items-center justify-center 
+            className="w-full h-[100svh] flex items-center justify-center
         bg-[url('/assets/BbeepBackGround.svg')] bg-no-repeat bg-center bg-cover p-8 overflow-visible"
         >
             <div
@@ -13,11 +13,11 @@ const Login = () => {
                 }}
             >
                 {/* Left */}
-                <div className="w-1/2 h-full bg-[url('/assets/LoginBackGround.svg')] bg-no-repeat bg-center" />
+                <div className="w-1/2 h-full bg-[url('/assets/LoginBackGround.svg')] bg-no-repeat bg-center"/>
 
                 {/* Right */}
                 <div className="w-1/2 h-full bg-white flex">
-                    <LoginForm />
+                    <LoginForm/>
                 </div>
             </div>
         </div>

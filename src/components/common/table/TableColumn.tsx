@@ -1,10 +1,5 @@
-import React from "react";
+import {TableColumnProps} from "../../../types/props/table/tableColumnProps.ts";
 
-export interface TableColumnProps {
-    $flex: number;
-    $notCenter?: boolean;
-    children?: React.ReactNode;
-}
 const TableColumn = (props: TableColumnProps) => {
     return (
         <p

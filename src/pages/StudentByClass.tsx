@@ -1,12 +1,12 @@
-import { useApproveAttend } from "../queries/attendApprove/approveAttend";
-import { useGetAttendApproveOneQuery } from "../queries/attendApprove/getAttendApproveOne";
-import { RoomName } from "../types/enums/roomName";
+import {useApproveAttend} from "../queries/attendApprove/approveAttend";
+import {useGetAttendApproveOneQuery} from "../queries/attendApprove/getAttendApproveOne";
+import {RoomName} from "../types/enums/roomName";
 import TableHeader from "../components/common/table/TableHeader";
 import TableContainer from "../components/common/table/TableContainer";
 import TableColumn from "../components/common/table/TableColumn";
 import Skeleton from "../components/common/Skeleton";
 import ClassStudent from "../components/students/ClassStudent";
-import { COLOR } from "../style/color/color";
+import {COLOR} from "../style/color/color";
 import StudentByClassFilters from "../components/students/filters/StudentByClassFilters.tsx";
 import {useStudentByClassFilter} from "../hooks/students/useStudentByClassFilter.ts";
 import {useGetAttends} from "../hooks/attends/useGetAttends.ts";
@@ -20,14 +20,14 @@ const StudentByClass = () => {
         type, setType,
     } = useStudentByClassFilter();
 
-    const { mutate } = useApproveAttend(
+    const {mutate} = useApproveAttend(
         `C${grade.value}_${cls.value}` as RoomName
     );
-    const { data: approve } = useGetAttendApproveOneQuery(
+    const {data: approve} = useGetAttendApproveOneQuery(
         `C${grade.value}_${cls.value}` as RoomName
     );
 
-    const { data, isLoading } = useGetAttends({
+    const {data, isLoading} = useGetAttends({
         filterBy, room, grade, cls, type
     });
 
@@ -72,11 +72,11 @@ const StudentByClass = () => {
 
                 <div
                     className="w-full flex flex-col overflow-y-scroll px-10 py-3 max-h-[600px]"
-                    style={{ msOverflowStyle: "scrollbar", scrollbarWidth: "thin" }}
+                    style={{msOverflowStyle: "scrollbar", scrollbarWidth: "thin"}}
                 >
                     <div className="w-full mb-4 flex flex-col">
                         {isLoading ? (
-                            Array.from({ length: 4 }).map((_, idx) => (
+                            Array.from({length: 4}).map((_, idx) => (
                                 <Skeleton
                                     width="100%"
                                     height="5rem"
@@ -87,7 +87,7 @@ const StudentByClass = () => {
                             ))
                         ) : data && data.length > 0 ? (
                             data?.map((item) => (
-                                <ClassStudent key={item.studentId} data={item} filterBy={filterBy.value} />
+                                <ClassStudent key={item.studentId} data={item} filterBy={filterBy.value}/>
                             ))
                         ) : (
                             <div className="w-full h-10 flex justify-center items-center text-xl text-gray">

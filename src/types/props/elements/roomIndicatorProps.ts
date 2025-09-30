@@ -1,4 +1,4 @@
-import {RoomName} from "../enums/roomName.ts";
+import {RoomName} from "../../enums/roomName.ts";
 
 export interface RoomIndicatorProps {
   room: RoomName;

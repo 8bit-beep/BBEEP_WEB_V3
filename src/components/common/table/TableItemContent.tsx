@@ -1,31 +1,19 @@
-import React from "react";
+import {TableColumnProps} from "../../../types/props/table/tableColumnProps.ts";
 
-interface TableItemContentProps {
-    $flex: number;
-    $notCenter?: boolean;
-    style?: React.CSSProperties;
-    children?: React.ReactNode;
-}
-
-const TableItemContent = ({
-    $flex,
-    $notCenter,
-    style,
-    children,
-}: TableItemContentProps) => {
+const TableItemContent = (props: TableColumnProps) => {
     return (
         <div
             className={`flex h-16 text-base overflow-hidden whitespace-nowrap ${
-                $notCenter
+                props.$notCenter
                     ? "items-center justify-start"
                     : "items-center justify-center"
             }`}
             style={{
-                flex: `${$flex} 1 0%`,
-                ...style,
+                flex: `${props.$flex} 1 0%`,
+                ...props.style,
             }}
         >
-            {children}
+            {props.children}
         </div>
     );
 };

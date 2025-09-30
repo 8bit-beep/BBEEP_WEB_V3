@@ -1,16 +1,16 @@
-import {StudentByAttendProps} from "../../types/props/studentByAttendProps.ts";
 import {cookie} from "../../utils/tokenStore.ts";
 import {ACCESS_TOKEN_KEY} from "../../constants/token/token.ts";
 import bbeepAxios from "../../libs/axios/customAxios.ts";
 import {Attend} from "../../types/attend/attend.ts";
 import {useQuery} from "@tanstack/react-query";
+import {AttendFilterProps} from "../../types/props/attend/attendFilterProps.ts";
 
-export const useGetAttendsQuery = (props: StudentByAttendProps) => {
+export const useGetAttendsQuery = (props: AttendFilterProps) => {
     const accessToken = cookie.get(ACCESS_TOKEN_KEY);
     const endpoint =
         props.filterBy.value === "room"
-            ? `/students/room?roomName=${props.room.value}&type=${props.type.value}`
-            : `/students/class?grade=${props.grade.value}&cls=${props.cls.value}`
+            ? `/students/room?room=${props.room.value}&type=${props.type.value}`
+            : `/students/class?grade=${props.grade.value}&cls=${props.cls.value}&type=${props.type.value}`;
 
     const fetchData = async () => {
         const {data} = await bbeepAxios.get<Attend[]>(endpoint);

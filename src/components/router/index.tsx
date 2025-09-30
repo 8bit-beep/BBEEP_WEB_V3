@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import RootLayout from "../../layouts/RootLayout";
 import Login from "../../pages/Login";
 import Shifts from "../../pages/Shifts";
@@ -15,18 +15,18 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={<RootLayout />}>
-                    <Route index element={<Home />} />
-                    <Route path="/shifts" element={<Shifts />} />
-                    <Route path="/attend" element={<StudentByClass />} />
-                    <Route path="/not-attend" element={<NotAttendToday />} />
-                    <Route path="/excel" element={<Excel />} />
-                    <Route path="/attend-approve" element={<AttendApprove />} />
-                    <Route path="/long-absence" element={<LongAbsence />} />
+                <Route path="/" element={<RootLayout/>}>
+                    <Route index element={<Home/>}/>
+                    <Route path="/shifts" element={<Shifts/>}/>
+                    <Route path="/attend" element={<StudentByClass/>}/>
+                    <Route path="/not-attend" element={<NotAttendToday/>}/>
+                    <Route path="/excel" element={<Excel/>}/>
+                    <Route path="/attend-approve" element={<AttendApprove/>}/>
+                    <Route path="/long-absence" element={<LongAbsence/>}/>
                 </Route>
-                <Route path="/login" element={<Login />} />
-                <Route path="/callback/dauth" element={<Dauth />} />
-                <Route path="/forbidden" element={<Forbidden />} />
+                <Route path="/login" element={<Login/>}/>
+                <Route path="/callback/dauth" element={<Dauth/>}/>
+                <Route path="/forbidden" element={<Forbidden/>}/>
             </Routes>
         </BrowserRouter>
     );

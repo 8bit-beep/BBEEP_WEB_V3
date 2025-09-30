@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Option } from "../../types/props/dropdownProps";
+import { Option } from "../../types/props/elements/dropdownProps.ts";
 import { getStoredOption } from "../../utils/getStoredOption";
 import { ROOMS } from "../../constants/room/rooms";
 import { attendStatusOption } from "../../constants/attendStatus/attendStatusOption";

@@ -3,9 +3,9 @@ import bbeepAxios from "../../libs/axios/customAxios";
 import {Attend} from "../../types/attend/attend.ts";
 import {ACCESS_TOKEN_KEY} from "../../constants/token/token.ts";
 import {cookie} from "../../utils/tokenStore.ts";
-import {StudentByAttendProps} from "../../types/props/studentByAttendProps.ts";
+import {AttendFilterProps} from "../../types/props/attend/attendFilterProps.ts";
 
-export const useGetNotAttendsQuery = (props: StudentByAttendProps) => {
+export const useGetNotAttendsQuery = (props: AttendFilterProps) => {
     const accessToken = cookie.get(ACCESS_TOKEN_KEY);
     const endpoint =
         props.filterBy.value === "room"

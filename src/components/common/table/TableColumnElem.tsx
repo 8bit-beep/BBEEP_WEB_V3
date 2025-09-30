@@ -1,11 +1,6 @@
-import React from "react";
+import {TableColumnProps} from "../../../types/props/table/tableColumnProps.ts";
 
-export interface TableColumnElemProps {
-    $flex: number;
-    children: React.ReactNode;
-}
-
-const TableColumnElem = (props: TableColumnElemProps) => {
+const TableColumnElem = (props: TableColumnProps) => {
     return (
         <div
             className="text-xl text-black font-normal flex items-center justify-center text-center"

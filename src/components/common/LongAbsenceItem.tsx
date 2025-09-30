@@ -7,7 +7,7 @@ import TableItemContent from "./table/TableItemContent";
 import TableButton from "./table/TableButton";
 import LongAbsenceModal from "./modal/LongAbsenceModal.tsx";
 
-const LongAbsenceItem = ({data}: { data: LongAbsenceItemProps }) => {
+const LongAbsenceItem = (data: LongAbsenceItemProps ) => {
     const [modalVisible, setModalVisible] = useState(false);
     const {mutateAsync} = useEditLongAbsence(data.absenceId);
     const {mutate} = useDeleteLongAbsence(data.absenceId);
@@ -20,7 +20,7 @@ const LongAbsenceItem = ({data}: { data: LongAbsenceItemProps }) => {
                 {data.studentInfo.cls}
                 {data.studentInfo.num > 9 ? data.studentInfo.num : `0${data.studentInfo.num}`}
             </TableItemContent>
-            {/*<TableItemContent $flex={2}>{data.username}</TableItemContent>*/}
+            <TableItemContent $flex={2}>{data.studentName}</TableItemContent>
             <TableItemContent $flex={6}>
                 {parseDate(data.startDate)}~{parseDate(data.endDate)}
             </TableItemContent>

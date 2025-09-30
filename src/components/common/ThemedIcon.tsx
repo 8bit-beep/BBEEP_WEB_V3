@@ -1,12 +1,12 @@
-import { ThemedIconProps } from "../../types/props/themedIconProps";
+import {ThemedIconProps} from "../../types/props/elements/themedIconProps.ts";
 
-const ThemedIcon = ({ src, width, height }: ThemedIconProps) => {
+const ThemedIcon = (props: ThemedIconProps) => {
     return (
         <img
-            src={src}
+            src={props.src}
             className="object-contain object-center"
-            style={{ width: width, height: height }}
-         alt='사진이 없습니다.'/>
+            style={{width: props.width, height: props.height}}
+            alt='사진이 없습니다.'/>
     );
 };
 

@@ -1,23 +1,11 @@
 import {useState} from "react";
 import {X} from "lucide-react";
-import {Option} from "../../../types/props/dropdownProps.ts";
+import {Option} from "../../../types/props/elements/dropdownProps.ts";
 import CustomDropdown from "../dropdown/DropDown.tsx";
 import {CLASS_OPTIONS, GRADE_OPTIONS} from "../../../constants/school/schoolOption.ts";
+import {LongAbsenceModalProps} from "../../../types/longAbsence/longAbsenceModalProps.ts";
 
-interface LongAbsenceModalProps {
-    visible: boolean;
-    onClose: () => void;
-    onSubmit: (form: {
-        grade: number;
-        cls: number;
-        num: number;
-        reason: string;
-        startDate: string;
-        endDate: string;
-    }) => void;
-}
-
-const LongAbsenceModal = ({visible, onClose, onSubmit}: LongAbsenceModalProps) => {
+const LongAbsenceModal = (props: LongAbsenceModalProps) => {
     const [grade, setGrade] = useState<Option>({name: "1학년", value: "1"});
     const [cls, setCls] = useState<Option>({name: "1반", value: "1"});
     const [num, setNum] = useState("");
@@ -25,12 +13,12 @@ const LongAbsenceModal = ({visible, onClose, onSubmit}: LongAbsenceModalProps) =
     const [endDate, setEndDate] = useState("");
     const [reason, setReason] = useState("");
 
-    if (!visible) return null;
+    if (!props.visible) return null;
 
     return (
         <div
             className="w-full h-full fixed top-0 left-0 z-1000 flex justify-center items-center"
-            onClick={onClose}
+            onClick={props.onClose}
             style={{backgroundColor: "rgba(0, 0, 0, 0.4)"}}
         >
             {/* 위에는 그림자, 밑에는 모달 내용 */}
@@ -41,7 +29,7 @@ const LongAbsenceModal = ({visible, onClose, onSubmit}: LongAbsenceModalProps) =
                 {/* 헤더 */}
                 <div className="w-full flex items-center justify-between">
                     <p className="text-xl font-medium text-black">장기 결석자 등록</p>
-                    <X className="cursor-pointer w-5" onClick={onClose}/>
+                    <X className="cursor-pointer w-5" onClick={props.onClose}/>
                 </div>
                 {/* 입력 폼 */}
                 <div className="gap-5 flex flex-col w-full">
@@ -88,7 +76,7 @@ const LongAbsenceModal = ({visible, onClose, onSubmit}: LongAbsenceModalProps) =
                 <div
                     className="w-full py-2.5 rounded-xl text-base text-white cursor-pointer font-medium bg-main flex justify-center"
                     onClick={() => {
-                        onSubmit({
+                        props.onSubmit({
                             grade: Number(grade.value),
                             cls: Number(cls.value),
                             num: Number(num),
@@ -96,7 +84,7 @@ const LongAbsenceModal = ({visible, onClose, onSubmit}: LongAbsenceModalProps) =
                             startDate,
                             endDate,
                         });
-                        onClose();
+                        props.onClose();
                     }}
                 >
                     등록하기
