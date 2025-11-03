@@ -49,7 +49,7 @@ const NotAttendStudent = ({ data, filterBy}: AttendStudentProps) => {
                 ))}
             </TableItemContent>
             <TableItemContent $flex={1}>
-                {data.statuses[0].period}교시
+                {data.statuses.map((status) => status.period).join(", ")}교시
             </TableItemContent>
             <div className="flex-[1.2] flex justify-center items-center">
                 <Dropdown
