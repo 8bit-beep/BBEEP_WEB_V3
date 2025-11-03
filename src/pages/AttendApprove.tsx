@@ -1,16 +1,15 @@
 import {useGetAttendApproveQuery} from "../queries/attendApprove/getAttendApprove";
 import Skeleton from "../components/common/Skeleton.tsx";
-import ApproveItem from "../components/ApproveItem";
 import {useState} from "react";
 import {Option} from "../types/props/elements/dropdownProps.ts";
 import {useGetAttendApproveNotQuery} from "../queries/attendApprove/getAttendApproveNot";
 import {ApproveItem as ApproveItemType} from "../types/approve/approveItem";
 import NotAttendApprove from "../components/NotAttendApprove";
-import {Room} from "../types/attend/room";
 import CustomDropdown from "../components/common/dropdown/DropDown";
 import TableHeader from "../components/common/table/TableHeader";
 import TableContainer from "../components/common/table/TableContainer";
 import TableColumn from "../components/common/table/TableColumn";
+import ApproveItem from "../components/ApproveItem.tsx";
 
 const AttendApprove = () => {
     const {data: approveData, isLoading: approveLoading} =
@@ -91,7 +90,7 @@ const AttendApprove = () => {
                                 filterBy.value === "all" ? (
                                     <ApproveItem data={item as ApproveItemType} key={idx}/>
                                 ) : (
-                                    <NotAttendApprove key={idx} {...item as Room}/>
+                                    <NotAttendApprove key={idx} {...item as ApproveItemType}/>
                                 )
                             )
                         )}

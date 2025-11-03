@@ -1,11 +1,11 @@
 import { useApproveAttend } from "../queries/attendApprove/approveAttend";
 import { COLOR } from "../style/color/color";
-import { Room } from "../types/attend/room";
+import { ApproveItem } from "../types/approve/approveItem.ts";
 import { parseRoomName } from "../utils/parseRoomName";
 import ApproveButton from "./common/button/ApproveButton.tsx";
 import TableItemContent from "./common/table/TableItemContent";
 
-const NotAttendApprove = ( props: Room ) => {
+const NotAttendApprove = ( props: ApproveItem ) => {
     const { mutate } = useApproveAttend(props.room);
 
     return (

@@ -2,6 +2,6 @@ import React from "react";
 
 export interface TableButtonProps {
     isSelected: boolean;
-    onClick: any;
+    onClick: () => void;
     children: React.ReactNode;
 }

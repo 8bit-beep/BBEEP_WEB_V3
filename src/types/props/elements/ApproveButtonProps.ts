@@ -2,6 +2,6 @@ import React from "react";
 
 export interface ApproveButtonProps {
     isApproved: boolean;
-    mutate: any;
+    mutate: () => void;
     children: React.ReactNode;
 }

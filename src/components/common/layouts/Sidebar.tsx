@@ -33,7 +33,7 @@ const Sidebar = () => {
                     <button
                         className="py-1 px-3 rounded-xl text-white border-none text-xs cursor-pointer"
                         style={{
-                            background: approve?.approveTeacher
+                            background: approve?.approvedTeacher
                                 ? COLOR.Red
                                 : COLOR.Main,
                         }}
@@ -41,7 +41,7 @@ const Sidebar = () => {
                             mutate();
                         }}
                     >
-                        {approve?.approveTeacher ? "전체 승인취소" : "전체 승인하기"}
+                        {approve?.approvedTeacher ? "전체 승인취소" : "전체 승인하기"}
                     </button>
                     {/* 새로고침 버튼 */}
                     <div
