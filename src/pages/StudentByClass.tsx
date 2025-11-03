@@ -63,7 +63,6 @@ const StudentByClass = () => {
                 <div className="py-3 px-10 flex w-full bg-main">
                     <TableColumn $flex={1}>학번</TableColumn>
                     <TableColumn $flex={1}>이름</TableColumn>
-                    <TableColumn $flex={2.2}>실</TableColumn>
                     <TableColumn $flex={2}>8교시</TableColumn>
                     <TableColumn $flex={2}>9교시</TableColumn>
                     <TableColumn $flex={2}>10교시</TableColumn>

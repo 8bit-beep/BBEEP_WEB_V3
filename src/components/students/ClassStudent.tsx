@@ -6,11 +6,10 @@ import {attendStatusOption} from "../../constants/attendStatus/attendStatusOptio
 import {useUpdateAcceptedStatus} from "../../queries/class/updateAcceptedStatus.ts";
 import {decodeStudentId} from "../../utils/decodeStudentId.ts";
 import {AttendStatus} from "../../types/enums/AttendStatus.ts";
-import {parseRoomName} from "../../utils/parseRoomName.ts";
 import TableColumnElem from "../common/table/TableColumnElem.tsx";
 import {AttendStudentProps} from "../../types/props/attend/attendStudentProps.ts";
 
-const ClassStudent = ({data, filterBy}: AttendStudentProps) => {
+const ClassStudent = ({data}: AttendStudentProps) => {
     const [eight, setEight] = useState<Option>({
         name: parseAttendStatus(data.statuses[0].status),
         value: data.statuses[0].status,
@@ -27,8 +26,6 @@ const ClassStudent = ({data, filterBy}: AttendStudentProps) => {
         name: parseAttendStatus(data.statuses[3].status),
         value: data.statuses[3].status,
     });
-
-    const currentFixedRoom = data.fixedRooms.filter(room => room.type === filterBy)
 
     const {grade, cls, number} = decodeStudentId(data.studentId);
     const saveEight = useUpdateAcceptedStatus(
@@ -90,13 +87,6 @@ const ClassStudent = ({data, filterBy}: AttendStudentProps) => {
         <div className="w-full flex items-center h-16">
             <TableColumnElem $flex={1}>{data.studentId}</TableColumnElem>
             <TableColumnElem $flex={1}>{data.username}</TableColumnElem>
-            <TableColumnElem $flex={2.2}>
-                {currentFixedRoom.map((room) => (
-                    <div key={room.id}>
-                        {parseRoomName(room.room)}
-                    </div>
-                ))}
-            </TableColumnElem>
             <TableColumnElem $flex={2}>
                 <Dropdown
                     setValue={(option: Option) =>
