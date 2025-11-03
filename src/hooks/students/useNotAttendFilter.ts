@@ -25,7 +25,7 @@ export const useNotAttendFilter = () => {
     }
   );
   const [type, setType] = useState<Option>(
-    getStoredOption("NOTATTEND_TYPE") || { name: "출석", value: "ATTEND" }
+    getStoredOption("NOTATTEND_TYPE") || { name: "동아리", value: "CLUB" }
   );
 
   const setAndStore =

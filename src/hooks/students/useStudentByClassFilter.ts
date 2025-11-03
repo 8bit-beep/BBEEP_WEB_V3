@@ -16,7 +16,7 @@ export const useStudentByClassFilter = () => {
         getStoredOption("ROOM_OPTION") || { name: "LAB1", value: "ROOM" }
     );
     const [type, setType] = useState<Option>(
-        getStoredOption("TYPE_OPTION") || { name: "출석", value: "ATTEND" }
+        getStoredOption("TYPE_OPTION") || { name: "동아리", value: "CLUB" }
     );
 
     const setAndStore = (key: string, setter: (opt: Option) => void) => (opt: Option) => {
