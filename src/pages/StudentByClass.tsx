@@ -70,7 +70,7 @@ const StudentByClass = () => {
                 </div>
 
                 <div
-                    className="w-full flex flex-col overflow-y-scroll px-10 py-3 max-h-[600px]"
+                    className="w-full h-full flex flex-col overflow-y-scroll px-10 py-3 max-h-[600px]"
                     style={{msOverflowStyle: "scrollbar", scrollbarWidth: "thin"}}
                 >
                     <div className="w-full mb-4 flex flex-col">
