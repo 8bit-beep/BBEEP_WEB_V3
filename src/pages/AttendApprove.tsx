@@ -60,7 +60,6 @@ const AttendApprove = () => {
                     <TableColumn $flex={2}>승인 시각</TableColumn>
                     <TableColumn $flex={2}>담당선생님</TableColumn>
                     <TableColumn $flex={2}>승인 여부</TableColumn>
-                    <TableColumn $flex={2}/>
                 </div>
                 {/* contents */}
                 <div
