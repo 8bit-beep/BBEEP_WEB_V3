@@ -38,7 +38,7 @@ const LongAbsence = () => {
                     <TableColumn $flex={1.2}/>
                 </div>
 
-                <div className="w-full flex-1 overflow-y-scroll flex flex-col gap-9 py-9 px-20">
+                <div className="w-full flex-1 overflow-y-scroll flex flex-col gap-9 py-9 px-10">
                     {isLoading ? (
                         Array.from({ length: 4 }).map((_, idx) => (
                             <Skeleton key={idx} width="100%" height="5rem" borderRadius="0.8rem" margin />
