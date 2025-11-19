@@ -16,7 +16,7 @@ const LongAbsenceItem = (data: LongAbsenceItemProps ) => {
         <div className="w-full flex items-center">
             {/* main table */}
             <TableItemContent $flex={2}>
-                {data.absenceId}
+                {data.studentInfo.grade}
                 {data.studentInfo.cls}
                 {data.studentInfo.num > 9 ? data.studentInfo.num : `0${data.studentInfo.num}`}
             </TableItemContent>
