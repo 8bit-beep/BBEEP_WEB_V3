@@ -1,6 +1,5 @@
 import {XCircle} from "lucide-react";
 import {useUpdateShiftStatus} from "../../queries/shifts/useUpdateShiftStatus";
-import {RoomName} from "../../types/enums/roomName";
 import {Shift} from "../../types/shift/shift";
 import {parseRoomName} from "../../utils/parseRoomName";
 import TableButton from "../common/table/TableButton";
@@ -17,7 +16,7 @@ const ShiftStudent = ( props : Shift) => {
             <TableItemContent $flex={1}>{props.user.studentInfo.id}</TableItemContent>
             <TableItemContent $flex={1}>{props.user.username}</TableItemContent>
             <TableItemContent $flex={2}>
-                {parseRoomName(props.room.room as RoomName)}
+                {parseRoomName(props.room)}
             </TableItemContent>
             <TableItemContent $flex={2} style={{fontWeight: 600}}>
                 {props.period}교시
@@ -30,13 +29,13 @@ const ShiftStudent = ( props : Shift) => {
                 <div className="flex gap-2 flex-[2] justify-center">
                     <TableButton
                         isSelected={true}
-                        onClick={() => approve.mutate(props.id)}
+                        onClick={() => approve.mutate(`${props.id}`)}
                     >
                         승인
                     </TableButton>
                     <TableButton
                         isSelected={false}
-                        onClick={() => reject.mutate(props.id)}
+                        onClick={() => reject.mutate(`${props.id}`)}
                     >
                         거절
                     </TableButton>
@@ -61,7 +60,7 @@ const ShiftStudent = ( props : Shift) => {
                     </p>
                     <XCircle
                         color={COLOR.Red}
-                        onClick={() => cancel.mutate(props.id)}
+                        onClick={() => cancel.mutate(`${props.id}`)}
                     />
                 </div>
             )}
