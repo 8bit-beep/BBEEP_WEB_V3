@@ -21,9 +21,8 @@ const AttendStudent = (props: SidebarElementProps) => {
 
     const { grade, cls, number } = decodeStudentId(props.data.studentId);
 
-    {/*일단 나둬보기*/}
     const save = useUpdateAttendStatusMutation(
-        props.data.statuses[0].status , grade, cls, number, props.room);
+        attendStatus.value , grade, cls, number, props.room);
 
     const isNotAttend =
         props.data.statuses[0].status === "NOT_ATTEND";
