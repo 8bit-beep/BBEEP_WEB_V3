@@ -32,7 +32,7 @@ const AttendStudent = (props: SidebarElementProps) => {
         if (attendStatus.value !== props.data.statuses[0].status) {
             save.mutate();
         }
-    }, [attendStatus, props.data.statuses, save]);
+    }, [attendStatus, props.data.statuses]);
 
     return (
         <div
