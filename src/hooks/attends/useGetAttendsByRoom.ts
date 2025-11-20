@@ -14,7 +14,7 @@ export const useGetAttendsByRoom = (room: RoomName | null, type: AttendStatus) =
     const [data, setData] = useState<Attend[]>([]);
 
     const fetchData = async () => {
-        if (!accessToken || !room || type) return;
+        if (!accessToken || !room) return;
         try {
             setLoading(true);
             const {data} = await bbeepAxios.get<Attend[]>(`/students/room?room=${room}&type=${type}`);
