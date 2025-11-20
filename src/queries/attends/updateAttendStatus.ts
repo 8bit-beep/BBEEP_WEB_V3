@@ -6,14 +6,14 @@ import {AxiosError} from "axios";
 import {notification} from "antd";
 
 export const useUpdateAttendStatusMutation = (
-    status: AttendStatus, grade: number, cls: number, number: number, room: RoomName) => {
+    status: AttendStatus, grade: number, cls: number, num: number, room: RoomName) => {
     const queryClient = useQueryClient();
 
     const updateAttendStatus = async () => {
         return await bbeepAxios.patch('/students/attend-status', {
             grade,
             cls,
-            number,
+            num,
             status,
         });
     }
