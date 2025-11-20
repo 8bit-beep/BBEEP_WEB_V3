@@ -10,7 +10,7 @@ export const useGetAttendsQuery = (props: AttendFilterProps) => {
     const endpoint =
         props.filterBy.value === "ROOM"
             ? `/students/room?room=${props.room.value}&type=${props.type.value}`
-            : `/students/class?grade=${props.grade.value}&cls=${props.cls.value}`;
+            : `/students/class?grade=${props.grade.value}&cls=${props.cls.value}&type=${props.type.value}`;
 
     const fetchData = async () => {
         const {data} = await bbeepAxios.get<Attend[]>(endpoint);
