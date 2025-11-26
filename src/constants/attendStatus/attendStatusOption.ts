@@ -9,5 +9,4 @@ export const attendStatusOption: Option[] = [
   { name: "방과후", value: "AFTER_SCHOOL" },
   { name: "현장실습", value: "FIELD_PRACTICE" },
   { name: "실 이동 출석", value: "SHIFT_ATTEND" },
-  { name: "실 이동 미출석", value: "SHIFT_NOT_ATTEND" },
 ]
