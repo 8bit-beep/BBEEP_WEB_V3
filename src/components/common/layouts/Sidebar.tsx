@@ -11,7 +11,10 @@ import Skeleton from "../Skeleton.tsx";
 
 const Sidebar = () => {
   const { sidebarData, setSidebarData } = useSidebarDataStore();
-  const { data, isLoading, refetch } = useGetAttendsByRoom(sidebarData, "CLUB");
+  const { data, isLoading, refetch } = useGetAttendsByRoom(
+    sidebarData,
+    "WINTER_CAMP"
+  );
   const { mutate } = useApproveAttend(sidebarData);
   const { data: approve } = useGetAttendApproveOneQuery(sidebarData);
   const location = useLocation();
