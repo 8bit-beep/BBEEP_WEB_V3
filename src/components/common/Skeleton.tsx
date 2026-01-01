@@ -1,11 +1,11 @@
-import {SkeletonProps} from "../../types/props/elements/skeletonProps.ts";
+import { SkeletonProps } from "../../types/props/elements/skeletonProps.ts";
 
 const Skeleton = (props: SkeletonProps) => {
     return (
         <div
             className={`
         bg-gradient-to-r from-[#f0f0f0] via-[#e0e0e0] to-[#f0f0f0] 
-        bg-[length:400px_100%]
+        bg-[length:400px_100%] rounded-xl
       `}
             style={{
                 width: props.width || "100%",
