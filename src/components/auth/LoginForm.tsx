@@ -18,7 +18,8 @@ const LoginForm = () => {
           // to={`https://dauth.b1nd.com/login/id?client_id=${
           //   import.meta.env.VITE_DAUTH_CLIENT_ID
           // }&redirect_uri=${import.meta.env.VITE_DAUTH_REDIRECT_URL}&scope=openid read:profile&response_type=code`}
-          to={`${import.meta.env.VITE_API_URL}/oauth/authorize?client_id=${import.meta.env.VITE_DAUTH_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_DAUTH_REDIRECT_URL}&scope=openid read:profile&response_type=code`}>
+          // to={`${import.meta.env.VITE_API_URL}/oauth/authorize?client_id=${import.meta.env.VITE_DAUTH_CLIENT_ID}&redirect_uri=${import.meta.env.VITE_DAUTH_REDIRECT_URL}&scope=openid read:profile&response_type=code`}>
+          to={`https://${import.meta.env.VITE_API_URL}/api/oauth2/authorization/dauth`}>
           <p
             className={
               TextStyles.Body.regular + "text-base font-semibold text-white"
