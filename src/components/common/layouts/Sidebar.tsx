@@ -49,9 +49,6 @@ const Sidebar = () => {
                             mutate();
                         }}
                     >
-                        {approve?.approvedTeacher
-                            ? "전체 승인취소"
-                            : "전체 승인하기"}
                         {approve?.approvedTeacher?.username ? "전체 승인취소" : "전체 승인하기"}
                     </button>
                     {/* 새로고침 버튼 */}
