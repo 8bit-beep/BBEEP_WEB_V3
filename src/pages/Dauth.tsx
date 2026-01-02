@@ -18,7 +18,7 @@ const Dauth = () => {
                 <div className="w-1/2 h-full bg-[url('/assets/LoginBackGround.svg')] bg-no-repeat bg-center"/>
 
                 {/* Right */}
-                <div className="w-1/2 h-full bg-white flex items-center justify-center">
+                <div className="w-1/2 h-full bg-white flex flex-col items-center justify-center">
                     <p className="text-base font-normal text-dark text-center">
                         {isPending
                             ? "인증 중입니다..."
