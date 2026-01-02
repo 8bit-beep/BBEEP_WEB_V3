@@ -65,25 +65,27 @@ const Sidebar = () => {
           인원 {attendedCount}/{data.length}명
         </div>
       )}
-      <div className="w-full flex-1 bg-gray rounded-xl overflow-scroll p-4 gap-4">
-        {/* 학생들 나오는 곳 */}
-        {isLoading ? (
-          Array.from({ length: 4 }).map((_, idx) => (
-            <div className="w-full mb-4" key={idx}>
-              <Skeleton width="100%" height="3rem" borderRadius="0.8rem" />
+      <div className="w-full flex-1 bg-gray rounded-xl overflow-scroll">
+        <div className="flex flex-col p-4 gap-4">
+          {/* 학생들 나오는 곳 */}
+          {isLoading ? (
+            Array.from({ length: 4 }).map((_, idx) => (
+              <div className="w-full mb-4" key={idx}>
+                <Skeleton width="100%" height="3rem" borderRadius="0.8rem" />
+              </div>
+            ))
+          ) : data && data.length > 0 ? (
+            data?.map((item) => (
+              <div className="w-full mb-4" key={item.studentId}>
+                <AttendStudent data={item} room={sidebarData || "NOTFOUND"} />
+              </div>
+            ))
+          ) : (
+            <div className="w-full h-5 flex justify-center items-center text-xl text-gray">
+              출석한 인원이 없습니다.
             </div>
-          ))
-        ) : data && data.length > 0 ? (
-          data?.map((item) => (
-            <div className="w-full mb-4" key={item.studentId}>
-              <AttendStudent data={item} room={sidebarData || "NOTFOUND"} />
-            </div>
-          ))
-        ) : (
-          <div className="w-full h-5 flex justify-center items-center text-xl text-gray">
-            출석한 인원이 없습니다.
-          </div>
-        )}
+          )}
+        </div>
       </div>
     </div>
   );
