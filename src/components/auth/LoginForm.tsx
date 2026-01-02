@@ -15,16 +15,15 @@ const LoginForm = () => {
       <button className="w-[80%] flex flex-col justify-center items-center gap-4 bg-[#0083F0] rounded-xl">
         <Link
           className="w-full py-3 text-white flex gap-4 justify-center items-center rounded-xl self-center cursor-pointer decoration-none"
-          to={`https://dauth.b1nd.com/oauth/authorize?client_id=${
+          to={`https://dauth.b1nd.com/login/id?client_id=${
             import.meta.env.VITE_DAUTH_CLIENT_ID
           }&redirect_uri=${import.meta.env.VITE_DAUTH_REDIRECT_URL}
-          &response_type=code`}
-        >
+          &scope=openid read:profile
+          &response_type=code`}>
           <p
             className={
               TextStyles.Body.regular + "text-base font-semibold text-white"
-            }
-          >
+            }>
             도담도담으로 로그인
           </p>
           <img className="w-5" src="/assets/DodamLogo.svg" alt="dodamlogo" />
