@@ -62,7 +62,7 @@ const Sidebar = () => {
             </div>
             <div className="w-full flex-1 bg-gray rounded-xl overflow-scroll">
                 {!isLoading && (
-                    <div className=" bg-main rounded-xl text-xs font-normal px-3 py-2">
+                    <div className=" bg-main text-white rounded-xl text-xs font-normal px-3 py-2">
                         인원 {attendedCount}/{data.length}명
                     </div>
                 )}
