@@ -1,19 +1,27 @@
-import {useSidebarDataStore} from "../../../store/sidebar/useSidebarDataStore.ts";
-import {useGetAttendsByRoom} from "../../../hooks/attends/useGetAttendsByRoom.ts";
+import { useSidebarDataStore } from "../../../store/sidebar/useSidebarDataStore.ts";
+import { useGetAttendsByRoom } from "../../../hooks/attends/useGetAttendsByRoom.ts";
 import AttendStudent from "../../students/AttendStudent.tsx";
-import {useEffect} from "react";
-import {parseRoomName} from "../../../utils/parseRoomName.ts";
-import {useApproveAttend} from "../../../queries/attendApprove/approveAttend.ts";
-import {useLocation} from "react-router-dom";
-import {useGetAttendApproveOneQuery} from "../../../queries/attendApprove/getAttendApproveOne.ts";
-import {COLOR} from "../../../style/color/color.ts";
+import { useEffect } from "react";
+import { parseRoomName } from "../../../utils/parseRoomName.ts";
+import { useApproveAttend } from "../../../queries/attendApprove/approveAttend.ts";
+import { useLocation } from "react-router-dom";
+import { useGetAttendApproveOneQuery } from "../../../queries/attendApprove/getAttendApproveOne.ts";
+import { COLOR } from "../../../style/color/color.ts";
 import Skeleton from "../Skeleton.tsx";
 
 const Sidebar = () => {
-    const {sidebarData, setSidebarData} = useSidebarDataStore();
-    const {data, isLoading, refetch} = useGetAttendsByRoom(sidebarData, "CLUB");
-    const {mutate} = useApproveAttend(sidebarData);
-    const {data: approve} = useGetAttendApproveOneQuery(sidebarData);
+    const { sidebarData, setSidebarData } = useSidebarDataStore();
+    const { data, isLoading, refetch } = useGetAttendsByRoom(
+        sidebarData,
+        "WINTER_CAMP"
+    );
+    const attendedCount =
+        data?.filter((attend) =>
+            attend.statuses.some((status) => status.status === "WINTER_CAMP")
+        ).length ?? 0;
+
+    const { mutate } = useApproveAttend(sidebarData);
+    const { data: approve } = useGetAttendApproveOneQuery(sidebarData);
     const location = useLocation();
 
     useEffect(() => {
@@ -41,7 +49,9 @@ const Sidebar = () => {
                             mutate();
                         }}
                     >
-                        {approve?.approvedTeacher ? "전체 승인취소" : "전체 승인하기"}
+                        {approve?.approvedTeacher
+                            ? "전체 승인취소"
+                            : "전체 승인하기"}
                     </button>
                     {/* 새로고침 버튼 */}
                     <div
@@ -53,9 +63,14 @@ const Sidebar = () => {
                 </div>
             </div>
             <div className="w-full flex-1 bg-gray rounded-xl overflow-scroll">
+                {!isLoading && (
+                    <div className=" bg-main rounded-xl text-xs font-normal px-3 py-2">
+                        인원 {attendedCount}/{data.length}명
+                    </div>
+                )}
                 {/* 학생들 나오는 곳 */}
                 {isLoading ? (
-                    Array.from({length: 4}).map((_, idx) => (
+                    Array.from({ length: 4 }).map((_, idx) => (
                         <div className="w-full mb-4" key={idx}>
                             <Skeleton
                                 width="100%"
@@ -67,7 +82,10 @@ const Sidebar = () => {
                 ) : data && data.length > 0 ? (
                     data?.map((item) => (
                         <div className="w-full mb-4" key={item.studentId}>
-                            <AttendStudent data={item} room={sidebarData || "NOTFOUND"}/>
+                            <AttendStudent
+                                data={item}
+                                room={sidebarData || "NOTFOUND"}
+                            />
                         </div>
                     ))
                 ) : (
