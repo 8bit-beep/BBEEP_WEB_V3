@@ -18,7 +18,7 @@ export const useAuthMutation = (code: string | null) => {
             await Promise.reject("코드가 없습니다.");
         }
         const {data} = await axios.post<BaseResponse<TokenResponse>>(
-            `${import.meta.env.VITE_API_URL}/dauth/login`,
+            `${import.meta.env.VITE_API_URL}/dauth/token`,
             {
                 code,
             }
