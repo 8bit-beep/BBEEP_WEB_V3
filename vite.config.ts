@@ -11,7 +11,6 @@ export default defineConfig({
         manualChunks(id) {
           if (id.includes('node_modules')) {
             if (id.includes('react-dom')) return 'react-dom';
-            if (id.includes('firebase')) return 'vendor-firebase';
             if (id.includes('@ant-design')) return 'vendor-ant';
             if (id.includes('react-query')) return 'vendor-react-query';
             if (id.includes('axios')) return 'vendor-axios';
