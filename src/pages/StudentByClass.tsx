@@ -42,13 +42,13 @@ const StudentByClass = () => {
                     <div
                         className="px-5 py-2.5 rounded-xl text-base text-white cursor-pointer font-medium"
                         style={{
-                            backgroundColor: !approve?.approvedTeacher?.username
+                            backgroundColor: approve?.approvedTeacher?.username
                                 ? COLOR.Red
                                 : COLOR.Main,
                         }}
                         onClick={() => mutate()}
                     >
-                        {!approve?.approvedTeacher?.username ? "승인취소" : "승인하기"}
+                        {approve?.approvedTeacher?.username ? "승인취소" : "승인하기"}
                     </div>
 
                     <StudentByClassFilters
@@ -70,7 +70,7 @@ const StudentByClass = () => {
                 </div>
 
                 <div
-                    className="w-full flex flex-col overflow-y-scroll px-10 py-3 max-h-[600px]"
+                    className="w-full h-full flex flex-col overflow-y-scroll px-10 py-3 max-h-[600px]"
                     style={{msOverflowStyle: "scrollbar", scrollbarWidth: "thin"}}
                 >
                     <div className="w-full mb-4 flex flex-col">

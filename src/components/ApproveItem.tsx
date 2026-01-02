@@ -25,7 +25,7 @@ const ApproveItem = ({ data }: { data: ApproveItemProps }) => {
             </TableItemContent>
             <TableItemContent $flex={2}>
                 <TableButton isApproved={!!data.approvedTeacher} mutate={mutate}>
-                    {data.approvedTeacher ? "거절됨" : "승인됨"}
+                    {data.approvedTeacher ? "승인취소"  : "승인하기"}
                 </TableButton>
             </TableItemContent>
         </div>

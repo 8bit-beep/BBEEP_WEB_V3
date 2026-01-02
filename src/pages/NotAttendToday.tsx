@@ -45,7 +45,7 @@ const NotAttendToday = () => {
                     <TableColumn $flex={1.2}>출석 여부 수정</TableColumn>
                 </div>
 
-                <div className="w-full flex flex-col overflow-y-scroll px-10 py-3 max-h-[600px]">
+                <div className="w-full flex-1 flex flex-col overflow-y-scroll px-10 py-3">
                     {isLoading ? (
                         Array.from({length: 4}).map((_, idx) => (
                             <Skeleton

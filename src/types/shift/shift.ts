@@ -1,13 +1,12 @@
 import {User} from "../entity/user.ts";
-import {Room} from "../attend/room.ts";
+import { RoomName } from "../enums/roomName.ts";
 
 export interface Shift {
-    id: string,
+    id: number,
     user: User,
-    room: Room,
+    room: RoomName,
     period: 8 | 9 | 10 | 11,
     reason: string,
     status: "WAITING" | "APPROVED" | "REJECTED",
     date: string,
-    data?: unknown
 }

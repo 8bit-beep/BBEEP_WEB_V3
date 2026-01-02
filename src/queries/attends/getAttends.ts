@@ -8,9 +8,9 @@ import {AttendFilterProps} from "../../types/props/attend/attendFilterProps.ts";
 export const useGetAttendsQuery = (props: AttendFilterProps) => {
     const accessToken = cookie.get(ACCESS_TOKEN_KEY);
     const endpoint =
-        props.filterBy.value === "room"
+        props.filterBy.value === "ROOM"
             ? `/students/room?room=${props.room.value}&type=${props.type.value}`
-            : `/students/class?grade=${props.grade.value}&cls=${props.cls.value}&type=${props.type.value}`;
+            : `/students/class?grade=${props.grade.value}&cls=${props.cls.value}`;
 
     const fetchData = async () => {
         const {data} = await bbeepAxios.get<Attend[]>(endpoint);

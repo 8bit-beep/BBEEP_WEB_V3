@@ -2,6 +2,10 @@ import {AttendStatus} from "../types/enums/AttendStatus.ts";
 
 export const parseAttendStatus = (attend: AttendStatus) => {
   switch (attend) {
+    case "CLUB":
+      return "동아리"
+    case "CLASS":
+      return "교실자습"
     case "NOT_ATTEND":
       return "미출석"
     case "SLEEPOVER":
@@ -12,7 +16,7 @@ export const parseAttendStatus = (attend: AttendStatus) => {
       return "방과후"
     case "NARSHA":
       return "나르샤"
-    case "FIELD_PRACTICE":
+    case "INDUSTRY":
       return "현장실습"
     case "SHIFT_ATTEND":
       return "실 이동 출석"
