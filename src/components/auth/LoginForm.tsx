@@ -17,9 +17,7 @@ const LoginForm = () => {
           className="w-full py-3 text-white flex gap-4 justify-center items-center rounded-xl self-center cursor-pointer decoration-none"
           to={`https://dauth.b1nd.com/login/id?client_id=${
             import.meta.env.VITE_DAUTH_CLIENT_ID
-          }&redirect_uri=${import.meta.env.VITE_DAUTH_REDIRECT_URL}
-          &scope=openid read:profile
-          &response_type=code`}>
+          }&redirect_uri=${import.meta.env.VITE_DAUTH_REDIRECT_URL}&scope=openid read:profile&response_type=code`}>
           <p
             className={
               TextStyles.Body.regular + "text-base font-semibold text-white"
