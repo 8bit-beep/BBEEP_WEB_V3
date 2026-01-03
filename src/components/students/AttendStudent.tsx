@@ -24,7 +24,7 @@ const AttendStudent = (props: SidebarElementProps) => {
         /*일단 나둬보기*/
     }
     const save = useUpdateAttendStatusMutation(
-        props.data.statuses[0].status,
+        attendStatus.value,
         grade,
         cls,
         number,
