@@ -20,6 +20,8 @@ export const parseAttendStatus = (attend: AttendStatus) => {
       return "현장실습"
     case "SHIFT_ATTEND":
       return "실 이동 출석"
+    case "WINTER_CAMP":
+      return "윈터 캠프"
     default:
       return "기타"
   }
