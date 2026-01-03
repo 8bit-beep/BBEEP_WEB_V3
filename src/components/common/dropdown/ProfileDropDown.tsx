@@ -48,7 +48,7 @@ const ProfileDropdown = () => {
             {/* dropdown */}
             {isOpened && (
                 <div
-                    className="absolute flex flex-col items-center gap-4 top-16 bg-white"
+                    className="absolute flex flex-col items-center gap-4 top-16 bg-white p-4"
                     style={{
                         boxShadow: "0px 3px 5px 0.1px rgba(0, 0, 0, 0.1)",
                     }}
