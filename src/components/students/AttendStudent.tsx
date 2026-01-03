@@ -7,15 +7,26 @@ import { useUpdateAttendStatusMutation } from "../../queries/attends/updateAtten
 import { decodeStudentId } from "../../utils/decodeStudentId.ts";
 import { COLOR } from "../../style/color/color.ts";
 import { SidebarElementProps } from "../../types/props/elements/sidebarElementProps.ts";
+import { useAttendStatusIdxByTime } from "../../hooks/attends/useAttendStatusIdxByTime.ts";
 
 const AttendStudent = (props: SidebarElementProps) => {
-    const [attendStatus, setAttendStatus] = useState<Option>({
-        name: parseAttendStatus(props.data.statuses[0].status),
-        value: props.data.statuses[0].status,
-    });
+    const statusIdx = useAttendStatusIdxByTime();
+
+    const effectiveStatusIdx = props.data.statuses[statusIdx] ? statusIdx : 0;
+    const currentStatusValue =
+        props.data.statuses[effectiveStatusIdx]?.status ??
+        props.data.statuses[0]?.status ??
+        "NOT_ATTEND";
+
+    const [attendStatus, setAttendStatus] = useState<Option>(() => ({
+        name: parseAttendStatus(currentStatusValue),
+        value: currentStatusValue,
+    }));
+    const [isDirty, setIsDirty] = useState(false);
 
     const handleAttendStatus = (e: Option) => {
         setAttendStatus({ name: e.name, value: e.value });
+        setIsDirty(true);
     };
 
     const { grade, cls, number } = decodeStudentId(props.data.studentId);
@@ -31,13 +42,30 @@ const AttendStudent = (props: SidebarElementProps) => {
         props.room
     );
 
-    const isNotAttend = props.data.statuses[0].status === "NOT_ATTEND";
+    const isNotAttend = currentStatusValue === "NOT_ATTEND";
 
     useEffect(() => {
-        if (attendStatus.value !== props.data.statuses[0].status) {
+        // 시간대(statusIdx) 또는 서버 데이터가 바뀌면 현재 상태를 동기화
+        const nextStatusValue =
+            props.data.statuses[effectiveStatusIdx]?.status ??
+            props.data.statuses[0]?.status;
+        if (!nextStatusValue) return;
+
+        setAttendStatus({
+            name: parseAttendStatus(nextStatusValue),
+            value: nextStatusValue,
+        });
+        setIsDirty(false);
+    }, [effectiveStatusIdx, props.data.statuses]);
+
+    useEffect(() => {
+        // 사용자가 드롭다운을 변경했을 때만 저장
+        if (!isDirty) return;
+        if (attendStatus.value !== currentStatusValue) {
             save.mutate();
         }
-    }, [attendStatus, props.data.statuses]);
+        setIsDirty(false);
+    }, [isDirty, attendStatus.value, currentStatusValue, save]);
 
     return (
         <div
