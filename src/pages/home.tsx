@@ -30,7 +30,7 @@ const Home = () => {
             {/* <RoomIndicator room="LAB5" top={430} left={1180} /> */}
             {/** 교무실 --------*/}
             <RoomIndicator room="LAB6_7" top={650} left={1180} />
-            {/* <RoomIndicator room="LAB8_9" top={650} left={1020} /> */}
+            <RoomIndicator room="LAB8_9" top={650} left={1020} />
             <RoomIndicator room="LAB10_11" top={650} left={850} />
           </>
         ) : floor === 3 ? (
