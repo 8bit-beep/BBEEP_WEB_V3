@@ -17,9 +17,9 @@ export const parseAttendStatus = (attend: AttendStatus) => {
     case "NARSHA":
       return "나르샤";
     case "FIELD_PRACTICE":
-      return "현장체험";
-    case "INDUSTRY":
       return "현장실습";
+    case "INDUSTRY":
+      return "산학수업";
     case "SHIFT_ATTEND":
       return "실 이동 출석";
     case "WINTER_CAMP":
