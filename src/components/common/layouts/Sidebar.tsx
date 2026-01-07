@@ -58,9 +58,9 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-screen flex flex-col gap-3 bg-light-gray pt-13 pb-24 px-4">
+      <div className="w-full h-screen flex flex-col gap-3 bg-gray pt-3 pb-24 px-4 overflow-y-scroll">
         {!isLoading && (
-          <div className="w-fit bg-main rounded-xl text-xs font-normal px-3 py-2 text-white">
+          <div className="w-fit bg-main rounded-xl text-sm font-normal px-3 py-2 text-white">
             인원 {attendedCount}/{data.length}명
           </div>
         )}
