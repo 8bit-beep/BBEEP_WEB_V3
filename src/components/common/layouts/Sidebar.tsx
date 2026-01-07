@@ -29,7 +29,7 @@ const Sidebar = () => {
   }, [location.pathname, setSidebarData]);
 
   return (
-    <div className="w-full min-h-screen flex flex-col gap-3 bg-white pt-13 pb-36 px-4 z-10">
+    <div className="w-full h-screen flex flex-col gap-3 bg-white pt-13 pb-36 px-4 z-10">
       {/* sidebar header */}
       <div className="w-full flex items-center gap-4">
         {/* 현재 실 */}
@@ -58,7 +58,7 @@ const Sidebar = () => {
           </div>
         </div>
       </div>
-      <div className="w-full h-screen flex flex-col gap-3 bg-gray pt-3 pb-24 px-4 overflow-y-scroll">
+      <div className="w-full flex-1 min-h-0 flex flex-col gap-3 bg-gray pt-3 pb-24 px-4 overflow-y-auto rounded-xl">
         {!isLoading && (
           <div className="w-fit bg-main rounded-xl text-sm font-normal px-3 py-2 text-white">
             인원 {attendedCount}/{data.length}명
