@@ -25,7 +25,9 @@ const AttendStudent = (props: SidebarElementProps) => {
   const [isDirty, setIsDirty] = useState(false);
 
   const handleAttendStatus = (e: Option) => {
-    /** 자동으로 총 인원 수 업데이트 */
+    {
+      /** 자동으로 총 인원 수 업데이트 */
+    }
     if (e.value === "NOT_ATTEND" && currentStatusValue !== "NOT_ATTEND") {
       props.setCount((prev) => prev - 1);
     } else if (
