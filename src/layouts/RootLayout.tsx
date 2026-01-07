@@ -60,7 +60,6 @@ const RootLayout = () => {
           height: isMemoOpened ? "29rem" : "5rem",
           borderRadius: isMemoOpened ? "0.75rem" : "10rem",
         }}
-        onClick={() => setIsMemoOpened(true)}
       >
         {isMemoOpened ? (
           <>
@@ -81,7 +80,7 @@ const RootLayout = () => {
             />
           </>
         ) : (
-          <NotebookIcon />
+          <NotebookIcon onClick={() => setIsMemoOpened(true)} />
         )}
       </div>
     </div>
