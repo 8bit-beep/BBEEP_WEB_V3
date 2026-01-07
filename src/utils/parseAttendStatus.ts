@@ -1,28 +1,30 @@
-import {AttendStatus} from "../types/enums/AttendStatus.ts";
+import { AttendStatus } from "../types/enums/AttendStatus.ts";
 
 export const parseAttendStatus = (attend: AttendStatus) => {
   switch (attend) {
     case "CLUB":
-      return "동아리"
+      return "동아리";
     case "CLASS":
-      return "교실자습"
+      return "교실자습";
     case "NOT_ATTEND":
-      return "미출석"
+      return "미출석";
     case "SLEEPOVER":
-      return "외박"
+      return "외박";
     case "OUTGOING":
-      return "외출"
+      return "외출";
     case "AFTER_SCHOOL":
-      return "방과후"
+      return "방과후";
     case "NARSHA":
-      return "나르샤"
+      return "나르샤";
+    case "FIELD_PRACTICE":
+      return "현장체험";
     case "INDUSTRY":
-      return "현장실습"
+      return "현장실습";
     case "SHIFT_ATTEND":
-      return "실 이동 출석"
+      return "실 이동 출석";
     case "WINTER_CAMP":
-      return "윈터 캠프"
+      return "윈터 캠프";
     default:
-      return "기타"
+      return "기타";
   }
-}
+};
