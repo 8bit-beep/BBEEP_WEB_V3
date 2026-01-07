@@ -15,11 +15,17 @@ const Sidebar = () => {
     sidebarData,
     "WINTER_CAMP"
   );
-  const [attendedCount, setAttendedCount] = useState(
-    data?.filter((attend) =>
-      attend.statuses.some((status) => status.status === "WINTER_CAMP")
-    ).length ?? 0
-  );
+  const [attendedCount, setAttendedCount] = useState(0);
+
+  useEffect(() => {
+    if (!data) return;
+
+    setAttendedCount(
+      data.filter((attend) =>
+        attend.statuses.some((status) => status.status !== "NOT_ATTEND")
+      ).length
+    );
+  }, [data]);
 
   const { mutate } = useApproveAttend(sidebarData);
   const { data: approve } = useGetAttendApproveOneQuery(sidebarData);
