@@ -16,7 +16,7 @@ const Home = () => {
         style={{
           /** 맵 기본 확대 크기 */
           transform: `scale(${1 - 0.1 * scale})`,
-          transformOrigin: `${150 * scale}px`,
+          transformOrigin: `${100 * scale}px`,
         }}
       >
         {floor === 2 ? (
