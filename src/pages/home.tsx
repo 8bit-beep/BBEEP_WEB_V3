@@ -14,8 +14,9 @@ const Home = () => {
       <div
         className="w-400 flex items-center relative p-6"
         style={{
+          /** 맵 기본 확대 크기 */
           transform: `scale(${1 - 0.1 * scale})`,
-          transformOrigin: `${100 * scale}px`,
+          transformOrigin: `${150 * scale}px`,
         }}
       >
         {floor === 2 ? (
