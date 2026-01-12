@@ -1,5 +1,5 @@
 export type AttendStatus =
-  | "WINTER_CAMP"
+  | "WINTER_CAMP_LECTURE"
   | "CLUB"
   | "CLASS"
   | "NOT_ATTEND"
