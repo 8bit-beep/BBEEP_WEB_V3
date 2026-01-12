@@ -13,10 +13,20 @@ import { useAttendStatusIdxByTime } from "../../../hooks/attends/useAttendStatus
 const Sidebar = () => {
   const statusIdx = useAttendStatusIdxByTime();
   const { sidebarData, setSidebarData } = useSidebarDataStore();
-  const { data, isLoading, refetch } = useGetAttendsByRoom(
+  const { data: winterCampData, isLoading: winterCampLoading, refetch: winterCampRefetch } = useGetAttendsByRoom(
     sidebarData,
     statusIdx === 2 ? "WINTER_CAMP_SELF_STUDY" : "WINTER_CAMP_LECTURE"
   );
+  const { data: afterSchoolData, isLoading: afterSchoolLoading, refetch: afterSchoolRefetch } = useGetAttendsByRoom(
+    sidebarData,
+    "AFTER_SCHOOL"
+  );
+  const data = [...winterCampData, ...afterSchoolData];
+  const isLoading = winterCampLoading || afterSchoolLoading;
+  const refetch = () => {
+    winterCampRefetch();
+    afterSchoolRefetch();
+  };
   const attendedCount = data.filter((attend) => attend.statuses[statusIdx].status !== "NOT_ATTEND").length;
 
   const { mutate } = useApproveAttend(sidebarData);
@@ -26,6 +36,8 @@ const Sidebar = () => {
   useEffect(() => {
     setSidebarData(null);
   }, [location.pathname, setSidebarData]);
+
+  
 
   return (
     <div className="w-full h-screen flex flex-col gap-3 bg-white pt-13 pb-36 px-4 z-10">
@@ -72,7 +84,6 @@ const Sidebar = () => {
           ))
         ) : data && data.length > 0 ? (
           data
-            ?.slice()
             .sort((a, b) => Number(a.studentId) - Number(b.studentId))
             .map((item) => (
               <div className="w-full mb-4" key={item.studentId}>
