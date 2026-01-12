@@ -1,27 +1,24 @@
-import {useMutation, useQueryClient} from "@tanstack/react-query";
+import {useMutation} from "@tanstack/react-query";
 import bbeepAxios from "../../libs/axios/customAxios.ts";
 import {RoomName} from "../../types/enums/roomName.ts";
 import {AxiosError} from "axios";
 import {notification} from "antd";
 
 export const useUpdateAttendStatusMutation = (
-    status: string, grade: number, cls: number, num: number, room: RoomName) => {
-    const queryClient = useQueryClient();
+    status: string, grade: number, cls: number, num: number, room: RoomName, refetch: () => Promise<void>) => {
 
     const updateAttendStatus = async () => {
-        return await bbeepAxios.patch('/students/attend-status', {
+        await bbeepAxios.patch('/students/attend-status', {
             grade,
             cls,
             num,
             status,
         });
+        await refetch();
     }
 
     return useMutation({
         mutationFn: updateAttendStatus,
-        onSuccess: async () => {
-            await queryClient.invalidateQueries({queryKey: ["getAttendsByRoom", room]})
-        },
         onError: (e) => {
             notification.open({
                 message: "출석 상태 변경 실패",

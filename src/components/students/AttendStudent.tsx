@@ -72,7 +72,8 @@ const AttendStudent = (props: SidebarElementProps) => {
     grade,
     cls,
     number,
-    props.room
+    props.room,
+    props.refetch
   );
 
   useEffect(() => {
@@ -92,6 +93,7 @@ const AttendStudent = (props: SidebarElementProps) => {
     // 사용자가 드롭다운을 변경했을 때만 저장
     if (attendStatus.value !== currentStatusValue) {
       save.mutate();
+      props.refetch();
     }
   }, [attendStatus.value, currentStatusValue]);
 

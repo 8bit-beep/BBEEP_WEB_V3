@@ -23,9 +23,8 @@ const Sidebar = () => {
   );
   const data = [...winterCampData, ...afterSchoolData];
   const isLoading = winterCampLoading || afterSchoolLoading;
-  const refetch = () => {
-    winterCampRefetch();
-    afterSchoolRefetch();
+  const refetch = async () => {
+    Promise.all([winterCampRefetch(), afterSchoolRefetch()]);
   };
   const attendedCount = data.filter((attend) => attend.statuses[statusIdx].status !== "NOT_ATTEND").length;
 
@@ -90,6 +89,7 @@ const Sidebar = () => {
                 <AttendStudent
                   data={item}
                   room={sidebarData || "NOTFOUND"}
+                  refetch={refetch}
                 />
               </div>
             ))
