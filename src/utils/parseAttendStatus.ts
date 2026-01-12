@@ -22,7 +22,7 @@ export const parseAttendStatus = (attend: AttendStatus) => {
       return "산학수업";
     case "SHIFT_ATTEND":
       return "실 이동 출석";
-    case "WINTER_CAMP":
+    case "WINTER_CAMP_LECTURE":
       return "윈터 캠프";
     default:
       return "기타";

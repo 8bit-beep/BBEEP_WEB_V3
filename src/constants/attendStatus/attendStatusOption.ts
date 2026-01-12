@@ -1,7 +1,7 @@
 import { Option } from "../../types/props/elements/dropdownProps.ts";
 
 export const attendStatusOption: Option[] = [
-  { name: "윈터 캠프", value: "WINTER_CAMP" },
+  { name: "윈터 캠프", value: "WINTER_CAMP_LECTURE" },
   { name: "동아리", value: "CLUB" },
   { name: "미출석", value: "NOT_ATTEND" },
   { name: "외박", value: "SLEEPOVER" },
