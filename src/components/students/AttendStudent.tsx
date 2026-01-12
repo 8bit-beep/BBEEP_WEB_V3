@@ -8,6 +8,7 @@ import { decodeStudentId } from "../../utils/decodeStudentId.ts";
 import { COLOR } from "../../style/color/color.ts";
 import { SidebarElementProps } from "../../types/props/elements/sidebarElementProps.ts";
 import { useAttendStatusIdxByTime } from "../../hooks/attends/useAttendStatusIdxByTime.ts";
+import { AttendStatus } from "../../types/enums/AttendStatus.ts";
 
 const AttendStudent = (props: SidebarElementProps) => {
   const statusIdx = useAttendStatusIdxByTime();
@@ -23,6 +24,41 @@ const AttendStudent = (props: SidebarElementProps) => {
     value: currentStatusValue,
   }));
   const [isDirty, setIsDirty] = useState(false);
+
+  const getBackgroundColor = (status: AttendStatus) => {
+    switch (status) {
+      case "NOT_ATTEND":
+        return COLOR.LightGray; // 미출석
+      case "SLEEPOVER":
+        return COLOR.Red; // 외박
+      case "OUTGOING":
+        return COLOR.Serve; // 외출
+      default:
+        return COLOR.LightGray;
+    }
+  };
+
+  const getSubTextColor = (status: AttendStatus) => {
+    switch (status) {
+      case "SLEEPOVER":
+        return COLOR.LightGray; // 외박
+      case "OUTGOING":
+        return COLOR.LightGray; // 외출
+      default:
+        return COLOR.DarkGray;
+    }
+  };
+
+  const getTextColor = (status: AttendStatus) => {
+    switch (status) {
+      case "SLEEPOVER":
+        return COLOR.White; // 외박
+      case "OUTGOING":
+        return COLOR.White; // 외출
+      default:
+        return COLOR.Black;
+    }
+  };
 
   const handleAttendStatus = (e: Option) => {
     {
@@ -53,8 +89,6 @@ const AttendStudent = (props: SidebarElementProps) => {
     props.room
   );
 
-  const isNotAttend = currentStatusValue === "NOT_ATTEND";
-
   useEffect(() => {
     // 시간대(statusIdx) 또는 서버 데이터가 바뀌면 현재 상태를 동기화
     const nextStatusValue =
@@ -82,14 +116,22 @@ const AttendStudent = (props: SidebarElementProps) => {
     <div
       className="w-full p-3 flex items-center rounded-xl"
       style={{
-        backgroundColor:
-          attendStatus.value !== "NOT_ATTEND" ? COLOR.LightGray : COLOR.White,
+        backgroundColor: getBackgroundColor(attendStatus.value as AttendStatus),
       }}
     >
       <div className="flex items-center">
-        {/* 배경색은 출석 안됐을 때는 회색, 됐을 때는 하얀색 */}
-        <p className="w-10 text-xs text-darkgray">{props.data.studentId}</p>
-        <p className="text-base text-black text-left">{props.data.username}</p>
+        <p
+          className="w-10 text-xs "
+          style={{ color: getSubTextColor(attendStatus.value as AttendStatus) }}
+        >
+          {props.data.studentId}
+        </p>
+        <p
+          className="text-base text-left"
+          style={{ color: getTextColor(attendStatus.value as AttendStatus) }}
+        >
+          {props.data.username}
+        </p>
       </div>
       {/* spacer */}
       <div className="flex-1" />
