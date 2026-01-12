@@ -13,19 +13,10 @@ import { useAttendStatusIdxByTime } from "../../../hooks/attends/useAttendStatus
 const Sidebar = () => {
   const statusIdx = useAttendStatusIdxByTime();
   const { sidebarData, setSidebarData } = useSidebarDataStore();
-  const { data: winterCampData, isLoading: winterCampLoading, refetch: winterCampRefetch } = useGetAttendsByRoom(
+  const { data, isLoading, refetch } = useGetAttendsByRoom(
     sidebarData,
     statusIdx === 2 ? "WINTER_CAMP_SELF_STUDY" : "WINTER_CAMP_LECTURE"
   );
-  const { data: afterSchoolData, isLoading: afterSchoolLoading, refetch: afterSchoolRefetch } = useGetAttendsByRoom(
-    sidebarData,
-    "AFTER_SCHOOL"
-  );
-  const data = [...winterCampData, ...afterSchoolData];
-  const isLoading = winterCampLoading || afterSchoolLoading;
-  const refetch = async () => {
-    Promise.all([winterCampRefetch(), afterSchoolRefetch()]);
-  };
   const attendedCount = data.filter((attend) => attend.statuses[statusIdx].status !== "NOT_ATTEND").length;
 
   const { mutate } = useApproveAttend(sidebarData);
