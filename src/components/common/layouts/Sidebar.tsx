@@ -8,12 +8,14 @@ import { useLocation } from "react-router-dom";
 import { useGetAttendApproveOneQuery } from "../../../queries/attendApprove/getAttendApproveOne.ts";
 import { COLOR } from "../../../style/color/color.ts";
 import Skeleton from "../Skeleton.tsx";
+import { useAttendStatusIdxByTime } from "../../../hooks/attends/useAttendStatusIdxByTime.ts";
 
 const Sidebar = () => {
+  const statusIdx = useAttendStatusIdxByTime();
   const { sidebarData, setSidebarData } = useSidebarDataStore();
   const { data, isLoading, refetch } = useGetAttendsByRoom(
     sidebarData,
-    "WINTER_CAMP_LECTURE"
+    statusIdx === 2 ? "WINTER_CAMP_SELF_STUDY" : "WINTER_CAMP_LECTURE"
   );
   const [attendedCount, setAttendedCount] = useState(0);
 

@@ -15,15 +15,13 @@ const AttendStudent = (props: SidebarElementProps) => {
 
   const effectiveStatusIdx = props.data.statuses[statusIdx] ? statusIdx : 0;
   const currentStatusValue =
-    props.data.statuses[effectiveStatusIdx]?.status ??
-    props.data.statuses[0]?.status ??
+    props.data.statuses[effectiveStatusIdx]?.status ||
     "NOT_ATTEND";
 
   const [attendStatus, setAttendStatus] = useState<Option>(() => ({
     name: parseAttendStatus(currentStatusValue),
     value: currentStatusValue,
   }));
-  const [isDirty, setIsDirty] = useState(false);
 
   const getBackgroundColor = (status: AttendStatus) => {
     switch (status) {
@@ -73,7 +71,6 @@ const AttendStudent = (props: SidebarElementProps) => {
       props.setCount((prev) => prev + 1);
     }
     setAttendStatus({ name: e.name, value: e.value });
-    setIsDirty(true);
   };
 
   const { grade, cls, number } = decodeStudentId(props.data.studentId);
@@ -100,17 +97,14 @@ const AttendStudent = (props: SidebarElementProps) => {
       name: parseAttendStatus(nextStatusValue),
       value: nextStatusValue,
     });
-    setIsDirty(false);
   }, [effectiveStatusIdx, props.data.statuses]);
 
   useEffect(() => {
     // 사용자가 드롭다운을 변경했을 때만 저장
-    if (!isDirty) return;
     if (attendStatus.value !== currentStatusValue) {
       save.mutate();
     }
-    setIsDirty(false);
-  }, [isDirty, attendStatus.value, currentStatusValue, save]);
+  }, [attendStatus.value, currentStatusValue]);
 
   return (
     <div
