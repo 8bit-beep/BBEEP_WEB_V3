@@ -32,7 +32,7 @@ const AttendStudent = (props: SidebarElementProps) => {
       case "OUTGOING":
         return COLOR.Serve; // 외출
       default:
-        return COLOR.LightGray;
+        return COLOR.White;
     }
   };
 
