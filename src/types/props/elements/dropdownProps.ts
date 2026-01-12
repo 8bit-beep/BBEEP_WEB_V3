@@ -1,10 +1,10 @@
-export interface Option<T = string> {
+export interface Option {
   name: string;
-  value: T;
+  value: string;
 }
 
-export interface DropdownProps<T = string> {
-  value: Option<T>;
-  options: Option<T>[];
-  setValue: (arg: Option<T>) => void;
+export interface DropdownProps {
+  setValue: (arg: Option) => void;
+  value: Option;
+  options: Option[];
 }
