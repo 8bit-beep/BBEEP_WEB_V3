@@ -1,7 +1,7 @@
 import { useSidebarDataStore } from "../../../store/sidebar/useSidebarDataStore.ts";
 import { useGetAttendsByRoom } from "../../../hooks/attends/useGetAttendsByRoom.ts";
 import AttendStudent from "../../students/AttendStudent.tsx";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { parseRoomName } from "../../../utils/parseRoomName.ts";
 import { useApproveAttend } from "../../../queries/attendApprove/approveAttend.ts";
 import { useLocation } from "react-router-dom";
@@ -17,17 +17,7 @@ const Sidebar = () => {
     sidebarData,
     statusIdx === 2 ? "WINTER_CAMP_SELF_STUDY" : "WINTER_CAMP_LECTURE"
   );
-  const [attendedCount, setAttendedCount] = useState(0);
-
-  useEffect(() => {
-    if (!data) return;
-
-    setAttendedCount(
-      data.filter((attend) =>
-        attend.statuses.some((status) => status.status !== "NOT_ATTEND")
-      ).length
-    );
-  }, [data]);
+  const attendedCount = data.filter((attend) => attend.statuses[statusIdx].status !== "NOT_ATTEND").length;
 
   const { mutate } = useApproveAttend(sidebarData);
   const { data: approve } = useGetAttendApproveOneQuery(sidebarData);
@@ -89,8 +79,6 @@ const Sidebar = () => {
                 <AttendStudent
                   data={item}
                   room={sidebarData || "NOTFOUND"}
-                  count={attendedCount}
-                  setCount={setAttendedCount}
                 />
               </div>
             ))

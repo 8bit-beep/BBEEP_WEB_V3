@@ -59,17 +59,6 @@ const AttendStudent = (props: SidebarElementProps) => {
   };
 
   const handleAttendStatus = (e: Option) => {
-    {
-      /** 자동으로 총 인원 수 업데이트 */
-    }
-    if (e.value === "NOT_ATTEND" && currentStatusValue !== "NOT_ATTEND") {
-      props.setCount((prev) => prev - 1);
-    } else if (
-      e.value !== "NOT_ATTEND" &&
-      currentStatusValue === "NOT_ATTEND"
-    ) {
-      props.setCount((prev) => prev + 1);
-    }
     setAttendStatus({ name: e.name, value: e.value });
   };
 
