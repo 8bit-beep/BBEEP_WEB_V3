@@ -72,7 +72,6 @@ const AttendStudent = (props: SidebarElementProps) => {
     grade,
     cls,
     number,
-    props.room,
     props.refetch
   );
 

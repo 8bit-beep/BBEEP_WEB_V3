@@ -1,11 +1,10 @@
 import {useMutation} from "@tanstack/react-query";
 import bbeepAxios from "../../libs/axios/customAxios.ts";
-import {RoomName} from "../../types/enums/roomName.ts";
 import {AxiosError} from "axios";
 import {notification} from "antd";
 
 export const useUpdateAttendStatusMutation = (
-    status: string, grade: number, cls: number, num: number, room: RoomName, refetch: () => Promise<void>) => {
+    status: string, grade: number, cls: number, num: number, refetch: () => Promise<void>) => {
 
     const updateAttendStatus = async () => {
         await bbeepAxios.patch('/students/attend-status', {
