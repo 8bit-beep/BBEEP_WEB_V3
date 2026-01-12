@@ -13,7 +13,7 @@ const Sidebar = () => {
   const { sidebarData, setSidebarData } = useSidebarDataStore();
   const { data, isLoading, refetch } = useGetAttendsByRoom(
     sidebarData,
-    "WINTER_CAMP"
+    "WINTER_CAMP_LECTURE"
   );
   const [attendedCount, setAttendedCount] = useState(0);
 

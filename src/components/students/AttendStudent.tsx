@@ -82,7 +82,8 @@ const AttendStudent = (props: SidebarElementProps) => {
     <div
       className="w-full p-3 flex items-center rounded-xl"
       style={{
-        backgroundColor: isNotAttend ? COLOR.LightGray : COLOR.White,
+        backgroundColor:
+          attendStatus.value !== "NOT_ATTEND" ? COLOR.LightGray : COLOR.White,
       }}
     >
       <div className="flex items-center">
