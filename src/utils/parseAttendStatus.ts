@@ -23,7 +23,9 @@ export const parseAttendStatus = (attend: AttendStatus) => {
     case "SHIFT_ATTEND":
       return "실 이동 출석";
     case "WINTER_CAMP_LECTURE":
-      return "윈터 캠프";
+      return "윈터 캠프(강의)";
+    case "WINTER_CAMP_SELF_STUDY":
+      return "윈터 캠프(자습)";
     default:
       return "기타";
   }
