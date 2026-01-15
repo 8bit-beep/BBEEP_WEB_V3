@@ -127,7 +127,10 @@ const AttendStudent = (props: SidebarElementProps) => {
             {/* spacer */}
             <div className="flex-1" />
             {props.approved ? (
-                <div className="flex rounded-xl px-5 py-2.5 gap-4 items-center relative cursor-pointer bg-white">
+                <div
+                    className="flex rounded-xl px-5 py-2.5 gap-4 items-center relative bg-white"
+                    style={{ boxShadow: "0 0.1rem 1rem 0 rgba(0, 0, 0, 0.05)" }}
+                >
                     {attendStatus.name}
                 </div>
             ) : (
