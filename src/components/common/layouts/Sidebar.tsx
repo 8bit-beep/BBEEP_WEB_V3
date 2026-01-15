@@ -9,7 +9,6 @@ import { useGetAttendApproveOneQuery } from "../../../queries/attendApprove/getA
 import { COLOR } from "../../../style/color/color.ts";
 import Skeleton from "../Skeleton.tsx";
 import { useAttendStatusIdxByTime } from "../../../hooks/attends/useAttendStatusIdxByTime.ts";
-import { notification } from "antd";
 
 const Sidebar = () => {
     const statusIdx = useAttendStatusIdxByTime();
@@ -29,9 +28,6 @@ const Sidebar = () => {
     const refetch = async () => {
         await selfstudyRefetch();
         await lectureRefetch();
-        notification.open({
-            message: "새로고침 되었습니다.",
-        });
     };
 
     const attendedCount = data.filter(
