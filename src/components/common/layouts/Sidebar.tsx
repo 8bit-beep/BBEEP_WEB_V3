@@ -107,6 +107,7 @@ const Sidebar = () => {
                                 <AttendStudent
                                     data={item}
                                     room={sidebarData || "NOTFOUND"}
+                                    approved={Boolean(approve?.approvedTeacher)}
                                     refetch={refetch}
                                 />
                             </div>
